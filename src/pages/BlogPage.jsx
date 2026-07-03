@@ -155,7 +155,7 @@ export default function BlogPage() {
 
                 <section className="mt-10 max-w-full" aria-label={copy.filters}>
                     <h2 className="mb-4 text-xl font-black text-white">{copy.filters}</h2>
-                    <div className="-mx-4 flex max-w-[calc(100%+2rem)] gap-2 overflow-x-auto px-4 pb-3 [scrollbar-color:rgba(125,211,252,.42)_rgba(255,255,255,.06)] [scrollbar-width:thin] sm:mx-0 sm:max-w-full sm:flex-wrap sm:overflow-visible sm:px-0">
+                    <div className="blog-filter-track -mx-4 flex max-w-[calc(100%+2rem)] gap-2 overflow-x-auto px-4 pb-3 [scrollbar-color:rgba(125,211,252,.42)_rgba(255,255,255,.06)] [scrollbar-width:thin] sm:mx-0 sm:max-w-full sm:flex-wrap sm:overflow-visible sm:px-0">
                         {hubCategories.map((category) => (
                             <button
                                 key={category.value}

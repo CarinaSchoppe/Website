@@ -67,7 +67,7 @@ export default function Header({theme = "night", onToggleTheme = () => {}}) {
     }, [open]);
 
     const mobileMenu = open ? (
-        <div className="mobile-menu-overlay lg:hidden" role="dialog" aria-modal="true" aria-label={t.navigation}>
+        <div className="mobile-menu-overlay xl:hidden" role="dialog" aria-modal="true" aria-label={t.navigation}>
             <div className="sticky top-0 z-10 -mx-5 mb-8 flex items-center justify-between border-b border-white/10 bg-[#08090B]/92 px-5 py-4">
                 <span className="text-lg font-black text-white">{t.navigation}</span>
                 <div className="flex gap-2">
@@ -104,18 +104,18 @@ export default function Header({theme = "night", onToggleTheme = () => {}}) {
                         </div>
                     </NavLink>
 
-                    <nav className="hidden items-center gap-0.5 lg:flex">
+                    <nav className="hidden items-center gap-0.5 xl:flex">
                         {navItems.map((item) => <NavLink key={item.to} to={item.to} className={navClass}>{t.nav[item.key]}</NavLink>)}
                     </nav>
 
-                    <div className="hidden items-center gap-3 md:flex">
+                    <div className="hidden items-center gap-3 xl:flex">
                         <ThemeToggle theme={theme} onToggleTheme={onToggleTheme} language={language}/>
                         <LanguageToggle language={language} toggleLanguage={toggleLanguage} t={t}/>
                         <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="hidden rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-bold text-zinc-300 transition hover:bg-white/[0.09] hover:text-white 2xl:inline-flex">{t.linkedin}</a>
                         <Button to="/contact#contact-options">{t.bookTraining}</Button>
                     </div>
 
-                    <button className="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm font-black text-white backdrop-blur-xl lg:hidden" onClick={() => setOpen(true)} aria-label={`${t.open} ${t.menu}`}>{t.menu}</button>
+                    <button className="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm font-black text-white backdrop-blur-xl xl:hidden" onClick={() => setOpen(true)} aria-label={`${t.open} ${t.menu}`}>{t.menu}</button>
                 </div>
             </header>
 
