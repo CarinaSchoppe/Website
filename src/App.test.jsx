@@ -78,7 +78,7 @@ describe("App routing and language", () => {
         render(<App/>);
 
         expect(await screen.findByRole("heading", {name: /Diese Seite ist nicht im Trainingsplan/i})).toBeInTheDocument();
-        await waitFor(() => expect(document.title).toBe("Seite nicht gefunden | Luminovia"));
+        await waitFor(() => expect(document.title).toBe("Seite nicht gefunden | Carina Sophie Schoppe"));
         expect(document.head.querySelector('meta[name="description"]')).toHaveAttribute(
             "content",
             expect.stringContaining("Diese Seite wurde nicht gefunden"),

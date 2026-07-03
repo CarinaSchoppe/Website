@@ -1,10 +1,10 @@
-import {readFileSync} from "node:fs";
+import {existsSync, readFileSync} from "node:fs";
 import {render, screen, within} from "@testing-library/react";
 import {describe, expect, it} from "vitest";
 import App from "../App.jsx";
 import {LANGUAGE_STORAGE_KEY} from "../i18n.jsx";
 
-const SITE_BASE_URL = "https://luminovia-training-consulting.github.io/Website";
+const SITE_BASE_URL = "https://carinaschoppe.com";
 const sitemap = readFileSync("public/sitemap.xml", "utf8");
 const appRoutes = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)]
     .map((match) => match[1])
@@ -15,6 +15,21 @@ const appRoutes = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)]
     .filter((path) => !path.endsWith(".html"));
 
 describe("full static site route coverage", () => {
+    it("uses the carinaschoppe.com static site identity", () => {
+        const html = readFileSync("index.html", "utf8");
+        const robots = readFileSync("public/robots.txt", "utf8");
+        const cname = readFileSync("public/CNAME", "utf8").trim();
+
+        expect(cname).toBe("carinaschoppe.com");
+        expect(html).toContain('<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>');
+        expect(html).toContain('<link href="/apple-touch-icon.svg" rel="apple-touch-icon" type="image/svg+xml"/>');
+        expect(existsSync("public/favicon.svg")).toBe(true);
+        expect(existsSync("public/apple-touch-icon.svg")).toBe(true);
+        expect(sitemap).toContain(`${SITE_BASE_URL}/`);
+        expect(sitemap).not.toContain("luminovia-training-consulting.github.io/Website");
+        expect(robots).toContain(`Sitemap: ${SITE_BASE_URL}/sitemap.xml`);
+    });
+
     it("keeps the sitemap connected to every rendered app page", async () => {
         expect(appRoutes).toContain("/");
         expect(appRoutes).toContain("/training");
@@ -41,7 +56,7 @@ describe("full static site route coverage", () => {
         }
     }, 30000);
 
-    it("exposes the primary Luminovia information architecture in navigation", async () => {
+    it("exposes the primary Carina information architecture in navigation", async () => {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
         window.history.pushState({}, "Home", "/");
 
@@ -56,5 +71,23 @@ describe("full static site route coverage", () => {
         expect(within(headerNav).getByRole("link", {name: /^Projects$/i})).toHaveAttribute("href", "/projects");
         expect(within(headerNav).getByRole("link", {name: /^CEO$/i})).toHaveAttribute("href", "/about");
         expect(within(headerNav).getByRole("link", {name: /^Contact$/i})).toHaveAttribute("href", "/contact");
+    });
+
+    it.each([
+        ["/training/", /Konkrete Luminovia Offers|Concrete Luminovia offers/i],
+        ["/offers/", /Klare Luminovia-Angebote|Clear Luminovia offers/i],
+        ["/consulting/", /Projektpraxis hinter IT-|Project practice behind IT/i],
+        ["/projects/", /Projekte, die Luminovia-Training|Projects that make Luminovia/i],
+        ["/pricing/", /Transparente Netto-Ab-Preise|Transparent starting rates/i],
+        ["/blog/", /Blog zu AI, Projektmanagement und Lehre mit KI|Blog on AI, project work and teaching with AI/i],
+    ])("renders trailing-slash route %s", async (route, heading) => {
+        window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "de");
+        window.history.pushState({}, "Trailing route", route);
+
+        const {unmount} = render(<App/>);
+
+        expect(await screen.findByRole("heading", {level: 1, name: heading})).toBeInTheDocument();
+        expect(document.title).not.toMatch(/not found|nicht gefunden/i);
+        unmount();
     });
 });

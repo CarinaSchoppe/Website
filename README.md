@@ -22,7 +22,7 @@ The site is static. There is no backend, no server-side rendering, no form endpo
 - Dark mode and light mode.
 - Logo-based Luminovia visual system using navy, blue, cyan and gold.
 - Static React/Vite app with React Router routes.
-- GitHub Pages compatible project build under `/Website/`.
+- GitHub Pages compatible custom-domain build for `https://carinaschoppe.com/`.
 - Production build optimized through Preact compatibility mode.
 - Direct contact model through email, phone and Google Calendar booking.
 - Google Analytics consent banner.
@@ -175,7 +175,7 @@ SEO is handled in two places:
 - `src/components/Seo.jsx` updates runtime metadata and JSON-LD.
 - `vite.config.js` emits static `index.html` files for important routes during build.
 
-Production builds use the Vite base path `/Website/` and the router derives its basename from `import.meta.env.BASE_URL`, so generated assets, public files and internal routes work on GitHub Pages project hosting.
+Production builds use the Vite base path `/` for the custom domain `carinaschoppe.com`, so generated assets, public files and internal routes work on the live root domain.
 
 When adding a major page, update:
 

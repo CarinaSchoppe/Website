@@ -168,6 +168,16 @@ function routeElement(Component) {
     );
 }
 
+function routePaths(path) {
+    return path === "/" ? [path] : [path, `${path}/`];
+}
+
+function pageRoutes(path, Component) {
+    return routePaths(path).map((routePath) => (
+        <Route key={routePath} path={routePath} element={routeElement(Component)}/>
+    ));
+}
+
 export default function App() {
     const [theme, setTheme] = useState(getInitialTheme);
 
@@ -193,26 +203,26 @@ export default function App() {
                     <div className="relative z-10">
                         <Routes>
                             <Route path="/" element={<AppErrorBoundary><HomePage/></AppErrorBoundary>}/>
-                            <Route path="/training" element={routeElement(TrainingPage)}/>
-                            <Route path="/offers" element={routeElement(OffersPage)}/>
-                            <Route path="/training/:slug" element={routeElement(TrainingTopicPage)}/>
-                            <Route path="/keynotes" element={routeElement(KeynotesPage)}/>
-                            <Route path="/corporate" element={routeElement(CorporatePage)}/>
-                            <Route path="/credentials" element={routeElement(CredentialsPage)}/>
-                            <Route path="/portfolio" element={routeElement(PortfolioPage)}/>
-                            <Route path="/consulting" element={routeElement(PortfolioPage)}/>
-                            <Route path="/clients" element={routeElement(ClientsPage)}/>
-                            <Route path="/about" element={routeElement(AboutPage)}/>
-                            <Route path="/contact" element={routeElement(ContactPage)}/>
-                            <Route path="/my-way" element={routeElement(MyWayPage)}/>
-                            <Route path="/skills" element={routeElement(SkillsPage)}/>
-                            <Route path="/pricing" element={routeElement(PricingPage)}/>
-                            <Route path="/blog" element={routeElement(BlogPage)}/>
-                            <Route path="/blog/:slug" element={routeElement(BlogPostPage)}/>
-                            <Route path="/projects" element={routeElement(SoftwarePage)}/>
-                            <Route path="/software" element={routeElement(SoftwarePage)}/>
-                            <Route path="/imprint" element={routeElement(ImprintPage)}/>
-                            <Route path="/privacy" element={routeElement(PrivacyPage)}/>
+                            {pageRoutes("/training", TrainingPage)}
+                            {pageRoutes("/offers", OffersPage)}
+                            {pageRoutes("/training/:slug", TrainingTopicPage)}
+                            {pageRoutes("/keynotes", KeynotesPage)}
+                            {pageRoutes("/corporate", CorporatePage)}
+                            {pageRoutes("/credentials", CredentialsPage)}
+                            {pageRoutes("/portfolio", PortfolioPage)}
+                            {pageRoutes("/consulting", PortfolioPage)}
+                            {pageRoutes("/clients", ClientsPage)}
+                            {pageRoutes("/about", AboutPage)}
+                            {pageRoutes("/contact", ContactPage)}
+                            {pageRoutes("/my-way", MyWayPage)}
+                            {pageRoutes("/skills", SkillsPage)}
+                            {pageRoutes("/pricing", PricingPage)}
+                            {pageRoutes("/blog", BlogPage)}
+                            {pageRoutes("/blog/:slug", BlogPostPage)}
+                            {pageRoutes("/projects", SoftwarePage)}
+                            {pageRoutes("/software", SoftwarePage)}
+                            {pageRoutes("/imprint", ImprintPage)}
+                            {pageRoutes("/privacy", PrivacyPage)}
                             <Route path="*" element={routeElement(NotFoundPage)}/>
                         </Routes>
                     </div>

@@ -4,7 +4,7 @@ import {seoHomeFaqs} from "../data/seoContent.js";
 import {PROFILE} from "../data/profile.js";
 import {useLanguage} from "../i18n.jsx";
 
-const SITE_URL = "https://luminovia-training-consulting.github.io/Website";
+const SITE_URL = "https://carinaschoppe.com";
 const DEFAULT_IMAGE = `${SITE_URL}/images/carina-hero.jpg`;
 const schemaServiceOffers = [
     ["AI & GenAI Training", "Practical training on generative AI concepts, business use cases, limits, risks and responsible day-to-day adoption."],
@@ -23,16 +23,16 @@ const schemaServiceOffers = [
 const routeMeta = {
     en: {
         "/": {
-            title: "Luminovia Training & Consulting | AI, IT and Digital Business",
-            description: "Book Luminovia Training & Consulting, led by Carina Sophie Schoppe, for AI, IT, cybersecurity, business technology training and consulting from Brisbane.",
+            title: "Carina Sophie Schoppe | AI, IT and Business Technology Training",
+            description: "Book Carina Sophie Schoppe for AI, IT, cybersecurity, business technology training, lectures, keynotes and consulting from Brisbane.",
         },
         "/training": {
             title: "Offers | IT and Business Training, Lectures & Consulting",
             description: "Book IT and business technology offers: live training, lectures, workshops, consulting sprints, project support, AI governance, cybersecurity and digital transformation.",
         },
         "/offers": {
-            title: "Offers | Luminovia Training & Consulting",
-            description: "Clear Luminovia packages for live training, consulting sprints, project support, keynotes, curriculum design and larger digital enablement programmes.",
+            title: "Offers | Carina Sophie Schoppe",
+            description: "Clear packages for live training, consulting sprints, project support, keynotes, curriculum design and larger digital enablement programmes.",
         },
         "/consulting": {
             title: "Consulting | IT, AI and Business Advisory",
@@ -101,16 +101,16 @@ const routeMeta = {
     },
     de: {
         "/": {
-            title: "Luminovia Training & Consulting | AI, IT und Digital Business",
-            description: "Buchen Sie Luminovia Training & Consulting, geführt von Carina Sophie Schoppe, für AI-, IT-, Cybersecurity-, Business-Technology-Training und Consulting aus Brisbane.",
+            title: "Carina Sophie Schoppe | AI, IT und Business-Technology-Training",
+            description: "Buchen Sie Carina Sophie Schoppe für AI-, IT-, Cybersecurity-, Business-Technology-Training, Lehre, Vorträge und Consulting aus Brisbane.",
         },
         "/training": {
             title: "Angebote | IT- und Business-Training, Lehre & Consulting",
             description: "Buchbare IT- und Business-Technology-Angebote: Live-Training, Vorlesungen, Workshops, Consulting-Sprints, Projektbegleitung, AI Governance, Cybersecurity und digitale Transformation.",
         },
         "/offers": {
-            title: "Angebote | Luminovia Training & Consulting",
-            description: "Klare Luminovia-Pakete für Live-Training, Consulting-Sprints, Projektbegleitung, Keynotes, Curriculum Design und größere Digital-Enablement-Programme.",
+            title: "Angebote | Carina Sophie Schoppe",
+            description: "Klare Pakete für Live-Training, Consulting-Sprints, Projektbegleitung, Keynotes, Curriculum Design und größere Digital-Enablement-Programme.",
         },
         "/consulting": {
             title: "Consulting | IT-, AI- und Business-Beratung",
@@ -215,6 +215,11 @@ function removeJsonLd(id) {
     document.head.querySelector(`#${id}`)?.remove();
 }
 
+function normalizePathname(pathname) {
+    if (pathname === "/") return pathname;
+    return pathname.replace(/\/+$/, "");
+}
+
 function buildBaseSchema() {
     return {
         "@context": "https://schema.org",
@@ -275,22 +280,23 @@ function buildBreadcrumbSchema(pathname, title) {
 export default function Seo() {
     const {pathname} = useLocation();
     const {language} = useLanguage();
-    const isBlogPostRoute = /^\/blog\/[^/]+$/.test(pathname);
-    const isTrainingTopicRoute = /^\/training\/[^/]+$/.test(pathname);
+    const normalizedPathname = normalizePathname(pathname);
+    const isBlogPostRoute = /^\/blog\/[^/]+$/.test(normalizedPathname);
+    const isTrainingTopicRoute = /^\/training\/[^/]+$/.test(normalizedPathname);
     const currentMeta = isBlogPostRoute ? {
         title: language === "de" ? "Blogbeitrag | Carina Sophie Schoppe" : "Blog Article | Carina Sophie Schoppe",
         description: language === "de" ? "Fachbeitrag von Carina Sophie Schoppe zu AI, Governance, digitaler Bildung, Business-IT oder moderner Arbeit." : "Long-form article by Carina Sophie Schoppe on AI, governance, digital education, business IT or modern work.",
     } : isTrainingTopicRoute ? {
         title: language === "de" ? "Trainingsthema | IT- und Business-Bildung" : "Training Topic | IT and Business Education",
         description: language === "de" ? "Detaillierte Themenseite für IT, Softwareentwicklung, Cybersecurity, Projektmanagement, digitale Transformation oder Business-Bildung." : "Detailed training topic page for IT, software development, cybersecurity, project management, digital transformation or business education.",
-    } : routeMeta[language][pathname] || {
-        title: language === "de" ? "Seite nicht gefunden | Luminovia" : "Page not found | Luminovia",
+    } : routeMeta[language][normalizedPathname] || {
+        title: language === "de" ? "Seite nicht gefunden | Carina Sophie Schoppe" : "Page not found | Carina Sophie Schoppe",
         description: language === "de" ? "Diese Seite wurde nicht gefunden. Nutzen Sie Startseite, Angebote oder Kontakt, um zur passenden Information zu gelangen." : "This page was not found. Use the homepage, offers or contact page to find the right information.",
     };
     const {title, description} = currentMeta;
 
     useEffect(() => {
-        const canonical = `${SITE_URL}${pathname === "/" ? "/" : pathname}`;
+        const canonical = `${SITE_URL}${normalizedPathname === "/" ? "/" : normalizedPathname}`;
         document.title = title;
 
         upsertMeta('meta[name="description"]', {name: "description", content: description});
@@ -308,9 +314,9 @@ export default function Seo() {
         upsertLink('link[rel="alternate"][hreflang="de"]', {rel: "alternate", hreflang: "de", href: canonical});
 
         upsertJsonLd("dynamic-person-service-schema", buildBaseSchema());
-        upsertJsonLd("dynamic-breadcrumb-schema", buildBreadcrumbSchema(pathname, title));
+        upsertJsonLd("dynamic-breadcrumb-schema", buildBreadcrumbSchema(normalizedPathname, title));
 
-        if (pathname === "/") {
+        if (normalizedPathname === "/") {
             upsertJsonLd("dynamic-faq-schema", {
                 "@context": "https://schema.org",
                 "@type": "FAQPage",
@@ -330,10 +336,10 @@ export default function Seo() {
         if (!isBlogPostRoute) {
             removeJsonLd("dynamic-blogpost-schema");
         }
-    }, [description, isBlogPostRoute, pathname, title]);
+    }, [description, isBlogPostRoute, normalizedPathname, title]);
 
     useEffect(() => {
-        const blogMatch = pathname.match(/^\/blog\/([^/]+)$/);
+        const blogMatch = normalizedPathname.match(/^\/blog\/([^/]+)$/);
         if (!blogMatch) return undefined;
 
         let active = true;
@@ -342,7 +348,7 @@ export default function Seo() {
             const post = localizedSiteContentForLanguage(language).blogPosts.find((item) => item.slug === blogMatch[1]);
             if (!post) return;
 
-            const canonical = `${SITE_URL}${pathname}`;
+            const canonical = `${SITE_URL}${normalizedPathname}`;
             const blogTitle = `${post.title} | Carina Sophie Schoppe Blog`;
             document.title = blogTitle;
             upsertMeta('meta[name="description"]', {name: "description", content: post.excerpt});
@@ -367,7 +373,7 @@ export default function Seo() {
             active = false;
             removeJsonLd("dynamic-blogpost-schema");
         };
-    }, [language, pathname]);
+    }, [language, normalizedPathname]);
 
     return null;
 }
