@@ -1,7 +1,5 @@
 import {useSiteContent} from "../data/localizedContent.js";
 import {publications} from "../data/publications.js";
-import {Link} from "react-router-dom";
-import {topicLinkForLabel} from "../data/trainingDetails.js";
 import {useLanguage} from "../i18n.jsx";
 import Badge from "../components/Badge.jsx";
 import Button from "../components/Button.jsx";
@@ -9,12 +7,6 @@ import Card from "../components/Card.jsx";
 import SectionJumpNav from "../components/SectionJumpNav.jsx";
 
 function TopicLink({item, className}) {
-    const detailLink = topicLinkForLabel(item);
-
-    if (detailLink) {
-        return <Link to={detailLink} className={className}>{item}</Link>;
-    }
-
     return <span className={className}>{item}</span>;
 }
 
@@ -41,47 +33,47 @@ export default function SkillsPage() {
     const copy = language === "de"
         ? {
             badge: "Kompetenzen & Themen",
-            title: "Eine praktische Kompetenzübersicht für IT, Cybersecurity, Consulting und Business-Technology.",
-            formats: "Trainingsformate ansehen",
+            title: "Eine praktische Kompetenzübersicht für IT, Cybersecurity, Research und Business-Technology.",
+            formats: "Luminovia ansehen",
             credentials: "Nachweise ansehen",
-            clusters: "Lehrcluster",
-            clustersTitle: "Themen, aus denen ich Kurse bauen kann.",
-            consultingTitle: "Consulting-Kompetenzen",
-            consultingCopy: "Neben Trainings kann ich konkrete Projekt- und Beratungsarbeit übernehmen: von AI-Use-Case-Design über IT- und Prozessanalyse bis zu Business-Technology-Roadmaps.",
+            clusters: "Themencluster",
+            clustersTitle: "Themenfelder aus Portfolio, Lehre und Projektarbeit.",
+            consultingTitle: "Arbeitsfelder",
+            consultingCopy: "Diese Seite beschreibt fachliche Schwerpunkte als Portfolio-Kontext. Konkrete Business-Angebote, Projektbegleitung und Consulting laufen über Luminovia.",
             consultingAreas: [
-                ["IT Consulting", "Systeme, Prozesse, Datenflüsse, Tool-Auswahl, APIs, Automatisierung und technische Projektstruktur."],
-                ["AI Consulting", "Generative-AI-Use-Cases, Prompt-Workflows, AI Governance, Responsible AI und sichere Einführung in Teams."],
-                ["Business Consulting", "Digitale Transformation, New Work, Projektmanagement, Lernprogramme und Stakeholder-Kommunikation."],
-                ["Projektumsetzung", "Einzelprojekte, Workshop-Sprints und größere Programme mit Roadmap, Materialien und Umsetzungssupport."],
+                ["Software & Systeme", "Programmierung, APIs, Automatisierung, Datenflüsse, technische Projektstruktur und Umsetzungslogik."],
+                ["AI & Research", "Generative AI, Prompt-Workflows, AI Governance, Literaturreviews, Research Tooling und verantwortungsvolle Nutzung."],
+                ["Cybersecurity", "Security Awareness, Web Security, SOC-Grundlagen, Pentest-Lernen und defensive Perspektiven."],
+                ["Digitale Bildung", "Didaktik, Lernarchitektur, erwachsenengerechte Erklärungen, Materialien und Transferdenken."],
             ],
             publications: "Publikationen",
             publicationsTitle: "Publikationen als fachlicher Kompetenznachweis.",
             publicationsCopy: "Diese akademischen Arbeiten stützen meine Kompetenz rund um generative AI, AI Governance, Human-Machine Interaction, Cybersecurity Awareness und verantwortungsvolle digitale Transformation.",
             downloadPublication: "PDF herunterladen",
             jumpLabel: "Auf dieser Seite",
-            jumpItems: [["#consulting-skills", "Consulting"], ["#publications", "Publikationen"], ["#skill-map", "Skills"], ["#clusters", "Lehrcluster"]],
+            jumpItems: [["#consulting-skills", "Arbeitsfelder"], ["#publications", "Publikationen"], ["#skill-map", "Skills"], ["#clusters", "Cluster"]],
         }
         : {
             badge: "Skills & topics",
-            title: "A practical skill map for IT, cybersecurity, consulting and business technology.",
-            formats: "View training formats",
+            title: "A practical skill map for IT, cybersecurity, research and business technology.",
+            formats: "View Luminovia",
             credentials: "View credentials",
-            clusters: "Teaching clusters",
-            clustersTitle: "Topics I can turn into courses.",
-            consultingTitle: "Consulting competencies",
-            consultingCopy: "Beyond training, I can take on concrete project and advisory work: from AI use-case design to IT and process analysis and business-technology roadmaps.",
+            clusters: "Topic clusters",
+            clustersTitle: "Fields across portfolio, teaching and project work.",
+            consultingTitle: "Work fields",
+            consultingCopy: "This page describes subject strengths as portfolio context. Concrete business offers, project support and consulting live at Luminovia.",
             consultingAreas: [
-                ["IT Consulting", "Systems, processes, data flows, tool selection, APIs, automation and technical project structure."],
-                ["AI Consulting", "Generative AI use cases, prompt workflows, AI governance, Responsible AI and safer adoption in teams."],
-                ["Business Consulting", "Digital transformation, New Work, project management, learning programmes and stakeholder communication."],
-                ["Project implementation", "Individual projects, workshop sprints and larger programmes with roadmap, materials and implementation support."],
+                ["Software & systems", "Programming, APIs, automation, data flows, technical project structure and implementation logic."],
+                ["AI & research", "Generative AI, prompt workflows, AI governance, literature reviews, research tooling and responsible use."],
+                ["Cybersecurity", "Security awareness, web security, SOC foundations, pentest learning and defensive perspectives."],
+                ["Digital education", "Didactics, learning architecture, adult-friendly explanations, materials and transfer thinking."],
             ],
             publications: "Publications",
             publicationsTitle: "Publications as academic proof of competence.",
             publicationsCopy: "These academic papers support my expertise around generative AI, AI governance, human-machine interaction, cybersecurity awareness and responsible digital transformation.",
             downloadPublication: "Download PDF",
             jumpLabel: "On this page",
-            jumpItems: [["#consulting-skills", "Consulting"], ["#publications", "Publications"], ["#skill-map", "Skills"], ["#clusters", "Clusters"]],
+            jumpItems: [["#consulting-skills", "Fields"], ["#publications", "Publications"], ["#skill-map", "Skills"], ["#clusters", "Clusters"]],
         };
     return (
         <main className="px-4 pb-24 pt-32 sm:px-6 lg:px-8">
@@ -94,7 +86,7 @@ export default function SkillsPage() {
                 </div>
 
                 <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                    <Button to="/training">{copy.formats}</Button>
+                    <Button href="https://luminovia.org">{copy.formats}</Button>
                     <Button to="/credentials" variant="secondary">{copy.credentials}</Button>
                 </div>
                 <SectionJumpNav label={copy.jumpLabel} items={copy.jumpItems} className="mt-8"/>

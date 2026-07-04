@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {createPortal} from "react-dom";
 import {NavLink} from "react-router-dom";
-import {IMAGES, navItems, PROFILE} from "../data/profile.js";
+import {navItems, PROFILE} from "../data/profile.js";
 import Button from "./Button.jsx";
 import {useLanguage} from "../i18n.jsx";
 
@@ -85,7 +85,7 @@ export default function Header({theme = "night", onToggleTheme = () => {}}) {
             </div>
             <div className="grid gap-3 border-t border-white/10 pt-5">
                 <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="rounded-[1.5rem] border border-white/14 bg-white/[0.08] px-5 py-4 text-base font-black text-white">{t.linkedin}</a>
-                <Button to="/contact#contact-options" onClick={() => setOpen(false)}>{t.bookTraining}</Button>
+                <Button href={PROFILE.luminovia} onClick={() => setOpen(false)}>{t.luminovia}</Button>
             </div>
         </div>
     ) : null;
@@ -94,12 +94,12 @@ export default function Header({theme = "night", onToggleTheme = () => {}}) {
         <>
             <header className="relative z-50 border-b border-white/10 bg-[#08090B]/62 shadow-[0_14px_50px_rgba(0,0,0,.18)] backdrop-blur-2xl">
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-                    <NavLink to="/" className="group flex items-center gap-3 text-left">
+                    <NavLink to="/" className="group flex items-center gap-3 text-left" aria-label="Carina Sophie Schoppe home">
                         <div className="luminovia-logo-shell grid h-12 w-12 place-items-center overflow-hidden rounded-2xl border border-white/20 bg-white shadow-[0_10px_32px_rgba(37,99,235,.22)] transition duration-500 group-hover:rotate-2">
-                            <img src={IMAGES.luminoviaLogoMark} alt="" className="h-11 w-11 object-cover object-center" loading="eager"/>
+                            <span className="text-lg font-black text-slate-950">CS</span>
                         </div>
                         <div className="hidden sm:block">
-                            <div className="text-sm font-black tracking-tight text-white">Luminovia</div>
+                            <div className="text-sm font-black tracking-tight text-white">Carina Sophie Schoppe</div>
                             <div className="text-[11px] uppercase tracking-[0.16em] text-zinc-400">{t.headerTagline}</div>
                         </div>
                     </NavLink>
@@ -112,7 +112,7 @@ export default function Header({theme = "night", onToggleTheme = () => {}}) {
                         <ThemeToggle theme={theme} onToggleTheme={onToggleTheme} language={language}/>
                         <LanguageToggle language={language} toggleLanguage={toggleLanguage} t={t}/>
                         <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="hidden rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-bold text-zinc-300 transition hover:bg-white/[0.09] hover:text-white 2xl:inline-flex">{t.linkedin}</a>
-                        <Button to="/contact#contact-options">{t.bookTraining}</Button>
+                        <Button href={PROFILE.luminovia}>{t.luminovia}</Button>
                     </div>
 
                     <button className="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm font-black text-white backdrop-blur-xl xl:hidden" onClick={() => setOpen(true)} aria-label={`${t.open} ${t.menu}`}>{t.menu}</button>

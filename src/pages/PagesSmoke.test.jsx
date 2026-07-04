@@ -4,21 +4,21 @@ import {beforeEach, describe, expect, it} from "vitest";
 import App from "../App.jsx";
 import {LANGUAGE_STORAGE_KEY} from "../i18n.jsx";
 
-/** @type {[string, RegExp][]} */
 const routes = [
-    ["/training", /Concrete Luminovia offers/i],
-    ["/offers", /Clear Luminovia offers/i],
-    ["/training/software-development-retraining-java-python-csharp-kotlin", /Software Development, APIs & Retraining/i],
+    ["/", /^Carina Sophie Schoppe\.$/i],
+    ["/projects", /Projects/i],
+    ["/software", /Projects/i],
+    ["/portfolio", /Projects/i],
     ["/skills", /Skill map for IT/i],
-    ["/projects", /Projects that make Luminovia/i],
-    ["/portfolio", /Project practice behind IT/i],
-    ["/consulting", /Project practice behind IT/i],
-    ["/clients", /Former clients, education partners and testimonial patterns/i],
-    ["/my-way", /A professional path through IT/i],
-    ["/about", /Carina Sophie Schoppe leads Luminovia/i],
-    ["/corporate", /Training solutions for companies/i],
-    ["/keynotes", /Keynotes and expert talks/i],
     ["/credentials", /Credentials for teaching/i],
+    ["/my-way", /A professional path through IT/i],
+    ["/about", /personal profile between software/i],
+    ["/blog", /Blog on AI, project work and teaching with AI/i],
+    ["/contact", /Contact Carina Sophie Schoppe/i],
+    ["/training", /handled by Luminovia/i],
+    ["/offers", /handled by Luminovia/i],
+    ["/consulting", /handled by Luminovia/i],
+    ["/pricing", /handled by Luminovia/i],
     ["/imprint", /Imprint/i],
     ["/privacy", /Privacy policy/i],
     ["/unknown-page", /This page is not in the training plan/i],

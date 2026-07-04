@@ -1,5 +1,4 @@
 import {PROFILE} from "../data/profile.js";
-import {useSiteContent} from "../data/localizedContent.js";
 import {useLanguage} from "../i18n.jsx";
 import Badge from "../components/Badge.jsx";
 import Button from "../components/Button.jsx";
@@ -12,12 +11,11 @@ function cleanPhone(value) {
 
 export default function ContactPage() {
     const {language, t} = useLanguage();
-    const {faqs} = useSiteContent();
-    const subject = encodeURIComponent(language === "de" ? "Training- oder Consulting-Anfrage an Luminovia" : "Training or consulting request for Luminovia");
+    const subject = encodeURIComponent(language === "de" ? "Kontaktanfrage ueber carinaschoppe.com" : "Contact request via carinaschoppe.com");
     const jumpLabel = language === "de" ? "Auf dieser Seite" : "On this page";
     const jumpItems = language === "de"
-        ? [["#contact-options", "Kontaktwege"], ["#appointment", "Termin"], ["#contact-faq", "FAQ"]]
-        : [["#contact-options", "Contact"], ["#appointment", "Appointment"], ["#contact-faq", "FAQ"]];
+        ? [["#contact-options", "Kontaktwege"], ["#appointment", "Termin"]]
+        : [["#contact-options", "Contact"], ["#appointment", "Appointment"]];
     const contacts = [
         {
             label: language === "de" ? "E-Mail" : "Email",
@@ -35,9 +33,22 @@ export default function ContactPage() {
             label: language === "de" ? "Telefon Deutschland" : "Germany phone",
             value: PROFILE.phoneGermany,
             href: `tel:${cleanPhone(PROFILE.phoneGermany)}`,
-            copy: language === "de" ? "DACH-Kontakt für deutsche Kunden" : "DACH contact for German-speaking clients",
+            copy: language === "de" ? "Kontakt fuer deutschsprachige Anfragen" : "Contact for German-speaking enquiries",
         },
     ];
+    const luminoviaNote = language === "de"
+        ? {
+            title: "Business-Anfragen?",
+            copy: "Training, Consulting, Projektbegleitung und Firmenanfragen bitte direkt an Luminovia senden.",
+            cta: "Luminovia oeffnen",
+            email: "info@luminovia.org",
+        }
+        : {
+            title: "Business enquiry?",
+            copy: "Training, consulting, project support and company enquiries should go directly to Luminovia.",
+            cta: "Open Luminovia",
+            email: "info@luminovia.org",
+        };
 
     return (
         <main className="px-4 pb-24 pt-32 sm:px-6 lg:px-8">
@@ -52,6 +63,14 @@ export default function ContactPage() {
                             <Button href={`mailto:${PROFILE.email}?subject=${subject}`} variant="secondary">{t.contact.emailButton}</Button>
                             <Button to="/contact#appointment">{t.contact.calendarFallback}</Button>
                         </div>
+                        <Card className="mt-8 border-sky-100/18">
+                            <h2 className="text-xl font-black text-white">{luminoviaNote.title}</h2>
+                            <p className="mt-2 text-sm leading-7 text-slate-300">{luminoviaNote.copy}</p>
+                            <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+                                <Button href={PROFILE.luminovia}>{luminoviaNote.cta}</Button>
+                                <Button href={`mailto:${PROFILE.luminoviaEmail}`} variant="secondary">{luminoviaNote.email}</Button>
+                            </div>
+                        </Card>
                         <div className="mt-8 rounded-[1.75rem] border border-sky-100/14 bg-[#071225]/72 p-5 shadow-[0_16px_60px_rgba(0,0,0,.2)]">
                             <h2 className="text-xl font-black text-white">{t.contact.briefTitle}</h2>
                             <p className="mt-2 text-sm leading-7 text-slate-300">{t.contact.briefCopy}</p>
@@ -113,14 +132,6 @@ export default function ContactPage() {
                             </div>
                         </section>
                     </div>
-                </div>
-                <div id="contact-faq" className="mt-16 grid scroll-mt-36 gap-4 lg:grid-cols-4">
-                    {faqs.map((item) => (
-                        <Card key={item.q}>
-                            <h3 className="text-lg font-black text-white">{item.q}</h3>
-                            <p className="mt-3 text-sm leading-7 text-slate-300">{item.a}</p>
-                        </Card>
-                    ))}
                 </div>
             </div>
         </main>

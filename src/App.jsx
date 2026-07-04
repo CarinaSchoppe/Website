@@ -45,19 +45,12 @@ function lazyWithRecovery(loader) {
     });
 }
 
-const TrainingPage = lazyWithRecovery(() => import("./pages/TrainingPage.jsx"));
-const TrainingTopicPage = lazyWithRecovery(() => import("./pages/TrainingTopicPage.jsx"));
-const KeynotesPage = lazyWithRecovery(() => import("./pages/KeynotesPage.jsx"));
-const CorporatePage = lazyWithRecovery(() => import("./pages/CorporatePage.jsx"));
+const BusinessRedirectPage = lazyWithRecovery(() => import("./pages/BusinessRedirectPage.jsx"));
 const CredentialsPage = lazyWithRecovery(() => import("./pages/CredentialsPage.jsx"));
-const PortfolioPage = lazyWithRecovery(() => import("./pages/PortfolioPage.jsx"));
-const OffersPage = lazyWithRecovery(() => import("./pages/OffersPage.jsx"));
-const ClientsPage = lazyWithRecovery(() => import("./pages/ClientsPage.jsx"));
 const AboutPage = lazyWithRecovery(() => import("./pages/AboutPage.jsx"));
 const ContactPage = lazyWithRecovery(() => import("./pages/ContactPage.jsx"));
 const MyWayPage = lazyWithRecovery(() => import("./pages/MyWayPage.jsx"));
 const SkillsPage = lazyWithRecovery(() => import("./pages/SkillsPage.jsx"));
-const PricingPage = lazyWithRecovery(() => import("./pages/PricingPage.jsx"));
 const BlogPage = lazyWithRecovery(() => import("./pages/BlogPage.jsx"));
 const BlogPostPage = lazyWithRecovery(() => import("./pages/BlogPostPage.jsx"));
 const SoftwarePage = lazyWithRecovery(() => import("./pages/SoftwarePage.jsx"));
@@ -203,20 +196,20 @@ export default function App() {
                     <div className="relative z-10">
                         <Routes>
                             <Route path="/" element={<AppErrorBoundary><HomePage/></AppErrorBoundary>}/>
-                            {pageRoutes("/training", TrainingPage)}
-                            {pageRoutes("/offers", OffersPage)}
-                            {pageRoutes("/training/:slug", TrainingTopicPage)}
-                            {pageRoutes("/keynotes", KeynotesPage)}
-                            {pageRoutes("/corporate", CorporatePage)}
+                            {pageRoutes("/training", BusinessRedirectPage)}
+                            {pageRoutes("/offers", BusinessRedirectPage)}
+                            {pageRoutes("/training/:slug", BusinessRedirectPage)}
+                            {pageRoutes("/keynotes", BusinessRedirectPage)}
+                            {pageRoutes("/corporate", BusinessRedirectPage)}
                             {pageRoutes("/credentials", CredentialsPage)}
-                            {pageRoutes("/portfolio", PortfolioPage)}
-                            {pageRoutes("/consulting", PortfolioPage)}
-                            {pageRoutes("/clients", ClientsPage)}
+                            {pageRoutes("/portfolio", SoftwarePage)}
+                            {pageRoutes("/consulting", BusinessRedirectPage)}
+                            {pageRoutes("/clients", BusinessRedirectPage)}
                             {pageRoutes("/about", AboutPage)}
                             {pageRoutes("/contact", ContactPage)}
                             {pageRoutes("/my-way", MyWayPage)}
                             {pageRoutes("/skills", SkillsPage)}
-                            {pageRoutes("/pricing", PricingPage)}
+                            {pageRoutes("/pricing", BusinessRedirectPage)}
                             {pageRoutes("/blog", BlogPage)}
                             {pageRoutes("/blog/:slug", BlogPostPage)}
                             {pageRoutes("/projects", SoftwarePage)}

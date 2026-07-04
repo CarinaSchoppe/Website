@@ -10,7 +10,6 @@ const appRoutes = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)]
     .map((match) => match[1])
     .filter((url) => url.startsWith(SITE_BASE_URL))
     .map((url) => url.slice(SITE_BASE_URL.length) || "/")
-    .filter((path) => !path.startsWith("/publications/"))
     .filter((path) => !path.endsWith(".pdf"))
     .filter((path) => !path.endsWith(".html"));
 
@@ -22,22 +21,27 @@ describe("full static site route coverage", () => {
 
         expect(cname).toBe("carinaschoppe.com");
         expect(html).toContain('<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>');
-        expect(html).toContain('<link href="/apple-touch-icon.svg" rel="apple-touch-icon" type="image/svg+xml"/>');
+        expect(html).toContain("Carina Sophie Schoppe | Portfolio");
         expect(existsSync("public/favicon.svg")).toBe(true);
         expect(existsSync("public/apple-touch-icon.svg")).toBe(true);
+        expect(existsSync("public/images/luminovia-logo-full.svg")).toBe(true);
         expect(sitemap).toContain(`${SITE_BASE_URL}/`);
-        expect(sitemap).not.toContain("luminovia-training-consulting.github.io/Website");
+        expect(sitemap).not.toContain(`${SITE_BASE_URL}/training`);
+        expect(sitemap).not.toContain(`${SITE_BASE_URL}/offers`);
+        expect(sitemap).not.toContain(`${SITE_BASE_URL}/pricing`);
         expect(robots).toContain(`Sitemap: ${SITE_BASE_URL}/sitemap.xml`);
     });
 
     it("keeps the sitemap connected to every rendered app page", async () => {
-        expect(appRoutes).toContain("/");
-        expect(appRoutes).toContain("/training");
-        expect(appRoutes).toContain("/offers");
-        expect(appRoutes).toContain("/consulting");
-        expect(appRoutes).toContain("/clients");
-        expect(appRoutes).toContain("/projects");
-        expect(appRoutes).toContain("/contact");
+        expect(appRoutes).toEqual(expect.arrayContaining([
+            "/",
+            "/projects",
+            "/skills",
+            "/credentials",
+            "/my-way",
+            "/blog",
+            "/contact",
+        ]));
 
         for (const language of ["en", "de"]) {
             for (const route of appRoutes) {
@@ -56,7 +60,7 @@ describe("full static site route coverage", () => {
         }
     }, 30000);
 
-    it("exposes the primary Carina information architecture in navigation", async () => {
+    it("exposes the primary Carina portfolio information architecture in navigation", async () => {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
         window.history.pushState({}, "Home", "/");
 
@@ -64,24 +68,24 @@ describe("full static site route coverage", () => {
 
         const [headerNav] = await screen.findAllByRole("navigation");
 
-        expect(within(headerNav).getByRole("link", {name: /^Training$/i})).toHaveAttribute("href", "/training");
-        expect(within(headerNav).getByRole("link", {name: /^Consulting$/i})).toHaveAttribute("href", "/consulting");
-        expect(within(headerNav).getByRole("link", {name: /^Offers$/i})).toHaveAttribute("href", "/offers");
-        expect(within(headerNav).getByRole("link", {name: /^Clients$/i})).toHaveAttribute("href", "/clients");
+        expect(within(headerNav).queryByRole("link", {name: /^Training$/i})).not.toBeInTheDocument();
+        expect(within(headerNav).queryByRole("link", {name: /^Offers$/i})).not.toBeInTheDocument();
+        expect(within(headerNav).queryByRole("link", {name: /^Pricing$/i})).not.toBeInTheDocument();
         expect(within(headerNav).getByRole("link", {name: /^Projects$/i})).toHaveAttribute("href", "/projects");
-        expect(within(headerNav).getByRole("link", {name: /^CEO$/i})).toHaveAttribute("href", "/about");
+        expect(within(headerNav).getByRole("link", {name: /^Skills$/i})).toHaveAttribute("href", "/skills");
+        expect(within(headerNav).getByRole("link", {name: /^Credentials$/i})).toHaveAttribute("href", "/credentials");
+        expect(within(headerNav).getByRole("link", {name: /^My Way$/i})).toHaveAttribute("href", "/my-way");
         expect(within(headerNav).getByRole("link", {name: /^Contact$/i})).toHaveAttribute("href", "/contact");
     });
 
     it.each([
-        ["/training/", /Konkrete Luminovia Offers|Concrete Luminovia offers/i],
-        ["/offers/", /Klare Luminovia-Angebote|Clear Luminovia offers/i],
-        ["/consulting/", /Projektpraxis hinter IT-|Project practice behind IT/i],
-        ["/projects/", /Projekte, die Luminovia-Training|Projects that make Luminovia/i],
-        ["/pricing/", /Transparente Netto-Ab-Preise|Transparent starting rates/i],
-        ["/blog/", /Blog zu AI, Projektmanagement und Lehre mit KI|Blog on AI, project work and teaching with AI/i],
+        ["/projects/", /Projects/i],
+        ["/credentials/", /Credentials for teaching|Nachweise/i],
+        ["/my-way/", /professional path through IT|professioneller Weg durch IT/i],
+        ["/blog/", /Blog on AI|Blog zu AI/i],
+        ["/training/", /handled by Luminovia|laufen ueber Luminovia/i],
     ])("renders trailing-slash route %s", async (route, heading) => {
-        window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "de");
+        window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
         window.history.pushState({}, "Trailing route", route);
 
         const {unmount} = render(<App/>);

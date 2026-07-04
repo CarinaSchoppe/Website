@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 360" role="img" aria-label="Luminovia Training &amp; Consulting">
+  <rect width="840" height="360" rx="36" fill="#ffffff"/>
+  <g transform="translate(310 24)">
+    <path d="M110 0 220 190H0L110 0Z" fill="#0b63f6"/>
+    <path d="M110 0v190H0L110 0Z" fill="#06122d"/>
+    <path d="M110 0 220 190H110V0Z" fill="#58b6ff"/>
+    <path d="M-120 198c82 0 151 20 230 86 79-66 148-86 230-86v42c-80 0-145 25-230 96-85-71-150-96-230-96v-42Z" fill="#06122d"/>
+    <path d="M-96 166c66 10 126 40 206 102 80-62 140-92 206-102v32c-66 10-126 40-206 102-80-62-140-92-206-102v-32Z" fill="#0b63f6"/>
+    <path d="M50 200c36-50 74-80 126-104" fill="none" stroke="#06122d" stroke-width="18" stroke-linecap="round"/>
+    <path d="M110 212c34-52 74-86 132-110" fill="none" stroke="#0b63f6" stroke-width="15" stroke-linecap="round"/>
+    <path d="M132 132c104-18 180-38 248-66" fill="none" stroke="#eaa514" stroke-width="14" stroke-linecap="round"/>
+  </g>
+  <text x="420" y="270" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="300" letter-spacing="6" fill="#06122d">Luminovia</text>
+  <path d="M170 316h72M598 316h72" stroke="#eaa514" stroke-width="8" stroke-linecap="square"/>
+  <text x="420" y="327" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800" letter-spacing="13" fill="#06122d">TRAINING &amp; CONSULTING</text>
+</svg>

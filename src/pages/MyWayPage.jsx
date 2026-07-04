@@ -18,31 +18,31 @@ export default function MyWayPage() {
     const copy = language === "de"
         ? {
             badge: "Werdegang",
-            title: "Ein professioneller Weg durch IT, Business, Forschung und Lehre.",
-            intro: "Die Timeline zeigt kompakt, welche Stationen mein Profil als Dozentin, Trainerin und Consultant für digitale Bildung geprägt haben.",
+            title: "Ein professioneller Weg durch IT, Business, Forschung und digitale Bildung.",
+            intro: "Die Timeline zeigt kompakt, welche Stationen mein Profil, meine Projekte und meine fachliche Entwicklung geprägt haben.",
             skills: "Kompetenzen ansehen",
-            request: "Training anfragen",
+            request: "Luminovia ansehen",
             education: "Bildung",
-            educationCopy: "Wirtschaftsinformatik, MBA ohne Major, TAE40122, AI, Forschung und professionelle Lehre.",
+            educationCopy: "Wirtschaftsinformatik, MBA ohne Major, TAE40122 im Juni 2026, AI, Forschung und digitale Bildung.",
             work: "Praxis",
-            workCopy: "Softwareentwicklung, Training, Consulting, Unternehmertum und Forschungsassistenz.",
+            workCopy: "Softwareentwicklung, digitale Bildung, Unternehmertum, Research und ausgewählte Projektarbeit.",
             now: "Heute",
-            nowCopy: "Sitz in Brisbane, remote IT-Trainings für Europa, Australien und die Welt.",
+            nowCopy: "Sitz in Brisbane, persönliches Portfolio auf carinaschoppe.com und Business-Marke über Luminovia.",
             timeline: "Timeline",
             milestones: "Aktuelle Stationen zuerst."
         }
         : {
             badge: "My way",
-            title: "A professional path through IT, business, research and teaching.",
-            intro: "This timeline gives a compact view of the experience behind my profile as a lecturer, trainer and consultant for digital education.",
+            title: "A professional path through IT, business, research and digital education.",
+            intro: "This timeline gives a compact view of the experience behind my profile, projects and professional development.",
             skills: "View skills",
-            request: "Request training",
+            request: "View Luminovia",
             education: "Education",
-            educationCopy: "Business Computer Science, MBA without major, TAE40122, AI, research and professional teaching.",
+            educationCopy: "Business Computer Science, MBA without major, TAE40122 completed in June 2026, AI, research and digital education.",
             work: "Practice",
-            workCopy: "Software development, training, consulting, entrepreneurship and research assistance.",
+            workCopy: "Software development, digital education, entrepreneurship, research and selected project work.",
             now: "Today",
-            nowCopy: "Based in Brisbane, delivering remote IT training for Europe, Australia and the world.",
+            nowCopy: "Based in Brisbane, with carinaschoppe.com as a personal portfolio and Luminovia as the business brand.",
             timeline: "Timeline",
             milestones: "Current milestones first."
         };
@@ -60,7 +60,7 @@ export default function MyWayPage() {
                         </p>
                         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                             <Button to="/skills">{copy.skills}</Button>
-                            <Button to="/contact#contact-options" variant="secondary">{copy.request}</Button>
+                            <Button href="https://luminovia.org" variant="secondary">{copy.request}</Button>
                         </div>
                     </div>
                     <div className="grid gap-4 sm:grid-cols-2">

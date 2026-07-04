@@ -6,7 +6,7 @@ import {useLanguage} from "../i18n.jsx";
 export default function NotFoundPage() {
     const {t} = useLanguage();
     const paths = [
-        ["/training", t.nav.training],
+        ["/projects", t.nav.software],
         ["/skills", t.nav.skills],
         ["/blog", t.nav.blog],
         ["/contact", t.nav.book],
@@ -28,7 +28,7 @@ export default function NotFoundPage() {
                     <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                         <Button to="/">{t.notFound.home}</Button>
                         <Button to="/contact#contact-options" variant="secondary">{t.notFound.contact}</Button>
-                        <Button to="/training" variant="secondary">{t.notFound.training}</Button>
+                        <Button to="/projects" variant="secondary">{t.nav.software}</Button>
                     </div>
                 </section>
 

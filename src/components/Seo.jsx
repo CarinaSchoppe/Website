@@ -1,94 +1,52 @@
 import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
-import {seoHomeFaqs} from "../data/seoContent.js";
 import {PROFILE} from "../data/profile.js";
 import {useLanguage} from "../i18n.jsx";
 
 const SITE_URL = "https://carinaschoppe.com";
 const DEFAULT_IMAGE = `${SITE_URL}/images/carina-hero.jpg`;
-const schemaServiceOffers = [
-    ["AI & GenAI Training", "Practical training on generative AI concepts, business use cases, limits, risks and responsible day-to-day adoption."],
-    ["AI Literacy for Teams", "Clear AI literacy training for shared language, practical confidence and sensible AI usage rules."],
-    ["Prompt Engineering & Agentic Workflows", "Structured prompting, workflow decomposition and supervised agentic work patterns for real business processes."],
-    ["AI Governance & Responsible AI", "Training on accountability, risk classes, data handling, human oversight and practical governance routines."],
-    ["Python, SQL & Data Skills", "Applied programming and data training for automation, analysis and databases."],
-    ["Software Development & APIs", "Foundations and applied training around programming, API thinking, backend concepts and software project structure."],
-    ["Cybersecurity & Pentesting Fundamentals", "Security awareness and technical foundations for web security, ethical hacking, SOC basics and defensive thinking."],
-    ["Scrum, Agile & Digital Project Work", "Practical project work training for clearer collaboration, delivery structure and AI-aware coordination."],
-    ["Business Computer Science & Digital Transformation", "Business IT training connecting processes, systems, data, IT management and organisational change."],
-    ["IT & Business Consulting", "Consulting for AI use cases, IT processes, business technology decisions, learning architecture and digital enablement."],
-    ["Curriculum Design & Blended Learning", "Support for learning paths, exercises, slides, labs, assessment logic and blended delivery formats."],
-];
 
 const routeMeta = {
     en: {
         "/": {
-            title: "Carina Sophie Schoppe | AI, IT and Business Technology Training",
-            description: "Book Carina Sophie Schoppe for AI, IT, cybersecurity, business technology training, lectures, keynotes and consulting from Brisbane.",
-        },
-        "/training": {
-            title: "Offers | IT and Business Training, Lectures & Consulting",
-            description: "Book IT and business technology offers: live training, lectures, workshops, consulting sprints, project support, AI governance, cybersecurity and digital transformation.",
-        },
-        "/offers": {
-            title: "Offers | Carina Sophie Schoppe",
-            description: "Clear packages for live training, consulting sprints, project support, keynotes, curriculum design and larger digital enablement programmes.",
-        },
-        "/consulting": {
-            title: "Consulting | IT, AI and Business Advisory",
-            description: "Consulting portfolio for AI use cases, IT and process advisory, business technology, curriculum design, roadmaps and digital enablement.",
-        },
-        "/skills": {
-            title: "Skills & Consulting Topics | IT, Cybersecurity and Business Technology",
-            description: "A practical skill map for AI literacy, agentic workflows, Python, SQL, cybersecurity, IT consulting, AI consulting, business computer science and digital education.",
+            title: "Carina Sophie Schoppe | Portfolio",
+            description: "Personal portfolio of Carina Sophie Schoppe with software projects, research interests, credentials, writing and a clear reference to Luminovia Training & Consulting.",
         },
         "/projects": {
-            title: "Project Portfolio | AI Research, Automation and Consulting Projects",
-            description: "Selected projects by Carina Sophie Schoppe across automation, AI research workflows, consulting support, Kotlin plugins, mobile apps and learning-friendly technical implementation.",
+            title: "Projects | Carina Sophie Schoppe",
+            description: "Selected software, automation, research tooling, Kotlin, mobile and digital implementation projects by Carina Sophie Schoppe.",
         },
         "/software": {
-            title: "Project Portfolio | AI Research, Automation and Consulting Projects",
-            description: "Selected projects by Carina Sophie Schoppe across automation, AI research workflows, consulting support, Kotlin plugins, mobile apps and learning-friendly technical implementation.",
+            title: "Projects | Carina Sophie Schoppe",
+            description: "Selected software, automation, research tooling, Kotlin, mobile and digital implementation projects by Carina Sophie Schoppe.",
         },
         "/portfolio": {
-            title: "Consulting Portfolio | IT and Business Consulting",
-            description: "Portfolio and proof for IT consulting, AI consulting, business consulting, digital education, technical project practice and professional training delivery.",
+            title: "Portfolio | Carina Sophie Schoppe",
+            description: "Portfolio overview for public projects, technical work and professional profile information.",
         },
-        "/clients": {
-            title: "Clients | Education Partners and Collaborations",
-            description: "Selected clients, education providers, universities, academies and collaboration partners supported through teaching, training and research work.",
-        },
-        "/pricing": {
-            title: "Pricing | IT and Business Training Rates",
-            description: "Transparent orientation rates for education-sector teaching, corporate training, talks and workshops, plus consulting and project implementation pricing on request.",
-        },
-        "/my-way": {
-            title: "My Way | Professional Timeline and Teaching Background",
-            description: "Professional timeline from business computer science, MBA without major, TAE40122, software practice and entrepreneurship to IT and cybersecurity training from Brisbane.",
-        },
-        "/about": {
-            title: "About | Carina Sophie Schoppe",
-            description: "Background and positioning for Carina Sophie Schoppe as an IT and business lecturer, trainer and consultant with academic, AI, cybersecurity and TAE40122 training proof.",
-        },
-        "/keynotes": {
-            title: "Keynotes & Expert Talks | Carina Sophie Schoppe",
-            description: "Book talks and expert sessions on AI, cybersecurity, digital transformation, business IT and modern digital education.",
-        },
-        "/corporate": {
-            title: "Corporate Training | IT and Digital Transformation",
-            description: "Corporate training solutions for AI literacy, cybersecurity, software, project work, data and digital transformation.",
+        "/skills": {
+            title: "Skills | Carina Sophie Schoppe",
+            description: "Personal skill overview across AI, software development, cybersecurity, business computer science, research and digital education.",
         },
         "/credentials": {
             title: "Credentials | Carina Sophie Schoppe",
-            description: "Credentials, teaching proof and professional background including MBA without major, TAE40122, AI certifications and 10k+ teaching hours.",
+            description: "Credentials and professional background including B.Sc., M.Sc., MBA, TAE40122 completed in June 2026, AI certificates and cybersecurity learning paths.",
+        },
+        "/my-way": {
+            title: "My Way | Carina Sophie Schoppe",
+            description: "Professional timeline through business computer science, software practice, AI, research, TAE40122 and Brisbane.",
+        },
+        "/about": {
+            title: "About | Carina Sophie Schoppe",
+            description: "Personal profile of Carina Sophie Schoppe between software, research, digital education, AI, cybersecurity and entrepreneurship.",
         },
         "/blog": {
-            title: "Blog | AI Governance, Digital Education and Business IT",
-            description: "Articles on agentic AI, AI governance, digital education, project management, cybersecurity, automation risk and modern teaching.",
+            title: "Blog | Carina Sophie Schoppe",
+            description: "Articles on AI, governance, digital education, project work, cybersecurity, automation risk and modern work.",
         },
         "/contact": {
-            title: "Contact & Booking | Book IT and Business Training",
-            description: "Contact Carina Sophie Schoppe for lectures, workshops, talks, course delivery and training consultations by email, phone or calendar booking.",
+            title: "Contact | Carina Sophie Schoppe",
+            description: "Contact Carina Sophie Schoppe for portfolio, project, research, CV or professional profile enquiries. Business enquiries are routed to Luminovia.",
         },
         "/imprint": {
             title: "Imprint | Carina Sophie Schoppe",
@@ -101,81 +59,64 @@ const routeMeta = {
     },
     de: {
         "/": {
-            title: "Carina Sophie Schoppe | AI, IT und Business-Technology-Training",
-            description: "Buchen Sie Carina Sophie Schoppe für AI-, IT-, Cybersecurity-, Business-Technology-Training, Lehre, Vorträge und Consulting aus Brisbane.",
-        },
-        "/training": {
-            title: "Angebote | IT- und Business-Training, Lehre & Consulting",
-            description: "Buchbare IT- und Business-Technology-Angebote: Live-Training, Vorlesungen, Workshops, Consulting-Sprints, Projektbegleitung, AI Governance, Cybersecurity und digitale Transformation.",
-        },
-        "/offers": {
-            title: "Angebote | Carina Sophie Schoppe",
-            description: "Klare Pakete für Live-Training, Consulting-Sprints, Projektbegleitung, Keynotes, Curriculum Design und größere Digital-Enablement-Programme.",
-        },
-        "/consulting": {
-            title: "Consulting | IT-, AI- und Business-Beratung",
-            description: "Consulting-Portfolio für AI Use Cases, IT- und Prozessberatung, Business Technology, Curriculum Design, Roadmaps und digitales Enablement.",
-        },
-        "/skills": {
-            title: "Kompetenzen & Consulting-Themen | IT, Cybersecurity und Business-Technology",
-            description: "Eine praktische Kompetenzübersicht für AI Literacy, agentische Workflows, Python, SQL, Cybersecurity, IT-Consulting, AI-Consulting, Wirtschaftsinformatik und digitale Bildung.",
+            title: "Carina Sophie Schoppe | Portfolio",
+            description: "Persoenliches Portfolio von Carina Sophie Schoppe mit Softwareprojekten, Research-Interessen, Nachweisen, Texten und klarem Verweis auf Luminovia Training & Consulting.",
         },
         "/projects": {
-            title: "Projektportfolio | AI Research, Automatisierung und Consulting",
-            description: "Ausgewählte Projekte von Carina Sophie Schoppe zu Automatisierung, AI-Research-Workflows, Consulting-Support, Kotlin-Plugins, mobilen Apps und technischer Umsetzung.",
+            title: "Projekte | Carina Sophie Schoppe",
+            description: "Ausgewaehlte Software-, Automatisierungs-, Research-Tooling-, Kotlin-, Mobile- und Digitalprojekte von Carina Sophie Schoppe.",
         },
         "/software": {
-            title: "Projektportfolio | AI Research, Automatisierung und Consulting",
-            description: "Ausgewählte Projekte von Carina Sophie Schoppe zu Automatisierung, AI-Research-Workflows, Consulting-Support, Kotlin-Plugins, mobilen Apps und technischer Umsetzung.",
+            title: "Projekte | Carina Sophie Schoppe",
+            description: "Ausgewaehlte Software-, Automatisierungs-, Research-Tooling-, Kotlin-, Mobile- und Digitalprojekte von Carina Sophie Schoppe.",
         },
         "/portfolio": {
-            title: "Consulting-Portfolio | IT- und Business-Consulting",
-            description: "Portfolio und Nachweise für IT-Consulting, AI-Consulting, Business-Consulting, digitale Bildung, technische Projektpraxis und professionelle Trainingsdurchführung.",
+            title: "Portfolio | Carina Sophie Schoppe",
+            description: "Portfolio-Uebersicht fuer oeffentliche Projekte, technische Arbeit und professionelle Profilinformationen.",
         },
-        "/clients": {
-            title: "Kunden | Bildungspartner und Kooperationen",
-            description: "Ausgewählte Kunden, Bildungsanbieter, Hochschulen, Akademien und Kooperationspartner aus Lehre, Training und Forschungsarbeit.",
-        },
-        "/pricing": {
-            title: "Preise | IT- und Business-Training",
-            description: "Transparente Netto-Ab-Preise für geförderte Bildung, Corporate Training, Vorträge und Workshops sowie Consulting- und Projektpreise auf Anfrage.",
-        },
-        "/my-way": {
-            title: "Werdegang | Professionelle Timeline und Lehrprofil",
-            description: "Professioneller Werdegang von Wirtschaftsinformatik, MBA ohne Major, TAE40122, Softwarepraxis und Unternehmertum bis zu IT- und Cybersecurity-Training aus Brisbane.",
-        },
-        "/about": {
-            title: "Über Carina | Carina Sophie Schoppe",
-            description: "Hintergrund und Positionierung von Carina Sophie Schoppe als IT- und Business-Dozentin, Trainerin und Consultant mit akademischem, AI-, Cybersecurity- und TAE40122-Nachweis.",
-        },
-        "/keynotes": {
-            title: "Keynotes & Expert Talks | Carina Sophie Schoppe",
-            description: "Vorträge und Expert Sessions zu AI, Cybersecurity, digitaler Transformation, Business-IT und moderner digitaler Bildung.",
-        },
-        "/corporate": {
-            title: "Corporate Training | IT und digitale Transformation",
-            description: "Corporate-Training-Lösungen für AI Literacy, Cybersecurity, Software, Projektarbeit, Daten und digitale Transformation.",
+        "/skills": {
+            title: "Kompetenzen | Carina Sophie Schoppe",
+            description: "Persoenliche Kompetenzuebersicht zu AI, Softwareentwicklung, Cybersecurity, Wirtschaftsinformatik, Research und digitaler Bildung.",
         },
         "/credentials": {
             title: "Nachweise | Carina Sophie Schoppe",
-            description: "Nachweise, Lehrprofil und professioneller Hintergrund mit MBA ohne Major, TAE40122, AI-Zertifikaten und 10k+ Unterrichtsstunden.",
+            description: "Nachweise und professioneller Hintergrund mit B.Sc., M.Sc., MBA, TAE40122 abgeschlossen im Juni 2026, AI-Zertifikaten und Cybersecurity-Lernpfaden.",
+        },
+        "/my-way": {
+            title: "Werdegang | Carina Sophie Schoppe",
+            description: "Professionelle Timeline durch Wirtschaftsinformatik, Softwarepraxis, AI, Research, TAE40122 und Brisbane.",
+        },
+        "/about": {
+            title: "Über Carina | Carina Sophie Schoppe",
+            description: "Persoenliches Profil von Carina Sophie Schoppe zwischen Software, Research, digitaler Bildung, AI, Cybersecurity und Unternehmertum.",
         },
         "/blog": {
-            title: "Blog | AI Governance, digitale Bildung und Business-IT",
-            description: "Beiträge zu Agentic AI, AI Governance, digitaler Bildung, Projektmanagement, Cybersecurity, Automatisierungsrisiken und moderner Lehre.",
+            title: "Blog | Carina Sophie Schoppe",
+            description: "Beitraege zu AI, Governance, digitaler Bildung, Projektarbeit, Cybersecurity, Automationsrisiken und moderner Arbeit.",
         },
         "/contact": {
-            title: "Kontakt & Buchung | IT- und Business-Training buchen",
-            description: "Kontaktieren Sie Carina Sophie Schoppe für Vorlesungen, Workshops, Vorträge, Kursdurchführung und Trainingsberatung per E-Mail, Telefon oder Kalenderbuchung.",
+            title: "Kontakt | Carina Sophie Schoppe",
+            description: "Kontakt zu Carina Sophie Schoppe fuer Portfolio-, Projekt-, Research-, CV- oder professionelle Profilanfragen. Business-Anfragen werden zu Luminovia geleitet.",
         },
         "/imprint": {
             title: "Impressum | Carina Sophie Schoppe",
             description: "Impressum und Kontaktinformationen von Carina Sophie Schoppe.",
         },
         "/privacy": {
-            title: "Datenschutzerklärung | Carina Sophie Schoppe",
-            description: "Datenschutzerklärung der Website von Carina Sophie Schoppe, inklusive Analytics- und Kontaktinformationen.",
+            title: "Datenschutzerklaerung | Carina Sophie Schoppe",
+            description: "Datenschutzerklaerung der Website von Carina Sophie Schoppe, inklusive Analytics- und Kontaktinformationen.",
         },
+    },
+};
+
+const businessRouteMeta = {
+    en: {
+        title: "Business moved to Luminovia | Carina Sophie Schoppe",
+        description: "Training, consulting, offers and pricing are handled by Luminovia Training & Consulting. carinaschoppe.com is a personal portfolio.",
+    },
+    de: {
+        title: "Business ist zu Luminovia umgezogen | Carina Sophie Schoppe",
+        description: "Training, Consulting, Angebote und Preise laufen ueber Luminovia Training & Consulting. carinaschoppe.com ist ein persoenliches Portfolio.",
     },
 };
 
@@ -220,39 +161,29 @@ function normalizePathname(pathname) {
     return pathname.replace(/\/+$/, "");
 }
 
-function buildBaseSchema() {
+function isBusinessRoute(pathname) {
+    return /^\/(training|offers|consulting|clients|pricing|corporate|keynotes)(\/|$)/.test(pathname);
+}
+
+function buildPersonSchema() {
     return {
         "@context": "https://schema.org",
-        "@type": ["Person", "ProfessionalService"],
+        "@type": "Person",
         "@id": `${SITE_URL}/#carina-sophie-schoppe`,
         name: PROFILE.name,
         url: `${SITE_URL}/`,
         image: DEFAULT_IMAGE,
         email: PROFILE.email,
-        telephone: [PROFILE.phoneAustralia, PROFILE.phoneGermany],
+        jobTitle: "Software, research and digital education portfolio",
         address: {
             "@type": "PostalAddress",
-            streetAddress: "43/9 Eduard Place",
-            postalCode: "4116",
-            addressLocality: "Calamvale",
+            addressLocality: "Brisbane",
             addressRegion: "QLD",
             addressCountry: "AU",
         },
-        areaServed: ["Germany", "Austria", "Switzerland", "Australia", "Europe", "Worldwide"],
         knowsLanguage: ["German", "English", "Spanish"],
-        sameAs: [PROFILE.linkedin, PROFILE.github],
-        serviceType: schemaServiceOffers.map(([title]) => title),
-        makesOffer: schemaServiceOffers.map(([title, description]) => ({
-            "@type": "Offer",
-            itemOffered: {
-                "@type": "Service",
-                name: title,
-                description,
-                audience: "Companies, universities, training providers, public-sector organisations and international education partners",
-                areaServed: ["Europe", "Australia", "Worldwide"],
-                provider: {"@id": `${SITE_URL}/#carina-sophie-schoppe`},
-            },
-        })),
+        sameAs: [PROFILE.linkedin, PROFILE.github, PROFILE.luminovia],
+        alumniOf: ["University of Paderborn", "IU International University"],
     };
 }
 
@@ -261,18 +192,8 @@ function buildBreadcrumbSchema(pathname, title) {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: [
-            {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: `${SITE_URL}/`,
-            },
-            ...(pathname === "/" ? [] : [{
-                "@type": "ListItem",
-                position: 2,
-                name: title.split("|")[0].trim(),
-                item: `${SITE_URL}${pathname}`,
-            }]),
+            {"@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/`},
+            ...(pathname === "/" ? [] : [{"@type": "ListItem", position: 2, name: title.split("|")[0].trim(), item: `${SITE_URL}${pathname}`}]),
         ],
     };
 }
@@ -282,17 +203,17 @@ export default function Seo() {
     const {language} = useLanguage();
     const normalizedPathname = normalizePathname(pathname);
     const isBlogPostRoute = /^\/blog\/[^/]+$/.test(normalizedPathname);
-    const isTrainingTopicRoute = /^\/training\/[^/]+$/.test(normalizedPathname);
-    const currentMeta = isBlogPostRoute ? {
-        title: language === "de" ? "Blogbeitrag | Carina Sophie Schoppe" : "Blog Article | Carina Sophie Schoppe",
-        description: language === "de" ? "Fachbeitrag von Carina Sophie Schoppe zu AI, Governance, digitaler Bildung, Business-IT oder moderner Arbeit." : "Long-form article by Carina Sophie Schoppe on AI, governance, digital education, business IT or modern work.",
-    } : isTrainingTopicRoute ? {
-        title: language === "de" ? "Trainingsthema | IT- und Business-Bildung" : "Training Topic | IT and Business Education",
-        description: language === "de" ? "Detaillierte Themenseite für IT, Softwareentwicklung, Cybersecurity, Projektmanagement, digitale Transformation oder Business-Bildung." : "Detailed training topic page for IT, software development, cybersecurity, project management, digital transformation or business education.",
-    } : routeMeta[language][normalizedPathname] || {
-        title: language === "de" ? "Seite nicht gefunden | Carina Sophie Schoppe" : "Page not found | Carina Sophie Schoppe",
-        description: language === "de" ? "Diese Seite wurde nicht gefunden. Nutzen Sie Startseite, Angebote oder Kontakt, um zur passenden Information zu gelangen." : "This page was not found. Use the homepage, offers or contact page to find the right information.",
-    };
+    const currentMeta = isBlogPostRoute
+        ? {
+            title: language === "de" ? "Blogbeitrag | Carina Sophie Schoppe" : "Blog Article | Carina Sophie Schoppe",
+            description: language === "de" ? "Fachbeitrag von Carina Sophie Schoppe zu AI, Governance, digitaler Bildung oder moderner Arbeit." : "Long-form article by Carina Sophie Schoppe on AI, governance, digital education or modern work.",
+        }
+        : isBusinessRoute(normalizedPathname)
+            ? businessRouteMeta[language]
+            : routeMeta[language][normalizedPathname] || {
+                title: language === "de" ? "Seite nicht gefunden | Carina Sophie Schoppe" : "Page not found | Carina Sophie Schoppe",
+                description: language === "de" ? "Diese Seite wurde nicht gefunden. Nutzen Sie Startseite, Projekte oder Kontakt." : "This page was not found. Use the homepage, projects or contact page.",
+            };
     const {title, description} = currentMeta;
 
     useEffect(() => {
@@ -313,25 +234,9 @@ export default function Seo() {
         upsertLink('link[rel="alternate"][hreflang="en"]', {rel: "alternate", hreflang: "en", href: canonical});
         upsertLink('link[rel="alternate"][hreflang="de"]', {rel: "alternate", hreflang: "de", href: canonical});
 
-        upsertJsonLd("dynamic-person-service-schema", buildBaseSchema());
+        upsertJsonLd("dynamic-person-service-schema", buildPersonSchema());
         upsertJsonLd("dynamic-breadcrumb-schema", buildBreadcrumbSchema(normalizedPathname, title));
-
-        if (normalizedPathname === "/") {
-            upsertJsonLd("dynamic-faq-schema", {
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                mainEntity: seoHomeFaqs.map((item) => ({
-                    "@type": "Question",
-                    name: item.q,
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: item.a,
-                    },
-                })),
-            });
-        } else {
-            removeJsonLd("dynamic-faq-schema");
-        }
+        removeJsonLd("dynamic-faq-schema");
 
         if (!isBlogPostRoute) {
             removeJsonLd("dynamic-blogpost-schema");

@@ -8,10 +8,10 @@ import Photo from "../components/Photo.jsx";
 
 const copy = {
     en: {
-        badge: "CEO & founder",
-        title: "Carina Sophie Schoppe leads Luminovia Training & Consulting.",
-        intro: "Carina is the CEO and founder behind Luminovia. Her work combines teaching, consulting, speaking and professional training across business computer science, AI, cybersecurity, software development and didactics.",
-        follow: "Clients book Luminovia when they need complex digital topics structured clearly, explained elegantly, practised actively and connected to business reality.",
+        badge: "About",
+        title: "A personal profile between software, research and digital education.",
+        intro: "Carina Sophie Schoppe works at the intersection of business computer science, AI, cybersecurity, software development, didactics and entrepreneurship.",
+        follow: "Business-facing training and consulting are represented through Luminovia. This page keeps the personal profile separate: background, interests, public writing, projects and professional development.",
         linkedin: "View LinkedIn",
         github: "View GitHub",
         timeline: "My timeline",
@@ -25,13 +25,13 @@ const copy = {
             ["Skills", "A skill map for AI, software development, cybersecurity, business IT, teaching design and communication.", "/skills"],
             ["Blog", "Long-form articles on AI governance, digital education, automation risk, project work and responsible technology adoption.", "/blog"],
         ],
-        timelineTitle: "Teaching-focused timeline",
+        timelineTitle: "Professional timeline",
     },
     de: {
-        badge: "CEO & Gründerin",
-        title: "Carina Sophie Schoppe führt Luminovia Training & Consulting.",
-        intro: "Carina ist CEO und Gründerin von Luminovia. Ihre Arbeit verbindet Lehre, Consulting, Speaking und professionelle Weiterbildung rund um Wirtschaftsinformatik, AI, Cybersecurity, Softwareentwicklung und Didaktik.",
-        follow: "Kunden buchen Luminovia, wenn komplexe digitale Themen klar strukturiert, elegant erklärt, aktiv geübt und mit Business-Realität verbunden werden müssen.",
+        badge: "Über mich",
+        title: "Ein persoenliches Profil zwischen Software, Research und digitaler Bildung.",
+        intro: "Carina Sophie Schoppe arbeitet an der Schnittstelle von Wirtschaftsinformatik, AI, Cybersecurity, Softwareentwicklung, Didaktik und Unternehmertum.",
+        follow: "Business-orientiertes Training und Consulting werden ueber Luminovia vertreten. Diese Seite trennt das bewusst davon: Hintergrund, Interessen, oeffentliche Texte, Projekte und professionelle Entwicklung.",
         linkedin: "LinkedIn ansehen",
         github: "GitHub ansehen",
         timeline: "Werdegang",
@@ -45,7 +45,7 @@ const copy = {
             ["Kompetenzen", "Eine Kompetenzübersicht für AI, Softwareentwicklung, Cybersecurity, Business-IT, Didaktik und Kommunikation.", "/skills"],
             ["Blog", "Ausführliche Beiträge zu AI Governance, digitaler Bildung, Automationsrisiken, Projektarbeit und verantwortungsvoller Technologieeinführung.", "/blog"],
         ],
-        timelineTitle: "Lehrorientierter Werdegang",
+        timelineTitle: "Professioneller Werdegang",
     },
 };
 
