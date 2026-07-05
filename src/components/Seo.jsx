@@ -60,23 +60,23 @@ const routeMeta = {
     de: {
         "/": {
             title: "Carina Sophie Schoppe | Portfolio",
-            description: "Persoenliches Portfolio von Carina Sophie Schoppe mit Softwareprojekten, Research-Interessen, Nachweisen, Texten und klarem Verweis auf Luminovia Training & Consulting.",
+            description: "Persönliches Portfolio von Carina Sophie Schoppe mit Softwareprojekten, Research-Interessen, Nachweisen, Texten und klarem Verweis auf Luminovia Training & Consulting.",
         },
         "/projects": {
             title: "Projekte | Carina Sophie Schoppe",
-            description: "Ausgewaehlte Software-, Automatisierungs-, Research-Tooling-, Kotlin-, Mobile- und Digitalprojekte von Carina Sophie Schoppe.",
+            description: "Ausgewählte Software-, Automatisierungs-, Research-Tooling-, Kotlin-, Mobile- und Digitalprojekte von Carina Sophie Schoppe.",
         },
         "/software": {
             title: "Projekte | Carina Sophie Schoppe",
-            description: "Ausgewaehlte Software-, Automatisierungs-, Research-Tooling-, Kotlin-, Mobile- und Digitalprojekte von Carina Sophie Schoppe.",
+            description: "Ausgewählte Software-, Automatisierungs-, Research-Tooling-, Kotlin-, Mobile- und Digitalprojekte von Carina Sophie Schoppe.",
         },
         "/portfolio": {
             title: "Portfolio | Carina Sophie Schoppe",
-            description: "Portfolio-Uebersicht fuer oeffentliche Projekte, technische Arbeit und professionelle Profilinformationen.",
+            description: "Portfolio-Übersicht für öffentliche Projekte, technische Arbeit und professionelle Profilinformationen.",
         },
         "/skills": {
             title: "Kompetenzen | Carina Sophie Schoppe",
-            description: "Persoenliche Kompetenzuebersicht zu AI, Softwareentwicklung, Cybersecurity, Wirtschaftsinformatik, Research und digitaler Bildung.",
+            description: "Persönliche Kompetenzübersicht zu AI, Softwareentwicklung, Cybersecurity, Wirtschaftsinformatik, Research und digitaler Bildung.",
         },
         "/credentials": {
             title: "Nachweise | Carina Sophie Schoppe",
@@ -88,23 +88,23 @@ const routeMeta = {
         },
         "/about": {
             title: "Über Carina | Carina Sophie Schoppe",
-            description: "Persoenliches Profil von Carina Sophie Schoppe zwischen Software, Research, digitaler Bildung, AI, Cybersecurity und Unternehmertum.",
+            description: "Persönliches Profil von Carina Sophie Schoppe zwischen Software, Research, digitaler Bildung, AI, Cybersecurity und Unternehmertum.",
         },
         "/blog": {
             title: "Blog | Carina Sophie Schoppe",
-            description: "Beitraege zu AI, Governance, digitaler Bildung, Projektarbeit, Cybersecurity, Automationsrisiken und moderner Arbeit.",
+            description: "Beiträge zu AI, Governance, digitaler Bildung, Projektarbeit, Cybersecurity, Automationsrisiken und moderner Arbeit.",
         },
         "/contact": {
             title: "Kontakt | Carina Sophie Schoppe",
-            description: "Kontakt zu Carina Sophie Schoppe fuer Portfolio-, Projekt-, Research-, CV- oder professionelle Profilanfragen. Business-Anfragen werden zu Luminovia geleitet.",
+            description: "Kontakt zu Carina Sophie Schoppe für Portfolio-, Projekt-, Research-, CV- oder professionelle Profilanfragen. Business-Anfragen werden zu Luminovia geleitet.",
         },
         "/imprint": {
             title: "Impressum | Carina Sophie Schoppe",
             description: "Impressum und Kontaktinformationen von Carina Sophie Schoppe.",
         },
         "/privacy": {
-            title: "Datenschutzerklaerung | Carina Sophie Schoppe",
-            description: "Datenschutzerklaerung der Website von Carina Sophie Schoppe, inklusive Analytics- und Kontaktinformationen.",
+            title: "Datenschutzerklärung | Carina Sophie Schoppe",
+            description: "Datenschutzerklärung der Website von Carina Sophie Schoppe, inklusive Analytics- und Kontaktinformationen.",
         },
     },
 };
@@ -116,7 +116,7 @@ const businessRouteMeta = {
     },
     de: {
         title: "Business ist zu Luminovia umgezogen | Carina Sophie Schoppe",
-        description: "Training, Consulting, Angebote und Preise laufen ueber Luminovia Training & Consulting. carinaschoppe.com ist ein persoenliches Portfolio.",
+        description: "Training, Consulting, Angebote und Preise laufen über Luminovia Training & Consulting. carinaschoppe.com ist ein persönliches Portfolio.",
     },
 };
 

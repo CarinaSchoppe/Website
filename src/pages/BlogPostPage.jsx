@@ -18,7 +18,7 @@ export default function BlogPostPage() {
             back: "Zur Blog-Übersicht",
             takeaway: "Kernidee",
             sources: "Quellen und weiterführende Links",
-            discuss: "Training oder Talk zu diesem Thema anfragen",
+            discuss: "Zu diesem Thema Kontakt aufnehmen",
             more: "Weitere Beiträge",
             read: "Lesen",
         }
@@ -26,7 +26,7 @@ export default function BlogPostPage() {
             back: "Back to blog",
             takeaway: "Key takeaway",
             sources: "Sources and further reading",
-            discuss: "Request training or a talk on this topic",
+            discuss: "Get in touch about this topic",
             more: "More articles",
             read: "Read",
         };

@@ -4,27 +4,40 @@ import Badge from "./Badge.jsx";
 import Button from "./Button.jsx";
 
 export default function SoftwareProjectsSection({compact = false}) {
-    const {t} = useLanguage();
+    const {t, language} = useLanguage();
     const {softwareProjects} = useSiteContent();
     const projects = compact ? softwareProjects.slice(0, 4) : softwareProjects;
+    const copy = language === "de"
+        ? {
+            badge: "Projekte",
+            title: "Öffentliche Software- und Automationsprojekte.",
+            text: "Ausgewählte Projektarbeit in Automatisierung, AI-Research-Workflows, Datenbereinigung, Kotlin-Plugins, Mobile Apps und digitaler Umsetzung.",
+            viewAll: "Projektportfolio ansehen",
+        }
+        : {
+            badge: "Projects",
+            title: "Public software and automation projects.",
+            text: "Selected project work across automation, AI research workflows, data cleanup, Kotlin plugins, mobile apps and digital implementation.",
+            viewAll: "View project portfolio",
+        };
 
     return (
         <section className="soft-section px-4 py-16 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-7xl">
                 <div className="mb-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
                     <div>
-                        <Badge tone="cyan">{t.softwareSection.badge}</Badge>
+                        <Badge tone="cyan">{copy.badge}</Badge>
                         <h2 className="mt-5 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
-                            {t.softwareSection.title}
+                            {copy.title}
                         </h2>
                     </div>
                     <div>
                         <p className="text-lg leading-8 text-slate-300">
-                            {t.softwareSection.copy}
+                            {copy.text}
                         </p>
                         {compact && (
                             <div className="mt-5">
-                                <Button to="/projects" variant="secondary">{t.softwareSection.viewAll}</Button>
+                                <Button to="/projects" variant="secondary">{copy.viewAll}</Button>
                             </div>
                         )}
                     </div>

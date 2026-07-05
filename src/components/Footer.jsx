@@ -8,7 +8,7 @@ export default function Footer() {
     const {language, t} = useLanguage();
     const labels = language === "de"
         ? {
-            summary: "Persoenliches Portfolio von Carina Sophie Schoppe: Projekte, Nachweise, Werdegang, Texte und Kontakt. Business-Training und Consulting laufen ueber Luminovia Training & Consulting.",
+            summary: "Persönliches Portfolio von Carina Sophie Schoppe: Projekte, Nachweise, Werdegang, Texte und Kontakt. Business-Training und Consulting laufen über Luminovia Training & Consulting.",
             portfolio: "Portfolio",
             business: "Business",
             luminovia: "Luminovia Training & Consulting",

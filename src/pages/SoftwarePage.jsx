@@ -9,22 +9,22 @@ export default function SoftwarePage() {
     const copy = language === "de"
         ? {
             badge: "Projektportfolio",
-            title: "Projekte, die Luminovia-Training und Consulting praktisch machen.",
-            intro: "Dieses Portfolio zeigt ausgewählte Projektarbeit, die in Trainings, Beratung und Umsetzung als Praxisbezug dient: Automatisierung mit Python, AI-gestützte Research-Workflows, Datenbereinigung, Kotlin-Plugins, Mobile Apps, Game-Systeme und digitale Arbeitsabläufe.",
+            title: "Softwareprojekte, Automation und technische Experimente.",
+            intro: "Dieses persönliche Portfolio zeigt ausgewählte Projektarbeit: Automatisierung mit Python, AI-gestützte Research-Workflows, Datenbereinigung, Kotlin-Plugins, Mobile Apps, Game-Systeme und digitale Arbeitsabläufe. Der Fokus liegt auf öffentlicher Umsetzung, nicht auf Angeboten.",
             github: "GitHub-Profil öffnen",
             skills: "Kompetenzen ansehen",
             publicationsTitle: "Publikationen",
-            publicationsCopy: "Akademische Arbeiten zu generativer AI, AI Governance, Human-Machine Interaction und Cybersecurity, die meine Beratungs- und Trainingsarbeit fachlich stützen.",
+            publicationsCopy: "Akademische Arbeiten zu generativer AI, AI Governance, Human-Machine Interaction und Cybersecurity als fachlicher Kontext hinter Research, Lehre und Portfolio.",
             download: "PDF herunterladen",
         }
         : {
             badge: "Project portfolio",
-            title: "Projects that make Luminovia training and consulting practical.",
-            intro: "This portfolio highlights selected project work that gives Luminovia's training, consulting and implementation support practical depth: Python automation, AI-supported research workflows, data cleanup, Kotlin plugins, mobile apps, game systems and digital workflows.",
+            title: "Software projects, automation and technical experiments.",
+            intro: "This personal portfolio highlights selected project work: Python automation, AI-supported research workflows, data cleanup, Kotlin plugins, mobile apps, game systems and digital workflows. The focus is public implementation work, not offers.",
             github: "Open GitHub profile",
             skills: "View skills",
             publicationsTitle: "Publications",
-            publicationsCopy: "Academic work on generative AI, AI governance, human-machine interaction and cybersecurity that supports my consulting and training practice.",
+            publicationsCopy: "Academic work on generative AI, AI governance, human-machine interaction and cybersecurity as subject context behind research, teaching and portfolio work.",
             download: "Download PDF",
         };
     return (
@@ -32,15 +32,15 @@ export default function SoftwarePage() {
             <section className="px-4 sm:px-6 lg:px-8">
                 <div className="mx-auto max-w-7xl">
                     <Badge tone="blue">{copy.badge}</Badge>
-                    <div className="mt-6 text-center">
-                        <h1 className="mx-auto max-w-5xl text-5xl font-black tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl">
+                    <div className="mt-6">
+                        <h1 className="max-w-5xl text-5xl font-black tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl">
                             {copy.title}
                         </h1>
-                        <p className="mx-auto mt-7 max-w-4xl text-lg leading-8 text-slate-300">
+                        <p className="mt-7 max-w-4xl text-lg leading-8 text-slate-300">
                             {copy.intro}
                         </p>
                     </div>
-                    <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                    <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                         <Button href="https://github.com/CarinaSchoppe">{copy.github}</Button>
                         <Button to="/skills" variant="secondary">{copy.skills}</Button>
                     </div>

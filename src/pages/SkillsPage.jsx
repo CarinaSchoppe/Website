@@ -33,18 +33,21 @@ export default function SkillsPage() {
     const copy = language === "de"
         ? {
             badge: "Kompetenzen & Themen",
-            title: "Eine praktische Kompetenzübersicht für IT, Cybersecurity, Research und Business-Technology.",
+            title: "Eine persönliche Kompetenzkarte für AI, Software, Cybersecurity und digitale Bildung.",
             formats: "Luminovia ansehen",
             credentials: "Nachweise ansehen",
-            clusters: "Themencluster",
-            clustersTitle: "Themenfelder aus Portfolio, Lehre und Projektarbeit.",
-            consultingTitle: "Arbeitsfelder",
-            consultingCopy: "Diese Seite beschreibt fachliche Schwerpunkte als Portfolio-Kontext. Konkrete Business-Angebote, Projektbegleitung und Consulting laufen über Luminovia.",
+            clusters: "Skill-Cluster",
+            clustersTitle: "Themenfelder aus Portfolio, Lehre, Research und Projektarbeit.",
+            consultingTitle: "Capability Map",
+            consultingCopy: "Diese Seite beschreibt persönliche fachliche Schwerpunkte. Konkrete Firmenangebote, Projektbegleitung und Consulting laufen bewusst über Luminovia.",
             consultingAreas: [
-                ["Software & Systeme", "Programmierung, APIs, Automatisierung, Datenflüsse, technische Projektstruktur und Umsetzungslogik."],
-                ["AI & Research", "Generative AI, Prompt-Workflows, AI Governance, Literaturreviews, Research Tooling und verantwortungsvolle Nutzung."],
+                ["AI & Automatisierung", "Generative AI, Prompt-Workflows, AI Governance, Literaturreviews, Research Tooling und verantwortungsvolle Nutzung."],
+                ["Softwareentwicklung", "Programmierung, APIs, Automatisierung, Datenflüsse, technische Projektstruktur und Umsetzungslogik."],
                 ["Cybersecurity", "Security Awareness, Web Security, SOC-Grundlagen, Pentest-Lernen und defensive Perspektiven."],
-                ["Digitale Bildung", "Didaktik, Lernarchitektur, erwachsenengerechte Erklärungen, Materialien und Transferdenken."],
+                ["Digitale Bildung / Instructional Design", "Didaktik, Lernarchitektur, erwachsenengerechte Erklärungen, Materialien und Transferdenken."],
+                ["Wirtschaftsinformatik", "Prozesse, Systeme, IT-Management, Digital Business, HCI und organisatorische Technologieentscheidungen."],
+                ["Projektmanagement / Agile", "Scrum, Projektstruktur, Stakeholder-Kommunikation, AI-gestützte Projektarbeit und Entscheidungsvorbereitung."],
+                ["Daten / Analytics", "SQL, Datenmodelle, Research-Daten, Auswertung, Datenbereinigung und datenbasierte Argumentation."],
             ],
             publications: "Publikationen",
             publicationsTitle: "Publikationen als fachlicher Kompetenznachweis.",
@@ -55,18 +58,21 @@ export default function SkillsPage() {
         }
         : {
             badge: "Skills & topics",
-            title: "A practical skill map for IT, cybersecurity, research and business technology.",
+            title: "A personal capability map for AI, software, cybersecurity and digital education.",
             formats: "View Luminovia",
             credentials: "View credentials",
-            clusters: "Topic clusters",
-            clustersTitle: "Fields across portfolio, teaching and project work.",
-            consultingTitle: "Work fields",
-            consultingCopy: "This page describes subject strengths as portfolio context. Concrete business offers, project support and consulting live at Luminovia.",
+            clusters: "Skill clusters",
+            clustersTitle: "Fields across portfolio, teaching, research and project work.",
+            consultingTitle: "Capability map",
+            consultingCopy: "This page describes personal subject strengths. Concrete company offers, project support and consulting intentionally live at Luminovia.",
             consultingAreas: [
-                ["Software & systems", "Programming, APIs, automation, data flows, technical project structure and implementation logic."],
-                ["AI & research", "Generative AI, prompt workflows, AI governance, literature reviews, research tooling and responsible use."],
+                ["AI & automation", "Generative AI, prompt workflows, AI governance, literature reviews, research tooling and responsible use."],
+                ["Software development", "Programming, APIs, automation, data flows, technical project structure and implementation logic."],
                 ["Cybersecurity", "Security awareness, web security, SOC foundations, pentest learning and defensive perspectives."],
-                ["Digital education", "Didactics, learning architecture, adult-friendly explanations, materials and transfer thinking."],
+                ["Digital education / instructional design", "Didactics, learning architecture, adult-friendly explanations, materials and transfer thinking."],
+                ["Business information systems", "Processes, systems, IT management, digital business, HCI and organisational technology decisions."],
+                ["Project management / agile", "Scrum, project structure, stakeholder communication, AI-supported project work and decision preparation."],
+                ["Data / analytics", "SQL, data models, research data, analysis, data cleanup and evidence-based argumentation."],
             ],
             publications: "Publications",
             publicationsTitle: "Publications as academic proof of competence.",
@@ -80,12 +86,12 @@ export default function SkillsPage() {
             <div className="mx-auto max-w-7xl">
                 <Badge tone="orange">{copy.badge}</Badge>
                 <div className="mt-6">
-                    <h1 className="mx-auto max-w-5xl text-center text-5xl font-black tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl">
+                    <h1 className="max-w-5xl text-5xl font-black tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl">
                         {copy.title}
                     </h1>
                 </div>
 
-                <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                     <Button href="https://luminovia.org">{copy.formats}</Button>
                     <Button to="/credentials" variant="secondary">{copy.credentials}</Button>
                 </div>
@@ -99,7 +105,7 @@ export default function SkillsPage() {
                         </div>
                         <p className="text-lg leading-8 text-slate-300">{copy.consultingCopy}</p>
                     </div>
-                    <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+                    <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                         {copy.consultingAreas.map(([title, description]) => (
                             <Card key={title}>
                                 <h3 className="text-2xl font-black text-white">{title}</h3>

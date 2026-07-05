@@ -18,11 +18,7 @@ function getInitialTheme() {
     const storedTheme = safeGetStorageItem(THEME_KEY);
     if (storedTheme === "day" || storedTheme === "night") return storedTheme;
 
-    try {
-        return globalThis.matchMedia?.("(prefers-color-scheme: light)")?.matches ? "day" : "night";
-    } catch {
-        return "night";
-    }
+    return "night";
 }
 
 function lazyWithRecovery(loader) {

@@ -116,24 +116,24 @@ export default function BlogPage() {
     const remainingPosts = sortedPosts.slice(1);
     const copy = language === "de"
         ? {
-            title: "Blog zu AI, Projektmanagement und Lehre mit KI.",
-            intro: "Der Blog ist als fachlicher Wissenshub für Bildungspartner, Unternehmen und Hochschulen gedacht. Hier ordne ich Entwicklungen rund um Agentic AI, AI Governance, digitale Bildung, Projektarbeit und verantwortungsvolle Automatisierung ein, mit Blick auf praktische Trainings, bessere Entscheidungen und den Transfer in echte Lern- und Arbeitsumgebungen.",
+            title: "Blog zu AI, digitaler Bildung, Cybersecurity und verantwortungsvoller Technologie.",
+            intro: "Der Blog ist der editoriale Teil des persönlichen Portfolios. Hier ordne ich Entwicklungen rund um Agentic AI, AI Governance, digitale Bildung, Projektarbeit, Cybersecurity und verantwortungsvolle Automatisierung ein.",
             featured: "Neuester Beitrag",
             latest: "Alle Blogbeiträge",
             read: "Artikel lesen",
-            suggest: "Thema vorschlagen",
+            suggest: "Kontakt aufnehmen",
             filters: "Kategorien",
             empty: "Zu dieser Kategorie gibt es noch keinen Beitrag.",
             previous: "Blogbeiträge nach links scrollen",
             next: "Blogbeiträge nach rechts scrollen",
         }
         : {
-            title: "Blog on AI, project work and teaching with AI.",
-            intro: "This blog is designed as a professional knowledge hub for education partners, companies and universities. I use it to analyse developments in agentic AI, AI governance, digital education, project work and responsible automation, always with a focus on practical training, better decision-making and transfer into real learning and work environments.",
+            title: "Blog on AI, digital education, cybersecurity and responsible technology.",
+            intro: "The blog is the editorial part of the personal portfolio. I use it to analyse developments in agentic AI, AI governance, digital education, project work, cybersecurity and responsible automation.",
             featured: "Featured latest post",
             latest: "All blog posts",
             read: "Read article",
-            suggest: "Suggest a topic",
+            suggest: "Get in touch",
             filters: "Categories",
             empty: "There is no article in this category yet.",
             previous: "Scroll blog posts left",

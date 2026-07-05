@@ -19,24 +19,24 @@ export default function MyWayPage() {
         ? {
             badge: "Werdegang",
             title: "Ein professioneller Weg durch IT, Business, Forschung und digitale Bildung.",
-            intro: "Die Timeline zeigt kompakt, welche Stationen mein Profil, meine Projekte und meine fachliche Entwicklung geprägt haben.",
+            intro: "Die Timeline zeigt, wie sich mein Profil über Software, Wirtschaftsinformatik, Forschung, AI, Bildung und den Standort Brisbane entwickelt hat.",
             skills: "Kompetenzen ansehen",
-            request: "Luminovia ansehen",
+            request: "Projekte ansehen",
             education: "Bildung",
             educationCopy: "Wirtschaftsinformatik, MBA ohne Major, TAE40122 im Juni 2026, AI, Forschung und digitale Bildung.",
             work: "Praxis",
             workCopy: "Softwareentwicklung, digitale Bildung, Unternehmertum, Research und ausgewählte Projektarbeit.",
             now: "Heute",
-            nowCopy: "Sitz in Brisbane, persönliches Portfolio auf carinaschoppe.com und Business-Marke über Luminovia.",
+            nowCopy: "Sitz in Brisbane, persönliches Portfolio auf carinaschoppe.com und klare Trennung zwischen öffentlichem Profil und Luminovia als Business-Kanal.",
             timeline: "Timeline",
             milestones: "Aktuelle Stationen zuerst."
         }
         : {
             badge: "My way",
             title: "A professional path through IT, business, research and digital education.",
-            intro: "This timeline gives a compact view of the experience behind my profile, projects and professional development.",
+            intro: "This timeline shows how my profile developed across software, business information systems, research, AI, education and the Brisbane context.",
             skills: "View skills",
-            request: "View Luminovia",
+            request: "View projects",
             education: "Education",
             educationCopy: "Business Computer Science, MBA without major, TAE40122 completed in June 2026, AI, research and digital education.",
             work: "Practice",
@@ -60,7 +60,7 @@ export default function MyWayPage() {
                         </p>
                         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                             <Button to="/skills">{copy.skills}</Button>
-                            <Button href="https://luminovia.org" variant="secondary">{copy.request}</Button>
+                            <Button to="/projects" variant="secondary">{copy.request}</Button>
                         </div>
                     </div>
                     <div className="grid gap-4 sm:grid-cols-2">

@@ -14,13 +14,15 @@ export default function CredentialsPage() {
     const copy = language === "de"
         ? {
             badge: "Nachweise & Lehrprofil",
-            title: "Nachweise für Lehre, Training und technische Tiefe.",
-            intro: "Diese Nachweise bündeln Unterrichtserfahrung, akademische Abschlüsse, AI-Zertifikate, Cybersecurity-Lernpfade und Sprachkompetenz. Für Auftraggeber wird damit nachvollziehbar, welche fachliche und didaktische Grundlage hinter den Trainings steht.",
+            title: "CV, Zertifikate und fachliche Nachweise.",
+            intro: "Diese Seite bündelt akademische Abschlüsse, TAE40122, AI-Zertifikate, Cybersecurity-Lernpfade, Unterrichtserfahrung und Sprachkompetenz. Sie dient als persönliche Nachweis- und Profilseite, nicht als Angebotsseite.",
+            allLabel: "Alle Nachweise",
         }
         : {
             badge: "Credentials & teaching proof",
-            title: "Credentials for teaching, training and technical depth.",
-            intro: "These credentials combine teaching experience, academic degrees, AI certifications, cybersecurity learning paths and language capability. They give clients a clearer view of the subject and delivery foundation behind the training.",
+            title: "CV, certificates and professional proof.",
+            intro: "This page brings together academic degrees, TAE40122, AI certifications, cybersecurity learning paths, teaching experience and language capability. It is a personal proof and profile page, not an offer page.",
+            allLabel: "All credentials",
         };
 
     return (
@@ -34,7 +36,7 @@ export default function CredentialsPage() {
 
                 <div className="mt-10 flex flex-wrap gap-2">
                     {credentialCategories.map((cat) => (
-                        <button key={cat} onClick={() => setFilter(cat)} className={cn("rounded-full border px-4 py-2 text-sm font-black transition", activeFilter === cat ? "border-white bg-white text-slate-950" : "border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white")}>{cat}</button>
+                        <button key={cat} onClick={() => setFilter(cat)} className={cn("rounded-full border px-4 py-2 text-sm font-black transition", activeFilter === cat ? "border-white bg-white text-slate-950" : "border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white")}>{cat === "All" ? copy.allLabel : cat}</button>
                     ))}
                 </div>
 
@@ -42,7 +44,7 @@ export default function CredentialsPage() {
                     {visible.map((credential) => (
                         <Card key={credential.title}>
                             <div className="mb-5 flex items-center justify-between gap-3">
-                                <div className="grid h-10 w-10 place-items-center rounded-2xl bg-blue-300 text-sm font-black text-slate-950">✓</div>
+                                <div className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-cyan-200 via-violet-200 to-amber-200 text-sm font-black text-slate-950">✓</div>
                                 <Badge tone="white">{credential.category}</Badge>
                             </div>
                             <h2 className="text-xl font-black text-white">{credential.title}</h2>

@@ -79,11 +79,11 @@ describe("full static site route coverage", () => {
     });
 
     it.each([
-        ["/projects/", /Projects/i],
-        ["/credentials/", /Credentials for teaching|Nachweise/i],
+        ["/projects/", /Software projects, automation/i],
+        ["/credentials/", /CV, certificates|Nachweise/i],
         ["/my-way/", /professional path through IT|professioneller Weg durch IT/i],
-        ["/blog/", /Blog on AI|Blog zu AI/i],
-        ["/training/", /handled by Luminovia|laufen ueber Luminovia/i],
+        ["/blog/", /Blog on AI, digital education|Blog zu AI/i],
+        ["/training/", /handled by Luminovia|laufen über Luminovia/i],
     ])("renders trailing-slash route %s", async (route, heading) => {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
         window.history.pushState({}, "Trailing route", route);

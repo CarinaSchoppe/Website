@@ -16,13 +16,13 @@ describe("App routing and language", () => {
         render(<App/>);
 
         expect(await screen.findByRole("heading", {name: /^Carina Sophie Schoppe\.$/i})).toBeInTheDocument();
-        expect(screen.getByText(/Business-Marke/i)).toBeInTheDocument();
+        expect(screen.getByText(/Was ich verbinde/i)).toBeInTheDocument();
         expect(document.documentElement.lang).toBe("de");
         expect(window.localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("de");
 
         await user.click(screen.getByRole("button", {name: /Sprache auf Englisch wechseln/i}));
 
-        expect(screen.getByText(/Business brand/i)).toBeInTheDocument();
+        expect(screen.getByText(/What I connect/i)).toBeInTheDocument();
         expect(document.documentElement.lang).toBe("en");
         expect(window.localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("en");
     });
@@ -33,19 +33,19 @@ describe("App routing and language", () => {
 
         render(<App/>);
 
-        expect(await screen.findByRole("heading", {level: 1, name: /Projects that make Luminovia/i})).toBeInTheDocument();
+        expect(await screen.findByRole("heading", {level: 1, name: /Software projects, automation/i})).toBeInTheDocument();
         expect(document.documentElement.lang).toBe("en");
     });
 
     it.each([
-        ["/blog", /Blog on AI, project work and teaching with AI/i],
+        ["/blog", /Blog on AI, digital education/i],
         ["/contact", /Contact Carina Sophie Schoppe/i],
-        ["/skills", /Skill map for IT/i],
+        ["/skills", /personal capability map/i],
         ["/about", /personal profile between software/i],
-        ["/credentials", /Credentials for teaching/i],
+        ["/credentials", /CV, certificates/i],
         ["/my-way", /professional path through IT/i],
-        ["/portfolio", /Projects/i],
-        ["/projects", /Projects/i],
+        ["/portfolio", /Software projects, automation/i],
+        ["/projects", /Software projects, automation/i],
         ["/pricing", /handled by Luminovia/i],
         ["/unknown-page", /This page is not in the training plan/i],
     ])("renders %s with English page copy", async (route, heading) => {

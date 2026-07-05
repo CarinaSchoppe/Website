@@ -11,7 +11,7 @@ function cleanPhone(value) {
 
 export default function ContactPage() {
     const {language, t} = useLanguage();
-    const subject = encodeURIComponent(language === "de" ? "Kontaktanfrage ueber carinaschoppe.com" : "Contact request via carinaschoppe.com");
+    const subject = encodeURIComponent(language === "de" ? "Kontaktanfrage über carinaschoppe.com" : "Contact request via carinaschoppe.com");
     const jumpLabel = language === "de" ? "Auf dieser Seite" : "On this page";
     const jumpItems = language === "de"
         ? [["#contact-options", "Kontaktwege"], ["#appointment", "Termin"]]
@@ -33,14 +33,14 @@ export default function ContactPage() {
             label: language === "de" ? "Telefon Deutschland" : "Germany phone",
             value: PROFILE.phoneGermany,
             href: `tel:${cleanPhone(PROFILE.phoneGermany)}`,
-            copy: language === "de" ? "Kontakt fuer deutschsprachige Anfragen" : "Contact for German-speaking enquiries",
+            copy: language === "de" ? "Kontakt für deutschsprachige Anfragen" : "Contact for German-speaking enquiries",
         },
     ];
     const luminoviaNote = language === "de"
         ? {
             title: "Business-Anfragen?",
             copy: "Training, Consulting, Projektbegleitung und Firmenanfragen bitte direkt an Luminovia senden.",
-            cta: "Luminovia oeffnen",
+            cta: "Luminovia öffnen",
             email: "info@luminovia.org",
         }
         : {

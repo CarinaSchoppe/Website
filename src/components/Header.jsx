@@ -2,12 +2,11 @@ import {useEffect, useState} from "react";
 import {createPortal} from "react-dom";
 import {NavLink} from "react-router-dom";
 import {navItems, PROFILE} from "../data/profile.js";
-import Button from "./Button.jsx";
 import {useLanguage} from "../i18n.jsx";
 
 function navClass({isActive}) {
     return isActive
-        ? "rounded-full bg-white px-3 py-2 text-sm font-bold text-zinc-950 shadow-[0_12px_34px_rgba(37,99,235,.18)]"
+        ? "rounded-full bg-white/10 px-3 py-2 text-sm font-bold text-white shadow-[0_12px_34px_rgba(168,85,247,.18)] ring-1 ring-white/14"
         : "rounded-full px-3 py-2 text-sm font-bold text-zinc-300 transition hover:bg-white/[0.08] hover:text-white";
 }
 
@@ -85,20 +84,20 @@ export default function Header({theme = "night", onToggleTheme = () => {}}) {
             </div>
             <div className="grid gap-3 border-t border-white/10 pt-5">
                 <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="rounded-[1.5rem] border border-white/14 bg-white/[0.08] px-5 py-4 text-base font-black text-white">{t.linkedin}</a>
-                <Button href={PROFILE.luminovia} onClick={() => setOpen(false)}>{t.luminovia}</Button>
+                <a href={PROFILE.luminovia} target="_blank" rel="noreferrer" className="rounded-[1.5rem] border border-white/14 bg-white/[0.08] px-5 py-4 text-base font-black text-white" onClick={() => setOpen(false)}>{t.luminovia}</a>
             </div>
         </div>
     ) : null;
 
     return (
         <>
-            <header className="relative z-50 border-b border-white/10 bg-[#08090B]/62 shadow-[0_14px_50px_rgba(0,0,0,.18)] backdrop-blur-2xl">
-                <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+            <header className="portfolio-header relative z-50 border-b border-white/10 bg-[#030611]/84 shadow-[0_14px_50px_rgba(0,0,0,.18)] backdrop-blur-2xl">
+                <div className="mx-auto flex max-w-[1500px] items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
                     <NavLink to="/" className="group flex items-center gap-3 text-left" aria-label="Carina Sophie Schoppe home">
-                        <div className="luminovia-logo-shell grid h-12 w-12 place-items-center overflow-hidden rounded-2xl border border-white/20 bg-white shadow-[0_10px_32px_rgba(37,99,235,.22)] transition duration-500 group-hover:rotate-2">
-                            <span className="text-lg font-black text-slate-950">CS</span>
+                        <div className="personal-logo-shell grid h-10 w-10 place-items-center overflow-hidden rounded-none border-0 bg-transparent shadow-none transition duration-500 group-hover:rotate-2">
+                            <span className="portfolio-cs-mark text-xl font-black">CS</span>
                         </div>
-                        <div className="hidden sm:block">
+                        <div className="hidden sm:block xl:hidden">
                             <div className="text-sm font-black tracking-tight text-white">Carina Sophie Schoppe</div>
                             <div className="text-[11px] uppercase tracking-[0.16em] text-zinc-400">{t.headerTagline}</div>
                         </div>
@@ -111,8 +110,6 @@ export default function Header({theme = "night", onToggleTheme = () => {}}) {
                     <div className="hidden items-center gap-3 xl:flex">
                         <ThemeToggle theme={theme} onToggleTheme={onToggleTheme} language={language}/>
                         <LanguageToggle language={language} toggleLanguage={toggleLanguage} t={t}/>
-                        <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="hidden rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-bold text-zinc-300 transition hover:bg-white/[0.09] hover:text-white 2xl:inline-flex">{t.linkedin}</a>
-                        <Button href={PROFILE.luminovia}>{t.luminovia}</Button>
                     </div>
 
                     <button className="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm font-black text-white backdrop-blur-xl xl:hidden" onClick={() => setOpen(true)} aria-label={`${t.open} ${t.menu}`}>{t.menu}</button>

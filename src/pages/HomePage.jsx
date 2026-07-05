@@ -1,141 +1,245 @@
+import {Link} from "react-router-dom";
 import {IMAGES, PROFILE} from "../data/profile.js";
 import {useSiteContent} from "../data/localizedContent.js";
 import {useLanguage} from "../i18n.jsx";
-import Badge from "../components/Badge.jsx";
 import Button from "../components/Button.jsx";
-import Card from "../components/Card.jsx";
 import Photo from "../components/Photo.jsx";
 
 const copy = {
     en: {
-        badge: "Personal portfolio",
-        title: "Carina Sophie Schoppe.",
-        intro: "A portfolio for software projects, research interests, teaching background, credentials and selected writing around AI, digital education, cybersecurity and business computer science.",
-        primary: "View projects",
-        secondary: "View credentials",
-        luminoviaBadge: "Business brand",
-        luminoviaTitle: "Training, consulting and company work live at Luminovia.",
-        luminoviaCopy: "Luminovia Training & Consulting is the business channel for professional training, consulting, project support and corporate enquiries. This personal website stays focused on Carina's portfolio, CV and public work.",
-        luminoviaCta: "Open Luminovia",
-        luminoviaEmail: "Email Luminovia",
-        profileTitle: "Portfolio focus",
-        profileItems: [
-            ["Projects", "Software, automation, research tooling, Kotlin plugins and selected technical work."],
-            ["Credentials", "Academic degrees, AI certificates, cybersecurity learning paths and completed TAE40122."],
-            ["Writing", "Articles and reflections on AI, project work, digital education and responsible automation."],
+        role: "IT, AI & Business Information Systems Lecturer",
+        intro: "Personal portfolio for software projects, research interests, teaching background, credentials and selected writing around AI, digital education, cybersecurity and business computer science.",
+        projects: "View projects",
+        credentials: "View credentials",
+        luminovia: "Company training & consulting -> Luminovia",
+        location: "Based in Brisbane, Australia",
+        proof: [
+            ["Lecturer in IT, AI & Business Information Systems", "Teaching profile"],
+            ["Research & teaching in AI, cybersecurity & digital education", "Academic context"],
+            ["Software builder with a focus on practical impact", "Project work"],
+            ["Bridging theory and practice for real-world outcomes", "Transfer"],
         ],
-        cvBadge: "CV update",
-        cvTitle: "Certificate IV in Training and Assessment completed in June 2026.",
-        cvCopy: "The Australian TAE40122 qualification is now part of the professional profile alongside B.Sc., M.Sc., MBA, AI certifications and teaching experience.",
-        latest: "Latest milestones",
+        connect: "What I connect",
+        connectCards: [
+            ["AI & Data", "From concepts to responsible use", "brain"],
+            ["Cybersecurity", "Security mindset, not just tools", "shield"],
+            ["Digital Education", "Learning design for engagement & impact", "mortar"],
+            ["Software Engineering", "Building useful, maintainable systems", "code"],
+            ["Business Information Systems", "Information that drives better decisions", "chart"],
+            ["People & Leadership", "Empowering learners and teams", "people"],
+        ],
+        featuredProjects: "Featured projects",
+        viewProjects: "View all projects",
+        credentialsTitle: "Credentials & milestones",
+        viewAll: "View all",
+        writing: "Writing",
+        viewPosts: "View all posts",
+        luminoviaTitle: "Company training and consulting live at Luminovia.",
+        luminoviaCopy: "Commercial training, consulting, workshops and corporate enquiries belong on Luminovia. This site stays focused on Carina's portfolio, CV, writing and public work.",
+        luminoviaCta: "Go to Luminovia",
+        contactTitle: "Let's connect",
+        contactCopy: "Interested in collaboration, speaking or profile-related enquiries?",
+        send: "Send a message",
+        linkedin: "Connect on LinkedIn",
     },
     de: {
-        badge: "Persoenliches Portfolio",
-        title: "Carina Sophie Schoppe.",
-        intro: "Ein Portfolio fuer Softwareprojekte, Research-Interessen, Lehrprofil, Nachweise und ausgewaehlte Texte zu AI, digitaler Bildung, Cybersecurity und Wirtschaftsinformatik.",
-        primary: "Projekte ansehen",
-        secondary: "Nachweise ansehen",
-        luminoviaBadge: "Business-Marke",
-        luminoviaTitle: "Training, Consulting und Firmenanfragen laufen ueber Luminovia.",
-        luminoviaCopy: "Luminovia Training & Consulting ist der Business-Kanal fuer professionelle Trainings, Consulting, Projektbegleitung und Unternehmensanfragen. Diese persoenliche Website bleibt auf Portfolio, CV und oeffentliche Arbeit von Carina fokussiert.",
-        luminoviaCta: "Luminovia oeffnen",
-        luminoviaEmail: "Luminovia kontaktieren",
-        profileTitle: "Portfolio-Fokus",
-        profileItems: [
-            ["Projekte", "Software, Automatisierung, Research-Tooling, Kotlin-Plugins und ausgewaehlte technische Arbeiten."],
-            ["Nachweise", "Akademische Abschluesse, AI-Zertifikate, Cybersecurity-Lernpfade und abgeschlossenes TAE40122."],
-            ["Texte", "Artikel und Reflexionen zu AI, Projektarbeit, digitaler Bildung und verantwortungsvoller Automatisierung."],
+        role: "Dozentin für IT, AI & Wirtschaftsinformatik",
+        intro: "Persönliches Portfolio für Softwareprojekte, Research-Interessen, Lehrprofil, Nachweise und ausgewählte Texte zu AI, digitaler Bildung, Cybersecurity und Wirtschaftsinformatik.",
+        projects: "Projekte ansehen",
+        credentials: "Nachweise ansehen",
+        luminovia: "Firmentraining & Consulting -> Luminovia",
+        location: "Sitz in Brisbane, Australien",
+        proof: [
+            ["Dozentin für IT, AI & Wirtschaftsinformatik", "Lehrprofil"],
+            ["Research & Lehre in AI, Cybersecurity & digitaler Bildung", "Akademischer Kontext"],
+            ["Softwareprojekte mit praktischem Fokus", "Projektarbeit"],
+            ["Verbindung von Theorie und Praxis", "Transfer"],
         ],
-        cvBadge: "CV-Update",
-        cvTitle: "Certificate IV in Training and Assessment im Juni 2026 abgeschlossen.",
-        cvCopy: "Die australische TAE40122-Qualifikation ist nun Teil des professionellen Profils neben B.Sc., M.Sc., MBA, AI-Zertifikaten und Lehrerfahrung.",
-        latest: "Aktuelle Stationen",
+        connect: "Was ich verbinde",
+        connectCards: [
+            ["AI & Daten", "Von Konzepten zu verantwortungsvoller Nutzung", "brain"],
+            ["Cybersecurity", "Security Mindset, nicht nur Tools", "shield"],
+            ["Digitale Bildung", "Lerndesign für Wirkung und Engagement", "mortar"],
+            ["Software Engineering", "Nützliche, wartbare Systeme bauen", "code"],
+            ["Wirtschaftsinformatik", "Informationen für bessere Entscheidungen", "chart"],
+            ["People & Leadership", "Lernende und Teams befähigen", "people"],
+        ],
+        featuredProjects: "Ausgewählte Projekte",
+        viewProjects: "Alle Projekte",
+        credentialsTitle: "Nachweise & Stationen",
+        viewAll: "Alle ansehen",
+        writing: "Texte",
+        viewPosts: "Alle Beiträge",
+        luminoviaTitle: "Firmentraining und Consulting laufen über Luminovia.",
+        luminoviaCopy: "Kommerzielle Trainings, Consulting, Workshops und Unternehmensanfragen gehören zu Luminovia. Diese Seite bleibt auf Carinas Portfolio, CV, Texte und öffentliche Arbeit fokussiert.",
+        luminoviaCta: "Zu Luminovia",
+        contactTitle: "Kontakt",
+        contactCopy: "Für Zusammenarbeit, Vorträge oder profilbezogene Anfragen.",
+        send: "Nachricht senden",
+        linkedin: "Auf LinkedIn verbinden",
     },
 };
 
+const iconPaths = {
+    brain: "M9 5a3 3 0 0 0-3 3v1a3 3 0 0 0 0 6v1a3 3 0 0 0 3 3m6-14a3 3 0 0 1 3 3v1a3 3 0 0 1 0 6v1a3 3 0 0 1-3 3M9 5v14m6-14v14M6 9h12M6 15h12",
+    shield: "M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z",
+    mortar: "M3 8l9-4 9 4-9 4-9-4zm4 3v4c3 2 7 2 10 0v-4",
+    code: "M8 8l-4 4 4 4m8-8l4 4-4 4M14 5l-4 14",
+    chart: "M4 19h16M7 16V9m5 7V5m5 11v-6",
+    people: "M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm8 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20c1-4 9-4 10 0m-2 0c1-4 9-4 10 0",
+};
+
+function LineIcon({name}) {
+    return (
+        <svg viewBox="0 0 24 24" className="h-9 w-9" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d={iconPaths[name]}/>
+        </svg>
+    );
+}
+
+function Panel({children, className = ""}) {
+    return <section className={`portfolio-panel ${className}`}>{children}</section>;
+}
+
 export default function HomePage() {
     const {language} = useLanguage();
-    const {softwareProjects, lifeMilestones} = useSiteContent();
+    const {softwareProjects, credentials, blogPosts, timeline} = useSiteContent();
     const c = copy[language];
-    const latestMilestones = [...lifeMilestones].slice(-3).reverse();
+    const latestPosts = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
+    const milestoneRows = timeline.slice(-4).reverse();
 
     return (
-        <main className="px-4 pb-24 pt-14 sm:px-6 lg:px-8">
-            <section className="mx-auto grid max-w-7xl gap-10 py-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:py-16">
-                <div>
-                    <Badge tone="cyan">{c.badge}</Badge>
-                    <h1 className="mt-6 text-5xl font-black tracking-[-0.05em] text-white sm:text-6xl lg:text-7xl">{c.title}</h1>
-                    <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">{c.intro}</p>
-                    <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                        <Button to="/projects">{c.primary}</Button>
-                        <Button to="/credentials" variant="secondary">{c.secondary}</Button>
-                    </div>
-                    <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                        {c.profileItems.map(([title, text]) => (
-                            <Card key={title}>
-                                <h2 className="text-xl font-black text-white">{title}</h2>
-                                <p className="mt-3 text-sm leading-7 text-slate-300">{text}</p>
-                            </Card>
-                        ))}
+        <main className="portfolio-home">
+            <section className="portfolio-hero">
+                <div className="portfolio-hero-copy">
+                    <h1>Carina Sophie Schoppe.</h1>
+                    <p className="portfolio-gradient-text">{c.role}</p>
+                    <p className="portfolio-hero-intro">{c.intro}</p>
+                    <div className="portfolio-actions">
+                        <Button to="/projects">{c.projects}</Button>
+                        <Button to="/credentials" variant="secondary">{c.credentials}</Button>
+                        <Button href={PROFILE.luminovia} variant="secondary">{c.luminovia}</Button>
                     </div>
                 </div>
-                <div className="grid gap-5">
-                    <Photo src={IMAGES.hero} alt="Portrait of Carina Sophie Schoppe" className="aspect-[4/5] rounded-[2rem] lg:aspect-[5/4]" imgClass="object-[50%_20%]" fetchPriority="high"/>
-                    <Card className="border-sky-100/18 bg-gradient-to-br from-white/[0.10] via-sky-300/[0.055] to-blue-400/[0.06]">
-                        <Badge tone="amber">{c.cvBadge}</Badge>
-                        <h2 className="mt-4 text-2xl font-black text-white">{c.cvTitle}</h2>
-                        <p className="mt-3 text-sm leading-7 text-slate-300">{c.cvCopy}</p>
-                    </Card>
+                <div className="portfolio-portrait-wrap" aria-label={c.location}>
+                    <div className="portfolio-skyline" aria-hidden="true"/>
+                    <Photo src={IMAGES.outdoor} alt="Portrait of Carina Sophie Schoppe" className="portfolio-portrait" imgClass="object-[50%_18%]" fetchPriority="high"/>
+                    <div className="portfolio-location">{c.location}</div>
                 </div>
             </section>
 
-            <section className="mx-auto max-w-7xl py-8">
-                <div className="grid gap-6 rounded-[2.25rem] border border-white/12 bg-white/[0.065] p-5 shadow-[0_24px_90px_rgba(0,0,0,.22)] backdrop-blur-2xl lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:p-7">
-                    <div className="rounded-[1.6rem] bg-white p-5">
-                        <img src={IMAGES.luminoviaLogoFull} alt="Luminovia Training & Consulting logo" className="mx-auto h-auto max-h-56 w-full object-contain"/>
-                    </div>
-                    <div>
-                        <Badge tone="emerald">{c.luminoviaBadge}</Badge>
-                        <h2 className="mt-5 max-w-3xl text-3xl font-black tracking-[-0.03em] text-white sm:text-4xl">{c.luminoviaTitle}</h2>
-                        <p className="mt-5 text-base leading-8 text-slate-300">{c.luminoviaCopy}</p>
-                        <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                            <Button href={PROFILE.luminovia}>{c.luminoviaCta}</Button>
-                            <Button href={`mailto:${PROFILE.luminoviaEmail}`} variant="secondary">{c.luminoviaEmail}</Button>
+            <section className="portfolio-proof-strip" aria-label="Portfolio proof">
+                {c.proof.map(([title, label], index) => (
+                    <div key={title} className="portfolio-proof-item">
+                        <LineIcon name={["mortar", "brain", "code", "chart"][index]}/>
+                        <div>
+                            <strong>{title}</strong>
+                            <span>{label}</span>
                         </div>
                     </div>
-                </div>
+                ))}
             </section>
 
-            <section className="mx-auto grid max-w-7xl gap-5 py-10 lg:grid-cols-[0.75fr_1.25fr]">
-                <div>
-                    <Badge tone="violet">{c.latest}</Badge>
-                    <h2 className="mt-5 text-3xl font-black tracking-[-0.03em] text-white sm:text-4xl">{c.profileTitle}</h2>
-                </div>
-                <div className="grid gap-4 md:grid-cols-3">
-                    {latestMilestones.map((item) => (
-                        <Card key={`${item.year}-${item.title}`}>
-                            <div className="text-sm font-black text-sky-100">{item.year}</div>
-                            <h3 className="mt-3 text-xl font-black text-white">{item.title}</h3>
-                            <p className="mt-3 text-sm leading-7 text-slate-300">{item.copy}</p>
-                        </Card>
+            <section className="portfolio-connect">
+                <h2>{c.connect}</h2>
+                <div className="portfolio-connect-grid">
+                    {c.connectCards.map(([title, text, icon], index) => (
+                        <article key={title} className="portfolio-mini-card" data-accent-index={index}>
+                            <LineIcon name={icon}/>
+                            <div>
+                                <h3>{title}</h3>
+                                <p>{text}</p>
+                            </div>
+                        </article>
                     ))}
                 </div>
             </section>
 
-            <section className="mx-auto max-w-7xl py-8">
-                <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-                    <h2 className="text-3xl font-black tracking-[-0.03em] text-white">Projects</h2>
-                    <Button to="/projects" variant="secondary">Open portfolio</Button>
-                </div>
-                <div className="grid gap-4 md:grid-cols-3">
-                    {softwareProjects.slice(0, 3).map((project) => (
-                        <Card key={project.name}>
-                            <div className="text-sm font-black text-sky-100">{project.type}</div>
-                            <h3 className="mt-3 text-xl font-black text-white">{project.name}</h3>
-                            <p className="mt-3 text-sm leading-7 text-slate-300">{project.description}</p>
-                        </Card>
-                    ))}
-                </div>
+            <section className="portfolio-dashboard">
+                <Panel className="portfolio-projects-panel">
+                    <div className="portfolio-panel-head">
+                        <h2>{c.featuredProjects}</h2>
+                        <Link to="/projects">{c.viewProjects} {"->"}</Link>
+                    </div>
+                    <div className="portfolio-project-grid">
+                        {softwareProjects.slice(0, 3).map((project) => (
+                            <a key={project.name} href={project.href} target="_blank" rel="noreferrer" className="portfolio-project-card">
+                                <div className="portfolio-project-visual" aria-hidden="true">
+                                    <LineIcon name={project.stack.includes("Kotlin") ? "code" : project.stack.includes("AI") ? "brain" : "chart"}/>
+                                </div>
+                                <h3>{project.name}</h3>
+                                <p>{project.description}</p>
+                                <div>
+                                    {project.stack.slice(0, 3).map((item) => <span key={item}>{item}</span>)}
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                </Panel>
+
+                <Panel>
+                    <div className="portfolio-panel-head">
+                        <h2>{c.credentialsTitle}</h2>
+                        <Link to="/credentials">{c.viewAll} {"->"}</Link>
+                    </div>
+                    <div className="portfolio-timeline">
+                        {milestoneRows.map((item, index) => (
+                            <div key={`${item.year}-${item.title}`} className="portfolio-timeline-row">
+                                <span data-index={index}>{item.year}</span>
+                                <div>
+                                    <h3>{item.title}</h3>
+                                    <p>{item.copy}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="portfolio-credential-chips">
+                        {credentials.slice(0, 4).map((item) => <span key={item.title}>{item.title}</span>)}
+                    </div>
+                </Panel>
+
+                <Panel>
+                    <div className="portfolio-panel-head">
+                        <h2>{c.writing}</h2>
+                        <Link to="/blog">{c.viewPosts} {"->"}</Link>
+                    </div>
+                    <div className="portfolio-writing-list">
+                        {latestPosts.map((post, index) => (
+                            <Link key={post.slug} to={`/blog/${post.slug}`} className="portfolio-writing-card" data-accent-index={index}>
+                                <div className="portfolio-writing-visual" aria-hidden="true"><LineIcon name={index === 0 ? "brain" : index === 1 ? "shield" : "chart"}/></div>
+                                <div>
+                                    <h3>{post.title}</h3>
+                                    <p>{post.excerpt}</p>
+                                    <span>{post.date} · {post.category}</span>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </Panel>
+            </section>
+
+            <section className="portfolio-bottom-grid">
+                <Panel className="portfolio-luminovia-panel">
+                    <div className="portfolio-external-arrow" aria-hidden="true">↗</div>
+                    <div>
+                        <h2>{c.luminoviaTitle}</h2>
+                        <p>{c.luminoviaCopy}</p>
+                    </div>
+                    <Button href={PROFILE.luminovia}>{c.luminoviaCta}</Button>
+                </Panel>
+
+                <Panel className="portfolio-contact-panel">
+                    <h2>{c.contactTitle}</h2>
+                    <div className="portfolio-contact-links">
+                        <a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a>
+                        <span>{PROFILE.location}</span>
+                        <a href={PROFILE.linkedin} target="_blank" rel="noreferrer">{c.linkedin}</a>
+                    </div>
+                    <div>
+                        <p>{c.contactCopy}</p>
+                        <Button to="/contact" variant="secondary">{c.send}</Button>
+                    </div>
+                </Panel>
             </section>
         </main>
     );

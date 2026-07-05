@@ -30,7 +30,6 @@ export const IMAGES = {
 };
 
 export const navItems = [
-    {to: "/", key: "home"},
     {to: "/projects", key: "software"},
     {to: "/skills", key: "skills"},
     {to: "/credentials", key: "credentials"},

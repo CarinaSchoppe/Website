@@ -20,15 +20,15 @@ const copy = {
     },
     de: {
         badge: "Business-Inhalte umgezogen",
-        title: "Training, Consulting, Preise und Angebote laufen ueber Luminovia.",
-        intro: "carinaschoppe.com ist jetzt ein persoenliches Portfolio. Business-Services, Firmenanfragen, Trainingsformate, Consulting und Preisinfos gehoeren zu Luminovia Training & Consulting.",
-        primary: "Luminovia oeffnen",
+        title: "Training, Consulting, Preise und Angebote laufen über Luminovia.",
+        intro: "carinaschoppe.com ist jetzt ein persönliches Portfolio. Business-Services, Firmenanfragen, Trainingsformate, Consulting und Preisinfos gehören zu Luminovia Training & Consulting.",
+        primary: "Luminovia öffnen",
         secondary: "Luminovia kontaktieren",
-        portfolio: "Zurueck zum Portfolio",
+        portfolio: "Zurück zum Portfolio",
         cards: [
             ["Training", "AI, IT, Cybersecurity, Software, Business Technology und digitale Bildungsformate."],
             ["Consulting", "Projektbegleitung, AI Use Cases, Learning Architecture, Digital Enablement und Beratung."],
-            ["Firmenkontakt", "Nutzen Sie info@luminovia.org fuer direkte Business-Anfragen."],
+            ["Firmenkontakt", "Nutzen Sie info@luminovia.org für direkte Business-Anfragen."],
         ],
     },
 };
