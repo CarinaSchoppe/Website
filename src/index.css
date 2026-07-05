@@ -2675,17 +2675,35 @@ html[data-theme="day"] .theme-root .ambient-veil {
     linear-gradient(180deg, #f7fbff 0%, #edf6ff 50%, #fff7ed 100%);
 }
 /* Final cascade lock for the compact portfolio homepage. */
+.portfolio-hero::after,
+.portfolio-skyline::before {
+    display: none;
+}
+
+.portfolio-skyline {
+    background: radial-gradient(circle at 70% 30%, rgba(34, 211, 238, .2), transparent 34%),
+    radial-gradient(circle at 88% 44%, rgba(244, 114, 182, .18), transparent 34%),
+    linear-gradient(180deg, transparent 0 52%, rgba(6, 13, 29, .72) 88%, rgba(3, 6, 17, .9) 100%);
+}
+
 .portfolio-portrait {
     right: 7%;
-    bottom: 0;
-    width: min(500px, 60%);
-    height: 84%;
+    top: 50%;
+    bottom: auto;
+    width: min(440px, 54%);
+    height: auto;
+    aspect-ratio: 1;
     overflow: hidden;
     border: 1px solid rgba(148, 163, 184, .22);
-    border-radius: 1.15rem 1.15rem 0 0;
+    border-radius: 999px;
     background: #071225;
     box-shadow: 0 34px 120px rgba(0, 0, 0, .42);
-    mask-image: linear-gradient(to bottom, black 84%, transparent 100%);
+    mask-image: none;
+    transform: translateY(-42%);
+}
+
+.portfolio-portrait img {
+    object-position: 50% 30%;
 }
 
 .portfolio-portrait::after {
@@ -2693,8 +2711,7 @@ html[data-theme="day"] .theme-root .ambient-veil {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: linear-gradient(to bottom, transparent 56%, rgba(3, 6, 17, .7) 100%),
-    linear-gradient(90deg, rgba(3, 6, 17, .18), transparent 22%, transparent 74%, rgba(3, 6, 17, .2));
+    background: linear-gradient(to bottom, transparent 58%, rgba(3, 6, 17, .5) 100%);
 }
 
 .portfolio-location {
@@ -2743,15 +2760,13 @@ html[data-theme="day"] .portfolio-hero-intro {
 }
 
 html[data-theme="day"] .portfolio-skyline {
-    background: radial-gradient(circle at 74% 18%, rgba(14, 165, 233, .23), transparent 34%),
-    radial-gradient(circle at 88% 43%, rgba(236, 72, 153, .2), transparent 36%),
-    linear-gradient(180deg, rgba(248, 252, 255, .05) 0 42%, rgba(219, 234, 254, .62) 82%, rgba(203, 213, 225, .72) 100%);
+    background: radial-gradient(circle at 70% 30%, rgba(14, 165, 233, .18), transparent 34%),
+    radial-gradient(circle at 88% 44%, rgba(236, 72, 153, .14), transparent 34%),
+    linear-gradient(180deg, rgba(248, 252, 255, .06) 0 52%, rgba(219, 234, 254, .5) 88%, rgba(203, 213, 225, .58) 100%);
 }
 
 html[data-theme="day"] .portfolio-skyline::before {
-    background: linear-gradient(to top, rgba(30, 41, 59, .54), rgba(30, 41, 59, .04)),
-    repeating-linear-gradient(90deg, rgba(14, 116, 144, .28) 0 2px, transparent 2px 24px);
-    opacity: .42;
+    display: none;
 }
 
 html[data-theme="day"] .portfolio-portrait {
@@ -2761,8 +2776,7 @@ html[data-theme="day"] .portfolio-portrait {
 }
 
 html[data-theme="day"] .portfolio-portrait::after {
-    background: linear-gradient(to bottom, transparent 54%, rgba(15, 23, 42, .62) 100%),
-    linear-gradient(90deg, rgba(248, 252, 255, .16), transparent 24%, transparent 74%, rgba(15, 23, 42, .14));
+    background: linear-gradient(to bottom, transparent 58%, rgba(15, 23, 42, .42) 100%);
 }
 
 html[data-theme="day"] .portfolio-location {
@@ -2830,23 +2844,43 @@ html[data-theme="day"] footer .bg-white {
     box-shadow: inset 0 0 0 1px rgba(15, 23, 42, .08);
 }
 
+.portfolio-timeline-row {
+    grid-template-columns: 5.8rem minmax(0, 1fr);
+    gap: 1.2rem;
+}
+
+.portfolio-timeline-row > span {
+    white-space: nowrap;
+}
+
 @media (max-width: 1024px) {
     .portfolio-portrait {
         right: 50%;
-        width: min(390px, 78%);
-        height: 88%;
-        transform: translateX(50%);
+        top: 50%;
+        width: min(360px, 72%);
+        height: auto;
+        transform: translate(50%, -44%);
     }
 }
 
 @media (max-width: 720px) {
+    .portfolio-portrait-wrap {
+        min-height: 330px;
+    }
+
     .portfolio-portrait {
-        width: min(330px, 88%);
-        height: 82%;
-        border-radius: .95rem .95rem 0 0;
+        width: min(285px, 82%);
+        border-radius: 999px;
+        transform: translate(50%, -45%);
+    }
+
+    .portfolio-portrait img {
+        object-position: 50% 28%;
     }
 
     .portfolio-location {
         max-width: min(220px, calc(100% - 2rem));
+        left: 1rem;
+        bottom: 1rem;
     }
 }
