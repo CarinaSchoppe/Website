@@ -2675,10 +2675,36 @@ html[data-theme="day"] .theme-root .ambient-veil {
     linear-gradient(180deg, #f7fbff 0%, #edf6ff 50%, #fff7ed 100%);
 }
 /* Final cascade lock for the compact portfolio homepage. */
-.portfolio-hero::after,
 .portfolio-skyline::before,
 .portfolio-skyline::after {
     display: none;
+}
+
+.portfolio-header {
+    position: sticky !important;
+    top: 0;
+    z-index: 90;
+}
+
+.portfolio-hero {
+    min-height: clamp(450px, 43vw, 540px);
+    padding-top: 2.5rem;
+}
+
+.portfolio-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0 -2rem;
+    z-index: -1;
+    display: block;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(148, 163, 184, .1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, .08) 1px, transparent 1px),
+        radial-gradient(circle at 73% 40%, rgba(34, 211, 238, .13), transparent 38%);
+    background-size: 76px 76px, 76px 76px, auto;
+    mask-image: linear-gradient(90deg, transparent 0%, black 42%, black 100%);
+    opacity: .34;
 }
 
 .portfolio-skyline {
@@ -2691,7 +2717,7 @@ html[data-theme="day"] .theme-root .ambient-veil {
     right: 8%;
     top: 50%;
     bottom: auto;
-    width: min(390px, 48%);
+    width: min(360px, 44%);
     height: auto;
     aspect-ratio: 1;
     overflow: hidden;
@@ -2700,11 +2726,11 @@ html[data-theme="day"] .theme-root .ambient-veil {
     background: #071225;
     box-shadow: 0 34px 120px rgba(0, 0, 0, .42);
     mask-image: none;
-    transform: translateY(-42%);
+    transform: translateY(-44%);
 }
 
 .portfolio-portrait img {
-    object-position: 50% 24%;
+    object-position: 50% 20%;
 }
 
 .portfolio-portrait::after {
@@ -2717,6 +2743,8 @@ html[data-theme="day"] .theme-root .ambient-veil {
 
 .portfolio-location {
     z-index: 2;
+    right: 2.25rem;
+    bottom: 2rem;
     padding: .7rem .8rem;
     border: 1px solid rgba(255, 255, 255, .12);
     border-radius: .85rem;
@@ -2758,6 +2786,14 @@ html[data-theme="day"] .portfolio-hero-copy h1 {
 
 html[data-theme="day"] .portfolio-hero-intro {
     color: #334155;
+}
+
+html[data-theme="day"] .portfolio-hero::after {
+    background-image:
+        linear-gradient(rgba(14, 116, 144, .09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14, 116, 144, .075) 1px, transparent 1px),
+        radial-gradient(circle at 73% 40%, rgba(14, 165, 233, .14), transparent 38%);
+    opacity: .24;
 }
 
 html[data-theme="day"] .portfolio-skyline {
@@ -2860,6 +2896,7 @@ html[data-theme="day"] footer .bg-white {
 
 .portfolio-panel {
     min-height: 0;
+    height: auto;
 }
 
 .portfolio-panel-head {
@@ -2880,11 +2917,61 @@ html[data-theme="day"] footer .bg-white {
     hyphens: manual;
 }
 
+.portfolio-project-card,
+.portfolio-writing-card {
+    height: auto;
+}
+
+.portfolio-project-card p,
+.portfolio-writing-card p {
+    overflow-wrap: break-word;
+}
+
+.portfolio-credential-chips {
+    align-content: start;
+}
+
+.portfolio-contact-panel {
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    align-items: center;
+    gap: 1rem 1.5rem;
+}
+
+.portfolio-contact-panel h2 {
+    grid-column: 1;
+}
+
+.portfolio-contact-panel > div:last-child {
+    grid-column: 1;
+}
+
+.portfolio-contact-links {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    justify-self: start;
+}
+
+.blog-filter-track {
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+}
+
+.blog-filter-track > button {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+}
+
 @media (max-width: 1024px) {
+    .portfolio-hero {
+        min-height: 0;
+        padding-top: 1.75rem;
+    }
+
     .portfolio-portrait {
         right: 50%;
         top: 50%;
-        width: min(330px, 68%);
+        width: min(300px, 64%);
         height: auto;
         transform: translate(50%, -44%);
     }
@@ -2895,24 +2982,67 @@ html[data-theme="day"] footer .bg-white {
 }
 
 @media (max-width: 720px) {
+    .portfolio-home {
+        padding-inline: .75rem;
+        padding-bottom: 3.5rem;
+    }
+
+    .portfolio-hero {
+        gap: 1.35rem;
+        padding-top: 1.2rem;
+        overflow: hidden;
+    }
+
+    .portfolio-hero::after {
+        background-size: 54px 54px, 54px 54px, auto;
+        mask-image: linear-gradient(180deg, black, transparent 92%);
+        opacity: .24;
+    }
+
+    .portfolio-hero-copy h1 {
+        font-size: clamp(2.85rem, 16vw, 4rem) !important;
+        line-height: .93;
+    }
+
+    .portfolio-gradient-text {
+        font-size: clamp(1.28rem, 7vw, 1.72rem);
+        line-height: 1.18;
+    }
+
+    .portfolio-hero-intro {
+        max-width: 34rem;
+        font-size: .98rem;
+        line-height: 1.65;
+    }
+
+    .portfolio-actions a,
+    .portfolio-actions button {
+        justify-content: center;
+        min-height: 2.75rem;
+        padding-inline: 1rem;
+        font-size: .82rem;
+    }
+
     .portfolio-portrait-wrap {
-        min-height: 300px;
+        min-height: 280px;
     }
 
     .portfolio-portrait {
-        width: min(235px, 68%);
+        width: min(238px, 66%);
         border-radius: 999px;
-        transform: translate(50%, -48%);
+        transform: translate(50%, -49%);
     }
 
     .portfolio-portrait img {
-        object-position: 50% 23%;
+        object-position: 50% 19%;
     }
 
     .portfolio-location {
         max-width: min(220px, calc(100% - 2rem));
         left: 1rem;
-        bottom: 1rem;
+        bottom: .85rem;
+        padding: .62rem .75rem;
+        font-size: .92rem;
     }
 
     .portfolio-dashboard,
@@ -2928,8 +3058,14 @@ html[data-theme="day"] footer .bg-white {
         overflow: visible;
     }
 
+    .portfolio-dashboard > .portfolio-panel,
+    .portfolio-bottom-grid > .portfolio-panel {
+        align-self: start;
+    }
+
     .portfolio-panel-head {
         gap: .75rem;
+        align-items: flex-start;
     }
 
     .portfolio-panel-head h2 {
@@ -2939,13 +3075,33 @@ html[data-theme="day"] footer .bg-white {
 
     .portfolio-panel-head a {
         font-size: .78rem;
-        max-width: 8.5rem;
+        max-width: 7.4rem;
         text-align: right;
+        line-height: 1.2;
+        white-space: normal;
     }
 
     .portfolio-project-card,
     .portfolio-writing-card {
         min-height: 0;
+        overflow: visible;
+    }
+
+    .portfolio-project-visual {
+        min-height: 88px;
+    }
+
+    .portfolio-project-card {
+        padding-bottom: 1rem;
+    }
+
+    .portfolio-project-card div:last-child {
+        margin-top: .75rem;
+    }
+
+    .portfolio-credential-chips {
+        margin-top: 1rem;
+        max-height: none;
     }
 
     .portfolio-writing-card > div:last-child {
@@ -2971,5 +3127,36 @@ html[data-theme="day"] footer .bg-white {
     .portfolio-timeline-row {
         grid-template-columns: 5.7rem minmax(0, 1fr);
         gap: .8rem;
+    }
+
+    .portfolio-contact-panel {
+        grid-template-columns: 1fr;
+        gap: .95rem;
+    }
+
+    .portfolio-contact-panel h2,
+    .portfolio-contact-panel > div:last-child,
+    .portfolio-contact-links {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .portfolio-contact-links {
+        gap: .45rem;
+        order: 3;
+    }
+
+    .portfolio-contact-panel > div:last-child {
+        order: 2;
+    }
+
+    .portfolio-contact-panel h2 {
+        order: 1;
+    }
+
+    .blog-filter-track {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        padding-bottom: .8rem;
     }
 }

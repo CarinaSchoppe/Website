@@ -51,7 +51,8 @@ export default function BusinessRedirectPage() {
                     </div>
                 </div>
                 <Card className="bg-white p-6">
-                    <img src={IMAGES.luminoviaLogoFull} alt="Luminovia Training & Consulting logo" className="mx-auto h-auto max-h-72 w-full object-contain"/>
+                    <img src={IMAGES.luminoviaLogoMark} alt="Luminovia Training & Consulting logo" className="mx-auto h-auto max-h-52 w-full object-contain sm:hidden"/>
+                    <img src={IMAGES.luminoviaLogoFull} alt="Luminovia Training & Consulting logo" className="mx-auto hidden h-auto max-h-72 w-full object-contain sm:block"/>
                 </Card>
             </div>
             <div className="mx-auto mt-10 grid max-w-7xl gap-4 md:grid-cols-3">
