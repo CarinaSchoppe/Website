@@ -18,7 +18,7 @@ const prerenderRoutes = [
     ["/portfolio", "Portfolio | Carina Sophie Schoppe", "Portfolio overview for public projects, technical work and professional profile information."],
     ["/skills", "Skills | Carina Sophie Schoppe", "Personal skill overview across AI, software development, cybersecurity, business computer science, research and digital education."],
     ["/credentials", "Credentials | Carina Sophie Schoppe", "Credentials and professional background including B.Sc., M.Sc., MBA, TAE40122 completed in June 2026, AI certificates and cybersecurity learning paths."],
-    ["/my-way", "My Way | Carina Sophie Schoppe", "Professional timeline through business computer science, software practice, AI, research, TAE40122 and Brisbane."],
+    ["/my-way", "Story | Carina Sophie Schoppe", "Professional timeline through business computer science, software practice, AI, research, TAE40122 and Brisbane."],
     ["/about", "About | Carina Sophie Schoppe", "Personal profile of Carina Sophie Schoppe between software, research, digital education, AI, cybersecurity and entrepreneurship."],
     ["/blog", "Blog | Carina Sophie Schoppe", "Articles on AI, governance, digital education, project work, cybersecurity, automation risk and modern work."],
     ["/blog/agentic-ai-from-demo-to-delegation", "Agentic AI: from demos to delegated work | Carina Sophie Schoppe Blog", "An article on agentic AI, delegated workflows, human review and practical organisational design."],

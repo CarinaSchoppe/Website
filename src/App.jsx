@@ -102,7 +102,7 @@ function DeferredAmbientIntelligence() {
         /* v8 ignore next 5 -- production-only idle deferral is disabled in test mode */
         const schedule = globalThis.requestIdleCallback || ((callback) => globalThis.setTimeout(callback, 1400));
         const cancel = globalThis.cancelIdleCallback || globalThis.clearTimeout;
-        const handle = schedule(() => setReady(true), {timeout: 2200});
+        const handle = schedule(() => setReady(true), {timeout: 4500});
 
         return () => cancel(handle);
     }, [ready]);
@@ -135,7 +135,7 @@ function DeferredAnalyticsConsent() {
         /* v8 ignore next 5 -- production-only idle deferral is disabled in test mode */
         const schedule = globalThis.requestIdleCallback || ((callback) => globalThis.setTimeout(callback, 900));
         const cancel = globalThis.cancelIdleCallback || globalThis.clearTimeout;
-        const handle = schedule(() => setReady(true), {timeout: 1800});
+        const handle = schedule(() => setReady(true), {timeout: 3600});
 
         return () => cancel(handle);
     }, [ready]);

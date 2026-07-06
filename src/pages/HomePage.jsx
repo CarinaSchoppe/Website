@@ -123,7 +123,7 @@ export default function HomePage() {
                 </div>
                 <div className="portfolio-portrait-wrap" aria-label={c.location}>
                     <div className="portfolio-skyline" aria-hidden="true"/>
-                    <Photo src={IMAGES.outdoor} alt="Portrait of Carina Sophie Schoppe" className="portfolio-portrait" imgClass="object-[50%_18%]" fetchPriority="high"/>
+                    <Photo src={IMAGES.outdoor} alt="Portrait of Carina Sophie Schoppe" className="portfolio-portrait" imgClass="object-[50%_18%]" fetchPriority="high" sizes="(min-width: 1280px) 400px, (min-width: 1024px) 34vw, min(238px, 66vw)"/>
                     <div className="portfolio-location">{c.location}</div>
                 </div>
             </section>

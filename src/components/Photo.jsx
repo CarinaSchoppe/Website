@@ -12,12 +12,19 @@ export default function Photo({
                                   fetchPriority,
                                   loading,
                                   sizes = "(min-width: 1024px) 520px, 92vw",
+                                  width = 960,
+                                  height = 960,
                               }) {
     const {t} = useLanguage();
     const [failed, setFailed] = useState(false);
     const fallbackText = fallbackCopy || t.home.photoFallback;
+    const responsiveWidths = src.includes("carina-headshot")
+        ? [240, 320, 480, 640, 960]
+        : src.includes("carina-outdoor")
+            ? [320, 400, 480, 640, 960]
+            : [480, 640, 960];
     const webpSrcSet = src.endsWith(".jpg")
-        ? [480, 640, 960].map((width) => `${src.replace(/\.jpg$/, `-${width}.webp`)} ${width}w`).join(", ")
+        ? responsiveWidths.map((sourceWidth) => `${src.replace(/\.jpg$/, `-${sourceWidth}.webp`)} ${sourceWidth}w`).join(", ")
         : null;
     const priority = fetchPriority || "auto";
     const imageLoading = loading || (priority === "high" ? "eager" : "lazy");
@@ -31,6 +38,8 @@ export default function Photo({
                     <img
                         src={src}
                         alt={alt}
+                        width={width}
+                        height={height}
                         sizes={sizes}
                         loading={imageLoading}
                         fetchPriority={priority}
