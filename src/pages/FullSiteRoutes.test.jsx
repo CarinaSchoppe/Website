@@ -69,8 +69,7 @@ describe("full static site route coverage", () => {
         const [headerNav] = await screen.findAllByRole("navigation");
 
         expect(within(headerNav).queryByRole("link", {name: /^Training$/i})).not.toBeInTheDocument();
-        expect(within(headerNav).queryByRole("link", {name: /^Offers$/i})).not.toBeInTheDocument();
-        expect(within(headerNav).queryByRole("link", {name: /^Pricing$/i})).not.toBeInTheDocument();
+        expect(within(headerNav).queryByRole("link", {name: /^Training$/i})).not.toBeInTheDocument();
         expect(within(headerNav).getByRole("link", {name: /^Projects$/i})).toHaveAttribute("href", "/projects");
         expect(within(headerNav).getByRole("link", {name: /^Skills$/i})).toHaveAttribute("href", "/skills");
         expect(within(headerNav).getByRole("link", {name: /^Credentials$/i})).toHaveAttribute("href", "/credentials");
@@ -84,7 +83,6 @@ describe("full static site route coverage", () => {
         ["/credentials/", /CV, certificates|Nachweise/i],
         ["/my-way/", /professional path through IT|professioneller Weg durch IT/i],
         ["/blog/", /Blog on AI, digital education|Blog zu AI/i],
-        ["/training/", /handled by Luminovia|laufen über Luminovia/i],
     ])("renders trailing-slash route %s", async (route, heading) => {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
         window.history.pushState({}, "Trailing route", route);
@@ -93,6 +91,17 @@ describe("full static site route coverage", () => {
 
         expect(await screen.findByRole("heading", {level: 1, name: heading})).toBeInTheDocument();
         expect(document.title).not.toMatch(/not found|nicht gefunden/i);
+        unmount();
+    });
+
+    it("does not keep removed business routes alive", async () => {
+        window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
+        window.history.pushState({}, "Removed route", "/training/");
+
+        const {unmount} = render(<App/>);
+
+        expect(await screen.findByRole("heading", {level: 1, name: /This page is not part of the portfolio/i})).toBeInTheDocument();
+        expect(document.title).toMatch(/not found/i);
         unmount();
     });
 });

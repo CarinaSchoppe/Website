@@ -4,14 +4,6 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 const siteUrl = "https://carinaschoppe.com";
-const legacyEntryChunkNames = [
-    "assets/index-BHwT2ryf.js",
-    "assets/index-BXzdP6Lr.js",
-    "assets/index-DO8wLb-v.js",
-    "assets/index-DUbK75q5.js",
-    "assets/index-BTxBA96Y.js",
-];
-
 const prerenderRoutes = [
     ["/projects", "Projects | Carina Sophie Schoppe", "Selected software, automation, research tooling, Kotlin, mobile and digital implementation projects by Carina Sophie Schoppe."],
     ["/software", "Projects | Carina Sophie Schoppe", "Selected software, automation, research tooling, Kotlin, mobile and digital implementation projects by Carina Sophie Schoppe."],
@@ -90,30 +82,12 @@ function withRouteStaticPreview(html, path) {
         .replace(/<div class="static-home-shell__cta" aria-hidden="true">[\s\S]*?<\/div>/, `<div class="static-home-shell__cta" aria-hidden="true">\n                    ${ctaHtml}\n                </div>`);
 }
 
-function legacyEntryChunkSource() {
-    return `import("./legacy-entry-loader.js");
-`;
-}
-
 function htmlPerformancePlugin() {
     return {
         name: "html-performance-pass",
         enforce: "post",
         apply: "build",
         generateBundle(_options, bundle) {
-            const entryChunk = Object.values(bundle).find((asset) => asset.type === "chunk" && asset.isEntry);
-            if (entryChunk) {
-                legacyEntryChunkNames.forEach((fileName) => {
-                    if (bundle[fileName]) return;
-
-                    this.emitFile({
-                        type: "asset",
-                        fileName,
-                        source: legacyEntryChunkSource(),
-                    });
-                });
-            }
-
             const htmlAsset = Object.values(bundle).find((asset) => asset.type === "asset" && asset.fileName.endsWith(".html"));
             if (!htmlAsset || typeof htmlAsset.source !== "string") return;
 

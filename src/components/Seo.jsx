@@ -109,17 +109,6 @@ const routeMeta = {
     },
 };
 
-const businessRouteMeta = {
-    en: {
-        title: "Business moved to Luminovia | Carina Sophie Schoppe",
-        description: "Training, consulting, offers and pricing are handled by Luminovia Training & Consulting. carinaschoppe.com is a personal portfolio.",
-    },
-    de: {
-        title: "Business ist zu Luminovia umgezogen | Carina Sophie Schoppe",
-        description: "Training, Consulting, Angebote und Preise laufen über Luminovia Training & Consulting. carinaschoppe.com ist ein persönliches Portfolio.",
-    },
-};
-
 function upsertMeta(selector, attributes) {
     let element = document.head.querySelector(selector);
     if (!element) {
@@ -159,10 +148,6 @@ function removeJsonLd(id) {
 function normalizePathname(pathname) {
     if (pathname === "/") return pathname;
     return pathname.replace(/\/+$/, "");
-}
-
-function isBusinessRoute(pathname) {
-    return /^\/(training|offers|consulting|clients|pricing|corporate|keynotes)(\/|$)/.test(pathname);
 }
 
 function buildPersonSchema() {
@@ -208,9 +193,7 @@ export default function Seo() {
             title: language === "de" ? "Blogbeitrag | Carina Sophie Schoppe" : "Blog Article | Carina Sophie Schoppe",
             description: language === "de" ? "Fachbeitrag von Carina Sophie Schoppe zu AI, Governance, digitaler Bildung oder moderner Arbeit." : "Long-form article by Carina Sophie Schoppe on AI, governance, digital education or modern work.",
         }
-        : isBusinessRoute(normalizedPathname)
-            ? businessRouteMeta[language]
-            : routeMeta[language][normalizedPathname] || {
+        : routeMeta[language][normalizedPathname] || {
                 title: language === "de" ? "Seite nicht gefunden | Carina Sophie Schoppe" : "Page not found | Carina Sophie Schoppe",
                 description: language === "de" ? "Diese Seite wurde nicht gefunden. Nutzen Sie Startseite, Projekte oder Kontakt." : "This page was not found. Use the homepage, projects or contact page.",
             };

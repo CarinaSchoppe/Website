@@ -46,7 +46,7 @@ describe("App routing and language", () => {
         ["/my-way", /professional path through IT/i],
         ["/portfolio", /Software projects, automation/i],
         ["/projects", /Software projects, automation/i],
-        ["/pricing", /handled by Luminovia/i],
+        ["/pricing", /This page is not part of the portfolio/i],
         ["/unknown-page", /This page is not part of the portfolio/i],
     ])("renders %s with English page copy", async (route, heading) => {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
@@ -58,15 +58,13 @@ describe("App routing and language", () => {
         expect(document.documentElement.lang).toBe("en");
     });
 
-    it("routes legacy business pages to Luminovia instead of rendering direct offers", async () => {
+    it("does not render removed legacy business pages", async () => {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
         window.history.pushState({}, "Training", "/training");
 
         render(<App/>);
 
-        expect(await screen.findByRole("heading", {name: /handled by Luminovia/i})).toBeInTheDocument();
-        expect(screen.getByRole("link", {name: /Open Luminovia/i})).toHaveAttribute("href", "https://luminovia.org");
-        expect(screen.queryByRole("heading", {name: /Transparent starting rates/i})).not.toBeInTheDocument();
+        expect(await screen.findByRole("heading", {name: /This page is not part of the portfolio/i})).toBeInTheDocument();
     });
 
     it("renders direct contact links and Luminovia routing without a form", async () => {

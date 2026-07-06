@@ -41,7 +41,6 @@ function lazyWithRecovery(loader) {
     });
 }
 
-const BusinessRedirectPage = lazyWithRecovery(() => import("./pages/BusinessRedirectPage.jsx"));
 const CredentialsPage = lazyWithRecovery(() => import("./pages/CredentialsPage.jsx"));
 const AboutPage = lazyWithRecovery(() => import("./pages/AboutPage.jsx"));
 const ContactPage = lazyWithRecovery(() => import("./pages/ContactPage.jsx"));
@@ -192,20 +191,12 @@ export default function App() {
                     <div className="relative z-10">
                         <Routes>
                             <Route path="/" element={<AppErrorBoundary><HomePage/></AppErrorBoundary>}/>
-                            {pageRoutes("/training", BusinessRedirectPage)}
-                            {pageRoutes("/offers", BusinessRedirectPage)}
-                            {pageRoutes("/training/:slug", BusinessRedirectPage)}
-                            {pageRoutes("/keynotes", BusinessRedirectPage)}
-                            {pageRoutes("/corporate", BusinessRedirectPage)}
                             {pageRoutes("/credentials", CredentialsPage)}
                             {pageRoutes("/portfolio", SoftwarePage)}
-                            {pageRoutes("/consulting", BusinessRedirectPage)}
-                            {pageRoutes("/clients", BusinessRedirectPage)}
                             {pageRoutes("/about", AboutPage)}
                             {pageRoutes("/contact", ContactPage)}
                             {pageRoutes("/my-way", MyWayPage)}
                             {pageRoutes("/skills", SkillsPage)}
-                            {pageRoutes("/pricing", BusinessRedirectPage)}
                             {pageRoutes("/blog", BlogPage)}
                             {pageRoutes("/blog/:slug", BlogPostPage)}
                             {pageRoutes("/projects", SoftwarePage)}
