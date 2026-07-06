@@ -21,7 +21,7 @@ const routes = [
     ["/pricing", /handled by Luminovia/i],
     ["/imprint", /Imprint/i],
     ["/privacy", /Privacy policy/i],
-    ["/unknown-page", /This page is not in the training plan/i],
+    ["/unknown-page", /This page is not part of the portfolio/i],
 ];
 
 describe("static page routes", () => {

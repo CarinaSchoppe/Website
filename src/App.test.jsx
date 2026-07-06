@@ -47,7 +47,7 @@ describe("App routing and language", () => {
         ["/portfolio", /Software projects, automation/i],
         ["/projects", /Software projects, automation/i],
         ["/pricing", /handled by Luminovia/i],
-        ["/unknown-page", /This page is not in the training plan/i],
+        ["/unknown-page", /This page is not part of the portfolio/i],
     ])("renders %s with English page copy", async (route, heading) => {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
         window.history.pushState({}, "Route", route);

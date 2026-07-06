@@ -167,7 +167,7 @@ const deCredentialCopy = {
     "garage33 Founding Certificate": {
         title: "garage33 Gründungszertifikat",
         meta: "Design Thinking | Lean Startup | Business Model Canvas | agile Methoden",
-        detail: "Entrepreneurship-Training mit Prototypvalidierung, USP, Markt, Finanzmodell und Pricing-Arbeit.",
+        detail: "Entrepreneurship-Training mit Prototypvalidierung, USP, Markt, Finanzmodell und Preisgestaltung.",
     },
     "Top Talent Programme #4": {
         title: "Top Talent Programme #4",
@@ -211,7 +211,7 @@ const de = {
     trustStats: [
         {value: "10k+", label: "dokumentierte Unterrichtsstunden"},
         {value: "4.7/5", label: "durchschnittliche Teilnehmerbewertung"},
-        {value: "DE / EN", label: "Training auf Deutsch und Englisch"},
+        {value: "DE / EN", label: "Durchführung auf Deutsch & Englisch"},
         {value: "B.Sc. | M.Sc. | MBA | TAE", label: "Wirtschaftsinformatik, Management und VET-Training"},
     ],
     coreOffers: [
@@ -315,7 +315,7 @@ const de = {
         {title: "Startups & KMU", copy: "Fokussierte Trainings für kleinere Teams, die digitale Skills ohne schwerfällige Enterprise-Formate brauchen.", bullets: ["kompakt", "businessnah", "Tool-Sicherheit", "direkt anwendbar"]},
         {title: "Bootcamps & Coding-Schulen", copy: "Kursdurchführung und Lab-Support für Python, SQL, APIs, Softwareentwicklung und Cybersecurity-Grundlagen.", bullets: ["Hands-on-Labs", "Lernsupport", "Coding-Praxis", "Prüfungsvorbereitung"]},
         {title: "DACH-Bildungsanbieter", copy: "Remote-Dozentin für deutsche, schweizerische und österreichische Anbieter, die professionelle deutschsprachige Lehre brauchen.", bullets: ["deutsche Durchführung", "Remote-Kursraum", "Europa-Zeiten", "Bildungssektor"]},
-        {title: "Internationale Kunden", copy: "Englische oder deutsche Durchführung für verteilte Teams und Bildungspartner für Europa, Australien und die Welt.", bullets: ["EN / DE", "zeitzonenbewusst", "remote-first", "international"]},
+        {title: "Internationale Kunden", copy: "Durchführung auf Deutsch & Englisch für verteilte Teams und Bildungspartner in Europa, Australien und weltweit.", bullets: ["Deutsch & Englisch", "zeitzonenbewusst", "remote-first", "international"]},
     ],
     credentials: enCredentials.map((credential) => ({
         ...credential,

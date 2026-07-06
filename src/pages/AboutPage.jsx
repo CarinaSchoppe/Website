@@ -29,9 +29,9 @@ const copy = {
     },
     de: {
         badge: "Über mich",
-        title: "Ein persoenliches Profil zwischen Software, Research und digitaler Bildung.",
+        title: "Ein persönliches Profil zwischen Software, Research und digitaler Bildung.",
         intro: "Carina Sophie Schoppe arbeitet an der Schnittstelle von Wirtschaftsinformatik, AI, Cybersecurity, Softwareentwicklung, Didaktik und Unternehmertum.",
-        follow: "Business-orientiertes Training und Consulting werden ueber Luminovia vertreten. Diese Seite trennt das bewusst davon: Hintergrund, Interessen, oeffentliche Texte, Projekte und professionelle Entwicklung.",
+        follow: "Business-orientiertes Training und Consulting werden über Luminovia vertreten. Diese Seite trennt das bewusst davon: Hintergrund, Interessen, öffentliche Texte, Projekte und professionelle Entwicklung.",
         linkedin: "LinkedIn ansehen",
         github: "GitHub ansehen",
         timeline: "Werdegang",

@@ -3,7 +3,7 @@ import {PROFILE} from "./profile.js";
 export const trustStats = [
     {value: "10k+", label: "documented teaching hours"},
     {value: "4.7/5", label: "average learner rating"},
-    {value: "DE / EN", label: "German and English delivery"},
+    {value: "DE / EN", label: "Delivery in German and English"},
     {value: "B.Sc. | M.Sc. | MBA | TAE", label: "business IT, management and VET training background"},
 ];
 
@@ -205,7 +205,7 @@ export const audienceCards = [
     {title: "Training providers", copy: "Reliable remote lecturer for structured IT, cybersecurity and business technology courses with adult learners.", bullets: ["multi-week courses", "clear material structure", "learner activation", "German / English delivery"]},
     {title: "Universities & higher education", copy: "Guest lectures, digital education formats and future-skills sessions that combine academic credibility with practical examples.", bullets: ["guest lectures", "AI and digitalisation", "student-friendly explanations", "modern learning design"]},
     {title: "Corporate L&D teams", copy: "Practical upskilling for teams that need to use AI, data, automation or cybersecurity more confidently at work.", bullets: ["team workshops", "hands-on workflows", "risk awareness", "transfer into daily work"]},
-    {title: "Public sector organisations", copy: "Clear digital capability training for teams that need responsible AI use, security awareness and process understanding.", bullets: ["responsible AI", "data awareness", "clear governance", "accessible delivery"]},
+    {title: "Public sector organisations", copy: "Clear digital competence training for teams that need responsible AI use, security awareness and process understanding.", bullets: ["responsible AI", "data awareness", "clear governance", "accessible delivery"]},
     {title: "Startups & SMEs", copy: "Focused training for smaller teams that need practical digital skills without heavy enterprise training overhead.", bullets: ["compact formats", "business relevance", "tool confidence", "direct application"]},
     {title: "Bootcamps & coding schools", copy: "Course delivery and lab support for Python, SQL, APIs, software development and cybersecurity foundations.", bullets: ["hands-on labs", "learner support", "coding practice", "exam readiness"]},
     {title: "German-speaking providers", copy: "Remote lecturer support for German, Swiss and Austrian providers needing professional German delivery from abroad.", bullets: ["DE delivery", "remote classroom", "Europe-friendly planning", "education sector"]},

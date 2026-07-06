@@ -31,6 +31,27 @@ const prerenderRoutes = [
     ["/privacy", "Privacy Policy | Carina Sophie Schoppe", "Privacy policy for the Carina Sophie Schoppe website, including analytics and contact information."],
 ];
 
+const staticRoutePreviews = {
+    "/projects": {
+        badge: "Projektportfolio",
+        title: "Softwareprojekte, Automation und technische Experimente.",
+        intro: "Ausgewählte Projektarbeit von Carina Sophie Schoppe: Python-Automatisierung, AI-gestützte Research-Workflows, Datenbereinigung, Kotlin-Plugins, Mobile Apps, Game-Systeme und digitale Arbeitsabläufe.",
+        ctas: ["GitHub-Profil", "Kompetenzen", "Publikationen"],
+    },
+    "/software": {
+        badge: "Projektportfolio",
+        title: "Softwareprojekte, Automation und technische Experimente.",
+        intro: "Ausgewählte Projektarbeit von Carina Sophie Schoppe: Python-Automatisierung, AI-gestützte Research-Workflows, Datenbereinigung, Kotlin-Plugins, Mobile Apps, Game-Systeme und digitale Arbeitsabläufe.",
+        ctas: ["GitHub-Profil", "Kompetenzen", "Publikationen"],
+    },
+    "/portfolio": {
+        badge: "Portfolio",
+        title: "Profil, Projekte, Nachweise und Texte.",
+        intro: "Persönliches Portfolio von Carina Sophie Schoppe mit öffentlicher Projektarbeit, akademischen Nachweisen, Kompetenzprofil und ausgewählten Texten.",
+        ctas: ["Projekte", "Nachweise", "Blog"],
+    },
+};
+
 function escapeHtmlAttribute(value) {
     return value
         .replaceAll("&", "&amp;")
@@ -45,7 +66,7 @@ function routeFileName(path) {
 
 function withRouteHead(html, [path, title, description]) {
     const canonical = `${siteUrl}${path}`;
-    return html
+    return withRouteStaticPreview(html, path)
         .replace(/<title>.*?<\/title>/, `<title>${escapeHtmlAttribute(title)}</title>`)
         .replace(/<meta content="[^"]*" name="description"\/>/, `<meta content="${escapeHtmlAttribute(description)}" name="description"/>`)
         .replace(/<meta content="[^"]*" property="og:title"\/>/, `<meta content="${escapeHtmlAttribute(title)}" property="og:title"/>`)
@@ -54,6 +75,19 @@ function withRouteHead(html, [path, title, description]) {
         .replace(/<link href="[^"]*" rel="canonical"\/>/, `<link href="${canonical}" rel="canonical"/>`)
         .replace(/<link href="[^"]*" hreflang="en" rel="alternate"\/>/, `<link href="${canonical}" hreflang="en" rel="alternate"/>`)
         .replace(/<link href="[^"]*" hreflang="de" rel="alternate"\/>/, `<link href="${canonical}" hreflang="de" rel="alternate"/>`);
+}
+
+function withRouteStaticPreview(html, path) {
+    const preview = staticRoutePreviews[path];
+    if (!preview) return html;
+
+    const ctaHtml = preview.ctas.map((label) => `<span>${escapeHtmlAttribute(label)}</span>`).join("\n                    ");
+
+    return html
+        .replace(/<span class="static-home-shell__badge">.*?<\/span>/, `<span class="static-home-shell__badge">${escapeHtmlAttribute(preview.badge)}</span>`)
+        .replace(/<h1>.*?<\/h1>/, `<h1>${escapeHtmlAttribute(preview.title)}</h1>`)
+        .replace(/<p class="static-home-shell__intro">.*?<\/p>/, `<p class="static-home-shell__intro">${escapeHtmlAttribute(preview.intro)}</p>`)
+        .replace(/<div class="static-home-shell__cta" aria-hidden="true">[\s\S]*?<\/div>/, `<div class="static-home-shell__cta" aria-hidden="true">\n                    ${ctaHtml}\n                </div>`);
 }
 
 function legacyEntryChunkSource() {
