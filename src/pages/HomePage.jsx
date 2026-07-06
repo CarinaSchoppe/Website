@@ -8,25 +8,25 @@ import Photo from "../components/Photo.jsx";
 const copy = {
     en: {
         role: "IT, AI & Business Information Systems Lecturer",
-        intro: "Personal portfolio for software projects, research interests, teaching background, credentials and selected writing around AI, digital education, cybersecurity and business computer science.",
+        intro: "Portfolio for software projects, academic credentials, teaching practice and selected writing in AI, digital education, cybersecurity and business information systems.",
         projects: "View projects",
         credentials: "View credentials",
-        luminovia: "Company training & consulting -> Luminovia",
+        luminovia: "Corporate training via Luminovia",
         location: "Based in Brisbane, Australia",
         proof: [
             ["Lecturer in IT, AI & Business Information Systems", "Teaching profile"],
-            ["Research & teaching in AI, cybersecurity & digital education", "Academic context"],
-            ["Software builder with a focus on practical impact", "Project work"],
+            ["Research & teaching in AI, cybersecurity & education", "Academic context"],
+            ["Software projects with practical business value", "Project work"],
             ["Bridging theory and practice for real-world outcomes", "Transfer"],
         ],
         connect: "What I connect",
         connectCards: [
-            ["AI & Data", "From concepts to responsible use", "brain"],
-            ["Cybersecurity", "Security mindset, not just tools", "shield"],
-            ["Digital Education", "Learning design for engagement & impact", "mortar"],
-            ["Software Engineering", "Building useful, maintainable systems", "code"],
-            ["Business Information Systems", "Information that drives better decisions", "chart"],
-            ["People & Leadership", "Empowering learners and teams", "people"],
+            ["AI & Data", "Practical use cases, risks and workflows", "brain"],
+            ["Cybersecurity", "Awareness, controls and secure habits", "shield"],
+            ["Digital Education", "Course design for adult learners", "mortar"],
+            ["Software Engineering", "Small systems that solve real tasks", "code"],
+            ["Business IT", "Processes, data and decisions", "chart"],
+            ["People & Leadership", "Clear communication for teams", "people"],
         ],
         featuredProjects: "Featured projects",
         viewProjects: "View all projects",
@@ -44,25 +44,25 @@ const copy = {
     },
     de: {
         role: "Dozentin für IT, AI & Wirtschaftsinformatik",
-        intro: "Persönliches Portfolio für Softwareprojekte, Research-Interessen, Lehrprofil, Nachweise und ausgewählte Texte zu AI, digitaler Bildung, Cybersecurity und Wirtschaftsinformatik.",
+        intro: "Portfolio für Softwareprojekte, akademische Nachweise, Lehrpraxis und ausgewählte Texte zu AI, digitaler Bildung, Cybersecurity und Wirtschaftsinformatik.",
         projects: "Projekte ansehen",
         credentials: "Nachweise ansehen",
-        luminovia: "Firmentraining & Consulting -> Luminovia",
+        luminovia: "Firmentraining über Luminovia",
         location: "Sitz in Brisbane, Australien",
         proof: [
             ["Dozentin für IT, AI & Wirtschaftsinformatik", "Lehrprofil"],
-            ["Research & Lehre in AI, Cybersecurity & digitaler Bildung", "Akademischer Kontext"],
-            ["Softwareprojekte mit praktischem Fokus", "Projektarbeit"],
+            ["Research & Lehre in AI, Cybersecurity & Bildung", "Akademischer Kontext"],
+            ["Softwareprojekte mit Business-Nutzen", "Projektarbeit"],
             ["Verbindung von Theorie und Praxis", "Transfer"],
         ],
         connect: "Was ich verbinde",
         connectCards: [
-            ["AI & Daten", "Von Konzepten zu verantwortungsvoller Nutzung", "brain"],
-            ["Cybersecurity", "Security Mindset, nicht nur Tools", "shield"],
-            ["Digitale Bildung", "Lerndesign für Wirkung und Engagement", "mortar"],
-            ["Software Engineering", "Nützliche, wartbare Systeme bauen", "code"],
-            ["Wirtschaftsinformatik", "Informationen für bessere Entscheidungen", "chart"],
-            ["People & Leadership", "Lernende und Teams befähigen", "people"],
+            ["AI & Daten", "Use Cases, Risiken und Workflows", "brain"],
+            ["Cybersecurity", "Awareness, Kontrollen und sichere Routinen", "shield"],
+            ["Digitale Bildung", "Kursdesign für erwachsene Lernende", "mortar"],
+            ["Software Engineering", "Kleine Systeme für konkrete Aufgaben", "code"],
+            ["Business IT", "Prozesse, Daten und Entscheidungen", "chart"],
+            ["People & Leadership", "Klare Kommunikation für Teams", "people"],
         ],
         featuredProjects: "Ausgewählte Projekte",
         viewProjects: "Alle Projekte",
@@ -116,9 +116,9 @@ export default function HomePage() {
                     <p className="portfolio-gradient-text">{c.role}</p>
                     <p className="portfolio-hero-intro">{c.intro}</p>
                     <div className="portfolio-actions">
-                        <Button to="/projects">{c.projects}</Button>
-                        <Button to="/credentials" variant="secondary">{c.credentials}</Button>
-                        <Button href={PROFILE.luminovia} variant="secondary">{c.luminovia}</Button>
+                        <Button to="/projects" showArrow={false}>{c.projects}</Button>
+                        <Button to="/credentials" variant="secondary" showArrow={false}>{c.credentials}</Button>
+                        <Button href={PROFILE.luminovia} variant="secondary" showArrow={false}>{c.luminovia}</Button>
                     </div>
                 </div>
                 <div className="portfolio-portrait-wrap" aria-label={c.location}>
@@ -159,7 +159,7 @@ export default function HomePage() {
                 <Panel className="portfolio-projects-panel">
                     <div className="portfolio-panel-head">
                         <h2>{c.featuredProjects}</h2>
-                        <Link to="/projects">{c.viewProjects} {"->"}</Link>
+                        <Link to="/projects">{c.viewProjects}</Link>
                     </div>
                     <div className="portfolio-project-grid">
                         {softwareProjects.slice(0, 3).map((project) => (
@@ -180,7 +180,7 @@ export default function HomePage() {
                 <Panel>
                     <div className="portfolio-panel-head">
                         <h2>{c.credentialsTitle}</h2>
-                        <Link to="/credentials">{c.viewAll} {"->"}</Link>
+                        <Link to="/credentials">{c.viewAll}</Link>
                     </div>
                     <div className="portfolio-timeline">
                         {milestoneRows.map((item, index) => (
@@ -201,7 +201,7 @@ export default function HomePage() {
                 <Panel>
                     <div className="portfolio-panel-head">
                         <h2>{c.writing}</h2>
-                        <Link to="/blog">{c.viewPosts} {"->"}</Link>
+                        <Link to="/blog">{c.viewPosts}</Link>
                     </div>
                     <div className="portfolio-writing-list">
                         {latestPosts.map((post, index) => (
@@ -225,7 +225,7 @@ export default function HomePage() {
                         <h2>{c.luminoviaTitle}</h2>
                         <p>{c.luminoviaCopy}</p>
                     </div>
-                    <Button href={PROFILE.luminovia}>{c.luminoviaCta}</Button>
+                    <Button href={PROFILE.luminovia} showArrow={false}>{c.luminoviaCta}</Button>
                 </Panel>
 
                 <Panel className="portfolio-contact-panel">
@@ -237,7 +237,7 @@ export default function HomePage() {
                     </div>
                     <div>
                         <p>{c.contactCopy}</p>
-                        <Button to="/contact" variant="secondary">{c.send}</Button>
+                        <Button to="/contact" variant="secondary" showArrow={false}>{c.send}</Button>
                     </div>
                 </Panel>
             </section>
