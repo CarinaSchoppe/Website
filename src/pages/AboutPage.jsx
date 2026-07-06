@@ -21,7 +21,7 @@ const copy = {
             ["Professional", "Remote-first, bilingual and comfortable with adult learners, corporate teams and education providers."],
         ],
         links: [
-            ["My Way", "A compact life timeline from school and early programming to Brisbane, AI training and international teaching.", "/my-way"],
+            ["Story", "A compact life timeline from school and early programming to Brisbane, AI training and international teaching.", "/my-way"],
             ["Skills", "A skill map for AI, software development, cybersecurity, business IT, teaching design and communication.", "/skills"],
             ["Blog", "Long-form articles on AI governance, digital education, automation risk, project work and responsible technology adoption.", "/blog"],
         ],

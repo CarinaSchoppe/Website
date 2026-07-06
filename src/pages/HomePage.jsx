@@ -11,11 +11,11 @@ const copy = {
         intro: "Portfolio for software projects, academic credentials, teaching practice and selected writing in AI, digital education, cybersecurity and business information systems.",
         projects: "View projects",
         credentials: "View credentials",
-        luminovia: "Corporate training via Luminovia",
+        luminovia: "Company training & consulting → Luminovia",
         location: "Based in Brisbane, Australia",
         proof: [
             ["Lecturer in IT, AI & Business Information Systems", "Teaching profile"],
-            ["Research & teaching in AI, cybersecurity & education", "Academic context"],
+            ["Research and teaching in AI, cybersecurity and education", "Academic context"],
             ["Software projects with practical business value", "Project work"],
             ["Bridging theory and practice for real-world outcomes", "Transfer"],
         ],
@@ -47,12 +47,12 @@ const copy = {
         intro: "Portfolio für Softwareprojekte, akademische Nachweise, Lehrpraxis und ausgewählte Texte zu AI, digitaler Bildung, Cybersecurity und Wirtschaftsinformatik.",
         projects: "Projekte ansehen",
         credentials: "Nachweise ansehen",
-        luminovia: "Firmentraining über Luminovia",
+        luminovia: "Firmentraining & Consulting → Luminovia",
         location: "Sitz in Brisbane, Australien",
         proof: [
             ["Dozentin für IT, AI & Wirtschaftsinformatik", "Lehrprofil"],
-            ["Research & Lehre in AI, Cybersecurity & Bildung", "Akademischer Kontext"],
-            ["Softwareprojekte mit Business-Nutzen", "Projektarbeit"],
+            ["Forschung & Lehre in AI, Cybersecurity & Bildung", "Akademischer Kontext"],
+            ["Softwareprojekte mit praktischem Nutzen", "Projektarbeit"],
             ["Verbindung von Theorie und Praxis", "Transfer"],
         ],
         connect: "Was ich verbinde",
@@ -62,7 +62,7 @@ const copy = {
             ["Digitale Bildung", "Kursdesign für erwachsene Lernende", "mortar"],
             ["Software Engineering", "Kleine Systeme für konkrete Aufgaben", "code"],
             ["Business IT", "Prozesse, Daten und Entscheidungen", "chart"],
-            ["People & Leadership", "Klare Kommunikation für Teams", "people"],
+            ["Menschen & Leadership", "Klare Kommunikation für Teams", "people"],
         ],
         featuredProjects: "Ausgewählte Projekte",
         viewProjects: "Alle Projekte",
@@ -118,8 +118,8 @@ export default function HomePage() {
                     <div className="portfolio-actions">
                         <Button to="/projects" showArrow={false}>{c.projects}</Button>
                         <Button to="/credentials" variant="secondary" showArrow={false}>{c.credentials}</Button>
-                        <Button href={PROFILE.luminovia} variant="secondary" showArrow={false}>{c.luminovia}</Button>
                     </div>
+                    <a href={PROFILE.luminovia} target="_blank" rel="noreferrer" className="portfolio-luminovia-textlink">{c.luminovia}</a>
                 </div>
                 <div className="portfolio-portrait-wrap" aria-label={c.location}>
                     <div className="portfolio-skyline" aria-hidden="true"/>

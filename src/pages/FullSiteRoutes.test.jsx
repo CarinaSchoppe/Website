@@ -74,7 +74,8 @@ describe("full static site route coverage", () => {
         expect(within(headerNav).getByRole("link", {name: /^Projects$/i})).toHaveAttribute("href", "/projects");
         expect(within(headerNav).getByRole("link", {name: /^Skills$/i})).toHaveAttribute("href", "/skills");
         expect(within(headerNav).getByRole("link", {name: /^Credentials$/i})).toHaveAttribute("href", "/credentials");
-        expect(within(headerNav).getByRole("link", {name: /^My Way$/i})).toHaveAttribute("href", "/my-way");
+        expect(within(headerNav).getByRole("link", {name: /^Writing$/i})).toHaveAttribute("href", "/blog");
+        expect(within(headerNav).getByRole("link", {name: /^About$/i})).toHaveAttribute("href", "/about");
         expect(within(headerNav).getByRole("link", {name: /^Contact$/i})).toHaveAttribute("href", "/contact");
     });
 

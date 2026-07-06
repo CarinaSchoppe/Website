@@ -32,7 +32,7 @@ export default function MyWayPage() {
             milestones: "Aktuelle Stationen zuerst."
         }
         : {
-            badge: "My way",
+            badge: "Story",
             title: "A professional path through IT, business, research and digital education.",
             intro: "This timeline shows how my profile developed across software, business information systems, research, AI, education and the Brisbane context.",
             skills: "View skills",

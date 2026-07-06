@@ -33,7 +33,7 @@ const routeMeta = {
             description: "Credentials and professional background including B.Sc., M.Sc., MBA, TAE40122 completed in June 2026, AI certificates and cybersecurity learning paths.",
         },
         "/my-way": {
-            title: "My Way | Carina Sophie Schoppe",
+            title: "Story | Carina Sophie Schoppe",
             description: "Professional timeline through business computer science, software practice, AI, research, TAE40122 and Brisbane.",
         },
         "/about": {
@@ -60,7 +60,7 @@ const routeMeta = {
     de: {
         "/": {
             title: "Carina Sophie Schoppe | Portfolio",
-            description: "Persönliches Portfolio von Carina Sophie Schoppe mit Softwareprojekten, Research-Interessen, Nachweisen, Texten und klarem Verweis auf Luminovia Training & Consulting.",
+            description: "Persönliches Portfolio von Carina Sophie Schoppe mit Softwareprojekten, Forschungsinteressen, Nachweisen, Texten und klarem Verweis auf Luminovia Training & Consulting.",
         },
         "/projects": {
             title: "Projekte | Carina Sophie Schoppe",
@@ -76,7 +76,7 @@ const routeMeta = {
         },
         "/skills": {
             title: "Kompetenzen | Carina Sophie Schoppe",
-            description: "Persönliche Kompetenzübersicht zu AI, Softwareentwicklung, Cybersecurity, Wirtschaftsinformatik, Research und digitaler Bildung.",
+            description: "Persönliche Kompetenzübersicht zu AI, Softwareentwicklung, Cybersecurity, Wirtschaftsinformatik, Forschung und digitaler Bildung.",
         },
         "/credentials": {
             title: "Nachweise | Carina Sophie Schoppe",
@@ -84,11 +84,11 @@ const routeMeta = {
         },
         "/my-way": {
             title: "Werdegang | Carina Sophie Schoppe",
-            description: "Professionelle Timeline durch Wirtschaftsinformatik, Softwarepraxis, AI, Research, TAE40122 und Brisbane.",
+            description: "Professionelle Timeline durch Wirtschaftsinformatik, Softwarepraxis, AI, Forschung, TAE40122 und Brisbane.",
         },
         "/about": {
             title: "Über Carina | Carina Sophie Schoppe",
-            description: "Persönliches Profil von Carina Sophie Schoppe zwischen Software, Research, digitaler Bildung, AI, Cybersecurity und Unternehmertum.",
+            description: "Persönliches Profil von Carina Sophie Schoppe zwischen Software, Forschung, digitaler Bildung, AI, Cybersecurity und Unternehmertum.",
         },
         "/blog": {
             title: "Blog | Carina Sophie Schoppe",
@@ -96,7 +96,7 @@ const routeMeta = {
         },
         "/contact": {
             title: "Kontakt | Carina Sophie Schoppe",
-            description: "Kontakt zu Carina Sophie Schoppe für Portfolio-, Projekt-, Research-, CV- oder professionelle Profilanfragen. Business-Anfragen werden zu Luminovia geleitet.",
+            description: "Kontakt zu Carina Sophie Schoppe für Portfolio-, Projekt-, Forschungs-, CV- oder professionelle Profilanfragen. Business-Anfragen werden zu Luminovia geleitet.",
         },
         "/imprint": {
             title: "Impressum | Carina Sophie Schoppe",
