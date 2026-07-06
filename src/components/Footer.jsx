@@ -12,14 +12,12 @@ export default function Footer() {
             portfolio: "Portfolio",
             business: "Business",
             luminovia: "Luminovia Training & Consulting",
-            luminoviaCopy: "Training, Consulting, Projektbegleitung und Unternehmensanfragen.",
         }
         : {
             summary: "Personal portfolio of Carina Sophie Schoppe: projects, credentials, timeline, writing and contact. Business training and consulting are handled through Luminovia Training & Consulting.",
             portfolio: "Portfolio",
             business: "Business",
             luminovia: "Luminovia Training & Consulting",
-            luminoviaCopy: "Training, consulting, project support and company enquiries.",
         };
 
     return (
@@ -49,13 +47,10 @@ export default function Footer() {
 
                 <div>
                     <h2 className="text-sm font-black uppercase tracking-[0.16em] text-sky-100">{labels.business}</h2>
-                    <a href={PROFILE.luminovia} target="_blank" rel="noreferrer" className="mt-4 block rounded-[1.5rem] border border-white/12 bg-white/[0.06] p-4 transition hover:border-sky-200/35 hover:bg-white/[0.1]">
+                    <a href={PROFILE.luminovia} target="_blank" rel="noreferrer" aria-label={labels.luminovia} className="mt-4 block rounded-[1.5rem] border border-white/12 bg-white/[0.06] p-4 transition hover:border-sky-200/35 hover:bg-white/[0.1]">
                         <span className="block rounded-xl bg-white p-3">
-                            <img src={IMAGES.luminoviaLogoMark} alt="Luminovia Training & Consulting logo" className="h-16 w-full object-contain sm:hidden"/>
-                            <img src={IMAGES.luminoviaLogoFull} alt="Luminovia Training & Consulting logo" className="hidden h-16 w-full object-contain sm:block"/>
+                            <img src={IMAGES.luminoviaLogoMark} alt="" aria-hidden="true" loading="lazy" decoding="async" className="h-24 w-full object-contain"/>
                         </span>
-                        <span className="mt-4 block text-lg font-black text-white">{labels.luminovia}</span>
-                        <span className="mt-2 block text-sm leading-6 text-slate-300">{labels.luminoviaCopy}</span>
                     </a>
                     <a href={`mailto:${PROFILE.luminoviaEmail}`} className={`${linkClass} mt-3 inline-flex`}>{PROFILE.luminoviaEmail}</a>
                 </div>

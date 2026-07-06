@@ -6,6 +6,7 @@
     --scroll-progress: 0;
     --theme-surface: #08090b;
     --theme-text: #ffffff;
+    --portfolio-header-height: 65px;
 }
 
 @keyframes ambientShift {
@@ -394,7 +395,14 @@
     --accent-soft-c: rgba(225, 29, 72, .08);
     background: var(--theme-surface);
     color: var(--theme-text);
+    overflow-x: clip;
     transition: background-color .45s ease, color .45s ease;
+}
+
+@supports not (overflow: clip) {
+    .theme-root {
+        overflow-x: hidden;
+    }
 }
 
 .theme-root main[class*="pt-32"] {
@@ -2681,9 +2689,20 @@ html[data-theme="day"] .theme-root .ambient-veil {
 }
 
 .portfolio-header {
-    position: sticky !important;
+    position: fixed !important;
+    inset: 0 0 auto !important;
     top: 0;
-    z-index: 90;
+    z-index: 1000;
+    contain: layout paint;
+    transform: translateZ(0);
+}
+
+.portfolio-home {
+    padding-top: var(--portfolio-header-height);
+}
+
+.theme-root main[class*="pt-32"] {
+    padding-top: calc(var(--portfolio-header-height) + 2.5rem) !important;
 }
 
 .portfolio-hero {
@@ -2892,6 +2911,8 @@ html[data-theme="day"] footer .bg-white {
 
 .portfolio-dashboard {
     align-items: start;
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 720px;
 }
 
 .portfolio-panel {
@@ -2920,6 +2941,7 @@ html[data-theme="day"] footer .bg-white {
 .portfolio-project-card,
 .portfolio-writing-card {
     height: auto;
+    contain: content;
 }
 
 .portfolio-project-card p,
@@ -2935,6 +2957,14 @@ html[data-theme="day"] footer .bg-white {
     grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
     align-items: center;
     gap: 1rem 1.5rem;
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 260px;
+}
+
+.portfolio-bottom-grid,
+footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 520px;
 }
 
 .portfolio-contact-panel h2 {

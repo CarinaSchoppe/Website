@@ -91,7 +91,7 @@ export default function Header({theme = "night", onToggleTheme = () => {}}) {
 
     return (
         <>
-            <header className="portfolio-header sticky top-0 z-[90] border-b border-white/10 bg-[#030611]/84 shadow-[0_14px_50px_rgba(0,0,0,.18)] backdrop-blur-2xl">
+            <header className="portfolio-header fixed inset-x-0 top-0 z-[1000] border-b border-white/10 bg-[#030611]/84 shadow-[0_14px_50px_rgba(0,0,0,.18)] backdrop-blur-2xl">
                 <div className="mx-auto flex max-w-[1500px] items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
                     <NavLink to="/" className="group flex items-center gap-3 text-left" aria-label="Carina Sophie Schoppe home">
                         <div className="personal-logo-shell grid h-10 w-10 place-items-center overflow-hidden rounded-none border-0 bg-transparent shadow-none transition duration-500 group-hover:rotate-2">
