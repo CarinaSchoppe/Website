@@ -61,6 +61,28 @@ describe("BlogPage", () => {
         expect(carousel.releasePointerCapture).toHaveBeenCalledWith(1);
     });
 
+    it("keeps the category rail keyboard-scrollable and filters its articles", async () => {
+        const user = userEvent.setup();
+        renderBlog();
+
+        const categoryRail = screen.getByRole("region", {name: "Scrollable blog categories"});
+        const scrollBy = vi.fn();
+        categoryRail.scrollBy = scrollBy;
+
+        fireEvent.keyDown(categoryRail, {key: "Enter"});
+        fireEvent.keyDown(categoryRail, {key: "ArrowRight"});
+        fireEvent.keyDown(categoryRail, {key: "ArrowLeft"});
+
+        expect(scrollBy).toHaveBeenNthCalledWith(1, {left: 220, behavior: "smooth"});
+        expect(scrollBy).toHaveBeenNthCalledWith(2, {left: -220, behavior: "smooth"});
+
+        await user.click(screen.getByRole("button", {name: "Cybersecurity"}));
+        expect(screen.getByText(/There is no article in this category yet/i)).toBeInTheDocument();
+
+        await user.click(screen.getByRole("button", {name: "AI & Governance"}));
+        expect(screen.getAllByRole("link", {name: /Agentic AI/i}).length).toBeGreaterThan(0);
+    });
+
     it("opens a dedicated article page when a blog card is clicked", async () => {
         const user = userEvent.setup();
         renderBlog();

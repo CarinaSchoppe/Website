@@ -10,7 +10,7 @@ export default function SoftwarePage() {
         ? {
             badge: "Projektportfolio",
             title: "Softwareprojekte, Automation und technische Experimente.",
-            intro: "Dieses persönliche Portfolio zeigt ausgewählte Projektarbeit: Automatisierung mit Python, AI-gestützte Research-Workflows, Datenbereinigung, Kotlin-Plugins, Mobile Apps, Game-Systeme und digitale Arbeitsabläufe. Der Fokus liegt auf öffentlicher Umsetzung, nicht auf Angeboten.",
+            intro: "Dieses persönliche Portfolio zeigt ausgewählte Projektarbeit: Automatisierung mit Python, AI-gestützte Research-Workflows, Datenbereinigung, Kotlin-Plugins, Mobile Apps, Game-Systeme und digitale Arbeitsabläufe. Im Mittelpunkt stehen nachvollziehbare, öffentlich dokumentierte Umsetzungen.",
             github: "GitHub-Profil öffnen",
             skills: "Kompetenzen ansehen",
             publicationsTitle: "Publikationen",
@@ -20,7 +20,7 @@ export default function SoftwarePage() {
         : {
             badge: "Project portfolio",
             title: "Software projects, automation and technical experiments.",
-            intro: "This personal portfolio highlights selected project work: Python automation, AI-supported research workflows, data cleanup, Kotlin plugins, mobile apps, game systems and digital workflows. The focus is public implementation work, not offers.",
+            intro: "This personal portfolio highlights selected project work: Python automation, AI-supported research workflows, data cleanup, Kotlin plugins, mobile apps, game systems and digital workflows. The focus is traceable, publicly documented implementation work.",
             github: "Open GitHub profile",
             skills: "View skills",
             publicationsTitle: "Publications",

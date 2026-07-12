@@ -39,7 +39,7 @@ export default function SkillsPage() {
             clusters: "Skill-Cluster",
             clustersTitle: "Themenfelder aus Portfolio, Lehre, Research und Projektarbeit.",
             consultingTitle: "Capability Map",
-            consultingCopy: "Diese Seite beschreibt persönliche fachliche Schwerpunkte. Konkrete Firmenangebote, Projektbegleitung und Consulting laufen bewusst über Luminovia.",
+            consultingCopy: "Diese Seite beschreibt persönliche fachliche Schwerpunkte. Firmentrainings, Projektbegleitung und Consulting werden separat auf Luminovia dargestellt.",
             consultingAreas: [
                 ["AI & Automatisierung", "Generative AI, Prompt-Workflows, AI Governance, Literaturreviews, Research Tooling und verantwortungsvolle Nutzung."],
                 ["Softwareentwicklung", "Programmierung, APIs, Automatisierung, Datenflüsse, technische Projektstruktur und Umsetzungslogik."],
@@ -64,7 +64,7 @@ export default function SkillsPage() {
             clusters: "Skill clusters",
             clustersTitle: "Fields across portfolio, teaching, research and project work.",
             consultingTitle: "Capability map",
-            consultingCopy: "This page describes personal subject strengths. Concrete company offers, project support and consulting intentionally live at Luminovia.",
+            consultingCopy: "This page describes personal subject strengths. Company training, project support and consulting are presented separately on Luminovia.",
             consultingAreas: [
                 ["AI & automation", "Generative AI, prompt workflows, AI governance, literature reviews, research tooling and responsible use."],
                 ["Software development", "Programming, APIs, automation, data flows, technical project structure and implementation logic."],

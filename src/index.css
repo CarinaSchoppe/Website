@@ -2808,6 +2808,75 @@ html[data-theme="day"] .portfolio-header nav a[aria-current="page"] {
     box-shadow: 0 14px 34px rgba(15, 23, 42, .18) !important;
 }
 
+/* Homepage composition and mobile browsing polish. */
+.portfolio-hero {
+    min-height: clamp(430px, 39vw, 490px);
+    grid-template-columns: minmax(0, 1.12fr) minmax(380px, .88fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    padding-top: 1.5rem;
+}
+
+.portfolio-hero::after {
+    display: none;
+}
+
+.portfolio-hero-copy {
+    padding-block: 1.5rem;
+}
+
+.portfolio-hero-copy h1 {
+    font-size: clamp(3.4rem, 5.25vw, 5.35rem);
+    letter-spacing: 0;
+}
+
+.portfolio-portrait-wrap {
+    min-height: 430px;
+}
+
+.portfolio-skyline {
+    background: transparent;
+}
+
+.portfolio-portrait {
+    right: 50%;
+    width: min(350px, 78%);
+    transform: translate(50%, -50%);
+}
+
+.portfolio-location {
+    right: max(0rem, calc(50% - 210px));
+    bottom: 1.25rem;
+}
+
+.blog-filter-track {
+    width: calc(100% + 2rem);
+    min-width: 0;
+    scroll-padding-inline: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(103, 232, 249, .68) rgba(148, 163, 184, .14);
+    touch-action: pan-x pinch-zoom;
+}
+
+.blog-filter-track::-webkit-scrollbar {
+    height: 6px;
+}
+
+.blog-filter-track::-webkit-scrollbar-track {
+    border-radius: 999px;
+    background: rgba(148, 163, 184, .14);
+}
+
+.blog-filter-track::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(103, 232, 249, .68);
+}
+
+.blog-filter-track:focus-visible {
+    border-radius: .75rem;
+    outline: 2px solid rgba(125, 211, 252, .72);
+    outline-offset: 4px;
+}
+
 html[data-theme="day"] .portfolio-luminovia-textlink {
     color: #6d28d9;
 }
@@ -3211,5 +3280,175 @@ footer {
         flex-wrap: nowrap !important;
         overflow-x: auto !important;
         padding-bottom: .8rem;
+    }
+}
+
+/* Keep the responsive homepage rules last so earlier legacy breakpoints cannot override them. */
+@media (max-width: 1024px) {
+    .portfolio-hero {
+        min-height: 0;
+        grid-template-columns: minmax(0, 1fr) minmax(300px, .72fr);
+        gap: 1.25rem;
+        padding-top: 1.25rem;
+    }
+
+    .portfolio-portrait-wrap {
+        min-height: 370px;
+    }
+
+    .portfolio-portrait {
+        right: 50%;
+        width: min(300px, 82%);
+        transform: translate(50%, -50%);
+    }
+}
+
+@media (max-width: 820px) {
+    .portfolio-hero {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding-top: .85rem;
+    }
+
+    .portfolio-hero-copy {
+        padding-block: 1.25rem .5rem;
+    }
+
+    .portfolio-portrait-wrap {
+        min-height: 320px;
+    }
+
+    .portfolio-location {
+        right: auto;
+        left: calc(50% + 45px);
+        bottom: 1rem;
+    }
+}
+
+@media (max-width: 720px) {
+    .portfolio-hero {
+        gap: 0;
+        padding-top: .65rem;
+    }
+
+    .portfolio-hero-copy h1 {
+        font-size: clamp(2.65rem, 14vw, 3.65rem) !important;
+        line-height: .96;
+    }
+
+    .portfolio-gradient-text {
+        margin-top: .85rem;
+        font-size: clamp(1.12rem, 6vw, 1.48rem);
+    }
+
+    .portfolio-hero-intro {
+        margin-top: .9rem;
+        font-size: .94rem;
+        line-height: 1.55;
+    }
+
+    .portfolio-actions {
+        margin-top: 1.25rem;
+    }
+
+    .portfolio-luminovia-textlink {
+        margin-top: .85rem;
+        line-height: 1.4;
+    }
+
+    .portfolio-portrait-wrap {
+        min-height: 270px;
+    }
+
+    .portfolio-portrait {
+        width: min(224px, 68vw);
+        transform: translate(50%, -52%);
+    }
+
+    .portfolio-location {
+        left: calc(50% + 28px);
+        bottom: .65rem;
+        max-width: 170px;
+        font-size: .82rem;
+    }
+
+    .portfolio-connect {
+        padding-block: 1.25rem;
+    }
+
+    .portfolio-mini-card {
+        min-height: 96px;
+    }
+
+    .portfolio-panel-head h2 {
+        max-width: 70%;
+    }
+
+    .portfolio-timeline-row {
+        grid-template-columns: 4.65rem minmax(0, 1fr);
+        gap: .65rem;
+    }
+
+    .portfolio-timeline-row > span {
+        font-size: .8rem;
+        white-space: normal;
+    }
+
+    .portfolio-timeline-row > span::before {
+        width: .5rem;
+        height: .5rem;
+        margin-right: .3rem;
+    }
+
+    .blog-filter-track {
+        width: calc(100% + 2rem);
+        padding-bottom: .65rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .portfolio-location {
+        left: auto;
+        right: .25rem;
+        max-width: 158px;
+    }
+
+    .portfolio-panel-head h2 {
+        max-width: 64%;
+    }
+}
+
+@media (max-width: 720px) {
+    .portfolio-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: .55rem;
+        margin-top: 1.25rem;
+    }
+
+    .portfolio-actions a,
+    .portfolio-actions button {
+        width: auto;
+        min-width: 0;
+        padding-inline: .65rem;
+        white-space: normal;
+    }
+
+    .portfolio-portrait-wrap {
+        min-height: 245px;
+    }
+
+    .blog-page h1 {
+        font-size: clamp(2.35rem, 11vw, 3rem) !important;
+        line-height: 1.02;
+        letter-spacing: 0;
+        min-width: 0;
+        overflow-wrap: anywhere;
+        hyphens: auto;
+    }
+
+    .blog-page > div > div:nth-of-type(1) p {
+        font-size: 1rem;
+        line-height: 1.7;
     }
 }

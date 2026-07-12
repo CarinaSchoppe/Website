@@ -18,7 +18,7 @@ function BlogCard({post, readLabel, className = ""}) {
             </div>
             <h2 className="mt-5 text-2xl font-black leading-tight text-white">{post.title}</h2>
             <p className="mt-4 text-sm leading-7 text-slate-300">{post.excerpt}</p>
-            <span className="mt-auto pt-6 text-sm font-black text-sky-100">{readLabel} &gt;</span>
+            <span className="mt-auto pt-6 text-sm font-black text-sky-100">{readLabel} →</span>
         </Link>
     );
 }
@@ -98,6 +98,7 @@ export default function BlogPage() {
     const {language} = useLanguage();
     const {blogPosts} = useSiteContent();
     const [activeCategory, setActiveCategory] = useState("All");
+    const filterTrackRef = useRef(null);
     const hubCategories = [
         {value: "All", label: language === "de" ? "Alle" : "All"},
         {value: "AI & Governance", label: "AI & Governance"},
@@ -116,32 +117,44 @@ export default function BlogPage() {
     const remainingPosts = sortedPosts.slice(1);
     const copy = language === "de"
         ? {
-            title: "Blog zu AI, digitaler Bildung, Cybersecurity und verantwortungsvoller Technologie.",
+            title: "Blog zu AI, digitaler Bildung und verantwortungsvoller Technologie.",
             intro: "Der Blog ist der editoriale Teil des persönlichen Portfolios. Hier ordne ich Entwicklungen rund um Agentic AI, AI Governance, digitale Bildung, Projektarbeit, Cybersecurity und verantwortungsvolle Automatisierung ein.",
             featured: "Neuester Beitrag",
             latest: "Alle Blogbeiträge",
             read: "Artikel lesen",
             suggest: "Kontakt aufnehmen",
             filters: "Kategorien",
+            filterRail: "Scrollbare Blog-Kategorien",
             empty: "Zu dieser Kategorie gibt es noch keinen Beitrag.",
             previous: "Blogbeiträge nach links scrollen",
             next: "Blogbeiträge nach rechts scrollen",
         }
         : {
-            title: "Blog on AI, digital education, cybersecurity and responsible technology.",
+            title: "Blog on AI, digital education and responsible technology.",
             intro: "The blog is the editorial part of the personal portfolio. I use it to analyse developments in agentic AI, AI governance, digital education, project work, cybersecurity and responsible automation.",
             featured: "Featured latest post",
             latest: "All blog posts",
             read: "Read article",
             suggest: "Get in touch",
             filters: "Categories",
+            filterRail: "Scrollable blog categories",
             empty: "There is no article in this category yet.",
             previous: "Scroll blog posts left",
             next: "Scroll blog posts right",
         };
 
+    function handleFilterKeyDown(event) {
+        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+
+        event.preventDefault();
+        filterTrackRef.current?.scrollBy({
+            left: event.key === "ArrowRight" ? 220 : -220,
+            behavior: "smooth",
+        });
+    }
+
     return (
-        <main className="px-4 pb-24 pt-32 sm:px-6 lg:px-8">
+        <main className="blog-page px-4 pb-24 pt-32 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-7xl">
                 <Badge tone="rose">Blog</Badge>
                 <div className="mt-6 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
@@ -155,7 +168,14 @@ export default function BlogPage() {
 
                 <section className="mt-10 max-w-full" aria-label={copy.filters}>
                     <h2 className="mb-4 text-xl font-black text-white">{copy.filters}</h2>
-                    <div className="blog-filter-track -mx-4 flex max-w-[calc(100%+2rem)] flex-nowrap gap-2 overflow-x-auto px-4 pb-3 [scrollbar-color:rgba(125,211,252,.42)_rgba(255,255,255,.06)] [scrollbar-width:thin] sm:mx-0 sm:max-w-full sm:px-0">
+                    <div
+                        ref={filterTrackRef}
+                        className="blog-filter-track -mx-4 flex max-w-none flex-nowrap gap-2 overflow-x-auto px-4 pb-3 sm:mx-0 sm:w-full sm:px-0"
+                        role="region"
+                        aria-label={copy.filterRail}
+                        tabIndex="0"
+                        onKeyDown={handleFilterKeyDown}
+                    >
                         {hubCategories.map((category) => (
                             <button
                                 key={category.value}
@@ -191,7 +211,7 @@ export default function BlogPage() {
                             </div>
                             <h2 className="mt-5 max-w-4xl text-3xl font-black tracking-[-0.03em] text-white sm:text-5xl">{featuredPost.title}</h2>
                             <p className="mt-5 max-w-3xl text-base leading-8 text-slate-300">{featuredPost.excerpt}</p>
-                            <span className="mt-auto pt-8 text-sm font-black text-sky-100">{copy.read} &gt;</span>
+                            <span className="mt-auto pt-8 text-sm font-black text-sky-100">{copy.read} →</span>
                         </Link>
                     </section>
                 )}
