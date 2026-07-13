@@ -18,31 +18,31 @@ export default function MyWayPage() {
     const copy = language === "de"
         ? {
             badge: "Werdegang",
-            title: "Ein professioneller Weg durch IT, Business, Forschung und digitale Bildung.",
-            intro: "Die Timeline zeigt, wie sich mein Profil über Software, Wirtschaftsinformatik, Forschung, AI, Bildung und den Standort Brisbane entwickelt hat.",
+            title: "Mein beruflicher Weg durch IT, Wirtschaft und digitale Bildung.",
+            intro: "Der Zeitstrahl zeigt die Stationen, aus denen mein heutiges Profil entstanden ist: Softwareentwicklung, Wirtschaftsinformatik, Forschung, AI, Lehre und der Wechsel nach Brisbane.",
             skills: "Kompetenzen ansehen",
             request: "Projekte ansehen",
             education: "Bildung",
-            educationCopy: "Wirtschaftsinformatik, MBA ohne Major, TAE40122 im Juni 2026, AI, Forschung und digitale Bildung.",
+            educationCopy: "B.Sc. und M.Sc. in Wirtschaftsinformatik, MBA sowie die australische Trainingsqualifikation TAE40122.",
             work: "Praxis",
-            workCopy: "Softwareentwicklung, digitale Bildung, Unternehmertum, Research und ausgewählte Projektarbeit.",
+            workCopy: "Softwareentwicklung, digitale Bildung, Unternehmertum, Forschung und ausgewählte technische Projekte.",
             now: "Heute",
-            nowCopy: "Sitz in Brisbane, persönliches Portfolio auf carinaschoppe.com und klare Trennung zwischen öffentlichem Profil und Luminovia als Business-Kanal.",
+            nowCopy: "Heute lebe ich in Brisbane. carinaschoppe.com bündelt mein öffentliches Profil; Luminovia ist der eigenständige Auftritt für Firmentrainings und Consulting.",
             timeline: "Timeline",
             milestones: "Aktuelle Stationen zuerst."
         }
         : {
             badge: "Story",
-            title: "A professional path through IT, business, research and digital education.",
-            intro: "This timeline shows how my profile developed across software, business information systems, research, AI, education and the Brisbane context.",
+            title: "My professional path through technology, business and digital education.",
+            intro: "This timeline traces the experiences that shaped my current profile: software development, business information systems, research, AI, teaching and the move to Brisbane.",
             skills: "View skills",
             request: "View projects",
             education: "Education",
-            educationCopy: "Business Computer Science, MBA without major, TAE40122 completed in June 2026, AI, research and digital education.",
+            educationCopy: "B.Sc. and M.Sc. in Business Computer Science, an MBA and the Australian TAE40122 training qualification.",
             work: "Practice",
             workCopy: "Software development, digital education, entrepreneurship, research and selected project work.",
             now: "Today",
-            nowCopy: "Based in Brisbane, with carinaschoppe.com as a personal portfolio and Luminovia as the business brand.",
+            nowCopy: "I am now based in Brisbane. carinaschoppe.com presents my public profile, while Luminovia is the separate home for company training and consulting.",
             timeline: "Timeline",
             milestones: "Current milestones first."
         };

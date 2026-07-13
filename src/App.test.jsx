@@ -38,12 +38,12 @@ describe("App routing and language", () => {
     });
 
     it.each([
-        ["/blog", /Blog on AI, digital education/i],
+        ["/blog", /Writing on AI, digital education/i],
         ["/contact", /Contact Carina Sophie Schoppe/i],
-        ["/skills", /personal capability map/i],
-        ["/about", /personal profile between software/i],
-        ["/credentials", /CV, certificates/i],
-        ["/my-way", /professional path through IT/i],
+        ["/skills", /Professional strengths across AI/i],
+        ["/about", /professional profile spanning software/i],
+        ["/credentials", /Degrees, certificates/i],
+        ["/my-way", /professional path through technology/i],
         ["/portfolio", /Software projects, automation/i],
         ["/projects", /Software projects, automation/i],
         ["/pricing", /This page is not part of the portfolio/i],

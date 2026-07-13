@@ -14,14 +14,14 @@ export default function CredentialsPage() {
     const copy = language === "de"
         ? {
             badge: "Nachweise & Lehrprofil",
-            title: "CV, Zertifikate und fachliche Nachweise.",
-            intro: "Diese Seite bündelt akademische Abschlüsse, TAE40122, AI-Zertifikate, Cybersecurity-Lernpfade, Unterrichtserfahrung und Sprachkompetenz. Sie dient als persönliche Nachweis- und Profilseite, nicht als Angebotsseite.",
+            title: "Abschlüsse, Zertifikate und fachliche Nachweise.",
+            intro: "Hier finden Sie meine akademischen Abschlüsse, die australische Trainingsqualifikation TAE40122, AI-Zertifikate, Cybersecurity-Lernpfade sowie Nachweise zu Lehr- und Sprachkompetenz.",
             allLabel: "Alle Nachweise",
         }
         : {
             badge: "Credentials & teaching proof",
-            title: "CV, certificates and professional proof.",
-            intro: "This page brings together academic degrees, TAE40122, AI certifications, cybersecurity learning paths, teaching experience and language capability. It is a personal proof and profile page, not an offer page.",
+            title: "Degrees, certificates and professional credentials.",
+            intro: "This page brings together my academic degrees, the Australian TAE40122 training qualification, AI certifications, cybersecurity learning paths and evidence of teaching and language proficiency.",
             allLabel: "All credentials",
         };
 

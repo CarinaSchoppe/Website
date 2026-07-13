@@ -80,9 +80,9 @@ describe("full static site route coverage", () => {
 
     it.each([
         ["/projects/", /Software projects, automation/i],
-        ["/credentials/", /CV, certificates|Nachweise/i],
-        ["/my-way/", /professional path through IT|professioneller Weg durch IT/i],
-        ["/blog/", /Blog on AI, digital education|Blog zu AI/i],
+        ["/credentials/", /Degrees, certificates|Abschlüsse, Zertifikate/i],
+        ["/my-way/", /professional path through technology|beruflicher Weg durch IT/i],
+        ["/blog/", /Writing on AI, digital education|Texte zu AI/i],
     ])("renders trailing-slash route %s", async (route, heading) => {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
         window.history.pushState({}, "Trailing route", route);

@@ -11,13 +11,13 @@ export default function SoftwareProjectsSection({compact = false}) {
         ? {
             badge: "Projekte",
             title: "Öffentliche Software- und Automationsprojekte.",
-            text: "Ausgewählte Projektarbeit in Automatisierung, AI-Research-Workflows, Datenbereinigung, Kotlin-Plugins, Mobile Apps und digitaler Umsetzung.",
+            text: "Ausgewählte Arbeiten aus Automatisierung, AI-gestützter Forschung, Datenbereinigung, Kotlin-Entwicklung und mobilen Anwendungen.",
             viewAll: "Projektportfolio ansehen",
         }
         : {
             badge: "Projects",
             title: "Public software and automation projects.",
-            text: "Selected project work across automation, AI research workflows, data cleanup, Kotlin plugins, mobile apps and digital implementation.",
+            text: "Selected work across automation, AI-supported research, data cleanup, Kotlin development and mobile applications.",
             viewAll: "View project portfolio",
         };
 

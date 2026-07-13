@@ -38,6 +38,6 @@ describe("BlogPostPage", () => {
     it("redirects unknown slugs back to the blog overview", () => {
         renderRoutes("/blog/not-a-real-post");
 
-        expect(screen.getByRole("heading", {name: /Blog on AI/i})).toBeInTheDocument();
+        expect(screen.getByRole("heading", {name: /Writing on AI/i})).toBeInTheDocument();
     });
 });

@@ -21,13 +21,13 @@ describe("BlogPage", () => {
     it("renders the article overview with links to every long-form post", () => {
         renderBlog();
 
-        expect(screen.getByRole("heading", {name: /Blog on AI/i})).toBeInTheDocument();
+        expect(screen.getByRole("heading", {name: /Writing on AI/i})).toBeInTheDocument();
         expect(screen.getAllByRole("link", {name: /Agentic AI/i}).length).toBeGreaterThan(0);
         expect(screen.getAllByRole("link", {name: /Project management/i}).length).toBeGreaterThan(0);
         expect(screen.getAllByRole("link", {name: /Teaching with AI/i}).length).toBeGreaterThan(0);
         expect(screen.getAllByRole("link", {name: /Industry 4\.0 to 5\.0/i}).length).toBeGreaterThan(0);
         expect(screen.getAllByRole("link", {name: /hallucinations, token burn and rate limits/i}).length).toBeGreaterThan(0);
-        expect(screen.getByRole("region", {name: /All blog posts/i})).toBeInTheDocument();
+        expect(screen.getByRole("region", {name: /More articles/i})).toBeInTheDocument();
         expect(screen.getByRole("button", {name: /Scroll blog posts left/i})).toBeInTheDocument();
         expect(screen.getByRole("button", {name: /Scroll blog posts right/i})).toBeInTheDocument();
         expect(screen.getAllByText(/Featured latest post/i).length).toBeGreaterThan(0);
@@ -37,7 +37,7 @@ describe("BlogPage", () => {
         const user = userEvent.setup();
         renderBlog();
 
-        const carousel = screen.getByRole("region", {name: /All blog posts/i});
+        const carousel = screen.getByRole("region", {name: /More articles/i});
         const scrollBy = vi.fn();
         carousel.scrollBy = scrollBy;
         Object.defineProperty(carousel, "clientWidth", {configurable: true, value: 500});
@@ -97,6 +97,6 @@ describe("BlogPage", () => {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "de");
         renderBlog();
 
-        expect(screen.getByRole("heading", {name: /Blog zu AI/i})).toBeInTheDocument();
+        expect(screen.getByRole("heading", {name: /Texte zu AI/i})).toBeInTheDocument();
     });
 });

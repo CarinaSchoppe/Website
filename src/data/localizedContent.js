@@ -182,16 +182,16 @@ const deCredentialCopy = {
 };
 
 const deSelectedProjects = [
-    {title: "Digitale Bildungssysteme", tag: "Instructional Design", stack: "ADDIE | Blended Learning | Erwachsenenbildung", copy: "Kurskonzepte, praktische Labs, Lernchecks und strukturierte Lernpfade für IT-, Business- und AI-Bildungsanbieter.", link: enSelectedProjects[0].link},
-    {title: "Cybersecurity Learning Labs", tag: "Lehrnachweis", stack: "TryHackMe | SOC | Web Security | Pentest+", copy: "Praktische Security-Lernpfade für Web Security, SOC-Grundlagen und Penetration-Testing-Basics.", link: enSelectedProjects[1].link},
-    {title: "PISMA Literature Review Pipeline", tag: "AI-Research-Automatisierung", stack: "Python | AI | Research Tooling | Datenpipelines", copy: "Research-Workflow-Projekt für akademische Suche, Paper-Ranking, Abstract-Analyse und strukturierte Literaturreview-Daten.", link: enSelectedProjects[2].link},
-    {title: "AI at Work Research", tag: "AI-Adoption und HCI", stack: "Systematisches Literaturreview | AI-Adoption | Mensch-Maschine-Interaktion", copy: "Research zu Chancen und Risiken generativer AI-Tools in Organisationen, besonders zur Mensch-Maschine-Interaktion im Arbeitsalltag.", link: enSelectedProjects[3].link},
+    {title: "Digitale Bildungssysteme", tag: "Didaktisches Design", stack: "ADDIE | Blended Learning | Erwachsenenbildung", copy: "Kurskonzepte, praktische Übungen, Lernchecks und strukturierte Lernpfade für IT-, Business- und AI-Bildung.", link: enSelectedProjects[0].link},
+    {title: "Cybersecurity Learning Labs", tag: "Praxisnachweis", stack: "TryHackMe | SOC | Web Security | Pentest+", copy: "Praktische Security-Lernpfade zu Web Security, SOC-Grundlagen und Penetration Testing.", link: enSelectedProjects[1].link},
+    {title: "PISMA Literature Review Pipeline", tag: "AI-gestützte Forschungsautomatisierung", stack: "Python | AI | Forschungswerkzeuge | Datenpipelines", copy: "Ein Forschungswerkzeug für akademische Suche, Paper-Ranking, Abstract-Analyse und strukturierte Daten für systematische Literaturreviews.", link: enSelectedProjects[2].link},
+    {title: "AI at Work Research", tag: "AI-Nutzung und HCI", stack: "Systematisches Literaturreview | AI-Nutzung | Mensch-Maschine-Interaktion", copy: "Forschung zu Chancen und Risiken generativer AI in Organisationen, mit Schwerpunkt auf der Mensch-Maschine-Interaktion im Arbeitsalltag.", link: enSelectedProjects[3].link},
 ];
 
 const deSoftwareProjects = [
     {name: "Automatic Mail Sender System", type: "Python-Automatisierung", status: "Aktualisiert Apr. 2026", description: "SMTP-basiertes Outreach-Automationssystem für Empfängerlisten, Templates und Versandworkflows.", stack: ["Python", "SMTP", "Automatisierung", "GUI"], href: enSoftwareProjects[0].href},
-    {name: "PISMA Literature Review Pipeline", type: "AI-Research-Automatisierung", status: "Aktualisiert Apr. 2026", description: "AI-gestützter Literaturreview-Workflow für akademische Suche, Citation Expansion und Titel-/Abstract-Relevanzanalyse.", stack: ["Python", "AI", "Research", "Datenpipelines"], href: enSoftwareProjects[1].href},
-    {name: "OneDrive Duplicate Cleaner", type: "Datenbereinigungs-Notebook", status: "Aktualisiert März 2026", description: "Notebook-Utility zur Bereinigung doppelter Dateien und zur Reduktion manueller OneDrive-Wartung.", stack: ["Jupyter Notebook", "Python", "File Cleanup"], href: enSoftwareProjects[2].href},
+    {name: "PISMA Literature Review Pipeline", type: "AI-gestützte Forschungsautomatisierung", status: "Aktualisiert Apr. 2026", description: "Literaturreview-Workflow für akademische Suche, Zitationsverfolgung und die Relevanzanalyse von Titeln und Abstracts.", stack: ["Python", "AI", "Forschung", "Datenpipelines"], href: enSoftwareProjects[1].href},
+    {name: "OneDrive Duplicate Cleaner", type: "Datenbereinigungs-Notebook", status: "Aktualisiert März 2026", description: "Notebook zur Erkennung und Bereinigung doppelter Dateien, das den manuellen Wartungsaufwand in OneDrive reduziert.", stack: ["Jupyter Notebook", "Python", "Datenbereinigung"], href: enSoftwareProjects[2].href},
     {name: "Skylife", type: "Minecraft / PaperMC Plugin", status: "Aktualisiert Feb. 2026", description: "Umfangreiches PaperMC-PvP-Minispiel mit Lobby-to-Match-Flow, Loadouts, Ranking-UI, Coin-Rewards und Spielerprogression.", stack: ["Kotlin", "PaperMC", "Minecraft", "Game Systems"], href: enSoftwareProjects[3].href},
     {name: "theHunter", type: "Kotlin-Plugin-Recode", status: "Aktualisiert Juli 2025", description: "Überarbeiteter Kotlin-Recode eines theHunter-Plugins mit Game-Plugin-Architektur und Kotlin-Migrationsarbeit.", stack: ["Kotlin", "Pluginentwicklung", "Game Logic"], href: enSoftwareProjects[4].href},
     {name: "Soundboardz", type: "Android-App", status: "Archivprojekt", description: "Android-Soundboard-App und Beispiel für Mobile-Kotlin-Entwicklung aus früherer Portfolioarbeit.", stack: ["Kotlin", "Android", "Mobile App"], href: enSoftwareProjects[5].href},
@@ -201,10 +201,10 @@ const deSoftwareProjects = [
 
 const deTimeline = [
     {year: "2021", title: "IT-Security-Lerninhalte", copy: "Didaktische IT-Security-Inhalte für KMU im Projekt KMUeinfachSicher an der Universität Paderborn."},
-    {year: "2022-2023", title: "Bildung und Moderation", copy: "Cyber-Lerngrundlagen aufgebaut und Bildungsworkshops sowie Moderation bei SCHLAU NRW unterstützt."},
-    {year: "2023-2024", title: "Entrepreneurship und Lerndesign", copy: "Top Talent Programme und garage33 mit Design Thinking, Lean Startup, Pitching und agilen Arbeitsmethoden."},
-    {year: "2025", title: "Akademisches Business-IT-Profil", copy: "B.Sc. und M.Sc. mit Fokus auf AI, Daten, HCI, IT-Management und Digitalisierung abgeschlossen."},
-    {year: "2026", title: "Internationale Dozentin und AI-Trainerin", copy: "MBA ohne Major im April abgeschlossen, Certificate IV in Training and Assessment TAE40122 im Juni bei RAM Training Services abgeschlossen und remote-first Lehrprofil aus Brisbane aufgebaut."},
+    {year: "2022-2023", title: "Bildung und Moderation", copy: "Cybersecurity-Grundlagen vermittelt und Bildungsworkshops sowie Moderationsarbeit bei SCHLAU NRW unterstützt."},
+    {year: "2023-2024", title: "Unternehmertum und Lerndesign", copy: "Teilnahme am Top Talent Programme und an garage33 mit Design Thinking, Lean Startup, Pitching und agilen Arbeitsmethoden."},
+    {year: "2025", title: "Akademisches Profil in Wirtschaftsinformatik", copy: "B.Sc. und M.Sc. mit Schwerpunkten in AI, Daten, HCI, IT-Management und Digitalisierung abgeschlossen."},
+    {year: "2026", title: "Internationale Lehre aus Brisbane", copy: "MBA im April und Certificate IV in Training and Assessment TAE40122 im Juni abgeschlossen; seitdem Ausbau eines deutsch- und englischsprachigen Lehrprofils aus Brisbane."},
 ];
 
 const de = {

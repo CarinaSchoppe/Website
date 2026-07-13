@@ -46,7 +46,7 @@ const routeMeta = {
         },
         "/contact": {
             title: "Contact | Carina Sophie Schoppe",
-            description: "Contact Carina Sophie Schoppe for portfolio, project, research, CV or professional profile enquiries. Business enquiries are routed to Luminovia.",
+            description: "Contact Carina Sophie Schoppe about collaborations, projects, research, guest lectures or her professional background. Company enquiries are routed to Luminovia.",
         },
         "/imprint": {
             title: "Imprint | Carina Sophie Schoppe",
@@ -64,15 +64,15 @@ const routeMeta = {
         },
         "/projects": {
             title: "Projekte | Carina Sophie Schoppe",
-            description: "Ausgewählte Software-, Automatisierungs-, Research-Tooling-, Kotlin-, Mobile- und Digitalprojekte von Carina Sophie Schoppe.",
+            description: "Ausgewählte Software-, Automatisierungs-, Forschungs-, Kotlin- und Mobile-Projekte von Carina Sophie Schoppe.",
         },
         "/software": {
             title: "Projekte | Carina Sophie Schoppe",
-            description: "Ausgewählte Software-, Automatisierungs-, Research-Tooling-, Kotlin-, Mobile- und Digitalprojekte von Carina Sophie Schoppe.",
+            description: "Ausgewählte Software-, Automatisierungs-, Forschungs-, Kotlin- und Mobile-Projekte von Carina Sophie Schoppe.",
         },
         "/portfolio": {
             title: "Portfolio | Carina Sophie Schoppe",
-            description: "Portfolio-Übersicht für öffentliche Projekte, technische Arbeit und professionelle Profilinformationen.",
+            description: "Portfolio-Übersicht mit öffentlichen Projekten, technischen Arbeiten und Informationen zum beruflichen Profil von Carina Sophie Schoppe.",
         },
         "/skills": {
             title: "Kompetenzen | Carina Sophie Schoppe",
@@ -96,7 +96,7 @@ const routeMeta = {
         },
         "/contact": {
             title: "Kontakt | Carina Sophie Schoppe",
-            description: "Kontakt zu Carina Sophie Schoppe für Portfolio-, Projekt-, Forschungs-, CV- oder professionelle Profilanfragen. Business-Anfragen werden zu Luminovia geleitet.",
+            description: "Kontakt zu Carina Sophie Schoppe für Kooperationen, Projekte, Forschung, Gastvorträge oder Fragen zu ihrem beruflichen Hintergrund. Unternehmensanfragen werden zu Luminovia geleitet.",
         },
         "/imprint": {
             title: "Impressum | Carina Sophie Schoppe",

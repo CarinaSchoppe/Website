@@ -117,10 +117,10 @@ export default function BlogPage() {
     const remainingPosts = sortedPosts.slice(1);
     const copy = language === "de"
         ? {
-            title: "Blog zu AI, digitaler Bildung und verantwortungsvoller Technologie.",
-            intro: "Der Blog ist der editoriale Teil des persönlichen Portfolios. Hier ordne ich Entwicklungen rund um Agentic AI, AI Governance, digitale Bildung, Projektarbeit, Cybersecurity und verantwortungsvolle Automatisierung ein.",
+            title: "Texte zu AI, digitaler Bildung und verantwortungsvoller Technologie.",
+            intro: "Hier analysiere ich, wie AI, Automatisierung und digitale Systeme Arbeit und Bildung verändern. Im Mittelpunkt stehen nachvollziehbare Einordnungen, praktische Folgen und die Frage, wie Technologie verantwortungsvoll eingesetzt werden kann.",
             featured: "Neuester Beitrag",
-            latest: "Alle Blogbeiträge",
+            latest: "Weitere Beiträge",
             read: "Artikel lesen",
             suggest: "Kontakt aufnehmen",
             filters: "Kategorien",
@@ -130,10 +130,10 @@ export default function BlogPage() {
             next: "Blogbeiträge nach rechts scrollen",
         }
         : {
-            title: "Blog on AI, digital education and responsible technology.",
-            intro: "The blog is the editorial part of the personal portfolio. I use it to analyse developments in agentic AI, AI governance, digital education, project work, cybersecurity and responsible automation.",
+            title: "Writing on AI, digital education and responsible technology.",
+            intro: "I analyse how AI, automation and digital systems are changing work and education. The focus is on clear interpretation, practical consequences and responsible technology use.",
             featured: "Featured latest post",
-            latest: "All blog posts",
+            latest: "More articles",
             read: "Read article",
             suggest: "Get in touch",
             filters: "Categories",

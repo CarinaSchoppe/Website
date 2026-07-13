@@ -21,31 +21,31 @@ export default function ContactPage() {
             label: language === "de" ? "E-Mail" : "Email",
             value: PROFILE.email,
             href: `mailto:${PROFILE.email}?subject=${subject}`,
-            copy: language === "de" ? "Direkte Anfrage per E-Mail" : "Direct request by email",
+            copy: language === "de" ? "Am besten für Anfragen mit kurzem Kontext" : "Best for enquiries with a short introduction",
         },
         {
             label: language === "de" ? "Telefon Australien" : "Australia phone",
             value: PROFILE.phoneAustralia,
             href: `tel:${cleanPhone(PROFILE.phoneAustralia)}`,
-            copy: language === "de" ? "Anruf oder mobile Kontaktaufnahme" : "Call or mobile contact",
+            copy: language === "de" ? "Telefonischer Kontakt in Australien" : "Phone contact in Australia",
         },
         {
             label: language === "de" ? "Telefon Deutschland" : "Germany phone",
             value: PROFILE.phoneGermany,
             href: `tel:${cleanPhone(PROFILE.phoneGermany)}`,
-            copy: language === "de" ? "Kontakt für deutschsprachige Anfragen" : "Contact for German-speaking enquiries",
+            copy: language === "de" ? "Telefonischer Kontakt aus Deutschland" : "Phone contact from Germany",
         },
     ];
     const luminoviaNote = language === "de"
         ? {
-            title: "Business-Anfragen?",
-            copy: "Training, Consulting, Projektbegleitung und Firmenanfragen bitte direkt an Luminovia senden.",
+            title: "Anfrage zu Firmentraining oder Consulting?",
+            copy: "Luminovia ist der richtige Kontakt für Trainings, Workshops, Consulting und Projektbegleitung für Organisationen.",
             cta: "Luminovia öffnen",
             email: "info@luminovia.org",
         }
         : {
-            title: "Business enquiry?",
-            copy: "Training, consulting, project support and company enquiries should go directly to Luminovia.",
+            title: "Company training or consulting enquiry?",
+            copy: "Luminovia is the right contact for organisational training, workshops, consulting and project support.",
             cta: "Open Luminovia",
             email: "info@luminovia.org",
         };

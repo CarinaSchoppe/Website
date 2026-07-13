@@ -8,13 +8,13 @@ export default function Footer() {
     const {language, t} = useLanguage();
     const labels = language === "de"
         ? {
-            summary: "Persönliches Portfolio von Carina Sophie Schoppe: Projekte, Nachweise, Werdegang, Texte und Kontakt. Business-Training und Consulting laufen über Luminovia Training & Consulting.",
+            summary: "Persönliches Portfolio von Carina Sophie Schoppe mit Projekten, Qualifikationen, Werdegang, Texten und Kontakt. Firmentrainings und Consulting laufen über Luminovia Training & Consulting.",
             portfolio: "Portfolio",
             business: "Business",
             luminovia: "Luminovia Training & Consulting",
         }
         : {
-            summary: "Personal portfolio of Carina Sophie Schoppe: projects, credentials, timeline, writing and contact. Business training and consulting are handled through Luminovia Training & Consulting.",
+            summary: "Personal portfolio of Carina Sophie Schoppe, bringing together projects, qualifications, professional development, writing and contact details. Company training and consulting are handled through Luminovia Training & Consulting.",
             portfolio: "Portfolio",
             business: "Business",
             luminovia: "Luminovia Training & Consulting",

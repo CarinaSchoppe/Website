@@ -10,21 +10,21 @@ export default function SoftwarePage() {
         ? {
             badge: "Projektportfolio",
             title: "Softwareprojekte, Automation und technische Experimente.",
-            intro: "Dieses persönliche Portfolio zeigt ausgewählte Projektarbeit: Automatisierung mit Python, AI-gestützte Research-Workflows, Datenbereinigung, Kotlin-Plugins, Mobile Apps, Game-Systeme und digitale Arbeitsabläufe. Im Mittelpunkt stehen nachvollziehbare, öffentlich dokumentierte Umsetzungen.",
+            intro: "Dieses persönliche Portfolio zeigt ausgewählte technische Arbeiten: Python-Automatisierung, AI-gestützte Forschungswerkzeuge, Datenbereinigung, Kotlin-Plugins, mobile Anwendungen und Spielsysteme. Im Mittelpunkt stehen nachvollziehbare Umsetzungen mit öffentlichem Quellcode.",
             github: "GitHub-Profil öffnen",
             skills: "Kompetenzen ansehen",
             publicationsTitle: "Publikationen",
-            publicationsCopy: "Akademische Arbeiten zu generativer AI, AI Governance, Human-Machine Interaction und Cybersecurity als fachlicher Kontext hinter Research, Lehre und Portfolio.",
+            publicationsCopy: "Akademische Arbeiten zu generativer AI, AI Governance, Mensch-Maschine-Interaktion und Cybersecurity ergänzen die Projekte um ihren fachlichen und methodischen Kontext.",
             download: "PDF herunterladen",
         }
         : {
             badge: "Project portfolio",
             title: "Software projects, automation and technical experiments.",
-            intro: "This personal portfolio highlights selected project work: Python automation, AI-supported research workflows, data cleanup, Kotlin plugins, mobile apps, game systems and digital workflows. The focus is traceable, publicly documented implementation work.",
+            intro: "This personal portfolio presents selected technical work: Python automation, AI-supported research tools, data cleanup, Kotlin plugins, mobile applications and game systems. The focus is on traceable implementations with public source code.",
             github: "Open GitHub profile",
             skills: "View skills",
             publicationsTitle: "Publications",
-            publicationsCopy: "Academic work on generative AI, AI governance, human-machine interaction and cybersecurity as subject context behind research, teaching and portfolio work.",
+            publicationsCopy: "Academic work on generative AI, AI governance, human-machine interaction and cybersecurity provides the subject and research context behind these projects.",
             download: "Download PDF",
         };
     return (
