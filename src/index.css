@@ -2323,6 +2323,12 @@ html {
     scrollbar-gutter: stable;
 }
 
+@media (max-width: 520px) {
+    .privacy-title {
+        font-size: 1.55rem !important;
+    }
+}
+
 /* Editorial technical portfolio redesign. */
 :root {
     --editorial-bg: #050b12;
@@ -4489,6 +4495,36 @@ html[data-theme] .editorial-header .editorial-nav-link.is-active::after {
 
     .editorial-hero h1 {
         font-size: clamp(3.7rem, 5vw, 5rem);
+    }
+}
+
+.theme-root :is(h1, h2, h3) {
+    letter-spacing: 0 !important;
+    overflow-wrap: break-word;
+}
+
+.privacy-title {
+    font-size: clamp(1.55rem, 7vw, 3.75rem);
+    overflow-wrap: normal !important;
+    word-break: normal;
+    hyphens: none;
+}
+
+@media (max-width: 720px) {
+    .editorial-header .editorial-brand,
+    .editorial-header .editorial-menu-button,
+    .editorial-tertiary-link,
+    .editorial-section-link,
+    .editorial-business-redirect a,
+    .blog-filter-track > button {
+        min-height: 44px;
+    }
+
+    .editorial-tertiary-link,
+    .editorial-section-link,
+    .editorial-business-redirect a {
+        display: inline-flex;
+        align-items: center;
     }
 }
 

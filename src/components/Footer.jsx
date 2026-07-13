@@ -2,7 +2,7 @@ import {Link, NavLink} from "react-router-dom";
 import {IMAGES, navItems, PROFILE} from "../data/profile.js";
 import {useLanguage} from "../i18n.jsx";
 
-const linkClass = "rounded-full border border-white/10 px-4 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white";
+const linkClass = "inline-flex min-h-11 items-center rounded-full border border-white/10 px-4 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white";
 
 export default function Footer() {
     const {language, t} = useLanguage();
@@ -24,7 +24,7 @@ export default function Footer() {
         <footer className="border-t border-white/10 bg-[#060914]/72 px-4 py-14 sm:px-6 lg:px-8">
             <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr_0.9fr]">
                 <div>
-                    <Link to="/" className="inline-flex items-center gap-3">
+                    <Link to="/" className="inline-flex min-h-11 items-center gap-3">
                         <span className="grid h-12 w-12 place-items-center rounded-2xl border border-white/20 bg-white text-lg font-black text-slate-950">CS</span>
                         <span className="text-2xl font-black text-white">Carina Sophie Schoppe</span>
                     </Link>
