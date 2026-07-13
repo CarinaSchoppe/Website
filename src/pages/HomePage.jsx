@@ -1,245 +1,226 @@
 import {Link} from "react-router-dom";
+import {
+    ArrowRight,
+    Award,
+    BookOpen,
+    Code2,
+    ExternalLink,
+    GraduationCap,
+    Linkedin,
+    Mail,
+    MapPin,
+    ShieldCheck,
+    Users,
+} from "lucide-react";
 import {IMAGES, PROFILE} from "../data/profile.js";
 import {useSiteContent} from "../data/localizedContent.js";
 import {useLanguage} from "../i18n.jsx";
-import Button from "../components/Button.jsx";
 import Photo from "../components/Photo.jsx";
 
 const copy = {
     en: {
-        role: "IT, AI & Business Information Systems Lecturer",
-        intro: "Portfolio for software projects, academic credentials, teaching practice and selected writing in AI, digital education, cybersecurity and business information systems.",
+        role: "Lecturer in IT, AI & Business Information Systems",
+        intro: "I connect academic depth with practical experience in software, AI, cybersecurity and digital education. This portfolio documents selected projects, credentials and writing.",
         projects: "View projects",
         credentials: "View credentials",
         luminovia: "Company training & consulting → Luminovia",
-        location: "Based in Brisbane, Australia",
+        location: "Brisbane, Australia",
+        proofLabel: "What I connect",
         proof: [
-            ["Lecturer in IT, AI & Business Information Systems", "Teaching profile"],
-            ["Research and teaching in AI, cybersecurity and education", "Academic context"],
-            ["Software projects with practical business value", "Project work"],
-            ["Bridging theory and practice for real-world outcomes", "Transfer"],
+            ["Teaching", "IT, AI and business information systems", GraduationCap],
+            ["Research", "AI, cybersecurity and digital education", BookOpen],
+            ["Software practice", "Useful systems for real workflows", Code2],
+            ["Leadership", "Clear communication and responsibility", Users],
         ],
-        connect: "What I connect",
-        connectCards: [
-            ["AI & Data", "Practical use cases, risks and workflows", "brain"],
-            ["Cybersecurity", "Awareness, controls and secure habits", "shield"],
-            ["Digital Education", "Course design for adult learners", "mortar"],
-            ["Software Engineering", "Small systems that solve real tasks", "code"],
-            ["Business IT", "Processes, data and decisions", "chart"],
-            ["People & Leadership", "Clear communication for teams", "people"],
-        ],
-        featuredProjects: "Featured projects",
-        viewProjects: "View all projects",
-        credentialsTitle: "Credentials & milestones",
-        viewAll: "View all",
-        writing: "Writing",
-        viewPosts: "View all posts",
-        luminoviaTitle: "Company training and consulting live at Luminovia.",
-        luminoviaCopy: "Commercial training, consulting, workshops and corporate enquiries belong on Luminovia. This site stays focused on Carina's portfolio, CV, writing and public work.",
-        luminoviaCta: "Go to Luminovia",
-        contactTitle: "Let's connect",
-        contactCopy: "Interested in collaboration, speaking or profile-related enquiries?",
-        send: "Send a message",
-        linkedin: "Connect on LinkedIn",
+        selected: "Selected projects",
+        selectedIntro: "Software projects, automation and technical experiments with a clear focus on practical value.",
+        allProjects: "All projects",
+        projectDetail: "Open project",
+        qualifications: "Credentials & qualifications",
+        allCredentials: "All credentials",
+        writing: "Selected writing",
+        writingIntro: "Perspectives on AI, digital education, cybersecurity and business information systems.",
+        allWriting: "All writing",
+        read: "Read article",
+        contactEyebrow: "Contact",
+        contactTitle: "Let’s discuss projects, research or teaching.",
+        contactCopy: "For portfolio, research, speaking and professional profile enquiries, contact me directly.",
+        message: "Send a message",
+        linkedin: "LinkedIn",
+        businessEyebrow: "Company enquiries",
+        businessTitle: "Training and consulting are handled by Luminovia.",
+        businessLink: "Visit Luminovia",
     },
     de: {
         role: "Dozentin für IT, AI & Wirtschaftsinformatik",
-        intro: "Portfolio für Softwareprojekte, akademische Nachweise, Lehrpraxis und ausgewählte Texte zu AI, digitaler Bildung, Cybersecurity und Wirtschaftsinformatik.",
+        intro: "Ich verbinde wissenschaftliche Fundierung mit praktischer Erfahrung in Software, AI, Cybersecurity und digitaler Bildung. Dieses Portfolio dokumentiert ausgewählte Projekte, Nachweise und Texte.",
         projects: "Projekte ansehen",
         credentials: "Nachweise ansehen",
         luminovia: "Firmentraining & Consulting → Luminovia",
-        location: "Sitz in Brisbane, Australien",
+        location: "Brisbane, Australien",
+        proofLabel: "Was ich verbinde",
         proof: [
-            ["Dozentin für IT, AI & Wirtschaftsinformatik", "Lehrprofil"],
-            ["Forschung & Lehre in AI, Cybersecurity & Bildung", "Akademischer Kontext"],
-            ["Softwareprojekte mit praktischem Nutzen", "Projektarbeit"],
-            ["Verbindung von Theorie und Praxis", "Transfer"],
+            ["Lehre", "IT, AI und Wirtschaftsinformatik", GraduationCap],
+            ["Forschung", "AI, Cybersecurity und digitale Bildung", BookOpen],
+            ["Softwarepraxis", "Nützliche Systeme für reale Abläufe", Code2],
+            ["Leadership", "Klare Kommunikation und Verantwortung", Users],
         ],
-        connect: "Was ich verbinde",
-        connectCards: [
-            ["AI & Daten", "Use Cases, Risiken und Workflows", "brain"],
-            ["Cybersecurity", "Awareness, Kontrollen und sichere Routinen", "shield"],
-            ["Digitale Bildung", "Kursdesign für erwachsene Lernende", "mortar"],
-            ["Software Engineering", "Kleine Systeme für konkrete Aufgaben", "code"],
-            ["Business IT", "Prozesse, Daten und Entscheidungen", "chart"],
-            ["Menschen & Leadership", "Klare Kommunikation für Teams", "people"],
-        ],
-        featuredProjects: "Ausgewählte Projekte",
-        viewProjects: "Alle Projekte",
-        credentialsTitle: "Nachweise & Stationen",
-        viewAll: "Alle ansehen",
-        writing: "Texte",
-        viewPosts: "Alle Beiträge",
-        luminoviaTitle: "Firmentraining und Consulting laufen über Luminovia.",
-        luminoviaCopy: "Kommerzielle Trainings, Consulting, Workshops und Unternehmensanfragen gehören zu Luminovia. Diese Seite bleibt auf Carinas Portfolio, CV, Texte und öffentliche Arbeit fokussiert.",
-        luminoviaCta: "Zu Luminovia",
-        contactTitle: "Kontakt",
-        contactCopy: "Für Zusammenarbeit, Vorträge oder profilbezogene Anfragen.",
-        send: "Nachricht senden",
-        linkedin: "Auf LinkedIn verbinden",
+        selected: "Ausgewählte Projekte",
+        selectedIntro: "Softwareprojekte, Automation und technische Experimente mit klarem praktischem Nutzen.",
+        allProjects: "Alle Projekte",
+        projectDetail: "Projekt öffnen",
+        qualifications: "Nachweise & Qualifikationen",
+        allCredentials: "Alle Nachweise",
+        writing: "Ausgewählte Texte",
+        writingIntro: "Perspektiven zu AI, digitaler Bildung, Cybersecurity und Wirtschaftsinformatik.",
+        allWriting: "Alle Texte",
+        read: "Beitrag lesen",
+        contactEyebrow: "Kontakt",
+        contactTitle: "Lassen Sie uns über Projekte, Forschung oder Lehre sprechen.",
+        contactCopy: "Für Portfolio-, Forschungs-, Vortrags- und professionelle Profilanfragen erreichen Sie mich direkt.",
+        message: "Nachricht senden",
+        linkedin: "LinkedIn",
+        businessEyebrow: "Unternehmensanfragen",
+        businessTitle: "Firmentrainings und Consulting laufen über Luminovia.",
+        businessLink: "Zu Luminovia",
     },
 };
 
-const iconPaths = {
-    brain: "M9 5a3 3 0 0 0-3 3v1a3 3 0 0 0 0 6v1a3 3 0 0 0 3 3m6-14a3 3 0 0 1 3 3v1a3 3 0 0 1 0 6v1a3 3 0 0 1-3 3M9 5v14m6-14v14M6 9h12M6 15h12",
-    shield: "M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z",
-    mortar: "M3 8l9-4 9 4-9 4-9-4zm4 3v4c3 2 7 2 10 0v-4",
-    code: "M8 8l-4 4 4 4m8-8l4 4-4 4M14 5l-4 14",
-    chart: "M4 19h16M7 16V9m5 7V5m5 11v-6",
-    people: "M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm8 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20c1-4 9-4 10 0m-2 0c1-4 9-4 10 0",
-};
+const credentialIcons = [GraduationCap, Award, ShieldCheck, BookOpen];
 
-function LineIcon({name}) {
-    return (
-        <svg viewBox="0 0 24 24" className="h-9 w-9" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d={iconPaths[name]}/>
-        </svg>
-    );
-}
-
-function Panel({children, className = ""}) {
-    return <section className={`portfolio-panel ${className}`}>{children}</section>;
+function SectionLink({to, children}) {
+    return <Link className="editorial-section-link" to={to}>{children}<ArrowRight size={16}/></Link>;
 }
 
 export default function HomePage() {
     const {language} = useLanguage();
-    const {softwareProjects, credentials, blogPosts, timeline} = useSiteContent();
+    const {softwareProjects, credentials, blogPosts} = useSiteContent();
     const c = copy[language];
+    const projects = softwareProjects.slice(0, 3);
+    const qualifications = [credentials[5], credentials[1], credentials[0], credentials[3]].filter(Boolean);
     const latestPosts = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
-    const milestoneRows = timeline.slice(-4).reverse();
 
     return (
-        <main className="portfolio-home">
-            <section className="portfolio-hero">
-                <div className="portfolio-hero-copy">
-                    <h1>Carina Sophie Schoppe.</h1>
-                    <p className="portfolio-gradient-text">{c.role}</p>
-                    <p className="portfolio-hero-intro">{c.intro}</p>
-                    <div className="portfolio-actions">
-                        <Button to="/projects" showArrow={false}>{c.projects}</Button>
-                        <Button to="/credentials" variant="secondary" showArrow={false}>{c.credentials}</Button>
+        <main className="editorial-home">
+            <section className="editorial-hero" aria-labelledby="home-title">
+                <div className="editorial-hero-copy">
+                    <p className="editorial-kicker">{language === "de" ? "Lehre. Forschung. Praxis." : "Teaching. Research. Practice."}</p>
+                    <h1 id="home-title" aria-label="Carina Sophie Schoppe.">Carina Sophie<br/>Schoppe<span>.</span></h1>
+                    <p className="editorial-role">{c.role}</p>
+                    <p className="editorial-intro">{c.intro}</p>
+                    <div className="editorial-actions">
+                        <Link className="editorial-button editorial-button-primary" to="/projects">{c.projects}<ArrowRight size={17}/></Link>
+                        <Link className="editorial-button editorial-button-secondary" to="/credentials">{c.credentials}<ArrowRight size={17}/></Link>
                     </div>
-                    <a href={PROFILE.luminovia} target="_blank" rel="noreferrer" className="portfolio-luminovia-textlink">{c.luminovia}</a>
+                    <a className="editorial-tertiary-link" href={PROFILE.luminovia} target="_blank" rel="noreferrer">{c.luminovia}</a>
                 </div>
-                <div className="portfolio-portrait-wrap" aria-label={c.location}>
-                    <div className="portfolio-skyline" aria-hidden="true"/>
-                    <Photo src={IMAGES.outdoor} alt="Portrait of Carina Sophie Schoppe" className="portfolio-portrait" imgClass="object-[50%_18%]" fetchPriority="high" sizes="(min-width: 1280px) 440px, (min-width: 821px) 38vw, 224px"/>
-                    <div className="portfolio-location">{c.location}</div>
+                <div className="editorial-hero-media">
+                    <Photo
+                        src={IMAGES.outdoor}
+                        alt="Portrait of Carina Sophie Schoppe"
+                        className="editorial-portrait"
+                        imgClass="object-[50%_18%]"
+                        fetchPriority="high"
+                        sizes="(min-width: 1200px) 700px, (min-width: 821px) 50vw, 100vw"
+                    />
+                    <div className="editorial-location"><MapPin size={17}/><span>{c.location}</span></div>
                 </div>
             </section>
 
-            <section className="portfolio-proof-strip" aria-label="Portfolio proof">
-                {c.proof.map(([title, label], index) => (
-                    <div key={title} className="portfolio-proof-item">
-                        <LineIcon name={["mortar", "brain", "code", "chart"][index]}/>
-                        <div>
-                            <strong>{title}</strong>
-                            <span>{label}</span>
-                        </div>
-                    </div>
+            <section className="editorial-proof" aria-label={c.proofLabel}>
+                <h2 className="sr-only">{c.proofLabel}</h2>
+                {c.proof.map(([title, text, Icon]) => (
+                    <article key={title}>
+                        <Icon size={25}/>
+                        <div><h3>{title}</h3><p>{text}</p></div>
+                    </article>
                 ))}
             </section>
 
-            <section className="portfolio-connect">
-                <h2>{c.connect}</h2>
-                <div className="portfolio-connect-grid">
-                    {c.connectCards.map(([title, text, icon], index) => (
-                        <article key={title} className="portfolio-mini-card" data-accent-index={index}>
-                            <LineIcon name={icon}/>
-                            <div>
-                                <h3>{title}</h3>
-                                <p>{text}</p>
-                            </div>
-                        </article>
-                    ))}
-                </div>
-            </section>
-
-            <section className="portfolio-dashboard">
-                <Panel className="portfolio-projects-panel">
-                    <div className="portfolio-panel-head">
-                        <h2>{c.featuredProjects}</h2>
-                        <Link to="/projects">{c.viewProjects}</Link>
+            <section className="editorial-work" aria-labelledby="selected-projects">
+                <div className="editorial-section-heading">
+                    <div>
+                        <p className="editorial-eyebrow">{language === "de" ? "Portfolio" : "Portfolio"}</p>
+                        <h2 id="selected-projects">{c.selected}</h2>
+                        <p>{c.selectedIntro}</p>
                     </div>
-                    <div className="portfolio-project-grid">
-                        {softwareProjects.slice(0, 6).map((project) => (
-                            <a key={project.name} href={project.href} target="_blank" rel="noreferrer" className="portfolio-project-card">
-                                <div className="portfolio-project-visual" aria-hidden="true">
-                                    <LineIcon name={project.stack.includes("Kotlin") ? "code" : project.stack.includes("AI") ? "brain" : "chart"}/>
+                    <SectionLink to="/projects">{c.allProjects}</SectionLink>
+                </div>
+
+                <div className="editorial-work-grid">
+                    <div className="editorial-project-list">
+                        {projects.map((project, index) => (
+                            <a key={project.name} href={project.href} target="_blank" rel="noreferrer" className="editorial-project-row">
+                                <span className="editorial-project-number">{String(index + 1).padStart(2, "0")}</span>
+                                <div className="editorial-project-copy">
+                                    <p>{project.type}</p>
+                                    <h3>{project.name}</h3>
+                                    <span>{project.description}</span>
                                 </div>
-                                <h3>{project.name}</h3>
-                                <p>{project.description}</p>
-                                <div>
-                                    {project.stack.slice(0, 3).map((item) => <span key={item}>{item}</span>)}
+                                <div className="editorial-project-meta">
+                                    <span>{project.stack.slice(0, 3).join(" · ")}</span>
+                                    <strong>{c.projectDetail}<ExternalLink size={14}/></strong>
                                 </div>
                             </a>
                         ))}
                     </div>
-                </Panel>
 
-                <Panel>
-                    <div className="portfolio-panel-head">
-                        <h2>{c.credentialsTitle}</h2>
-                        <Link to="/credentials">{c.viewAll}</Link>
-                    </div>
-                    <div className="portfolio-timeline">
-                        {milestoneRows.map((item, index) => (
-                            <div key={`${item.year}-${item.title}`} className="portfolio-timeline-row">
-                                <span data-index={index}>{item.year}</span>
-                                <div>
-                                    <h3>{item.title}</h3>
-                                    <p>{item.copy}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="portfolio-credential-chips">
-                        {credentials.slice(0, 4).map((item) => <span key={item.title}>{item.title}</span>)}
-                    </div>
-                </Panel>
-
-                <Panel>
-                    <div className="portfolio-panel-head">
-                        <h2>{c.writing}</h2>
-                        <Link to="/blog">{c.viewPosts}</Link>
-                    </div>
-                    <div className="portfolio-writing-list">
-                        {latestPosts.map((post, index) => (
-                            <Link key={post.slug} to={`/blog/${post.slug}`} className="portfolio-writing-card" data-accent-index={index}>
-                                <div className="portfolio-writing-visual" aria-hidden="true"><LineIcon name={index === 0 ? "brain" : index === 1 ? "shield" : "chart"}/></div>
-                                <div>
-                                    <h3>{post.title}</h3>
-                                    <p>{post.excerpt}</p>
-                                    <span>{post.date} · {post.category}</span>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                </Panel>
+                    <aside className="editorial-credentials" aria-labelledby="qualifications-title">
+                        <div className="editorial-aside-heading">
+                            <h2 id="qualifications-title">{c.qualifications}</h2>
+                        </div>
+                        <div className="editorial-credential-list">
+                            {qualifications.map((credential, index) => {
+                                const Icon = credentialIcons[index];
+                                return (
+                                    <article key={credential.title}>
+                                        <Icon size={23}/>
+                                        <div><h3>{credential.title}</h3><p>{credential.meta}</p></div>
+                                    </article>
+                                );
+                            })}
+                        </div>
+                        <SectionLink to="/credentials">{c.allCredentials}</SectionLink>
+                    </aside>
+                </div>
             </section>
 
-            <section className="portfolio-bottom-grid">
-                <Panel className="portfolio-luminovia-panel">
-                    <div className="portfolio-external-arrow" aria-hidden="true">↗</div>
+            <section className="editorial-writing" aria-labelledby="writing-title">
+                <div className="editorial-section-heading">
                     <div>
-                        <h2>{c.luminoviaTitle}</h2>
-                        <p>{c.luminoviaCopy}</p>
+                        <p className="editorial-eyebrow">{language === "de" ? "Fachliche Perspektiven" : "Professional perspectives"}</p>
+                        <h2 id="writing-title">{c.writing}</h2>
+                        <p>{c.writingIntro}</p>
                     </div>
-                    <Button href={PROFILE.luminovia} showArrow={false}>{c.luminoviaCta}</Button>
-                </Panel>
+                    <SectionLink to="/blog">{c.allWriting}</SectionLink>
+                </div>
+                <div className="editorial-writing-grid">
+                    {latestPosts.map((post) => (
+                        <Link key={post.slug} to={`/blog/${post.slug}`} className="editorial-article">
+                            <p>{post.category} · {post.date}</p>
+                            <h3>{post.title}</h3>
+                            <span>{post.excerpt}</span>
+                            <strong>{c.read}<ArrowRight size={15}/></strong>
+                        </Link>
+                    ))}
+                </div>
+            </section>
 
-                <Panel className="portfolio-contact-panel">
-                    <h2>{c.contactTitle}</h2>
-                    <div className="portfolio-contact-links">
-                        <a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a>
-                        <span>{PROFILE.location}</span>
-                        <a href={PROFILE.linkedin} target="_blank" rel="noreferrer">{c.linkedin}</a>
-                    </div>
+            <section className="editorial-contact" aria-labelledby="contact-title">
+                <div className="editorial-contact-main">
+                    <p className="editorial-eyebrow">{c.contactEyebrow}</p>
+                    <h2 id="contact-title">{c.contactTitle}</h2>
+                    <p>{c.contactCopy}</p>
                     <div>
-                        <p>{c.contactCopy}</p>
-                        <Button to="/contact" variant="secondary" showArrow={false}>{c.send}</Button>
+                        <Link className="editorial-button editorial-button-primary" to="/contact"><Mail size={17}/>{c.message}</Link>
+                        <a className="editorial-button editorial-button-secondary" href={PROFILE.linkedin} target="_blank" rel="noreferrer"><Linkedin size={17}/>{c.linkedin}</a>
                     </div>
-                </Panel>
+                </div>
+                <div className="editorial-business-redirect">
+                    <img src={IMAGES.luminoviaLogoMark} width="72" height="72" alt="" loading="lazy"/>
+                    <div><p>{c.businessEyebrow}</p><h3>{c.businessTitle}</h3></div>
+                    <a href={PROFILE.luminovia} target="_blank" rel="noreferrer">{c.businessLink}<ExternalLink size={15}/></a>
+                </div>
             </section>
         </main>
     );
