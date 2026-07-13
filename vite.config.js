@@ -91,9 +91,7 @@ function htmlPerformancePlugin() {
             const htmlAsset = Object.values(bundle).find((asset) => asset.type === "asset" && asset.fileName.endsWith(".html"));
             if (!htmlAsset || typeof htmlAsset.source !== "string") return;
 
-            let html = htmlAsset.source.replace(/<link rel="stylesheet" crossorigin href="(\/(?:Website\/)?[^"]+\.css)">/g, (_match, href) => {
-                return `<link rel="preload" href="${href}" as="style" crossorigin onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" crossorigin href="${href}"></noscript>`;
-            });
+            let html = htmlAsset.source;
 
             const moduleScripts = [];
             html = html.replace(/\s*<script type="module" crossorigin src="\/([^"]+\.js)"><\/script>/g, (match) => {

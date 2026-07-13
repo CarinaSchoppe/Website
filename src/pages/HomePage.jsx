@@ -123,7 +123,7 @@ export default function HomePage() {
                 </div>
                 <div className="portfolio-portrait-wrap" aria-label={c.location}>
                     <div className="portfolio-skyline" aria-hidden="true"/>
-                    <Photo src={IMAGES.outdoor} alt="Portrait of Carina Sophie Schoppe" className="portfolio-portrait" imgClass="object-[50%_18%]" fetchPriority="high" sizes="(min-width: 1280px) 400px, (min-width: 1024px) 34vw, min(238px, 66vw)"/>
+                    <Photo src={IMAGES.outdoor} alt="Portrait of Carina Sophie Schoppe" className="portfolio-portrait" imgClass="object-[50%_18%]" fetchPriority="high" sizes="(min-width: 1280px) 440px, (min-width: 821px) 38vw, 224px"/>
                     <div className="portfolio-location">{c.location}</div>
                 </div>
             </section>
@@ -162,7 +162,7 @@ export default function HomePage() {
                         <Link to="/projects">{c.viewProjects}</Link>
                     </div>
                     <div className="portfolio-project-grid">
-                        {softwareProjects.slice(0, 3).map((project) => (
+                        {softwareProjects.slice(0, 6).map((project) => (
                             <a key={project.name} href={project.href} target="_blank" rel="noreferrer" className="portfolio-project-card">
                                 <div className="portfolio-project-visual" aria-hidden="true">
                                     <LineIcon name={project.stack.includes("Kotlin") ? "code" : project.stack.includes("AI") ? "brain" : "chart"}/>

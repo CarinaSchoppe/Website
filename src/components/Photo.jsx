@@ -28,7 +28,7 @@ export default function Photo({
         : null;
     const priority = fetchPriority || "auto";
     const imageLoading = loading || (priority === "high" ? "eager" : "lazy");
-    const decoding = priority === "high" ? "sync" : "async";
+    const decoding = "async";
 
     return (
         <div className={cn("relative overflow-hidden bg-gradient-to-br from-sky-200/20 via-slate-900 to-blue-300/16 shadow-[0_24px_90px_rgba(0,0,0,.24)]", className)}>

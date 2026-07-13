@@ -172,6 +172,7 @@ export default function App() {
     useEffect(() => {
         document.documentElement.dataset.theme = theme;
         safeSetStorageItem(THEME_KEY, theme);
+        document.querySelector(".static-home-shell")?.classList.add("is-ready");
     }, [theme]);
 
     const toggleTheme = () => setTheme((current) => current === "day" ? "night" : "day");
