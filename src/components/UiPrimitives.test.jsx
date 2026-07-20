@@ -29,6 +29,18 @@ describe("UI primitive branches", () => {
         expect(screen.getByRole("button", {name: "Run action"})).toHaveAttribute("data-button-variant", "dark");
     });
 
+    it("opens web links in a new tab but keeps email links in the current context", () => {
+        const {rerender} = render(<Button href="https://example.com">External</Button>);
+
+        expect(screen.getByRole("link", {name: /External/i})).toHaveAttribute("target", "_blank");
+        expect(screen.getByRole("link", {name: /External/i})).toHaveAttribute("rel", "noreferrer");
+
+        rerender(<Button href="mailto:hello@example.com">Email</Button>);
+
+        expect(screen.getByRole("link", {name: /Email/i})).not.toHaveAttribute("target");
+        expect(screen.getByRole("link", {name: /Email/i})).not.toHaveAttribute("rel");
+    });
+
     it("renders a photo fallback when the image cannot load", async () => {
         renderWithShell(<Photo src="/missing.jpg" alt="Missing portrait" fallback="LV" fallbackCopy="Image fallback"/>);
 

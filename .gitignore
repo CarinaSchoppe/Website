@@ -96,5 +96,6 @@ vite-preview.log
 vite-preview.err.log
 preview.log
 preview.err.log
+.codex-vite.*.log
 prompts.txt
 *.png

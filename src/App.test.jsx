@@ -78,6 +78,7 @@ describe("App routing and language", () => {
         expect(screen.getAllByRole("link", {name: /Write an email/i})[0]).toHaveAttribute("href", expect.stringContaining("mailto:info@carinaschoppe.com"));
         expect(screen.getByRole("link", {name: /Open Luminovia/i})).toHaveAttribute("href", "https://luminovia.org");
         expect(screen.getByTitle(/Google Calendar appointment scheduler/i)).toHaveAttribute("src", expect.stringContaining("calendar.google.com/calendar/appointments/schedules"));
+        expect(screen.getByTitle(/Google Calendar appointment scheduler/i)).toHaveAttribute("loading", "lazy");
     });
 
     it("scrolls to a hash target after route rendering", async () => {

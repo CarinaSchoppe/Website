@@ -1,5 +1,6 @@
 import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
+import {localizedSiteContentForLanguage} from "../data/localizedContent.js";
 import {PROFILE} from "../data/profile.js";
 import {useLanguage} from "../i18n.jsx";
 
@@ -230,35 +231,30 @@ export default function Seo() {
         const blogMatch = normalizedPathname.match(/^\/blog\/([^/]+)$/);
         if (!blogMatch) return undefined;
 
-        let active = true;
-        import("../data/localizedContent.js").then(({localizedSiteContentForLanguage}) => {
-            if (!active) return;
-            const post = localizedSiteContentForLanguage(language).blogPosts.find((item) => item.slug === blogMatch[1]);
-            if (!post) return;
+        const post = localizedSiteContentForLanguage(language).blogPosts.find((item) => item.slug === blogMatch[1]);
+        if (!post) return undefined;
 
-            const canonical = `${SITE_URL}${normalizedPathname}`;
-            const blogTitle = `${post.title} | Carina Sophie Schoppe Blog`;
-            document.title = blogTitle;
-            upsertMeta('meta[name="description"]', {name: "description", content: post.excerpt});
-            upsertMeta('meta[property="og:title"]', {property: "og:title", content: blogTitle});
-            upsertMeta('meta[property="og:description"]', {property: "og:description", content: post.excerpt});
-            upsertMeta('meta[property="og:type"]', {property: "og:type", content: "article"});
-            upsertJsonLd("dynamic-blogpost-schema", {
-                "@context": "https://schema.org",
-                "@type": "BlogPosting",
-                headline: post.title,
-                description: post.excerpt,
-                datePublished: post.date,
-                dateModified: post.date,
-                image: DEFAULT_IMAGE,
-                author: {"@id": `${SITE_URL}/#carina-sophie-schoppe`},
-                publisher: {"@id": `${SITE_URL}/#carina-sophie-schoppe`},
-                mainEntityOfPage: canonical,
-            });
+        const canonical = `${SITE_URL}${normalizedPathname}`;
+        const blogTitle = `${post.title} | Carina Sophie Schoppe Blog`;
+        document.title = blogTitle;
+        upsertMeta('meta[name="description"]', {name: "description", content: post.excerpt});
+        upsertMeta('meta[property="og:title"]', {property: "og:title", content: blogTitle});
+        upsertMeta('meta[property="og:description"]', {property: "og:description", content: post.excerpt});
+        upsertMeta('meta[property="og:type"]', {property: "og:type", content: "article"});
+        upsertJsonLd("dynamic-blogpost-schema", {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.title,
+            description: post.excerpt,
+            datePublished: post.date,
+            dateModified: post.date,
+            image: DEFAULT_IMAGE,
+            author: {"@id": `${SITE_URL}/#carina-sophie-schoppe`},
+            publisher: {"@id": `${SITE_URL}/#carina-sophie-schoppe`},
+            mainEntityOfPage: canonical,
         });
 
         return () => {
-            active = false;
             removeJsonLd("dynamic-blogpost-schema");
         };
     }, [language, normalizedPathname]);

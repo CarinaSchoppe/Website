@@ -5,22 +5,22 @@ import tailwindcss from "@tailwindcss/vite";
 
 const siteUrl = "https://carinaschoppe.com";
 const prerenderRoutes = [
-    ["/projects", "Projects | Carina Sophie Schoppe", "Software projects, automation and technical experiments by Carina Sophie Schoppe, including research tooling, data workflows, Kotlin and mobile work."],
-    ["/software", "Projects | Carina Sophie Schoppe", "Software projects, automation and technical experiments by Carina Sophie Schoppe, including research tooling, data workflows, Kotlin and mobile work."],
-    ["/portfolio", "Portfolio | Carina Sophie Schoppe", "Portfolio overview for public projects, technical work and professional profile information."],
-    ["/skills", "Skills | Carina Sophie Schoppe", "Personal skill overview across AI, software development, cybersecurity, business computer science, research and digital education."],
-    ["/credentials", "Credentials | Carina Sophie Schoppe", "Credentials and professional background including B.Sc., M.Sc., MBA, TAE40122 completed in June 2026, AI certificates and cybersecurity learning paths."],
-    ["/my-way", "Story | Carina Sophie Schoppe", "Professional timeline through business computer science, software practice, AI, research, TAE40122 and Brisbane."],
-    ["/about", "About | Carina Sophie Schoppe", "Personal profile of Carina Sophie Schoppe between software, research, digital education, AI, cybersecurity and entrepreneurship."],
-    ["/blog", "Blog | Carina Sophie Schoppe", "Articles on AI, governance, digital education, project work, cybersecurity, automation risk and modern work."],
-    ["/blog/agentic-ai-from-demo-to-delegation", "Agentic AI: from demos to delegated work | Carina Sophie Schoppe Blog", "An article on agentic AI, delegated workflows, human review and practical organisational design."],
-    ["/blog/project-management-in-the-age-of-ai", "Project Management in the Age of AI | Carina Sophie Schoppe Blog", "An article on how AI changes project management, coordination, risk work and delivery routines."],
-    ["/blog/teaching-with-ai-without-losing-learning", "Teaching with AI without losing learning | Carina Sophie Schoppe Blog", "An article on practical AI use in education, learning design, assessment and learner competence."],
-    ["/blog/from-industry-4-0-to-5-0-human-above-the-loop", "From Industry 4.0 to 5.0 | Carina Sophie Schoppe Blog", "An article on Industry 5.0, human-in-the-loop, human-above-the-loop and AI supervision."],
-    ["/blog/ai-automation-risks-hallucinations-token-burn-rate-limits", "AI automation risks: hallucinations, token burn and rate limits | Carina Sophie Schoppe Blog", "An article on AI automation risks, hallucinations, token burn, rate limits and process resilience."],
-    ["/contact", "Contact | Carina Sophie Schoppe", "Contact Carina Sophie Schoppe for portfolio, project, research, CV or professional profile enquiries. Business enquiries are routed to Luminovia."],
-    ["/imprint", "Imprint | Carina Sophie Schoppe", "Legal notice and contact details for Carina Sophie Schoppe."],
-    ["/privacy", "Privacy Policy | Carina Sophie Schoppe", "Privacy policy for the Carina Sophie Schoppe website, including analytics and contact information."],
+    ["/projects", "Projekte | Carina Sophie Schoppe", "Softwareprojekte, Automation und technische Experimente von Carina Sophie Schoppe, darunter Forschungswerkzeuge, Datenworkflows, Kotlin- und Mobile-Projekte."],
+    ["/software", "Projekte | Carina Sophie Schoppe", "Softwareprojekte, Automation und technische Experimente von Carina Sophie Schoppe, darunter Forschungswerkzeuge, Datenworkflows, Kotlin- und Mobile-Projekte."],
+    ["/portfolio", "Portfolio | Carina Sophie Schoppe", "Portfolio mit öffentlichen Projekten, technischen Arbeiten und Informationen zum beruflichen Profil von Carina Sophie Schoppe."],
+    ["/skills", "Kompetenzen | Carina Sophie Schoppe", "Kompetenzprofil von Carina Sophie Schoppe zu AI, Softwareentwicklung, Cybersecurity, Wirtschaftsinformatik, Forschung und digitaler Bildung."],
+    ["/credentials", "Nachweise | Carina Sophie Schoppe", "Abschlüsse, Zertifikate und fachliche Nachweise von Carina Sophie Schoppe, darunter B.Sc., M.Sc., MBA, TAE40122 und AI-Zertifikate."],
+    ["/my-way", "Werdegang | Carina Sophie Schoppe", "Beruflicher Werdegang von Carina Sophie Schoppe durch Wirtschaftsinformatik, Softwarepraxis, AI, Forschung, Lehre und Brisbane."],
+    ["/about", "Über Carina | Carina Sophie Schoppe", "Persönliches Profil von Carina Sophie Schoppe zwischen Software, Forschung, digitaler Bildung, AI, Cybersecurity und Unternehmertum."],
+    ["/blog", "Blog | Carina Sophie Schoppe", "Texte von Carina Sophie Schoppe zu AI, Governance, digitaler Bildung, Projektarbeit, Cybersecurity, Automationsrisiken und moderner Arbeit."],
+    ["/blog/agentic-ai-from-demo-to-delegation", "Agentic AI: vom Demo zur delegierten Arbeit | Carina Sophie Schoppe Blog", "Beitrag zu Agentic AI, delegierten Workflows, menschlicher Prüfung und belastbarem Organisationsdesign."],
+    ["/blog/project-management-in-the-age-of-ai", "Projektmanagement im Zeitalter von AI | Carina Sophie Schoppe Blog", "Beitrag darüber, wie AI Projektmanagement, Koordination, Risikoarbeit und Delivery-Routinen verändert."],
+    ["/blog/teaching-with-ai-without-losing-learning", "Lehren mit KI, ohne das Lernen zu verlieren | Carina Sophie Schoppe Blog", "Beitrag zum praktischen KI-Einsatz in Bildung, Lerndesign, Prüfungen und Kompetenzentwicklung."],
+    ["/blog/from-industry-4-0-to-5-0-human-above-the-loop", "Von Industry 4.0 zu 5.0 | Carina Sophie Schoppe Blog", "Beitrag zu Industry 5.0, Human-in-the-Loop, Human-above-the-Loop und verantwortlicher AI-Aufsicht."],
+    ["/blog/ai-automation-risks-hallucinations-token-burn-rate-limits", "Risiken der AI-Automation | Carina Sophie Schoppe Blog", "Beitrag zu Halluzinationen, Tokenverbrauch, Ratelimits und resilientem Prozessdesign in AI-Automationen."],
+    ["/contact", "Kontakt | Carina Sophie Schoppe", "Kontakt zu Carina Sophie Schoppe für Kooperationen, Projekte, Forschung, Gastvorträge oder Fragen zum beruflichen Profil. Unternehmensanfragen werden an Luminovia verwiesen."],
+    ["/imprint", "Impressum | Carina Sophie Schoppe", "Impressum und Kontaktinformationen von Carina Sophie Schoppe."],
+    ["/privacy", "Datenschutzerklärung | Carina Sophie Schoppe", "Datenschutzerklärung der Website von Carina Sophie Schoppe mit Informationen zu Analytics und Kontaktaufnahme."],
 ];
 
 function escapeHtmlAttribute(value) {
@@ -38,6 +38,7 @@ function routeFileName(path) {
 function withRouteHead(html, [path, title, description]) {
     const canonical = `${siteUrl}${path}`;
     return html
+        .replace(/\s*<link href="\/images\/carina-outdoor-640\.webp"[^>]*\/>/, "")
         .replace(/<title>.*?<\/title>/, `<title>${escapeHtmlAttribute(title)}</title>`)
         .replace(/<meta content="[^"]*" name="description"\/>/, `<meta content="${escapeHtmlAttribute(description)}" name="description"/>`)
         .replace(/<meta content="[^"]*" property="og:title"\/>/, `<meta content="${escapeHtmlAttribute(title)}" property="og:title"/>`)

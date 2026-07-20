@@ -34,9 +34,9 @@ export default function CredentialsPage() {
                     <p className="text-lg leading-8 text-slate-300">{copy.intro}</p>
                 </div>
 
-                <div className="mt-10 flex flex-wrap gap-2">
+                <div className="credential-filter-track mt-10 flex flex-wrap gap-2">
                     {credentialCategories.map((cat) => (
-                        <button key={cat} onClick={() => setFilter(cat)} className={cn("rounded-full border px-4 py-2 text-sm font-black transition", activeFilter === cat ? "border-white bg-white text-slate-950" : "border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white")}>{cat === "All" ? copy.allLabel : cat}</button>
+                        <button key={cat} onClick={() => setFilter(cat)} className={cn("credential-filter-button rounded-full border px-4 py-2 text-sm font-black transition", activeFilter === cat ? "border-white bg-white text-slate-950" : "border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white")}>{cat === "All" ? copy.allLabel : cat}</button>
                     ))}
                 </div>
 

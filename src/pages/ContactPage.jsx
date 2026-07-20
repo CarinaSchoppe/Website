@@ -126,6 +126,7 @@ export default function ContactPage() {
                                 <iframe
                                     src={PROFILE.appointmentSchedule}
                                     title={t.contact.calendarTitle}
+                                    loading="lazy"
                                     className="h-[600px] w-full"
                                     style={{border: 0}}
                                 />

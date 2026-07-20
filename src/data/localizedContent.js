@@ -3,7 +3,6 @@ import {
     audienceCards as enAudienceCards,
     blogPosts as enBlogPosts,
     capabilities as enCapabilities,
-    coreOffers as enCoreOffers,
     credentialCategories as enCredentialCategories,
     credentials as enCredentials,
     faqs as enFaqs,
@@ -86,7 +85,7 @@ const deFormerClientCopy = {
 const deCredentialCopy = {
     "DiBak Certified IT Lecturer": {
         title: "DiBak-zertifizierte IT-Dozentin",
-        meta: "10k+ Unterrichtsstunden | durchschnittliche Teilnehmerbewertung 4.7/5",
+        meta: "10k+ Unterrichtsstunden | durchschnittliche Teilnehmerbewertung 4,7/5",
         detail: "Didaktik, Methoden, Lernplattformen, Materialerstellung, Lernchecks und technologiegestützte Lehre.",
     },
     "Certificate IV in Training and Assessment TAE40122": {
@@ -210,38 +209,9 @@ const deTimeline = [
 const de = {
     trustStats: [
         {value: "10k+", label: "dokumentierte Unterrichtsstunden"},
-        {value: "4.7/5", label: "durchschnittliche Teilnehmerbewertung"},
+        {value: "4,7/5", label: "durchschnittliche Teilnehmerbewertung"},
         {value: "DE / EN", label: "Durchführung auf Deutsch & Englisch"},
         {value: "B.Sc. | M.Sc. | MBA | TAE", label: "Wirtschaftsinformatik, Management und VET-Training"},
-    ],
-    coreOffers: [
-        {
-            ...enCoreOffers[0],
-            kicker: "Corporate Training",
-            title: "AI- & Digital-Skills-Workshops",
-            outcome: "Aus AI-Unsicherheit wird praktische Handlungskompetenz.",
-            copy: "Für Unternehmen, die generative AI verstehen, produktiv einsetzen, Risiken bewerten und Workflows verbessern wollen, ohne Qualität oder Kontrolle zu verlieren.",
-            deliverables: ["AI Literacy und verantwortungsvolle Nutzung", "Prompt Engineering für Office- und Fachworkflows", "Praxisübungen für reale Business-Szenarien", "Workflow-Vorlagen und Checklisten", "Optionales Executive Briefing"],
-            bestFor: "Unternehmen, öffentliche Teams, Bildungsanbieter, KMU",
-        },
-        {
-            ...enCoreOffers[1],
-            kicker: "Freiberufliche Dozentin",
-            title: "IT- & Business-Kurse",
-            outcome: "Strukturierte Lehre für Erwachsene und berufliche Weiterbildung.",
-            copy: "Remote-first Kursdurchführung für Bildungsanbieter, Akademien, Hochschulen, Bootcamps und geförderte Weiterbildungen, die klare und praxisnahe Lehre brauchen.",
-            deliverables: ["Python, SQL, Datenbanken, AI, Cloud und Cybersecurity", "Theorieblöcke kombiniert mit Hands-on-Übungen", "Lernchecks, Recaps und Transferaufgaben", "Vorbereitete Materialien, Labs und Lernpfade", "Deutsch oder Englisch für gemischte Level"],
-            bestFor: "Bildungsanbieter, Hochschulen, Akademien, Erwachsenenbildung",
-        },
-        {
-            ...enCoreOffers[2],
-            kicker: "Talks & Vorträge",
-            title: "Keynotes, Expert Talks & Gastvorträge",
-            outcome: "Klare moderne Vorträge zu IT-Security und digitaler Transformation.",
-            copy: "Für Events, interne Lerntage, Leadership-Meetings und Bildungsformate, die komplexe Technologie verständlich und businessnah brauchen.",
-            deliverables: ["AI im Business: Chancen, Grenzen und Risiken", "Responsible AI und Governance im Arbeitsalltag", "Cybersecurity Awareness für nicht-technische Teams", "Digitale Transformation und Future Skills", "Individuelle Talk-Konzeption"],
-            bestFor: "Konferenzen, Business Events, Schulen, Hochschulen, interne Events",
-        },
     ],
     formats: [
         {title: "90-Minuten-Impulsvortrag", label: "Schnelle Orientierung", copy: "Ideal für Management-Briefings, interne Lerntage oder Events, bei denen ein klarer Überblick und nächste Schritte gebraucht werden."},
@@ -292,7 +262,7 @@ const de = {
     featuredTrainingTopics: [],
     trustSignals: [
         {title: "Akademischer Hintergrund", copy: "B.Sc. und M.Sc. in Wirtschaftsinformatik sowie MBA ohne Major, abgeschlossen im April 2026."},
-        {title: "Lehrerfahrung", copy: "10k+ dokumentierte Unterrichtsstunden mit durchschnittlicher Teilnehmerbewertung von 4.7/5."},
+        {title: "Lehrerfahrung", copy: "10k+ dokumentierte Unterrichtsstunden mit einer durchschnittlichen Teilnehmerbewertung von 4,7/5."},
         {title: "Australische Trainingsqualifikation", copy: "Certificate IV in Training and Assessment TAE40122, abgeschlossen bei RAM Training Services im Juni 2026."},
         {title: "Expertisebereiche", copy: "AI, Cybersecurity, Softwareentwicklung, Wirtschaftsinformatik, Daten, agile Arbeit und digitale Bildung."},
         {title: "Sprachen", copy: "Training auf Deutsch und Englisch, ergänzt durch Spanisch-Erfahrung."},
@@ -303,7 +273,7 @@ const de = {
     teachingProof: [
         {title: "Zertifizierte IT-Dozentin", value: "DiBak Trainer Certification", copy: "Umfasst Didaktik, Pädagogik, Lernplattformen, Materialerstellung, Lernchecks, technisches Troubleshooting und Qualitätssicherung."},
         {title: "Australisches VET-Training", value: "TAE40122 Certificate IV", copy: "Certificate IV in Training and Assessment bei RAM Training Services im Juni 2026 abgeschlossen."},
-        {title: "Teilnehmerbewertung", value: "4.7 / 5", copy: "Dokumentierte Durchschnittsbewertung nach 10k+ Unterrichtsstunden und starke Rückmeldung zur praktischen Vermittlung."},
+        {title: "Teilnehmerbewertung", value: "4,7 / 5", copy: "Dokumentierte Durchschnittsbewertung nach 10k+ Unterrichtsstunden und starke Rückmeldung zur praktischen Vermittlung."},
         {title: "Stärke in Erwachsenenbildung", value: "Theorie + Praxis", copy: "Lernformate mit Beispielen, Übungen, Recaps, Aktivierung, Transferaufgaben und klaren Ergebnissen."},
         {title: "Internationale Durchführung", value: "Remote-first", copy: "Sitz in Brisbane, Online-Trainings für Europa, Australien und die Welt auf Deutsch oder Englisch."},
     ],
@@ -518,7 +488,6 @@ export function localizedSiteContentForLanguage(language) {
 
     return {
         trustStats: enTrustStats,
-        coreOffers: enCoreOffers,
         formats: enFormats,
         trainingTopics: enTrainingTopics,
         serviceOfferings: enServiceOfferings,
