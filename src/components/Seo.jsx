@@ -191,14 +191,21 @@ export default function Seo() {
     const isBlogPostRoute = /^\/blog\/[^/]+$/.test(normalizedPathname);
     const routeMetaEntry = routeMeta[language][normalizedPathname];
     const isKnownRoute = Boolean(routeMetaEntry || isBlogPostRoute);
+    const shortNotFoundPath = normalizedPathname.length > 64
+        ? `${normalizedPathname.slice(0, 61)}...`
+        : normalizedPathname;
     const currentMeta = isBlogPostRoute
         ? {
             title: language === "de" ? "Blogbeitrag | Carina Sophie Schoppe" : "Blog Article | Carina Sophie Schoppe",
             description: language === "de" ? "Fachbeitrag von Carina Sophie Schoppe zu AI, Governance, digitaler Bildung oder moderner Arbeit." : "Long-form article by Carina Sophie Schoppe on AI, governance, digital education or modern work.",
         }
         : routeMetaEntry || {
-                title: language === "de" ? "Seite nicht gefunden | Carina Sophie Schoppe" : "Page not found | Carina Sophie Schoppe",
-                description: language === "de" ? "Diese Seite wurde nicht gefunden. Nutzen Sie Startseite, Projekte oder Kontakt." : "This page was not found. Use the homepage, projects or contact page.",
+                title: language === "de"
+                    ? `${shortNotFoundPath} nicht gefunden | Carina Sophie Schoppe`
+                    : `${shortNotFoundPath} not found | Carina Sophie Schoppe`,
+                description: language === "de"
+                    ? `Die angeforderte Seite ${shortNotFoundPath} wurde nicht gefunden.`
+                    : `The requested page ${shortNotFoundPath} could not be found.`,
             };
     const {title, description} = currentMeta;
 

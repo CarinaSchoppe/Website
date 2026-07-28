@@ -67,6 +67,19 @@ describe("App routing and language", () => {
         expect(await screen.findByRole("heading", {name: /Oops, there is nothing here/i})).toBeInTheDocument();
     });
 
+    it("identifies each missing route without exposing its query parameters", async () => {
+        window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
+        window.history.pushState({}, "Missing route", "/not-a-page?token=private#section");
+
+        render(<App/>);
+
+        expect(await screen.findByText("/not-a-page")).toBeInTheDocument();
+        expect(screen.getByText(/could not be found/i)).toBeInTheDocument();
+        expect(screen.getByTestId("not-found-reference")).toHaveTextContent(/^404-[0-9A-F]{8}$/);
+        expect(screen.queryByText(/token=private/i)).not.toBeInTheDocument();
+        expect(document.title).toContain("/not-a-page not found");
+    });
+
     it("renders direct contact links and Luminovia routing without a form", async () => {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
         window.history.pushState({}, "Contact", "/contact");

@@ -2,10 +2,14 @@ import Badge from "../components/Badge.jsx";
 import Button from "../components/Button.jsx";
 import Card from "../components/Card.jsx";
 import {useLanguage} from "../i18n.jsx";
-import {Link} from "react-router-dom";
+import {createNotFoundReference, formatNotFoundPath} from "../utils/notFound.js";
+import {Link, useLocation} from "react-router-dom";
 
 export default function NotFoundPage() {
     const {t} = useLanguage();
+    const {pathname, search, hash} = useLocation();
+    const requestedPath = formatNotFoundPath(pathname);
+    const reference = createNotFoundReference(pathname, search, hash);
     const paths = [
         ["/projects", t.nav.software],
         ["/skills", t.nav.skills],
@@ -24,6 +28,13 @@ export default function NotFoundPage() {
                     <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
                         {t.notFound.copy}
                     </p>
+                    <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300">
+                        {t.notFound.pathPrefix}{" "}
+                        <code className="inline-block max-w-full break-all rounded-lg border border-white/10 bg-white/[0.07] px-2 py-0.5 font-mono text-sm font-bold text-white">
+                            {requestedPath}
+                        </code>{" "}
+                        {t.notFound.pathSuffix}
+                    </p>
                     <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                         <Button to="/">{t.notFound.home}</Button>
                         <Button to="/contact#contact-options" variant="secondary">{t.notFound.contact}</Button>
@@ -36,6 +47,9 @@ export default function NotFoundPage() {
                     <div className="grid h-24 w-24 place-items-center rounded-[2rem] border border-sky-100/25 bg-sky-100 text-3xl font-black text-slate-950 shadow-[0_18px_70px_rgba(56,189,248,.22)]">
                         404
                     </div>
+                    <p className="mt-5 text-xs font-black uppercase tracking-[0.16em] text-sky-200">
+                        {t.notFound.reference}: <span data-testid="not-found-reference">{reference}</span>
+                    </p>
                     <p className="mt-6 text-base leading-8 text-slate-300">{t.notFound.hint}</p>
                     <div className="mt-7 grid gap-3 sm:grid-cols-2">
                         {paths.map(([to, label]) => (
