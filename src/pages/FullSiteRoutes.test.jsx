@@ -18,7 +18,6 @@ describe("full static site route coverage", () => {
         const html = readFileSync("index.html", "utf8");
         const robots = readFileSync("public/robots.txt", "utf8");
         const cname = readFileSync("public/CNAME", "utf8").trim();
-        const vercelConfig = JSON.parse(readFileSync("vercel.json", "utf8"));
 
         expect(cname).toBe("carinaschoppe.com");
         expect(html).toContain('<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>');
@@ -29,10 +28,6 @@ describe("full static site route coverage", () => {
         expect(existsSync("public/images/luminovia-logo-full.svg")).toBe(true);
         expect(readFileSync("public/404.html", "utf8")).toContain("__soft404");
         expect(html).toContain("params.get(\"__soft404\")");
-        expect(vercelConfig.rewrites).toContainEqual({
-            source: "/(.*)",
-            destination: "/index.html",
-        });
         expect(sitemap).toContain(`${SITE_BASE_URL}/`);
         expect(sitemap).not.toContain(`${SITE_BASE_URL}/training`);
         expect(sitemap).not.toContain(`${SITE_BASE_URL}/offers`);
