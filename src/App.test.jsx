@@ -46,8 +46,8 @@ describe("App routing and language", () => {
         ["/my-way", /professional path through technology/i],
         ["/portfolio", /Software projects, automation/i],
         ["/projects", /Software projects, automation/i],
-        ["/pricing", /This page is not part of the portfolio/i],
-        ["/unknown-page", /This page is not part of the portfolio/i],
+        ["/pricing", /Oops, there is nothing here/i],
+        ["/unknown-page", /Oops, there is nothing here/i],
     ])("renders %s with English page copy", async (route, heading) => {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
         window.history.pushState({}, "Route", route);
@@ -64,7 +64,7 @@ describe("App routing and language", () => {
 
         render(<App/>);
 
-        expect(await screen.findByRole("heading", {name: /This page is not part of the portfolio/i})).toBeInTheDocument();
+        expect(await screen.findByRole("heading", {name: /Oops, there is nothing here/i})).toBeInTheDocument();
     });
 
     it("renders direct contact links and Luminovia routing without a form", async () => {

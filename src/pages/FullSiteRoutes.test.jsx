@@ -24,7 +24,10 @@ describe("full static site route coverage", () => {
         expect(html).toContain("Carina Sophie Schoppe | Portfolio");
         expect(existsSync("public/favicon.svg")).toBe(true);
         expect(existsSync("public/apple-touch-icon.svg")).toBe(true);
+        expect(existsSync("public/404.html")).toBe(true);
         expect(existsSync("public/images/luminovia-logo-full.svg")).toBe(true);
+        expect(readFileSync("public/404.html", "utf8")).toContain("__soft404");
+        expect(html).toContain("params.get(\"__soft404\")");
         expect(sitemap).toContain(`${SITE_BASE_URL}/`);
         expect(sitemap).not.toContain(`${SITE_BASE_URL}/training`);
         expect(sitemap).not.toContain(`${SITE_BASE_URL}/offers`);
@@ -100,8 +103,9 @@ describe("full static site route coverage", () => {
 
         const {unmount} = render(<App/>);
 
-        expect(await screen.findByRole("heading", {level: 1, name: /This page is not part of the portfolio/i})).toBeInTheDocument();
+        expect(await screen.findByRole("heading", {level: 1, name: /Oops, there is nothing here/i})).toBeInTheDocument();
         expect(document.title).toMatch(/not found/i);
+        expect(document.head.querySelector('meta[name="robots"]')).toHaveAttribute("content", "noindex, follow");
         unmount();
     });
 });

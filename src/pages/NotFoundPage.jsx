@@ -2,6 +2,7 @@ import Badge from "../components/Badge.jsx";
 import Button from "../components/Button.jsx";
 import Card from "../components/Card.jsx";
 import {useLanguage} from "../i18n.jsx";
+import {Link} from "react-router-dom";
 
 export default function NotFoundPage() {
     const {t} = useLanguage();
@@ -14,8 +15,6 @@ export default function NotFoundPage() {
 
     return (
         <main className="relative overflow-hidden px-4 pb-24 pt-32 sm:px-6 lg:px-8">
-            <div className="pointer-events-none absolute left-1/2 top-20 h-72 w-72 -translate-x-1/2 rounded-full bg-sky-300/14 blur-3xl"/>
-            <div className="pointer-events-none absolute right-[-8rem] top-48 h-96 w-96 rounded-full bg-blue-500/12 blur-3xl"/>
             <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
                 <section>
                     <Badge tone="cyan">{t.notFound.badge}</Badge>
@@ -40,13 +39,13 @@ export default function NotFoundPage() {
                     <p className="mt-6 text-base leading-8 text-slate-300">{t.notFound.hint}</p>
                     <div className="mt-7 grid gap-3 sm:grid-cols-2">
                         {paths.map(([to, label]) => (
-                            <a
+                            <Link
                                 key={to}
-                                href={to}
+                                to={to}
                                 className="rounded-[1.4rem] border border-white/10 bg-white/[0.06] px-4 py-3 text-sm font-black text-slate-200 transition hover:-translate-y-0.5 hover:border-sky-200/35 hover:bg-white/[0.1] hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-200/80"
                             >
                                 {label}
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 </Card>

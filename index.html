@@ -45,6 +45,22 @@
         }
     </script>
     <style>html{scrollbar-gutter:stable}body{margin:0;background:#050b12}</style>
+    <script>
+        (() => {
+            const params = new URLSearchParams(window.location.search);
+            const soft404Path = params.get("__soft404");
+            if (!soft404Path) return;
+
+            try {
+                const target = new URL(soft404Path, window.location.origin);
+                if (target.origin === window.location.origin) {
+                    window.history.replaceState(null, "", `${target.pathname}${target.search}${target.hash}`);
+                }
+            } catch {
+                window.history.replaceState(null, "", "/");
+            }
+        })();
+    </script>
 </head>
 <body>
 <div id="root"></div>

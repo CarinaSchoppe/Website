@@ -189,12 +189,14 @@ export default function Seo() {
     const {language} = useLanguage();
     const normalizedPathname = normalizePathname(pathname);
     const isBlogPostRoute = /^\/blog\/[^/]+$/.test(normalizedPathname);
+    const routeMetaEntry = routeMeta[language][normalizedPathname];
+    const isKnownRoute = Boolean(routeMetaEntry || isBlogPostRoute);
     const currentMeta = isBlogPostRoute
         ? {
             title: language === "de" ? "Blogbeitrag | Carina Sophie Schoppe" : "Blog Article | Carina Sophie Schoppe",
             description: language === "de" ? "Fachbeitrag von Carina Sophie Schoppe zu AI, Governance, digitaler Bildung oder moderner Arbeit." : "Long-form article by Carina Sophie Schoppe on AI, governance, digital education or modern work.",
         }
-        : routeMeta[language][normalizedPathname] || {
+        : routeMetaEntry || {
                 title: language === "de" ? "Seite nicht gefunden | Carina Sophie Schoppe" : "Page not found | Carina Sophie Schoppe",
                 description: language === "de" ? "Diese Seite wurde nicht gefunden. Nutzen Sie Startseite, Projekte oder Kontakt." : "This page was not found. Use the homepage, projects or contact page.",
             };
@@ -205,7 +207,10 @@ export default function Seo() {
         document.title = title;
 
         upsertMeta('meta[name="description"]', {name: "description", content: description});
-        upsertMeta('meta[name="robots"]', {name: "robots", content: "index, follow, max-image-preview:large"});
+        upsertMeta('meta[name="robots"]', {
+            name: "robots",
+            content: isKnownRoute ? "index, follow, max-image-preview:large" : "noindex, follow",
+        });
         upsertMeta('meta[property="og:title"]', {property: "og:title", content: title});
         upsertMeta('meta[property="og:description"]', {property: "og:description", content: description});
         upsertMeta('meta[property="og:url"]', {property: "og:url", content: canonical});
@@ -225,7 +230,7 @@ export default function Seo() {
         if (!isBlogPostRoute) {
             removeJsonLd("dynamic-blogpost-schema");
         }
-    }, [description, isBlogPostRoute, normalizedPathname, title]);
+    }, [description, isBlogPostRoute, isKnownRoute, normalizedPathname, title]);
 
     useEffect(() => {
         const blogMatch = normalizedPathname.match(/^\/blog\/([^/]+)$/);

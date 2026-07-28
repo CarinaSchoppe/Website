@@ -52,12 +52,12 @@ const dictionaries = {
             accept: "Accept",
         },
         notFound: {
-            badge: "404 / Page not found",
-            title: "This page is not part of the portfolio.",
-            copy: "The link may be outdated, moved or typed incorrectly. Use one of the main paths below to continue.",
+            badge: "Page not found",
+            title: "Oops, there is nothing here.",
+            copy: "There is no page at this address. The link may be incomplete, outdated or the page may have moved.",
             home: "Back to homepage",
             contact: "Contact",
-            hint: "Looking for a specific profile detail, project or blog post? The contact page is the fastest route.",
+            hint: "Continue with the projects, writing or contact page.",
         },
     },
     de: {
@@ -107,12 +107,12 @@ const dictionaries = {
             accept: "Akzeptieren",
         },
         notFound: {
-            badge: "404 / Seite nicht gefunden",
-            title: "Diese Seite gehört nicht zum Portfolio.",
-            copy: "Der Link ist möglicherweise veraltet, verschoben oder falsch eingegeben. Nutzen Sie einen der Hauptbereiche, um weiterzugehen.",
+            badge: "Seite nicht gefunden",
+            title: "Huch, hier ist nichts.",
+            copy: "Unter dieser Adresse gibt es keine Seite. Vielleicht war der Link unvollständig, veraltet oder die Seite wurde verschoben.",
             home: "Zur Startseite",
             contact: "Kontakt",
-            hint: "Suchen Sie ein bestimmtes Profildetail, Projekt oder einen Blogbeitrag? Über die Kontaktseite erreichen Sie mich am schnellsten.",
+            hint: "Von hier aus geht es direkt zu den Projekten, Texten oder zur Kontaktseite.",
         },
     },
 };

@@ -15,13 +15,13 @@ const routes = [
     ["/about", /professional profile spanning software/i],
     ["/blog", /Writing on AI, digital education/i],
     ["/contact", /Contact Carina Sophie Schoppe/i],
-    ["/training", /This page is not part of the portfolio/i],
-    ["/offers", /This page is not part of the portfolio/i],
-    ["/consulting", /This page is not part of the portfolio/i],
-    ["/pricing", /This page is not part of the portfolio/i],
+    ["/training", /Oops, there is nothing here/i],
+    ["/offers", /Oops, there is nothing here/i],
+    ["/consulting", /Oops, there is nothing here/i],
+    ["/pricing", /Oops, there is nothing here/i],
     ["/imprint", /Imprint/i],
     ["/privacy", /Privacy policy/i],
-    ["/unknown-page", /This page is not part of the portfolio/i],
+    ["/unknown-page", /Oops, there is nothing here/i],
 ];
 
 describe("static page routes", () => {
