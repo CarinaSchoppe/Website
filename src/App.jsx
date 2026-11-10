@@ -89,34 +89,11 @@ function RouteScroll() {
     return null;
 }
 
-function DeferredAnalyticsConsent() {
-    const [ready, setReady] = useState(import.meta.env.MODE === "test");
-
-    useEffect(() => {
-        if (ready) return undefined;
-
-        /* v8 ignore next 5 -- production-only idle deferral is disabled in test mode */
-        const schedule = globalThis.requestIdleCallback || ((callback) => globalThis.setTimeout(callback, 900));
-        const cancel = globalThis.cancelIdleCallback || globalThis.clearTimeout;
-        const handle = schedule(() => setReady(true), {timeout: 3600});
-
-        return () => cancel(handle);
-    }, [ready]);
-
-    return ready ? (
-        <AppErrorBoundary fallback={null}>
-            <AnalyticsConsent/>
-        </AppErrorBoundary>
-    ) : null;
-}
-
 function routeElement(Component) {
     return (
         <AppErrorBoundary>
-            <Suspense fallback={<div className="min-h-[55vh]" aria-hidden="true"/>}>
-                <Component/>
-                <RouteScroll/>
-            </Suspense>
+            <Component/>
+            <RouteScroll/>
         </AppErrorBoundary>
     );
 }
@@ -147,28 +124,33 @@ export default function App() {
                 <Seo/>
                 <div data-theme={theme} className="theme-root">
                     <Header theme={theme} onToggleTheme={toggleTheme}/>
-                    <div id="main-content" className="site-content" tabIndex={-1}>
-                        <Routes>
-                            <Route path="/" element={routeElement(HomePage)}/>
-                            {pageRoutes("/credentials", CredentialsPage)}
-                            {pageRoutes("/portfolio", SoftwarePage)}
-                            {pageRoutes("/about", AboutPage)}
-                            {pageRoutes("/contact", ContactPage)}
-                            {pageRoutes("/my-way", MyWayPage)}
-                            {pageRoutes("/skills", SkillsPage)}
-                            {pageRoutes("/blog", BlogPage)}
-                            {pageRoutes("/blog/:slug", BlogPostPage)}
-                            {pageRoutes("/projects", SoftwarePage)}
-                            {pageRoutes("/software", SoftwarePage)}
-                            {pageRoutes("/imprint", ImprintPage)}
-                            {pageRoutes("/privacy", PrivacyPage)}
-                            <Route path="*" element={routeElement(NotFoundPage)}/>
-                        </Routes>
-                    </div>
-                    <DeferredAnalyticsConsent/>
-                    <div className="relative z-10">
-                        <Footer/>
-                    </div>
+                    {/* Keep the footer out of the first paint until the route has loaded. */}
+                    <Suspense fallback={<div id="main-content" className="site-content" tabIndex={-1}/>}>
+                        <div id="main-content" className="site-content" tabIndex={-1}>
+                            <Routes>
+                                <Route path="/" element={routeElement(HomePage)}/>
+                                {pageRoutes("/credentials", CredentialsPage)}
+                                {pageRoutes("/portfolio", SoftwarePage)}
+                                {pageRoutes("/about", AboutPage)}
+                                {pageRoutes("/contact", ContactPage)}
+                                {pageRoutes("/my-way", MyWayPage)}
+                                {pageRoutes("/skills", SkillsPage)}
+                                {pageRoutes("/blog", BlogPage)}
+                                {pageRoutes("/blog/:slug", BlogPostPage)}
+                                {pageRoutes("/projects", SoftwarePage)}
+                                {pageRoutes("/software", SoftwarePage)}
+                                {pageRoutes("/imprint", ImprintPage)}
+                                {pageRoutes("/privacy", PrivacyPage)}
+                                <Route path="*" element={routeElement(NotFoundPage)}/>
+                            </Routes>
+                        </div>
+                        <AppErrorBoundary fallback={null}>
+                            <AnalyticsConsent/>
+                        </AppErrorBoundary>
+                        <div className="relative z-10">
+                            <Footer/>
+                        </div>
+                    </Suspense>
                 </div>
             </BrowserRouter>
         </LanguageProvider>

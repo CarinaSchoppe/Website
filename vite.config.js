@@ -3,8 +3,9 @@ import preact from "@preact/preset-vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import {blogIndexForLanguage} from "./src/data/blogIndex.js";
+import {headshotSizes, headshotWidths} from "./src/data/portrait.js";
+import {canonicalUrl} from "./src/data/siteUrls.js";
 
-const siteUrl = "https://carinaschoppe.com";
 const prerenderRoutes = [
     ["/projects", "Projekte | Carina Sophie Schoppe", "Softwareprojekte, Automation und technische Experimente von Carina Sophie Schoppe, darunter Forschungswerkzeuge, Datenworkflows, Kotlin- und Mobile-Projekte."],
     ["/software", "Projekte | Carina Sophie Schoppe", "Softwareprojekte, Automation und technische Experimente von Carina Sophie Schoppe, darunter Forschungswerkzeuge, Datenworkflows, Kotlin- und Mobile-Projekte."],
@@ -36,8 +37,42 @@ function routeFileName(path) {
     return `${path.replace(/^\//, "")}/index.html`;
 }
 
+const routeModules = {
+    "/projects": "SoftwarePage",
+    "/software": "SoftwarePage",
+    "/portfolio": "SoftwarePage",
+    "/skills": "SkillsPage",
+    "/credentials": "CredentialsPage",
+    "/my-way": "MyWayPage",
+    "/about": "AboutPage",
+    "/blog": "BlogPage",
+    "/contact": "ContactPage",
+    "/imprint": "ImprintPage",
+    "/privacy": "PrivacyPage",
+};
+
+function appendHeadLinks(html, links) {
+    return links.length ? html.replace("</head>", `${links.join("\n")}\n</head>`) : html;
+}
+
+function preloadRoute(html, path, chunks) {
+    const page = chunks.get(path.startsWith("/blog/") ? "BlogPostPage" : routeModules[path]);
+    const links = page
+        ? [page.fileName, ...page.imports]
+            .filter((name) => !html.includes(`"/${name}"`))
+            .map((name) => `<link rel="modulepreload" href="/${name}" crossorigin>`)
+        : [];
+
+    if (path === "/about") {
+        const sources = headshotWidths.map((width) => `/images/carina-headshot-${width}.webp ${width}w`).join(", ");
+        links.push(`<link rel="preload" as="image" type="image/webp" imagesrcset="${sources}" imagesizes="${headshotSizes}" fetchpriority="high">`);
+    }
+
+    return appendHeadLinks(html, links);
+}
+
 function withRouteHead(html, [path, title, description]) {
-    const canonical = `${siteUrl}${path}`;
+    const canonical = canonicalUrl(path);
     return html
         .replace(/\s*<link\b(?=[^>]*\bdata-hero-preload\b)[^>]*>/, "")
         .replace(/<title>.*?<\/title>/, `<title>${escapeHtmlAttribute(title)}</title>`)
@@ -46,9 +81,7 @@ function withRouteHead(html, [path, title, description]) {
         .replace(/<meta content="[^"]*" property="og:title"\/>/, `<meta content="${escapeHtmlAttribute(title)}" property="og:title"/>`)
         .replace(/<meta content="[^"]*" property="og:description"\/>/, `<meta content="${escapeHtmlAttribute(description)}" property="og:description"/>`)
         .replace(/<meta content="[^"]*" property="og:url"\/>/, `<meta content="${canonical}" property="og:url"/>`)
-        .replace(/<link href="[^"]*" rel="canonical"\/>/, `<link href="${canonical}" rel="canonical"/>`)
-        .replace(/<link href="[^"]*" hreflang="en" rel="alternate"\/>/, `<link href="${canonical}" hreflang="en" rel="alternate"/>`)
-        .replace(/<link href="[^"]*" hreflang="de" rel="alternate"\/>/, `<link href="${canonical}" hreflang="de" rel="alternate"/>`);
+        .replace(/<link href="[^"]*" rel="canonical"\/>/, `<link href="${canonical}" rel="canonical"/>`);
 }
 
 function htmlPerformancePlugin() {
@@ -72,13 +105,19 @@ function htmlPerformancePlugin() {
                 html = html.replace("</body>", `${moduleScripts.map((script) => `\n${script}`).join("")}\n</body>`);
             }
 
+            const font = Object.keys(bundle).find((name) => /\/manrope-[^/]+\.woff2$/.test(name));
+            if (font) {
+                html = appendHeadLinks(html, [`<link rel="preload" as="font" type="font/woff2" href="/${font}" crossorigin>`]);
+            }
+
             htmlAsset.source = html;
+            const chunks = new Map(Object.values(bundle).filter((entry) => entry.type === "chunk").map((chunk) => [chunk.name, chunk]));
 
             prerenderRoutes.forEach((route) => {
                 this.emitFile({
                     type: "asset",
                     fileName: routeFileName(route[0]),
-                    source: withRouteHead(html, route),
+                    source: preloadRoute(withRouteHead(html, route), route[0], chunks),
                 });
             });
         },

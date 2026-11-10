@@ -28,7 +28,10 @@ describe("full static site route coverage", () => {
         expect(existsSync("public/images/luminovia-logo-full.svg")).toBe(true);
         expect(readFileSync("public/404.html", "utf8")).toContain("__soft404");
         expect(html).toContain("params.get(\"__soft404\")");
+        expect(html).not.toContain("hreflang=");
         expect(sitemap).toContain(`${SITE_BASE_URL}/`);
+        expect(sitemap).not.toContain(`${SITE_BASE_URL}/software`);
+        expect(sitemap).not.toContain(`${SITE_BASE_URL}/portfolio`);
         expect(sitemap).not.toContain(`${SITE_BASE_URL}/training`);
         expect(sitemap).not.toContain(`${SITE_BASE_URL}/offers`);
         expect(sitemap).not.toContain(`${SITE_BASE_URL}/pricing`);
@@ -38,12 +41,12 @@ describe("full static site route coverage", () => {
     it("keeps the sitemap connected to every rendered app page", async () => {
         expect(appRoutes).toEqual(expect.arrayContaining([
             "/",
-            "/projects",
-            "/skills",
-            "/credentials",
-            "/my-way",
-            "/blog",
-            "/contact",
+            "/projects/",
+            "/skills/",
+            "/credentials/",
+            "/my-way/",
+            "/blog/",
+            "/contact/",
         ]));
 
         for (const language of ["en", "de"]) {
@@ -58,6 +61,7 @@ describe("full static site route coverage", () => {
                 expect(screen.queryByRole("heading", {name: /seite nicht gefunden/i})).not.toBeInTheDocument();
                 expect(document.title).not.toMatch(/not found|nicht gefunden/i);
                 expect(document.documentElement.lang).toBe(language);
+                expect(document.head.querySelector('link[rel="canonical"]')).toHaveAttribute("href", `${SITE_BASE_URL}${route}`);
                 unmount();
             }
         }
@@ -77,6 +81,15 @@ describe("full static site route coverage", () => {
         ]);
         expect(footer.getByRole("link", {name: /^Teaching$/i})).toHaveAttribute("href", "/skills");
         expect(footer.getByRole("link", {name: /^Credentials$/i})).toHaveAttribute("href", "/credentials");
+    });
+
+    it.each(["/software/", "/portfolio/"])("keeps the project alias %s with the main projects canonical URL", async (route) => {
+        window.history.pushState({}, "Project alias", route);
+
+        render(<App/>);
+
+        expect(await screen.findByRole("heading", {level: 1})).toHaveTextContent(/Softwareprojekte und Open Source|Software projects and open source/i);
+        expect(document.head.querySelector('link[rel="canonical"]')).toHaveAttribute("href", `${SITE_BASE_URL}/projects/`);
     });
 
     it.each([

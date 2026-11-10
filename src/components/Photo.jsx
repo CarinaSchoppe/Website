@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {headshotWidths} from "../data/portrait.js";
 import {useLanguage} from "../i18n.jsx";
 import {cn} from "./utils.js";
 
@@ -19,7 +20,7 @@ export default function Photo({
     const [failed, setFailed] = useState(false);
     const fallbackText = fallbackCopy || t.home.photoFallback;
     const responsiveWidths = src.includes("carina-headshot")
-        ? [240, 320, 480, 640, 960]
+        ? headshotWidths
         : src.includes("carina-outdoor")
             ? [320, 400, 480, 640, 960]
             : [480, 640, 960];

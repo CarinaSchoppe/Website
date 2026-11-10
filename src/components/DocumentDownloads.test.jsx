@@ -13,7 +13,7 @@ describe("DocumentDownloads", () => {
             title: {de: "Bachelorurkunde", en: "Bachelor degree certificate"},
         }]}/>);
 
-        const link = screen.getByRole("link", {name: "Bachelorurkunde herunterladen (PDF · Englisch)"});
+        const link = screen.getByRole("link", {name: "Bachelorurkunde (PDF · Englisch) – herunterladen"});
         expect(link).toHaveTextContent("Bachelorurkunde (PDF · Englisch)");
         expect(link).toHaveAttribute("href", "/credentials/bachelor-en.pdf");
         expect(link).toHaveAttribute("hreflang", "en");
@@ -26,7 +26,7 @@ describe("DocumentDownloads", () => {
             language: "de",
         }]}/>);
 
-        expect(screen.getByRole("link", {name: "Download Universität Paderborn (PDF · German)"})).toHaveTextContent("PDF · German");
+        expect(screen.getByRole("link", {name: "PDF · German – Download Universität Paderborn"})).toHaveTextContent("PDF · German");
     });
 
     it("renders no placeholder when no document is available", () => {

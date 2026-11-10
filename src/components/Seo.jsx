@@ -2,9 +2,9 @@ import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
 import {blogIndexForLanguage} from "../data/blogIndex.js";
 import {PROFILE} from "../data/profile.js";
+import {canonicalUrl, SITE_URL} from "../data/siteUrls.js";
 import {useLanguage} from "../i18n.jsx";
 
-const SITE_URL = "https://carinaschoppe.com";
 const DEFAULT_IMAGE = `${SITE_URL}/images/carina-hero.jpg`;
 
 const routeMeta = {
@@ -180,7 +180,7 @@ function buildBreadcrumbSchema(pathname, title) {
         "@type": "BreadcrumbList",
         itemListElement: [
             {"@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/`},
-            ...(pathname === "/" ? [] : [{"@type": "ListItem", position: 2, name: title.split("|")[0].trim(), item: `${SITE_URL}${pathname}`}]),
+            ...(pathname === "/" ? [] : [{"@type": "ListItem", position: 2, name: title.split("|")[0].trim(), item: canonicalUrl(pathname)}]),
         ],
     };
 }
@@ -211,7 +211,7 @@ export default function Seo() {
     const {title, description} = currentMeta;
 
     useEffect(() => {
-        const canonical = `${SITE_URL}${normalizedPathname === "/" ? "/" : normalizedPathname}`;
+        const canonical = canonicalUrl(normalizedPathname);
         document.title = title;
 
         upsertMeta('meta[name="description"]', {name: "description", content: description});
@@ -228,8 +228,6 @@ export default function Seo() {
         upsertMeta('meta[name="twitter:title"]', {name: "twitter:title", content: title});
         upsertMeta('meta[name="twitter:description"]', {name: "twitter:description", content: description});
         upsertLink('link[rel="canonical"]', {rel: "canonical", href: canonical});
-        upsertLink('link[rel="alternate"][hreflang="en"]', {rel: "alternate", hreflang: "en", href: canonical});
-        upsertLink('link[rel="alternate"][hreflang="de"]', {rel: "alternate", hreflang: "de", href: canonical});
 
         upsertJsonLd("dynamic-person-service-schema", buildPersonSchema());
         upsertJsonLd("dynamic-breadcrumb-schema", buildBreadcrumbSchema(normalizedPathname, title));
@@ -247,7 +245,7 @@ export default function Seo() {
         const post = blogIndexForLanguage(language).find((item) => item.slug === blogMatch[1]);
         if (!post) return undefined;
 
-        const canonical = `${SITE_URL}${normalizedPathname}`;
+        const canonical = canonicalUrl(normalizedPathname);
         const blogTitle = `${post.title} | Carina Sophie Schoppe Blog`;
         document.title = blogTitle;
         upsertMeta('meta[name="description"]', {name: "description", content: post.excerpt});

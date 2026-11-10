@@ -1,6 +1,7 @@
 import {ArrowRight, ArrowUpRight, MapPin} from "lucide-react";
 import {Link} from "react-router-dom";
 import Photo from "../components/Photo.jsx";
+import {headshotSizes} from "../data/portrait.js";
 import {IMAGES, PROFILE} from "../data/profile.js";
 import {selectedWork} from "../data/selectedWork.js";
 import {useLanguage} from "../i18n.jsx";
@@ -104,7 +105,7 @@ export default function AboutPage() {
                         width={1365}
                         height={2048}
                         fetchPriority="high"
-                        sizes="(min-width: 1120px) 400px, (min-width: 821px) 35vw, (min-width: 540px) 416px, 90vw"
+                        sizes={headshotSizes}
                     />
                     <figcaption>
                         <MapPin size={16} aria-hidden="true"/>{c.location}

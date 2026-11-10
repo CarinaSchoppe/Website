@@ -54,7 +54,7 @@ export default function SkillsPage() {
             publications: "Publikationen",
             publicationsTitle: "Publikationen und wissenschaftliche Arbeiten.",
             publicationsCopy: "In diesen Arbeiten beschäftige ich mich mit generativer KI, KI-Governance, Mensch-Maschine-Interaktion und IT-Sicherheit.",
-            jumpLabel: "Auf dieser Seite",
+            jumpLabel: "Themen auf dieser Seite",
             jumpItems: [["#unterricht", "Unterricht"], ["#softwarepraxis", "Software"], ["#publications", "Publikationen"], ["#skill-map", "Kompetenzen"]],
         }
         : {
