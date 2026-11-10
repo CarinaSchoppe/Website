@@ -166,6 +166,25 @@
 .home-value h3 { font-size: clamp(1rem, 1.75vw, 1.25rem); }
 .home-value p { margin-top: .45rem; color: var(--muted); line-height: 1.6; }
 
+.reference-group + .reference-group { margin-top: 1.75rem; }
+.reference-group h3 {
+    margin-bottom: .6rem;
+    color: var(--accent);
+    font-size: 1.05rem;
+}
+.reference-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .65rem clamp(.85rem, 1.8vw, 1.45rem);
+}
+.reference-list li {
+    min-width: 0;
+    padding: .85rem 0;
+    border-top: 1px solid var(--line);
+}
+.reference-list strong { font-size: 1rem; font-weight: 800; overflow-wrap: anywhere; }
+.reference-list p { margin-top: .35rem; color: var(--muted); line-height: 1.55; }
+
 .home-project-link { display: block; height: 100%; border-radius: inherit; }
 .home-project-media {
     display: grid;
@@ -223,14 +242,14 @@
     .home-portrait-photo img { object-position: 50% 10%; }
     .home-section-heading, .home-values .home-section-heading { align-items: start; flex-direction: column; gap: .2rem; }
     .home-values-list { grid-template-columns: minmax(0, 1fr); }
-    .home-capabilities, .home-projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .home-capabilities, .home-projects, .reference-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .home-contact { grid-template-columns: minmax(0, 1fr); }
     .home-contact-business { border-inline-start: 0; border-top: 1px solid var(--line); }
     .home-writing-list a { grid-template-columns: minmax(0, 1fr) auto; }
     .home-writing-list .site-kicker { grid-column: 1 / -1; }
 }
 @media (max-width: 520px) {
-    .home-capabilities, .home-projects { grid-template-columns: minmax(0, 1fr); }
+    .home-capabilities, .home-projects, .reference-list { grid-template-columns: minmax(0, 1fr); }
     .home-proof dl { grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
     .home-proof dl div:nth-child(3) { grid-column: 1 / -1; border-inline-start: 0; border-top: 1px solid var(--line); padding: .65rem 0 0; }
 }

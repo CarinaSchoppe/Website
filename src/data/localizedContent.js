@@ -7,7 +7,6 @@ import {
     faqs as enFaqs,
     featuredTrainingTopics as enFeaturedTrainingTopics,
     formats as enFormats,
-    formerClients as enFormerClients,
     lifeMilestones as enLifeMilestones,
     selectedProjects as enSelectedProjects,
     serviceOfferings as enServiceOfferings,
@@ -28,57 +27,6 @@ const deCredentialCategoryLabels = {
     Cybersecurity: "Cybersecurity",
     Entrepreneurship: "Unternehmertum",
     Language: "Sprache",
-};
-
-const deFormerClientCopy = {
-    "AI certification training": {
-        type: "AI-Zertifizierungstraining",
-        work: "AI-CERTs-Kurse und zertifizierungsorientiertes AI-Training.",
-    },
-    "IT retraining and professional education": {
-        type: "IT-Umschulung und Weiterbildung",
-        work: "Fortbildungs- und Umschulungsdurchführung für Fachinformatiker-Lernende.",
-    },
-    "Higher education": {
-        type: "Hochschule",
-        work: "Kurse rund um Softwareentwicklung und angewandte digitale Bildung.",
-    },
-    "Software, mobile and game development": {
-        type: "Software-, Mobile- und Spieleentwicklung",
-        work: "Kurse zu Softwareentwicklung, Mobile Development und Unity-Spieleentwicklung.",
-    },
-    "Cybersecurity training": {
-        type: "Cybersecurity-Training",
-        work: "Kursdurchführung mit Fokus auf Ethical Hacking und CompTIA PenTest+.",
-    },
-    "Digital business education": {
-        type: "Digitale Business-Bildung",
-        work: "Breite Weiterbildungsformate rund um digitale, betriebswirtschaftliche und IT-nahe Themen.",
-    },
-    "IT seminars and funded training": {
-        type: "IT-Seminare und geförderte Weiterbildung",
-        work: "Professionelle Trainings zu Projektmanagement, Datenbanken und Softwareentwicklung.",
-    },
-    "Software and AI courses": {
-        type: "Software- und AI-Kurse",
-        work: "Softwareentwicklungs- und AI-Kurse für Weiterbildung und Umschulung.",
-    },
-    "Research assistance": {
-        type: "Forschungsassistenz",
-        work: "Senior-Research-Assistant-Tätigkeit im Bereich Agentic AI.",
-    },
-    "Bundeswehr ZAW education": {
-        type: "Bundeswehr-ZAW-Bildung",
-        work: "IT-nahe Lehre für Bachelor-Professional- und Master-Professional-Wege.",
-    },
-    "Apprentice training": {
-        type: "Azubi-Weiterbildung",
-        work: "Azubi-Weiterbildung und Fortbildung in verschiedenen IT- und Berufsbildungsformaten.",
-    },
-    "Current Scrum training": {
-        type: "Aktuelles Scrum-Training",
-        work: "Scrum- und Agile-Training für professionelle Teams.",
-    },
 };
 
 const deCredentialCopy = {
@@ -293,11 +241,6 @@ const de = {
     })),
     credentialCategories: ["Alle", "Lehre", "Akademisch", "AI", "Cybersecurity", "Unternehmertum", "Sprache"],
     selectedProjects: deSelectedProjects,
-    formerClients: enFormerClients.map((client) => ({
-        ...client,
-        type: deFormerClientCopy[client.type]?.type || client.type,
-        work: deFormerClientCopy[client.type]?.work || client.work,
-    })),
     testimonialProof: [
         {title: "Vertrauen von Bildungsanbietern", quote: "Wiederholte Buchungen in Weiterbildung, Umschulung, Akademien und Hochschulen zeigen, dass meine Durchführung für strukturierte Erwachsenenbildung funktioniert."},
         {title: "Breit genug für gemischte IT-Gruppen", quote: "Von Fachinformatiker-Kohorten bis AI-Zertifikatsgruppen kann ich Tiefe, Tempo und Beispiele an die Gruppe anpassen."},
@@ -366,7 +309,6 @@ export function localizedSiteContentForLanguage(language) {
         credentials: enCredentials,
         credentialCategories: enCredentialCategories,
         selectedProjects: enSelectedProjects,
-        formerClients: enFormerClients,
         testimonialProof: enTestimonialProof,
         lifeMilestones: enLifeMilestones,
         skillGroups: enSkillGroups,

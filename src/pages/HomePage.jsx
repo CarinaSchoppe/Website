@@ -1,6 +1,7 @@
 import {ArrowRight, ArrowUpRight, BookOpen, Code2, FlaskConical, Globe2, MapPin} from "lucide-react";
 import {Link} from "react-router-dom";
 import Photo from "../components/Photo.jsx";
+import ReferencesSection from "../components/ReferencesSection.jsx";
 import {blogIndexForLanguage} from "../data/blogIndex.js";
 import {IMAGES, PROFILE} from "../data/profile.js";
 import {selectedWork} from "../data/selectedWork.js";
@@ -171,6 +172,8 @@ export default function HomePage() {
                     ))}
                 </div>
             </section>
+
+            <ReferencesSection/>
 
             <section className="home-section" aria-labelledby="selected-title">
                 <div className="home-section-heading">

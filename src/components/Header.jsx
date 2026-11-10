@@ -1,11 +1,21 @@
 import {useRef} from "react";
 import {Globe2, Menu, Moon, Sun, X} from "lucide-react";
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import {navItems, PROFILE} from "../data/profile.js";
 import {useLanguage} from "../i18n.jsx";
 
-const primaryItems = ["/about", "/projects", "/credentials", "/blog", "/contact"]
+const primaryItems = ["/about", "/projects", "/credentials", "/#referenzen", "/blog", "/contact"]
     .map((path) => navItems.find((item) => item.to === path));
+
+function PortfolioNavLink({item, onClick, children}) {
+    const RouterLink = item.key === "references" ? Link : NavLink;
+
+    return (
+        <RouterLink to={item.to} onClick={onClick} className={item.key === "book" ? "site-nav-contact" : undefined}>
+            {children}
+        </RouterLink>
+    );
+}
 
 function LanguageToggle({language, toggleLanguage}) {
     const label = language === "de" ? "EN · Sprache auf Englisch wechseln" : "DE · Switch language to German";
@@ -44,7 +54,7 @@ export default function Header({theme, onToggleTheme}) {
                         <span className="site-brand-name">Carina Sophie Schoppe</span>
                     </NavLink>
                     <nav className="site-desktop-nav" aria-label={t.navigation}>
-                        {primaryItems.map((item) => <NavLink key={item.to} to={item.to} className={item.key === "book" ? "site-nav-contact" : undefined}>{t.nav[item.key]}</NavLink>)}
+                        {primaryItems.map((item) => <PortfolioNavLink key={item.to} item={item}>{t.nav[item.key]}</PortfolioNavLink>)}
                     </nav>
                     <div className="site-header-controls">
                         <ThemeToggle theme={theme} onToggleTheme={onToggleTheme} language={language}/>
@@ -62,7 +72,7 @@ export default function Header({theme, onToggleTheme}) {
                         <button className="site-control" type="button" onClick={close} aria-label={t.close}><X size={22} aria-hidden="true"/></button>
                     </div>
                     <nav aria-label={t.navigation}>
-                        {primaryItems.map((item) => <NavLink key={item.to} to={item.to} onClick={close}>{t.nav[item.key]}</NavLink>)}
+                        {primaryItems.map((item) => <PortfolioNavLink key={item.to} item={item} onClick={close}>{t.nav[item.key]}</PortfolioNavLink>)}
                     </nav>
                     <div className="site-menu-external">
                         <a href={PROFILE.linkedin}>{t.linkedin}</a>
