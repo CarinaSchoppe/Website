@@ -18,13 +18,13 @@ export default function CredentialsPage() {
         ? {
             badge: "Nachweise & Lehrprofil",
             title: "Abschlüsse, Zertifikate und fachliche Nachweise.",
-            intro: "Hier finden Sie meine Abschlüsse, Zertifikate und fachlichen Nachweise. Bei ausgewählten Einträgen können Sie öffentliche Kopien herunterladen, in denen persönliche Angaben geschwärzt sind.",
+            intro: "Hier finden Sie meine Abschlüsse, Zertifikate und fachlichen Nachweise. Zu jedem Eintrag können Sie die zugehörigen PDFs herunterladen. Persönliche Angaben wie Geburtsdaten und private Kennnummern sind geschwärzt.",
             allLabel: "Alle Nachweise",
         }
         : {
             badge: "Credentials & teaching proof",
             title: "Degrees, certificates and professional credentials.",
-            intro: "Here you’ll find my degrees, certificates and professional credentials. Selected entries include downloadable public copies with personal details redacted.",
+            intro: "Here you’ll find my degrees, certificates and professional credentials. Each entry includes downloadable PDFs with details such as birth dates and private identifiers redacted.",
             allLabel: "All credentials",
         };
 
