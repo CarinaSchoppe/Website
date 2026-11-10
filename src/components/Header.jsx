@@ -11,7 +11,7 @@ function PortfolioNavLink({item, onClick, children}) {
     const RouterLink = item.key === "references" ? Link : NavLink;
 
     return (
-        <RouterLink to={item.to} onClick={onClick} className={item.key === "book" ? "site-nav-contact" : undefined}>
+        <RouterLink to={item.to} onClick={onClick}>
             {children}
         </RouterLink>
     );

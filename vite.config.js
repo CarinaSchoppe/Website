@@ -19,7 +19,7 @@ const prerenderRoutes = [
         `${title} | Carina Sophie Schoppe Blog`,
         excerpt,
     ]),
-    ["/contact", "Kontakt | Carina Sophie Schoppe", "Kontakt zu Carina Sophie Schoppe für Kooperationen, Projekte, Forschung, Gastvorträge oder Fragen zum beruflichen Profil. Unternehmensanfragen werden an Luminovia verwiesen."],
+    ["/contact", "Kontakt | Carina Sophie Schoppe", "Persönlicher Kontakt zu Carina Sophie Schoppe für den Austausch über Forschung, Open Source und ihre Arbeit. Geschäftliche Anfragen gehen an Luminovia."],
     ["/imprint", "Impressum | Carina Sophie Schoppe", "Impressum und Kontaktinformationen von Carina Sophie Schoppe."],
     ["/privacy", "Datenschutzerklärung | Carina Sophie Schoppe", "Datenschutzerklärung der Website von Carina Sophie Schoppe mit Informationen zu Analytics und Kontaktaufnahme."],
 ];

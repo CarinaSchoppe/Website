@@ -13,9 +13,6 @@ export default function ContactPage() {
     const de = language === "de";
     const subject = encodeURIComponent(de ? "Kontaktanfrage über carinaschoppe.com" : "Contact request via carinaschoppe.com");
     const email = `mailto:${PROFILE.email}?subject=${subject}`;
-    const appointmentSubject = encodeURIComponent(de ? "Anfrage für einen Gesprächstermin" : "Appointment request");
-    const appointmentBody = encodeURIComponent(de ? "Thema:\r\nZeitzone:\r\nMögliche Termine:\r\n" : "Topic:\r\nTime zone:\r\nAvailability:\r\n");
-    const appointmentEmail = `mailto:${PROFILE.email}?subject=${appointmentSubject}&body=${appointmentBody}`;
     const phones = [
         [de ? "Australien" : "Australia", PROFILE.phoneAustralia],
         [de ? "Deutschland" : "Germany", PROFILE.phoneGermany],
@@ -27,12 +24,10 @@ export default function ContactPage() {
                 <div className="contact-lead">
                     <p className="site-kicker">{t.contact.badge}</p>
                     <h1>{t.contact.title}</h1>
-                    <p>{de
-                        ? "Für Lehrprojekte, Gastvorträge, Forschungsfragen und technische Zusammenarbeit erreichen Sie mich per E-Mail oder telefonisch. Gespräche sind auf Deutsch und Englisch möglich."
-                        : "Contact me by email or phone about teaching projects, guest lectures, research or technical collaboration. I work in English and German."}</p>
+                    <p>{t.contact.copy}</p>
                     <div className="contact-actions">
                         <a href={email} className="site-button site-button-primary"><Mail size={17} aria-hidden="true"/>{t.contact.emailButton}</a>
-                        <Link to="#appointment" className="site-text-link">{t.contact.appointment}<ArrowDown size={16} aria-hidden="true"/></Link>
+                        <Link to="#appointment" className="site-text-link">{t.contact.businessLabel}<ArrowDown size={16} aria-hidden="true"/></Link>
                     </div>
                 </div>
                 <section className="contact-details" aria-labelledby="contact-options">
@@ -56,26 +51,14 @@ export default function ContactPage() {
                 </section>
             </div>
 
-            <aside className="contact-business" aria-labelledby="contact-business-title">
+            <section id="appointment" className="contact-business" aria-labelledby="contact-business-title" tabIndex={-1}>
                 <img src={IMAGES.luminoviaLogoMark} alt="" width="58" height="58" loading="lazy"/>
                 <div>
-                    <p className="site-kicker">{de ? "Für Unternehmen" : "For organisations"}</p>
-                    <h2 id="contact-business-title">Luminovia Training & Consulting</h2>
-                    <p>{de ? "Firmentrainings, Workshops und Beratung laufen über mein Unternehmen Luminovia." : "This is where I offer company training, workshops and consulting."}</p>
+                    <p className="site-kicker">{t.contact.businessLabel}</p>
+                    <h2 id="contact-business-title">Luminovia Training &amp; Consulting</h2>
+                    <p>{t.contact.businessCopy}</p>
                 </div>
-                <a href={PROFILE.luminovia} className="site-text-link">{de ? "Zu Luminovia" : "Open Luminovia"}<ArrowUpRight size={17} aria-hidden="true"/></a>
-            </aside>
-
-            <section id="appointment" className="contact-appointment" aria-labelledby="appointment-title" tabIndex={-1}>
-                <div className="contact-appointment-head">
-                    <div>
-                        <h2 id="appointment-title">{t.contact.appointmentTitle}</h2>
-                        <p>{t.contact.appointmentCopy}</p>
-                    </div>
-                    <a href={appointmentEmail} className="site-button site-button-primary">
-                        <Mail size={17} aria-hidden="true"/>{t.contact.appointmentEmail}
-                    </a>
-                </div>
+                <a href={PROFILE.luminoviaContact} className="site-text-link">{t.contact.businessLink}<ArrowUpRight size={17} aria-hidden="true"/></a>
             </section>
         </main>
     );

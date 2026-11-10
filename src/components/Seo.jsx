@@ -11,7 +11,7 @@ const routeMeta = {
     en: {
         "/": {
             title: "Carina Sophie Schoppe | Portfolio",
-            description: "Carina Sophie Schoppe teaches AI, IT and business, develops software and founded Luminovia Training & Consulting. Explore her teaching, projects and career.",
+            description: "The personal portfolio of Carina Sophie Schoppe, an IT lecturer, software developer and founder of Luminovia. Explore her story, interests and work.",
         },
         "/projects": {
             title: "Projects | Carina Sophie Schoppe",
@@ -47,7 +47,7 @@ const routeMeta = {
         },
         "/contact": {
             title: "Contact | Carina Sophie Schoppe",
-            description: "Contact Carina Sophie Schoppe about collaborations, projects, research, guest lectures or her professional background. Company enquiries are routed to Luminovia.",
+            description: "Reach Carina Sophie Schoppe to talk about research, open source or her work. Luminovia handles training, consulting and business enquiries.",
         },
         "/imprint": {
             title: "Imprint | Carina Sophie Schoppe",
@@ -61,7 +61,7 @@ const routeMeta = {
     de: {
         "/": {
             title: "Carina Sophie Schoppe | Portfolio",
-            description: "Carina Sophie Schoppe unterrichtet KI, IT und Wirtschaft, entwickelt Software und hat Luminovia Training & Consulting gegründet. Lehrthemen, Projekte und Lebenslauf.",
+            description: "Das persönliche Portfolio von Carina Sophie Schoppe, IT-Dozentin, Softwareentwicklerin und Luminovia-Gründerin. Werdegang, Interessen und Projekte.",
         },
         "/projects": {
             title: "Projekte | Carina Sophie Schoppe",
@@ -97,7 +97,7 @@ const routeMeta = {
         },
         "/contact": {
             title: "Kontakt | Carina Sophie Schoppe",
-            description: "Kontakt zu Carina Sophie Schoppe für Kooperationen, Projekte, Forschung, Gastvorträge oder Fragen zu ihrem beruflichen Hintergrund. Unternehmensanfragen werden zu Luminovia geleitet.",
+            description: "Persönlicher Kontakt zu Carina Sophie Schoppe für den Austausch über Forschung, Open Source und ihre Arbeit. Geschäftliche Anfragen gehen an Luminovia.",
         },
         "/imprint": {
             title: "Impressum | Carina Sophie Schoppe",

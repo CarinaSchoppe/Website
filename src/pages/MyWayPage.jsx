@@ -28,7 +28,7 @@ export default function MyWayPage() {
             study: "Vom Studium in den Unterricht",
             studyCopy: "2019 begann ich in Paderborn mit Wirtschaftsinformatik und machte mich im selben Jahr als Dozentin und Beraterin selbstständig. Bei KMUeinfachSicher entwickelte ich Lernmaterial für kleine Betriebe. Über bytes Coding verband ich die Softwareentwicklung mit der Bildungsarbeit.",
             today: "Brisbane und Luminovia",
-            todayCopy: "Nach Bachelor, Master und MBA erwarb ich in Australien das Certificate IV in Training and Assessment (TAE40122). Mit meinem Unternehmen Luminovia Training & Consulting biete ich Workshops und Beratung an. An der University of Queensland habe ich als Forschungsassistentin zu Agentic AI gearbeitet.",
+            todayCopy: "Nach Bachelor, Master und MBA erwarb ich in Australien das Certificate IV in Training and Assessment (TAE40122). An der University of Queensland habe ich als Forschungsassistentin zu Agentic AI gearbeitet. Luminovia Training & Consulting habe ich für Firmentrainings und Beratung gegründet.",
             business: "Zu luminovia.org",
             timeline: "Lebenslauf",
             order: "Die jüngsten Stationen stehen oben.",
@@ -45,7 +45,7 @@ export default function MyWayPage() {
             study: "From university to the classroom",
             studyCopy: "I began studying Business Information Systems in Paderborn in 2019 and started freelancing as a lecturer and consultant that same year. I developed learning materials for small businesses through KMUeinfachSicher. At bytes Coding, I combined software development with education.",
             today: "Brisbane and Luminovia",
-            todayCopy: "After completing my bachelor’s, master’s and MBA, I gained Australia’s Certificate IV in Training and Assessment (TAE40122). I offer workshops and consulting through my company, Luminovia Training & Consulting. I also worked as a research assistant on agentic AI at The University of Queensland.",
+            todayCopy: "After completing my bachelor’s, master’s and MBA, I gained Australia’s Certificate IV in Training and Assessment (TAE40122). I worked as a research assistant on agentic AI at The University of Queensland. I founded Luminovia Training & Consulting for company training and consulting.",
             business: "Visit luminovia.org",
             timeline: "CV and career timeline",
             order: "Most recent milestones first.",
@@ -64,7 +64,7 @@ export default function MyWayPage() {
                             {copy.intro}
                         </p>
                         <div className="mt-5 flex flex-wrap gap-x-5">
-                            <Link to="/about#about-path" className="site-text-link"><ArrowLeft size={16} aria-hidden="true"/>{copy.back}</Link>
+                            <Link to="/about" className="site-text-link"><ArrowLeft size={16} aria-hidden="true"/>{copy.back}</Link>
                             <a href={PROFILE.linkedin} className="site-text-link">{copy.linkedin}<ArrowUpRight size={17} aria-hidden="true"/></a>
                         </div>
                     </div>

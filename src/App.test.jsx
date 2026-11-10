@@ -1,4 +1,4 @@
-import {render, screen, waitFor} from "@testing-library/react";
+import {render, screen, waitFor, within} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {beforeEach, describe, expect, it, vi} from "vitest";
 import App from "./App.jsx";
@@ -18,7 +18,9 @@ describe("App routing and language", () => {
         expect(await screen.findByRole("heading", {name: /^Carina Sophie Schoppe$/i})).toBeInTheDocument();
         expect(screen.getByRole("heading", {name: /Meine Schwerpunkte/i})).toBeInTheDocument();
         expect(screen.getByRole("region", {name: "Referenzen"})).toHaveAttribute("id", "referenzen");
-        expect(screen.getByRole("link", {name: "Firmentraining & Beratung"})).toHaveAttribute("href", "https://luminovia.org");
+        expect(screen.getByRole("link", {name: "Mehr über mich"})).toHaveAttribute("href", "/about");
+        expect(screen.getByRole("link", {name: "Meine Arbeit ansehen"})).toHaveAttribute("href", "/#arbeit");
+        expect(screen.getByRole("link", {name: "Zu luminovia.org"})).toHaveAttribute("href", "https://luminovia.org");
         expect(screen.getByRole("link", {name: "Alle Lehrthemen ansehen"})).toHaveAttribute("href", "/skills#unterricht");
         expect(screen.getByRole("link", {name: "Mein Lebenslauf und Werdegang"})).toHaveAttribute("href", "/my-way");
         expect(screen.getByRole("link", {name: "Mein LinkedIn-Profil"})).toHaveAttribute("href", "https://www.linkedin.com/in/carinaschoppe/");
@@ -104,17 +106,18 @@ describe("App routing and language", () => {
         expect(document.title).toContain("/not-a-page not found");
     });
 
-    it("renders direct contact links and Luminovia routing without a form", async () => {
+    it("routes business enquiries to Luminovia while keeping a personal email link", async () => {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
         window.history.pushState({}, "Contact", "/contact");
 
         render(<App/>);
 
         await screen.findByRole("heading", {name: /Contact Carina Sophie Schoppe/i});
-        expect(screen.queryByRole("button", {name: /Send request/i})).not.toBeInTheDocument();
-        expect(screen.getAllByRole("link", {name: /Write an email/i})[0]).toHaveAttribute("href", expect.stringContaining("mailto:info@carinaschoppe.com"));
-        expect(screen.getByRole("link", {name: /Open Luminovia/i})).toHaveAttribute("href", "https://luminovia.org");
-        expect(screen.getByRole("link", {name: "Request an appointment by email"})).toHaveAttribute("href", expect.stringContaining("mailto:info@carinaschoppe.com?subject=Appointment%20request&body="));
+        const main = within(screen.getByRole("main"));
+        expect(main.getByRole("link", {name: /Write an email/i})).toHaveAttribute("href", expect.stringContaining("mailto:info@carinaschoppe.com"));
+        const company = within(main.getByRole("region", {name: "Luminovia Training & Consulting"}));
+        expect(company.getByRole("link", {name: "Contact Luminovia"})).toHaveAttribute("href", "https://luminovia.org/contact/");
+        expect(company.getAllByRole("link")).toHaveLength(1);
     });
 
     it("keeps the teaching credentials filter selected when the language changes", async () => {
@@ -148,7 +151,7 @@ describe("App routing and language", () => {
         expect(await screen.findByRole("heading", {name: /Contact Carina Sophie Schoppe/i})).toBeInTheDocument();
         await waitFor(() => expect(scrollIntoView).toHaveBeenCalledWith({behavior: "auto", block: "start"}));
         expect(requestAnimationFrame).toHaveBeenCalled();
-        await user.click(screen.getByRole("link", {name: "Request an appointment", exact: true}));
-        expect(screen.getByRole("region", {name: "Arrange a call"})).toHaveFocus();
+        await user.click(within(screen.getByRole("main")).getByRole("link", {name: "Business enquiries", exact: true}));
+        expect(screen.getByRole("region", {name: "Luminovia Training & Consulting"})).toHaveFocus();
     });
 });

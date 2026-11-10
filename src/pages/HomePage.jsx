@@ -13,13 +13,14 @@ const capabilityTones = ["butter", "mint", "sky"];
 
 const copy = {
     de: {
-        role: "IT-Dozentin · Wirtschaftsinformatikerin",
-        intro: "Ich unterrichte KI, IT und Wirtschaft. Ich programmiere eigene Anwendungen und Automatisierungen und forsche dazu, wie Menschen KI bei der Arbeit einsetzen.",
+        role: "IT-Dozentin · Softwareentwicklerin · Wirtschaftsinformatikerin",
+        intro: "Ich möchte verstehen, wie Dinge funktionieren, und weitergeben, was ich dabei lerne. Deshalb unterrichte ich KI, IT und Wirtschaft, programmiere eigene Software und forsche dazu, wie Menschen mit KI arbeiten.",
         location: "Brisbane, Australien",
         languages: "Deutsch & Englisch",
         portraitAlt: "Porträt von Carina Sophie Schoppe",
-        contact: "Kontakt aufnehmen",
-        business: "Firmentraining & Beratung",
+        about: "Mehr über mich",
+        work: "Meine Arbeit ansehen",
+        contact: "Persönlicher Kontakt",
         proof: "Erfahrung und Qualifikationen",
         milestones: [
             ["10.000+", "Dokumentierte Unterrichtsstunden"],
@@ -34,7 +35,8 @@ const copy = {
             ["Software & Automatisierung", "Ich habe PRISMA für systematische Literaturrecherchen und den Automatic Mail Sender für personalisierte E-Mails entwickelt. Bei OpenXLR arbeite ich am Linux-Audiomixer mit.", "Softwareprojekte ansehen", "/projects"],
             ["KI & Forschung", "Ich untersuche, wie Beschäftigte mit generativer KI arbeiten und wie Unternehmen den Einsatz steuern können. Dazu gehört auch die Frage, wie KI Sicherheitsrisiken verändert.", "Forschungsarbeiten ansehen", "/skills#publications"],
         ],
-        valuesTitle: "Wofür ich stehe",
+        valuesTitle: "Was mich ausmacht",
+        personal: "Ich bin im Weserbergland aufgewachsen und lebe heute in Brisbane. Ich zeichne gern. Beim Programmieren probiere ich auch abseits meiner Arbeit Ideen aus, zum Beispiel mit eigenen Minecraft-Plugins.",
         values: [
             ["Selbst ausprobieren", "Eine Netzwerkübung kann damit beginnen, einen Verbindungsfehler einzugrenzen. Mir ist wichtig, dass Teilnehmende am Ende erklären können, warum ihre Lösung funktioniert."],
             ["Entscheidungen nachvollziehen", "Meine Literatursoftware PRISMA hält fest, welche Studien bei der Vorauswahl herausfallen und warum. So lassen sich Entscheidungen später prüfen."],
@@ -45,21 +47,22 @@ const copy = {
         writing: "Fachtexte",
         allWriting: "Alle Texte",
         profile: "Mein Lebenslauf und Werdegang",
-        contactTitle: "Zusammenarbeit anfragen",
-        contactCopy: "Für Lehrprojekte, Gastvorträge, Forschungsfragen und technische Zusammenarbeit erreichen Sie mich direkt.",
+        contactTitle: "In Kontakt bleiben",
+        contactCopy: "Ich freue mich über fachlichen Austausch zu Forschung, Software und Open Source.",
         linkedin: "Mein LinkedIn-Profil",
         businessLabel: "Mein Unternehmen",
-        businessCopy: "Ich habe Luminovia gegründet. Dort biete ich Unternehmen und Bildungsanbietern Live-Trainings, Workshops und Beratung zu KI, IT und Cybersicherheit an, auf Deutsch und Englisch.",
-        businessLink: "luminovia.org besuchen",
+        businessCopy: "Ich habe Luminovia für Trainings und Beratung in KI, IT und Cybersicherheit gegründet. Anfragen und Buchungen laufen über Luminovia.",
+        businessLink: "Zu luminovia.org",
     },
     en: {
-        role: "IT lecturer · Business information systems",
-        intro: "I teach AI, IT and business. I build my own software and automation tools and research how people use AI at work.",
+        role: "IT lecturer · Software developer · Business information systems",
+        intro: "I like to understand how things work and explain what I’ve learned. I teach AI, IT and business, write my own software and research how people work with AI.",
         location: "Brisbane, Australia",
         languages: "English & German",
         portraitAlt: "Portrait of Carina Sophie Schoppe",
-        contact: "Get in touch",
-        business: "Company training & consulting",
+        about: "More about me",
+        work: "Explore my work",
+        contact: "Personal contact",
         proof: "Experience and qualifications",
         milestones: [
             ["10,000+", "Documented teaching hours"],
@@ -74,7 +77,8 @@ const copy = {
             ["Software & automation", "I built PRISMA for systematic literature reviews and Automatic Mail Sender for personalised email. I also contribute to the OpenXLR audio mixer for Linux.", "View software projects", "/projects"],
             ["AI & research", "I study how people work with generative AI, how organisations govern its use and how it changes security risks.", "View research", "/skills#publications"],
         ],
-        valuesTitle: "What matters to me",
+        valuesTitle: "A little about me",
+        personal: "I grew up in Germany’s Weserbergland region and now live in Brisbane. I enjoy drawing. I also code for fun, including building my own Minecraft plugins.",
         values: [
             ["Learning by doing", "A networking exercise might start with tracing a connection fault. I want learners to be able to explain why their solution works."],
             ["Traceable decisions", "My literature review tool PRISMA records which studies were screened out and why. That makes those decisions possible to review later."],
@@ -85,11 +89,11 @@ const copy = {
         writing: "Articles",
         allWriting: "All articles",
         profile: "My CV and career story",
-        contactTitle: "Work with me",
-        contactCopy: "Contact me directly about teaching projects, guest lectures, research or technical collaboration.",
+        contactTitle: "Stay in touch",
+        contactCopy: "I’m happy to talk about research, software and open-source work.",
         linkedin: "My LinkedIn profile",
         businessLabel: "My business",
-        businessCopy: "I founded Luminovia to offer live training, workshops and consulting in AI, IT and cybersecurity for organisations and education providers. I work in English and German.",
+        businessCopy: "I founded Luminovia to provide training and consulting in AI, IT and cybersecurity. Luminovia handles business enquiries and bookings.",
         businessLink: "Visit luminovia.org",
     },
 };
@@ -107,8 +111,8 @@ export default function HomePage() {
                     <h1 id="home-title"><span>Carina Sophie</span> <span className="home-surname">Schoppe</span></h1>
                     <p className="home-intro">{c.intro}</p>
                     <div className="home-hero-actions">
-                        <Link className="site-button site-button-primary" to="/contact">{c.contact}<ArrowRight size={17} aria-hidden="true"/></Link>
-                        <a className="site-button home-business-button" href={PROFILE.luminovia}>{c.business}<ArrowUpRight size={17} aria-hidden="true"/></a>
+                        <Link className="site-button site-button-primary" to="/about">{c.about}<ArrowRight size={17} aria-hidden="true"/></Link>
+                        <Link className="site-button home-work-button" to="#arbeit">{c.work}<ArrowRight size={17} aria-hidden="true"/></Link>
                     </div>
                 </div>
                 <figure className="home-portrait">
@@ -128,14 +132,23 @@ export default function HomePage() {
                 </figure>
             </section>
 
-            <section className="home-proof" aria-label={c.proof}>
-                <dl>
-                    {c.milestones.map(([value, label]) => <div key={value}><dt>{value}</dt><dd>{label}</dd></div>)}
-                </dl>
-                <Link className="site-text-link" to="/credentials">{c.credentials}<ArrowRight size={16} aria-hidden="true"/></Link>
+            <section className="home-section home-values" aria-labelledby="values-title">
+                <div className="home-values-intro">
+                    <h2 id="values-title">{c.valuesTitle}</h2>
+                    <p>{c.personal}</p>
+                    <Link className="site-text-link" to="/my-way">{c.profile}<ArrowRight size={16} aria-hidden="true"/></Link>
+                </div>
+                <div className="home-values-list">
+                    {c.values.map(([title, description], index) => (
+                        <div key={title} className={`home-value tone-${capabilityTones[index]}`}>
+                            <h3>{title}</h3>
+                            <p>{description}</p>
+                        </div>
+                    ))}
+                </div>
             </section>
 
-            <section className="home-section" aria-labelledby="focus-title">
+            <section id="arbeit" className="home-section" aria-labelledby="focus-title" tabIndex={-1}>
                 <div className="home-section-heading">
                     <div>
                         <h2 id="focus-title">{c.focus}</h2>
@@ -157,19 +170,11 @@ export default function HomePage() {
                 </div>
             </section>
 
-            <section className="home-section home-values" aria-labelledby="values-title">
-                <div className="home-section-heading">
-                    <h2 id="values-title">{c.valuesTitle}</h2>
-                    <Link className="site-text-link" to="/my-way">{c.profile}<ArrowRight size={16} aria-hidden="true"/></Link>
-                </div>
-                <div className="home-values-list">
-                    {c.values.map(([title, description], index) => (
-                        <div key={title} className={`home-value tone-${capabilityTones[index]}`}>
-                            <h3>{title}</h3>
-                            <p>{description}</p>
-                        </div>
-                    ))}
-                </div>
+            <section className="home-proof" aria-label={c.proof}>
+                <dl>
+                    {c.milestones.map(([value, label]) => <div key={value}><dt>{value}</dt><dd>{label}</dd></div>)}
+                </dl>
+                <Link className="site-text-link" to="/credentials">{c.credentials}<ArrowRight size={16} aria-hidden="true"/></Link>
             </section>
 
             <ReferencesSection/>
@@ -220,7 +225,7 @@ export default function HomePage() {
                     <h2 id="contact-title">{c.contactTitle}</h2>
                     <p>{c.contactCopy}</p>
                     <div className="home-contact-actions">
-                        <Link className="site-button site-button-primary" to="/contact">{c.contact}<ArrowRight size={17} aria-hidden="true"/></Link>
+                        <Link className="site-text-link" to="/contact">{c.contact}<ArrowRight size={17} aria-hidden="true"/></Link>
                         <a className="site-text-link" href={PROFILE.linkedin}>{c.linkedin}<ArrowUpRight size={16} aria-hidden="true"/></a>
                     </div>
                 </div>

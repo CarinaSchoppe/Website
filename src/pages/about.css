@@ -51,14 +51,6 @@
     gap: clamp(1.75rem, 6vw, 6rem);
 }
 
-.about-role {
-    margin-top: 1rem;
-    color: var(--accent);
-    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-    font-weight: 780;
-    line-height: 1.42;
-}
-
 .about-lede {
     max-width: 56ch;
     margin-block: .85rem 1.5rem;
@@ -116,6 +108,25 @@
 .about-portrait img {
     object-position: 50% 0;
 }
+
+.about-personal {
+    margin-top: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.about-personal-notes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.15rem clamp(1rem, 3vw, 2.5rem);
+    margin-top: 1.25rem;
+}
+
+.about-personal-notes > div {
+    padding-top: .75rem;
+    border-top: 3px solid var(--sky);
+}
+
+.about-personal-notes > div:nth-child(2) { border-color: var(--lavender); }
+.about-personal-notes > div:nth-child(3) { border-color: var(--mint); }
 
 .about-facts {
     display: grid;
@@ -183,6 +194,7 @@
     margin-top: .6rem;
 }
 
+.about-personal-notes p,
 .about-method-copy > p,
 .about-path-list p {
     max-width: 63ch;
@@ -334,6 +346,7 @@
 }
 
 @media (max-width: 660px) {
+    .about-personal-notes,
     .about-facts,
     .about-next-links {
         grid-template-columns: 1fr;

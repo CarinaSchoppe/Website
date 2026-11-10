@@ -47,7 +47,7 @@ describe("static page routes", () => {
         expect(within(topics).getAllByRole("heading", {level: 3})).toHaveLength(8);
         expect(within(topics).getByRole("heading", {name: /Buchhaltung/i})).toBeInTheDocument();
         expect(within(topics).getByRole("heading", {name: /Arbeitsrecht und Datenschutz/i})).toBeInTheDocument();
-        expect(within(screen.getByRole("main")).getByRole("link", {name: "Luminovia Training & Consulting", exact: true})).toHaveAttribute("href", "https://luminovia.org");
+        expect(within(screen.getByRole("main")).getByRole("link", {name: "Luminovia Training & Consulting", exact: true})).toHaveAttribute("href", "https://luminovia.org/contact/");
 
         await user.click(screen.getByRole("button", {name: /Sprache auf Englisch wechseln/i}));
 

@@ -1,4 +1,5 @@
 const base = import.meta.env.BASE_URL;
+const luminovia = "https://luminovia.org";
 
 export const PROFILE = {
     name: "Carina Sophie Schoppe",
@@ -12,7 +13,8 @@ export const PROFILE = {
     phoneGermany: "+49 175 5738 757",
     github: "https://github.com/CarinaSchoppe",
     linkedin: "https://www.linkedin.com/in/carinaschoppe/",
-    luminovia: "https://luminovia.org",
+    luminovia,
+    luminoviaContact: `${luminovia}/contact/`,
     luminoviaEmail: "info@luminovia.org",
     luminoviaGithub: "https://github.com/Luminovia-Training-Consulting",
     analyticsId: "G-YNGD292XE5",

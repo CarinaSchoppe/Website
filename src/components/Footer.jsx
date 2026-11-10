@@ -9,12 +9,14 @@ export default function Footer() {
         ? {
             summary: "IT-Dozentin, Wirtschaftsinformatikerin und Gründerin von Luminovia. In Brisbane zu Hause, auf Deutsch und Englisch tätig.",
             portfolio: "Auf dieser Seite",
-            business: "Kontakt & Unternehmen",
+            business: "Mein Unternehmen",
+            businessContact: "Geschäftliche Anfragen",
         }
         : {
             summary: "IT lecturer, business information systems specialist, and founder of Luminovia. Based in Brisbane, working in German and English.",
             portfolio: "On this site",
-            business: "Contact & business",
+            business: "My business",
+            businessContact: "Business enquiries",
         };
 
     return (
@@ -26,6 +28,7 @@ export default function Footer() {
                     <div className="site-footer-social">
                         <a href={PROFILE.linkedin}>LinkedIn <ArrowUpRight size={13} aria-hidden="true"/></a>
                         <a href={PROFILE.github}>GitHub <ArrowUpRight size={13} aria-hidden="true"/></a>
+                        <a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a>
                     </div>
                 </div>
                 <nav aria-label={labels.portfolio}>
@@ -36,8 +39,8 @@ export default function Footer() {
                 </nav>
                 <div>
                     <h2>{labels.business}</h2>
-                    <a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a>
                     <a className="site-footer-business" href={PROFILE.luminovia}>Luminovia Training & Consulting <ArrowUpRight size={14} aria-hidden="true"/></a>
+                    <a className="site-footer-business" href={PROFILE.luminoviaContact}>{labels.businessContact} <ArrowUpRight size={14} aria-hidden="true"/></a>
                 </div>
                 <div className="site-footer-legal">
                     <span>© {PROFILE.name}</span>

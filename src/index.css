@@ -104,13 +104,6 @@ html { scroll-padding-top: calc(var(--portfolio-header-height) + 1rem); }
     text-underline-offset: .35em;
 }
 .site-desktop-nav a:hover, .site-desktop-nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--accent); }
-.site-desktop-nav .site-nav-contact {
-    padding-inline: .8rem;
-    border: 1px solid var(--line);
-    border-radius: .5rem;
-    color: var(--accent);
-}
-.site-desktop-nav .site-nav-contact:hover { background: var(--paper-raised); }
 .site-header-controls { gap: .14rem; flex: none; }
 .site-control {
     display: inline-flex;

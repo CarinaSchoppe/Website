@@ -8,19 +8,25 @@ import "./about.css";
 const copy = {
     de: {
         kicker: "Über mich",
-        role: "IT-Dozentin, Wirtschaftsinformatikerin und Gründerin von Luminovia",
-        intro: "Ich unterrichte Erwachsene und Teams und entwickle die Übungen und Kursmaterialien dafür selbst. Ich programmiere eigene Werkzeuge für Literaturrecherche und Automatisierung, arbeite an Open-Source-Projekten mit und forsche dazu, wie KI die Arbeit verändert.",
+        intro: "Ich bin in Bodenwerder im Weserbergland aufgewachsen und lebe heute in Brisbane. Ich will wissen, wie Dinge funktionieren. Besonders gern probiere ich etwas selbst aus, bis ich es erklären oder daraus etwas Eigenes bauen kann.",
         location: "Brisbane, Australien",
         portrait: "Porträt von Carina Sophie Schoppe",
         tablet: "Carina hält im Stehen ein Tablet und einen Stift",
         career: "Lebenslauf ansehen",
         linkedin: "Mein LinkedIn-Profil",
+        personalTitle: "Was mich ausmacht",
+        personal: [
+            ["Zeichnen und Farbe", "Ich zeichne gern. Blau ist meine Lieblingsfarbe, und ich mag es, wenn alle Regenbogenfarben zusammenkommen."],
+            ["Eigene Ideen ausprobieren", "Ich programmiere auch aus Spaß an der Sache. Für Minecraft habe ich mit Skylife ein eigenes Minispiel entwickelt."],
+            ["Vielfalt und Respekt", "Bei SCHLAU NRW habe ich ehrenamtlich Schulworkshops zu Vielfalt und Antidiskriminierung begleitet. Im Unterricht ist mir wichtig, dass sich alle trauen, Fragen zu stellen."],
+        ],
         facts: [
             ["Studium", "M. Sc. Wirtschaftsinformatik und MBA"],
             ["Berufliche Bildung", "Certificate IV in Training and Assessment (TAE40122)"],
             ["Unterrichtssprachen", "Deutsch und Englisch"],
         ],
         approachTitle: "Wie ich unterrichte, forsche und programmiere",
+        approach: "Als Wirtschaftsinformatikerin und IT-Dozentin entwickle ich meine Übungen und Kursmaterialien selbst. Ich programmiere eigene Werkzeuge für Literaturrecherche und Automatisierung und arbeite an Open-Source-Projekten mit.",
         teachingTitle: "Woran erkennt man eine Phishing-Mail?",
         teaching: "Eine Übung zur IT-Sicherheit kann mit einer verdächtigen E-Mail anfangen. Wir sehen uns Absender und Links an und fragen, warum die Nachricht so dringend klingt. Danach besprechen wir, wie man im Betrieb mit so einer E-Mail umgehen würde.",
         researchTitle: "Wer entscheidet, wenn KI mitarbeitet?",
@@ -43,26 +49,32 @@ const copy = {
             ["Kompetenzen", "Meine fachlichen Schwerpunkte", "/skills"],
             ["Qualifikationen", "Abschlüsse und berufliche Nachweise", "/credentials"],
             ["Texte", "Was ich über KI und Bildung schreibe", "/blog"],
-            ["Kontakt", "Kooperationen, Forschung und Gastvorträge", "/contact"],
+            ["Referenzen", "Wo ich unterrichtet und geforscht habe", "/#referenzen"],
         ],
-        business: "Bei Luminovia konzipiere und leite ich Workshops und Schulungen zu KI, IT und IT-Sicherheit. Das Unternehmen bietet Trainings und Beratung für Teams, Hochschulen und Bildungsanbieter an.",
+        business: "Luminovia ist das Unternehmen, das ich für Firmentrainings, Workshops und Beratung gegründet habe. Angebote und den Kontakt für Buchungsanfragen finden Sie auf der Unternehmenswebsite.",
         businessLink: "luminovia.org besuchen",
     },
     en: {
         kicker: "About me",
-        role: "IT lecturer, business information systems specialist and founder of Luminovia",
-        intro: "I teach adults and teams and design my own exercises and course materials. I build tools for literature reviews and automation, contribute to open-source projects and study how AI changes the way people work.",
+        intro: "I grew up in Bodenwerder in Germany’s Weserbergland region and now live in Brisbane. I’m curious about how things work. I like trying things for myself until I can explain them or build something of my own.",
         location: "Brisbane, Australia",
         portrait: "Portrait of Carina Sophie Schoppe",
         tablet: "Carina standing with a tablet and stylus",
         career: "View my CV",
         linkedin: "My LinkedIn profile",
+        personalTitle: "A little more about me",
+        personal: [
+            ["Drawing and colour", "I like to draw. Blue is my favourite colour, and I love seeing all the colours of the rainbow together."],
+            ["Trying out my own ideas", "I also write software for fun. I built my own Minecraft minigame called Skylife."],
+            ["Diversity and respect", "I volunteered with SCHLAU NRW, helping run school workshops on diversity and anti-discrimination. When I teach, I want everyone to feel comfortable asking questions."],
+        ],
         facts: [
             ["Degrees", "MSc in Business Information Systems and MBA"],
             ["Vocational education", "Certificate IV in Training and Assessment (TAE40122)"],
             ["Teaching languages", "English and German"],
         ],
         approachTitle: "How I teach, research and write software",
+        approach: "I’m an IT lecturer with a background in business information systems. I design my own exercises and course materials, build tools for literature reviews and automation, and contribute to open-source projects.",
         teachingTitle: "How do you spot a phishing email?",
         teaching: "A security exercise might start with a suspicious email. We check the sender and the links and ask why the message sounds so urgent. Then we talk about how we’d handle the same email at work.",
         researchTitle: "Who makes the call when AI is involved?",
@@ -85,9 +97,9 @@ const copy = {
             ["Skills", "What I specialise in", "/skills"],
             ["Credentials", "My degrees and professional qualifications", "/credentials"],
             ["Writing", "What I write about AI and education", "/blog"],
-            ["Contact", "Collaboration, research and guest lectures", "/contact"],
+            ["References", "Where I’ve taught and worked in research", "/#referenzen"],
         ],
-        business: "At Luminovia, I design and lead workshops and courses on AI, IT and cybersecurity. The company provides training and consulting to teams, universities and education providers.",
+        business: "I founded Luminovia for company training, workshops and consulting. Visit the company website for course information and booking enquiries.",
         businessLink: "Visit luminovia.org",
     },
 };
@@ -102,7 +114,6 @@ export default function AboutPage() {
                 <div className="about-hero-copy">
                     <p className="about-kicker">{c.kicker}</p>
                     <h1 id="about-title">{PROFILE.name}</h1>
-                    <p className="about-role">{c.role}</p>
                     <p className="about-lede">{c.intro}</p>
                     <div className="about-hero-actions">
                         <Link className="site-button site-button-primary" to="/my-way">{c.career}<ArrowRight size={17} aria-hidden="true"/></Link>
@@ -126,6 +137,18 @@ export default function AboutPage() {
                 </figure>
             </section>
 
+            <section className="about-personal" aria-labelledby="about-personal-title">
+                <h2 id="about-personal-title">{c.personalTitle}</h2>
+                <div className="about-personal-notes">
+                    {c.personal.map(([title, description]) => (
+                        <div key={title}>
+                            <h3>{title}</h3>
+                            <p>{description}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
             <dl className="about-facts">
                 {c.facts.map(([label, value]) => (
                     <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
@@ -145,6 +168,7 @@ export default function AboutPage() {
                 </div>
                 <div className="about-method-copy">
                     <h2 id="about-method-title">{c.approachTitle}</h2>
+                    <p>{c.approach}</p>
                     <h3>{c.teachingTitle}</h3>
                     <p>{c.teaching}</p>
                     <h3>{c.researchTitle}</h3>

@@ -13,7 +13,7 @@ const labels = {
         title: "Softwareprojekte und Open Source",
         intro: "Ich entwickle Werkzeuge für wiederkehrende Aufgaben und arbeite an Open-Source-Software mit. Die Beispiele reichen von systematischer Literaturrecherche bis zur Mikrofoneinrichtung unter Linux.",
         jump: "Projektbeispiele ansehen",
-        contact: "Ein Projekt besprechen",
+        contact: "Über Open Source austauschen",
         github: "Mein GitHub-Profil",
         overview: "Projekte im Überblick",
         featured: "Ausgewählte Projekte",
@@ -45,7 +45,7 @@ const labels = {
         title: "Software projects and open source",
         intro: "I build tools for recurring tasks and contribute to open source software. The examples range from systematic literature reviews to microphone setup on Linux.",
         jump: "Explore selected projects",
-        contact: "Discuss a project",
+        contact: "Talk about open source",
         github: "My GitHub profile",
         overview: "Projects at a glance",
         featured: "Selected projects",
@@ -87,7 +87,7 @@ export default function SoftwarePage() {
                     <p className="projects-lead">{copy.intro}</p>
                     <div className="projects-intro-actions">
                         <Link className="site-button site-button-primary" to="#featured-projects">{copy.jump}<ArrowDown aria-hidden="true" size={17}/></Link>
-                        <Link className="projects-text-link" to="/contact">{copy.contact}<ArrowRight aria-hidden="true" size={17}/></Link>
+                        <Link className="projects-text-link" to="/contact#contact-options">{copy.contact}<ArrowRight aria-hidden="true" size={17}/></Link>
                     </div>
                 </div>
                 <nav className="projects-overview" aria-label={copy.overview}>

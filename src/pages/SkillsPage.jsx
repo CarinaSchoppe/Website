@@ -36,11 +36,13 @@ export default function SkillsPage() {
         ? {
             badge: "Lehre, Software und Forschung",
             title: "Was ich unterrichte und entwickle.",
-            intro: "Ich unterrichte IT und Wirtschaft für Erwachsene. In meinen Kursen lösen Teilnehmende Aufgaben aus ihrem Berufsalltag. Was ich selbst programmiere und in Projekten lerne, fließt in meine Übungen ein.",
-            formats: "Luminovia Training & Consulting",
+            intro: "Ich unterrichte IT und Wirtschaft in der Erwachsenenbildung und programmiere eigene Werkzeuge. Mich interessiert, wie Menschen technische Zusammenhänge verstehen und bei der Arbeit anwenden.",
+            references: "Lehrreferenzen ansehen",
+            company: "Luminovia Training & Consulting",
+            companyCopy: "Für Buchungen und Anfragen zu Trainings oder Beratung ist mein Unternehmen Luminovia die Anlaufstelle.",
             credentials: "Nachweise ansehen",
             teaching: "Unterrichtsthemen",
-            teachingCopy: "Ich konzipiere und leite Kurse auf Deutsch und Englisch für Teams, Bildungsanbieter und Hochschulen. Dazu gehören Grundlagenkurse, Laborübungen und IHK-Prüfungsvorbereitung. Firmentrainings, Workshops und Beratung biete ich über mein Unternehmen Luminovia an.",
+            teachingCopy: "Zu meiner Lehrpraxis gehören Netzwerklabore, Programmieraufgaben und kaufmännische Fallbeispiele. Ich habe auf Deutsch und Englisch mit Teams, Bildungsanbietern und Hochschulen gearbeitet und auf IHK-Prüfungen vorbereitet.",
             projectTitle: "Software aus meiner Praxis",
             projectCopy: "Ich konzipiere und programmiere eigene Werkzeuge, etwa die PRISMA-Pipeline für systematische Literaturrecherchen und den Automatic Mail Sender. Bei OpenXLR entwickle ich im Open-Source-Team Funktionen für die Linux-Audiosteuerung mit.",
             projects: "Softwareprojekte ansehen",
@@ -55,11 +57,13 @@ export default function SkillsPage() {
         : {
             badge: "Teaching, software and research",
             title: "What I teach and build.",
-            intro: "I teach IT and business to adults. In my courses, learners work on tasks they recognise from their jobs. I draw on the software I write and the lessons from my projects when I design exercises.",
-            formats: "Luminovia Training & Consulting",
+            intro: "I teach IT and business to adults and build my own software tools. I’m interested in how people make sense of technology and put it to work.",
+            references: "View teaching references",
+            company: "Luminovia Training & Consulting",
+            companyCopy: "My company, Luminovia, handles training and consulting enquiries and bookings.",
             credentials: "View credentials",
             teaching: "Teaching topics",
-            teachingCopy: "I design and teach courses in German and English for teams, education providers and universities. This includes introductory courses, hands-on labs and preparation for German IHK exams. I provide corporate training, workshops and consulting through my company, Luminovia.",
+            teachingCopy: "My teaching has included networking labs, programming exercises and business case studies. I’ve worked with teams, education providers and universities in German and English, and helped learners prepare for German IHK exams.",
             projectTitle: "Software I build and contribute to",
             projectCopy: "I design and build my own tools, including the PRISMA pipeline for systematic literature reviews and Automatic Mail Sender. I also contribute Linux audio control features to OpenXLR as part of its open-source team.",
             projects: "Explore software projects",
@@ -84,7 +88,7 @@ export default function SkillsPage() {
 
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                     <Button to="#unterricht">{copy.teaching}</Button>
-                    <Button href={PROFILE.luminovia} variant="secondary">{copy.formats}</Button>
+                    <Button to="/#referenzen" variant="secondary">{copy.references}</Button>
                 </div>
                 <SectionJumpNav label={copy.jumpLabel} items={copy.jumpItems} className="mt-8"/>
 
@@ -103,6 +107,10 @@ export default function SkillsPage() {
                                 </Card>
                             );
                         })}
+                    </div>
+                    <div className="mt-7 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-5">
+                        <p className="max-w-xl text-sm leading-6 text-slate-300">{copy.companyCopy}</p>
+                        <Button href={PROFILE.luminoviaContact} variant="secondary">{copy.company}</Button>
                     </div>
                 </section>
 
