@@ -97,7 +97,7 @@ export default function SkillsPage() {
                 </div>
                 <SectionJumpNav label={copy.jumpLabel} items={copy.jumpItems} className="mt-8"/>
 
-                <section id="consulting-skills" className="mt-14 scroll-mt-36">
+                <section id="consulting-skills" className="mt-14">
                     <div className="grid gap-5 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
                         <div>
                             <Badge tone="violet">{copy.consultingTitle}</Badge>
@@ -115,7 +115,7 @@ export default function SkillsPage() {
                     </div>
                 </section>
 
-                <section id="publications" className="mt-16 scroll-mt-36">
+                <section id="publications" className="mt-16" tabIndex={-1}>
                     <div className="grid gap-5 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
                         <div>
                             <Badge tone="emerald">{copy.publications}</Badge>
@@ -130,7 +130,7 @@ export default function SkillsPage() {
                     </div>
                 </section>
 
-                <section id="skill-map" className="mt-14 scroll-mt-36">
+                <section id="skill-map" className="mt-14">
                     <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
                         {skillGroups.map((group) => (
                             <Card key={group.group}>
@@ -145,7 +145,7 @@ export default function SkillsPage() {
                     </div>
                 </section>
 
-                <section id="clusters" className="mt-16 scroll-mt-36">
+                <section id="clusters" className="mt-16">
                     <div className="mb-7">
                         <Badge tone="emerald">{copy.clusters}</Badge>
                         <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">{copy.clustersTitle}</h2>

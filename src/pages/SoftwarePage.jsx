@@ -107,7 +107,7 @@ export default function SoftwarePage() {
 
             <section className="projects-wrap projects-block" aria-labelledby="featured-projects">
                 <div className="projects-section-heading">
-                    <h2 id="featured-projects">{copy.featured}</h2>
+                    <h2 id="featured-projects" tabIndex={-1}>{copy.featured}</h2>
                     <a className="projects-text-link" href={PROFILE.github}>{copy.github}<ArrowUpRight aria-hidden="true" size={16}/></a>
                 </div>
                 <div className="projects-feature-list">
@@ -115,7 +115,7 @@ export default function SoftwarePage() {
                         const work = copy.work[project.id];
 
                         return (
-                            <article key={project.id} id={project.id} className="projects-feature" data-project-tone={project.tone}>
+                            <article key={project.id} id={project.id} className="projects-feature" data-project-tone={project.tone} tabIndex={-1}>
                                 <div className="projects-feature-copy">
                                     <p className="projects-role">{project.contribution ? copy.community : copy.own}</p>
                                     <h3>{project.title}</h3>

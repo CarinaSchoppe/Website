@@ -13,6 +13,9 @@ export default function ContactPage() {
     const de = language === "de";
     const subject = encodeURIComponent(de ? "Kontaktanfrage über carinaschoppe.com" : "Contact request via carinaschoppe.com");
     const email = `mailto:${PROFILE.email}?subject=${subject}`;
+    const appointmentSubject = encodeURIComponent(de ? "Anfrage für einen Gesprächstermin" : "Appointment request");
+    const appointmentBody = encodeURIComponent(de ? "Thema:\r\nZeitzone:\r\nMögliche Termine:\r\n" : "Topic:\r\nTime zone:\r\nAvailability:\r\n");
+    const appointmentEmail = `mailto:${PROFILE.email}?subject=${appointmentSubject}&body=${appointmentBody}`;
     const phones = [
         [de ? "Australien" : "Australia", PROFILE.phoneAustralia],
         [de ? "Deutschland" : "Germany", PROFILE.phoneGermany],
@@ -29,11 +32,11 @@ export default function ContactPage() {
                         : "Contact me by email or phone about teaching projects, guest lectures, research or technical collaboration. I work in English and German."}</p>
                     <div className="contact-actions">
                         <a href={email} className="site-button site-button-primary"><Mail size={17} aria-hidden="true"/>{t.contact.emailButton}</a>
-                        <Link to="#appointment" className="site-text-link">{t.contact.calendarFallback}<ArrowDown size={16} aria-hidden="true"/></Link>
+                        <Link to="#appointment" className="site-text-link">{t.contact.appointment}<ArrowDown size={16} aria-hidden="true"/></Link>
                     </div>
                 </div>
                 <section className="contact-details" aria-labelledby="contact-options">
-                    <h2 id="contact-options">{t.contact.fallbackTitle}</h2>
+                    <h2 id="contact-options" tabIndex={-1}>{t.contact.fallbackTitle}</h2>
                     <dl>
                         <div>
                             <dt><Mail size={16} aria-hidden="true"/>{de ? "E-Mail" : "Email"}</dt>
@@ -63,18 +66,16 @@ export default function ContactPage() {
                 <a href={PROFILE.luminovia} className="site-text-link">{de ? "Zu Luminovia" : "Open Luminovia"}<ArrowUpRight size={17} aria-hidden="true"/></a>
             </aside>
 
-            <section id="appointment" className="contact-appointment" aria-labelledby="appointment-title">
+            <section id="appointment" className="contact-appointment" aria-labelledby="appointment-title" tabIndex={-1}>
                 <div className="contact-appointment-head">
                     <div>
-                        <p className="site-kicker">{de ? "Kalender" : "Calendar"}</p>
                         <h2 id="appointment-title">{t.contact.appointmentTitle}</h2>
-                        <p>{de ? "Wählen Sie im Kalender einen passenden Termin aus. Wenn Sie vorab kurz schreiben, worum es geht, kann ich mich auf das Gespräch vorbereiten." : t.contact.appointmentCopy}</p>
+                        <p>{t.contact.appointmentCopy}</p>
                     </div>
-                    <a href={PROFILE.appointmentSchedule} target="_blank" rel="noreferrer" className="site-text-link">
-                        {de ? "Kalender separat öffnen" : "Open calendar separately"}<ArrowUpRight size={17} aria-hidden="true"/>
+                    <a href={appointmentEmail} className="site-button site-button-primary">
+                        <Mail size={17} aria-hidden="true"/>{t.contact.appointmentEmail}
                     </a>
                 </div>
-                <iframe src={PROFILE.appointmentSchedule} title={t.contact.calendarTitle} loading="lazy"/>
             </section>
         </main>
     );

@@ -1,9 +1,18 @@
-import {useRef, useState} from "react";
-import {Link} from "react-router-dom";
+import {useLayoutEffect, useRef, useState} from "react";
+import {Link, useLocation} from "react-router-dom";
 import {blogIndexForLanguage} from "../data/blogIndex.js";
 import {useLanguage} from "../i18n.jsx";
 import Badge from "../components/Badge.jsx";
 import Button from "../components/Button.jsx";
+
+const blogViews = new Map();
+
+function rememberBlogView(historyKey, changes) {
+    const view = {...blogViews.get(historyKey), ...changes};
+    blogViews.delete(historyKey);
+    blogViews.set(historyKey, view);
+    if (blogViews.size > 32) blogViews.delete(blogViews.keys().next().value);
+}
 
 function BlogCard({post, readLabel, className = ""}) {
     return (
@@ -24,10 +33,16 @@ function BlogCard({post, readLabel, className = ""}) {
     );
 }
 
-function BlogCarousel({posts, readLabel, label, previousLabel, nextLabel}) {
+function BlogCarousel({posts, readLabel, label, previousLabel, nextLabel, historyKey}) {
     const scrollerRef = useRef(null);
     const dragState = useRef({pointerId: null, startX: 0, scrollLeft: 0, moved: false});
     const [dragging, setDragging] = useState(false);
+
+    useLayoutEffect(() => {
+        const scroller = scrollerRef.current;
+        scroller.scrollLeft = blogViews.get(historyKey)?.articles ?? 0;
+        return () => rememberBlogView(historyKey, {articles: scroller.scrollLeft});
+    }, [historyKey]);
 
     function scrollByCards(direction) {
         const node = scrollerRef.current;
@@ -123,10 +138,26 @@ function BlogCarousel({posts, readLabel, label, previousLabel, nextLabel}) {
 }
 
 export default function BlogPage() {
+    const {key} = useLocation();
+    return <BlogIndex key={key} historyKey={key}/>;
+}
+
+function BlogIndex({historyKey}) {
     const {language} = useLanguage();
     const blogPosts = blogIndexForLanguage(language);
-    const [activeCategory, setActiveCategory] = useState("All");
+    const [activeCategory, setActiveCategory] = useState(() => blogViews.get(historyKey)?.category ?? "All");
     const filterTrackRef = useRef(null);
+
+    useLayoutEffect(() => {
+        const filters = filterTrackRef.current;
+        filters.scrollLeft = blogViews.get(historyKey)?.filters ?? 0;
+        return () => rememberBlogView(historyKey, {filters: filters.scrollLeft});
+    }, [historyKey]);
+
+    function selectCategory(category) {
+        rememberBlogView(historyKey, {category});
+        setActiveCategory(category);
+    }
     const hubCategories = [
         {value: "All", label: language === "de" ? "Alle" : "All"},
         {value: "AI & Governance", label: "AI & Governance"},
@@ -208,10 +239,10 @@ export default function BlogPage() {
                             <button
                                 key={category.value}
                                 type="button"
-                                onClick={() => setActiveCategory(category.value)}
+                                onClick={() => selectCategory(category.value)}
                                 className={activeCategory === category.value
-                                    ? "shrink-0 rounded-full bg-sky-100 px-4 py-2 text-sm font-black text-slate-950"
-                                    : "shrink-0 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm font-black text-slate-200 transition hover:border-sky-100/40 hover:bg-white/[0.1]"}
+                                    ? "min-h-11 shrink-0 rounded-full bg-sky-100 px-4 py-2 text-sm font-black text-slate-950"
+                                    : "min-h-11 shrink-0 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm font-black text-slate-200 transition hover:border-sky-100/40 hover:bg-white/[0.1]"}
                                 aria-pressed={activeCategory === category.value}
                             >
                                 {category.label}
@@ -243,7 +274,7 @@ export default function BlogPage() {
                     </section>
                 )}
 
-                {remainingPosts.length > 0 && <BlogCarousel posts={remainingPosts} readLabel={copy.read} label={copy.latest} previousLabel={copy.previous} nextLabel={copy.next}/>}
+                {remainingPosts.length > 0 && <BlogCarousel posts={remainingPosts} readLabel={copy.read} label={copy.latest} previousLabel={copy.previous} nextLabel={copy.next} historyKey={historyKey}/>}
             </div>
         </main>
     );

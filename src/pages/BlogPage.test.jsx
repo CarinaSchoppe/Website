@@ -1,18 +1,26 @@
 import {fireEvent, screen} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {describe, expect, it, vi} from "vitest";
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useNavigate} from "react-router-dom";
 import BlogPage from "./BlogPage.jsx";
 import BlogPostPage from "./BlogPostPage.jsx";
 import {renderWithProviders} from "../test/test-utils.jsx";
 import {LANGUAGE_STORAGE_KEY} from "../i18n.jsx";
 
-function renderBlog(route = "/blog") {
+function BrowserBack() {
+    const navigate = useNavigate();
+    return <button type="button" onClick={() => navigate(-1)}>Browser back</button>;
+}
+
+function renderBlog(route = "/blog", extra = null) {
     return renderWithProviders(
-        <Routes>
-            <Route path="/blog" element={<BlogPage/>}/>
-            <Route path="/blog/:slug" element={<BlogPostPage/>}/>
-        </Routes>,
+        <>
+            {extra}
+            <Routes>
+                <Route path="/blog" element={<BlogPage/>}/>
+                <Route path="/blog/:slug" element={<BlogPostPage/>}/>
+            </Routes>
+        </>,
         {route},
     );
 }
@@ -107,5 +115,21 @@ describe("BlogPage", () => {
         renderBlog();
 
         expect(screen.getByRole("heading", {name: /Texte zu KI/i})).toBeInTheDocument();
+    });
+
+    it("restores the blog filter and the scrollable rails after returning from an article", async () => {
+        const user = userEvent.setup();
+        renderBlog("/blog", <BrowserBack/>);
+
+        await user.click(screen.getByRole("button", {name: "AI & Governance"}));
+        screen.getByRole("region", {name: "Scrollable blog categories"}).scrollLeft = 55;
+        screen.getByRole("region", {name: "More articles"}).scrollLeft = 170;
+        await user.click(screen.getByRole("link", {name: /Agentic AI: from impressive demos/i}));
+        expect(screen.getByRole("heading", {level: 1, name: /Agentic AI: from impressive demos/i})).toBeInTheDocument();
+        await user.click(screen.getByRole("button", {name: "Browser back"}));
+
+        expect(screen.getByRole("button", {name: "AI & Governance", pressed: true})).toBeInTheDocument();
+        expect(screen.getByRole("region", {name: "Scrollable blog categories"}).scrollLeft).toBe(55);
+        expect(screen.getByRole("region", {name: "More articles"}).scrollLeft).toBe(170);
     });
 });

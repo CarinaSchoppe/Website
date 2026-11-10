@@ -15,7 +15,6 @@ export const PROFILE = {
     luminovia: "https://luminovia.org",
     luminoviaEmail: "info@luminovia.org",
     luminoviaGithub: "https://github.com/Luminovia-Training-Consulting",
-    appointmentSchedule: "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1DRa4OAiQN9y8F-86ull0Jqb25hCL2ZimE4Wo5dojeEF3eSVDBMk6mGJMUG0mZxUR8wSD5-BB6?gv=true",
     analyticsId: "G-YNGD292XE5",
 };
 

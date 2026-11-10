@@ -1,5 +1,5 @@
 import {lazy, Suspense, useEffect, useState} from "react";
-import {BrowserRouter, Route, Routes, useLocation} from "react-router-dom";
+import {BrowserRouter, Route, Routes, useLocation, useNavigationType} from "react-router-dom";
 import AnalyticsConsent from "./components/AnalyticsConsent.jsx";
 import AppErrorBoundary from "./components/AppErrorBoundary.jsx";
 import Footer from "./components/Footer.jsx";
@@ -64,11 +64,14 @@ function getHashTarget(hash) {
     /* v8 ignore stop */
 }
 
-function ScrollToHash() {
+function RouteScroll() {
     const {key, hash} = useLocation();
+    const isHistoryNavigation = useNavigationType() === "POP";
 
     useEffect(() => {
         if (!hash) {
+            if (isHistoryNavigation) return;
+            document.getElementById("main-content").focus({preventScroll: true});
             window.scrollTo({top: 0, behavior: "auto"});
             return;
         }
@@ -77,10 +80,11 @@ function ScrollToHash() {
         if (!target) return;
 
         const frame = globalThis.requestAnimationFrame(() => {
+            if (!isHistoryNavigation) target.focus({preventScroll: true});
             target.scrollIntoView({behavior: "auto", block: "start"});
         });
         return () => globalThis.cancelAnimationFrame(frame);
-    }, [key, hash]);
+    }, [key, hash, isHistoryNavigation]);
 
     return null;
 }
@@ -111,7 +115,7 @@ function routeElement(Component) {
         <AppErrorBoundary>
             <Suspense fallback={<div className="min-h-[55vh]" aria-hidden="true"/>}>
                 <Component/>
-                <ScrollToHash/>
+                <RouteScroll/>
             </Suspense>
         </AppErrorBoundary>
     );

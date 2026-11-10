@@ -1,6 +1,8 @@
 import {render} from "@testing-library/react";
-import {MemoryRouter} from "react-router-dom";
+import {MemoryRouter, parsePath} from "react-router-dom";
 import {LanguageProvider, LANGUAGE_STORAGE_KEY} from "../i18n.jsx";
+
+let entryId = 0;
 
 export function renderWithProviders(ui, {route = "/"} = {}) {
     window.history.pushState({}, "Test page", route);
@@ -10,7 +12,7 @@ export function renderWithProviders(ui, {route = "/"} = {}) {
 
     return render(
         <LanguageProvider>
-            <MemoryRouter initialEntries={[route]}>
+            <MemoryRouter initialEntries={[{...parsePath(route), key: `test-${++entryId}`}]}>
                 {ui}
             </MemoryRouter>
         </LanguageProvider>,

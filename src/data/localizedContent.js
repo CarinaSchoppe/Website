@@ -21,6 +21,7 @@ import {
 } from "./content.js";
 
 const deCredentialCategoryLabels = {
+    All: "Alle",
     Teaching: "Lehre",
     Academic: "Akademisch",
     AI: "AI",
@@ -239,7 +240,7 @@ const de = {
         category: deCredentialCategoryLabels[credential.category] || credential.category,
         ...(deCredentialCopy[credential.title] || {}),
     })),
-    credentialCategories: ["Alle", "Lehre", "Akademisch", "AI", "Cybersecurity", "Unternehmertum", "Sprache"],
+    credentialCategories: enCredentialCategories.map((category) => deCredentialCategoryLabels[category] || category),
     selectedProjects: deSelectedProjects,
     testimonialProof: [
         {title: "Vertrauen von Bildungsanbietern", quote: "Wiederholte Buchungen in Weiterbildung, Umschulung, Akademien und Hochschulen zeigen, dass meine Durchführung für strukturierte Erwachsenenbildung funktioniert."},

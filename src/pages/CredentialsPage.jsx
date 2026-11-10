@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {credentialCategories as categoryKeys} from "../data/content.js";
 import {useSiteContent} from "../data/localizedContent.js";
 import {useLanguage} from "../i18n.jsx";
 import Badge from "../components/Badge.jsx";
@@ -8,9 +9,9 @@ import {cn} from "../components/utils.js";
 export default function CredentialsPage() {
     const {language} = useLanguage();
     const {credentials, credentialCategories} = useSiteContent();
-    const [filter, setFilter] = useState(credentialCategories[0]);
-    const activeFilter = credentialCategories.includes(filter) ? filter : credentialCategories[0];
-    const visible = credentials.filter((credential) => activeFilter === credentialCategories[0] || activeFilter === "All" || credential.category === activeFilter);
+    const [activeCategory, setActiveCategory] = useState("All");
+    const activeLabel = credentialCategories[categoryKeys.indexOf(activeCategory)];
+    const visible = activeCategory === "All" ? credentials : credentials.filter(({category}) => category === activeLabel);
     const copy = language === "de"
         ? {
             badge: "Nachweise & Lehrprofil",
@@ -35,8 +36,8 @@ export default function CredentialsPage() {
                 </div>
 
                 <div className="credential-filter-track mt-10 flex flex-wrap gap-2">
-                    {credentialCategories.map((cat) => (
-                        <button key={cat} type="button" aria-pressed={activeFilter === cat} onClick={() => setFilter(cat)} className={cn("credential-filter-button rounded-full border px-4 py-2 text-sm font-black transition", activeFilter === cat ? "border-white bg-white text-slate-950" : "border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white")}>{cat === "All" ? copy.allLabel : cat}</button>
+                    {categoryKeys.map((category, index) => (
+                        <button key={category} type="button" aria-pressed={activeCategory === category} onClick={() => setActiveCategory(category)} className={cn("credential-filter-button min-h-11 rounded-full border px-4 py-2 text-sm font-black transition", activeCategory === category ? "border-white bg-white text-slate-950" : "border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white")}>{category === "All" ? copy.allLabel : credentialCategories[index]}</button>
                     ))}
                 </div>
 

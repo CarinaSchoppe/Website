@@ -108,12 +108,26 @@ describe("App routing and language", () => {
         expect(screen.queryByRole("button", {name: /Send request/i})).not.toBeInTheDocument();
         expect(screen.getAllByRole("link", {name: /Write an email/i})[0]).toHaveAttribute("href", expect.stringContaining("mailto:info@carinaschoppe.com"));
         expect(screen.getByRole("link", {name: /Open Luminovia/i})).toHaveAttribute("href", "https://luminovia.org");
-        expect(screen.getByTitle(/Google Calendar appointment scheduler/i)).toHaveAttribute("src", expect.stringContaining("calendar.google.com/calendar/appointments/schedules"));
-        expect(screen.getByTitle(/Google Calendar appointment scheduler/i)).toHaveAttribute("loading", "lazy");
+        expect(screen.getByRole("link", {name: "Request an appointment by email"})).toHaveAttribute("href", expect.stringContaining("mailto:info@carinaschoppe.com?subject=Appointment%20request&body="));
+    });
+
+    it("keeps the teaching credentials filter selected when the language changes", async () => {
+        const user = userEvent.setup();
+        window.history.pushState({}, "Credentials", "/credentials");
+
+        render(<App/>);
+
+        await user.click(await screen.findByRole("button", {name: "Lehre", exact: true}));
+        await user.click(screen.getByRole("button", {name: /Sprache auf Englisch wechseln/i}));
+
+        expect(screen.getByRole("button", {name: "Teaching", pressed: true})).toBeInTheDocument();
+        expect(screen.getByRole("heading", {name: /DiBak Certified IT Lecturer/i})).toBeInTheDocument();
+        expect(screen.queryByRole("heading", {name: /PTE Academic English/i})).not.toBeInTheDocument();
     });
 
     it("scrolls to a hash target after route rendering", async () => {
         const scrollIntoView = vi.fn();
+        const user = userEvent.setup();
         const requestAnimationFrame = vi.fn((callback) => {
             callback();
             return 1;
@@ -128,5 +142,7 @@ describe("App routing and language", () => {
         expect(await screen.findByRole("heading", {name: /Contact Carina Sophie Schoppe/i})).toBeInTheDocument();
         await waitFor(() => expect(scrollIntoView).toHaveBeenCalledWith({behavior: "auto", block: "start"}));
         expect(requestAnimationFrame).toHaveBeenCalled();
+        await user.click(screen.getByRole("link", {name: "Request an appointment", exact: true}));
+        expect(screen.getByRole("region", {name: "Arrange a call"})).toHaveFocus();
     });
 });

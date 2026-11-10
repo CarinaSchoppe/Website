@@ -1,4 +1,4 @@
-import {useRef} from "react";
+import {useEffect, useRef} from "react";
 import {Globe2, Menu, Moon, Sun, X} from "lucide-react";
 import {Link, NavLink} from "react-router-dom";
 import {navItems, PROFILE} from "../data/profile.js";
@@ -43,6 +43,15 @@ export default function Header({theme, onToggleTheme}) {
     const menu = useRef(null);
     const {t, toggleLanguage, language} = useLanguage();
     const close = () => menu.current.close();
+
+    useEffect(() => {
+        const desktop = window.matchMedia?.("(width > 990px)");
+        const closeOnDesktop = ({matches}) => {
+            if (matches && menu.current.open) menu.current.close();
+        };
+        desktop?.addEventListener("change", closeOnDesktop);
+        return () => desktop?.removeEventListener("change", closeOnDesktop);
+    }, []);
 
     return (
         <>

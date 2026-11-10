@@ -17,7 +17,7 @@ export default function ReferencesSection() {
     const c = copy[language];
 
     return (
-        <section id="referenzen" className="home-section home-references" aria-labelledby="references-title">
+        <section id="referenzen" className="home-section home-references" aria-labelledby="references-title" tabIndex={-1}>
             <div className="home-section-heading">
                 <div>
                     <h2 id="references-title">{c.title}</h2>
