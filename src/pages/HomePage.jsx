@@ -14,7 +14,7 @@ const capabilityTones = ["butter", "mint", "sky"];
 const copy = {
     de: {
         role: "IT-Dozentin · Softwareentwicklerin · Wirtschaftsinformatikerin",
-        intro: "Ich entwickle Software für systematische Literaturreviews, forsche zu generativer KI im Arbeitsalltag und unterrichte IT und Wirtschaft. Mich interessiert, wie Menschen Entscheidungen treffen, die sie später erklären und prüfen können.",
+        intro: "Ich entwickle Software für systematische Literaturreviews, erforsche den Einsatz generativer KI im Arbeitsalltag und unterrichte IT und Wirtschaft.",
         location: "Brisbane, Australien",
         languages: "Deutsch & Englisch",
         portraitAlt: "Porträt von Carina Sophie Schoppe",
@@ -32,11 +32,11 @@ const copy = {
         focusIntro: "Ich entwickle Kurse, Übungen und Lernmaterialien für Erwachsene. Beispiele aus meiner Softwarearbeit und Forschung bringe ich direkt in den Unterricht ein.",
         capabilities: [
             ["Lehre in KI, IT und Wirtschaft", "Ich unterrichte IT-Sicherheit, Softwareentwicklung, Datenbanken und Netzwerke ebenso wie Buchhaltungsgrundlagen, Arbeitsrecht und Datenschutz.", "Alle Lehrthemen ansehen", "/skills#unterricht"],
-            ["Software & Automatisierung", "Meine PRISMA-Pipeline bündelt Literaturrecherche, Zitationssuche und die Vorauswahl von Studien. Sie hält fest, warum Arbeiten ein- oder ausgeschlossen wurden.", "PRISMA ansehen", "/projects#prisma"],
+            ["Software & Automatisierung", "Ich automatisiere wiederkehrende Arbeitsschritte wie die Literaturrecherche oder das Befüllen von E-Mail-Vorlagen.", "PRISMA ansehen", "/projects#prisma"],
             ["KI & Forschung", "Ich untersuche, wie Beschäftigte mit generativer KI arbeiten und wie Unternehmen den Einsatz steuern können. Dazu gehört auch die Frage, wie KI Sicherheitsrisiken verändert.", "Forschungsarbeiten ansehen", "/skills#publications"],
         ],
         valuesTitle: "Wie ich arbeite",
-        personal: "Wenn eine Software Ergebnisse sortiert oder Vorschläge macht, will ich verstehen, worauf sie sich stützt. Das ist mir auch im Unterricht wichtig. Teilnehmende sollen erklären können, warum ihre Lösung funktioniert.",
+        personal: "Wenn Software Ergebnisse sortiert oder Vorschläge macht, will ich prüfen können, worauf sie sich stützt.",
         values: [
             ["Selbst ausprobieren", "Eine Netzwerkübung kann damit beginnen, einen Verbindungsfehler einzugrenzen. Mir ist wichtig, dass Teilnehmende am Ende erklären können, warum ihre Lösung funktioniert."],
             ["Verantwortung klären", "In meiner MBA-Arbeit habe ich untersucht, wie Unternehmen beim Einsatz generativer KI Zuständigkeiten festlegen und Risiken beobachten können."],
@@ -56,7 +56,7 @@ const copy = {
     },
     en: {
         role: "IT lecturer · Software developer · Business information systems",
-        intro: "I build software for systematic literature reviews, study how people use generative AI at work, and teach IT and business. I’m interested in how people make decisions they can explain and review later.",
+        intro: "I build software for systematic literature reviews, study how people use generative AI at work, and teach IT and business.",
         location: "Brisbane, Australia",
         languages: "English & German",
         portraitAlt: "Portrait of Carina Sophie Schoppe",
@@ -74,11 +74,11 @@ const copy = {
         focusIntro: "I design courses, practical exercises and materials for adult learners. I bring examples from my software projects and research into the classroom.",
         capabilities: [
             ["Teaching AI, IT and business", "I teach cybersecurity, software development, databases and networking, as well as accounting fundamentals, employment law and data protection.", "Explore teaching topics", "/skills#unterricht"],
-            ["Software & automation", "My PRISMA pipeline brings together literature searches, citation tracking and screening. It records why papers were included or excluded.", "Explore PRISMA", "/projects#prisma"],
+            ["Software & automation", "I automate recurring tasks such as literature searches and filling in email templates.", "Explore PRISMA", "/projects#prisma"],
             ["AI & research", "I study how people work with generative AI, how organisations govern its use and how it changes security risks.", "View research", "/skills#publications"],
         ],
         valuesTitle: "How I work",
-        personal: "When software ranks results or makes a recommendation, I want to understand what it’s based on. I bring that same expectation into the classroom. Learners should be able to explain why their solution works.",
+        personal: "When software ranks results or makes a recommendation, I want to be able to check what it’s based on.",
         values: [
             ["Learning by doing", "A networking exercise might start with tracing a connection fault. I want learners to be able to explain why their solution works."],
             ["Clarifying responsibility", "In my MBA thesis, I looked at how organisations can assign responsibility and monitor risks when using generative AI."],

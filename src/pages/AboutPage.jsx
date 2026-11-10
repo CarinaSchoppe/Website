@@ -11,7 +11,7 @@ const prismaProject = selectedWork.find(({id}) => id === "prisma");
 const copy = {
     de: {
         kicker: "Über mich",
-        intro: "Ich entwickle Forschungssoftware und unterrichte IT und Wirtschaft. Mich interessiert, wie Menschen mit KI arbeiten und woran sie erkennen können, ob ein Ergebnis eine Entscheidung trägt.",
+        intro: "Ich unterrichte Erwachsene und möchte, dass sie ihr Wissen auch auf neue Fälle übertragen können. Dafür arbeite ich mit Aufgaben, bei denen sie eine technische Entscheidung selbst begründen.",
         location: "Brisbane, Australien",
         portrait: "Porträt von Carina Sophie Schoppe",
         tablet: "Carina hält im Stehen ein Tablet und einen Stift",
@@ -19,12 +19,8 @@ const copy = {
         linkedin: "Mein LinkedIn-Profil",
         featureJump: "PRISMA ansehen",
         featureLabel: "Forschungssoftware · Eigenentwicklung",
-        featureIntro: "Bei einem systematischen Literaturreview muss sich später nachvollziehen lassen, wie aus den Suchtreffern die ausgewerteten Studien wurden. Dafür habe ich eine quelloffene Python-Anwendung gebaut. Sie lässt sich am Desktop bedienen und über die Kommandozeile mit gespeicherten Einstellungen erneut ausführen.",
-        featureSteps: [
-            ["Literatur erschließen", "Die Pipeline sammelt Treffer aus wissenschaftlichen Quellen wie OpenAlex, Crossref und PubMed. Über Zitationen findet sie sowohl ältere Quellen als auch neuere Arbeiten, die darauf aufbauen."],
-            ["Treffer prüfen", "Sie erkennt Dubletten anhand von DOI und Titel. Bei der Vorauswahl können Regeln oder KI helfen, Titel und Abstracts anhand festgelegter Kriterien zu bewerten."],
-            ["Auswahl belegen", "Die Berichte halten die Gründe für Ein- und Ausschlüsse fest. Ein Flussdiagramm zeigt, wie viele Treffer nach den einzelnen Schritten übrig bleiben."],
-        ],
+        featureWhy: "Warum ich PRISMA entwickelt habe",
+        featureIntro: "Bei einem Literaturreview möchte ich später erklären können, warum ich eine Studie aufgenommen oder ausgeschlossen habe. PRISMA hilft mir, diese Entscheidungen festzuhalten.",
         featureDetails: "Zum Projekt",
         featureSource: "Quellcode auf GitHub",
         facts: [
@@ -62,7 +58,7 @@ const copy = {
     },
     en: {
         kicker: "About me",
-        intro: "I build research software and teach IT and business. I’m interested in how people work with AI and how they tell whether its results are sound enough to act on.",
+        intro: "I teach adults and want them to apply what they learn to new situations. I use exercises where learners make a technical decision and explain their reasoning.",
         location: "Brisbane, Australia",
         portrait: "Portrait of Carina Sophie Schoppe",
         tablet: "Carina standing with a tablet and stylus",
@@ -70,12 +66,8 @@ const copy = {
         linkedin: "My LinkedIn profile",
         featureJump: "Explore PRISMA",
         featureLabel: "Research software I built",
-        featureIntro: "A systematic literature review needs a record of how the initial search led to the studies that were analysed. I built an open-source Python application for that workflow. Researchers can use it on the desktop or rerun a review from the command line with saved settings.",
-        featureSteps: [
-            ["Find the literature", "The pipeline collects records from scholarly sources such as OpenAlex, Crossref and PubMed. It follows citations to find both earlier sources and newer studies that build on them."],
-            ["Screen the records", "It identifies duplicates by DOI and title. Rules or AI can assist with screening titles and abstracts against defined criteria."],
-            ["Document the selection", "Reports record the reasons for including or excluding studies. A flow diagram shows how many records remain after each stage."],
-        ],
+        featureWhy: "Why I built PRISMA",
+        featureIntro: "When I return to a literature review, I want to know why I included or excluded a study. PRISMA helps me keep a record of those decisions.",
         featureDetails: "Project details",
         featureSource: "Source code on GitHub",
         facts: [
@@ -151,17 +143,15 @@ export default function AboutPage() {
                 <div>
                     <p className="about-kicker">{c.featureLabel}</p>
                     <h2 id="about-feature-title">PRISMA Literature Review Pipeline</h2>
-                    <p className="about-feature-intro">{c.featureIntro}</p>
                     <div className="about-hero-actions">
                         <Link className="site-text-link" to={`/projects#${prismaProject.id}`}>{c.featureDetails}<ArrowRight size={17} aria-hidden="true"/></Link>
                         <a className="site-text-link" href={prismaProject.href}>{c.featureSource}<ArrowUpRight size={17} aria-hidden="true"/></a>
                     </div>
                 </div>
-                <ol className="about-feature-steps">
-                    {c.featureSteps.map(([title, description]) => (
-                        <li key={title}><h3>{title}</h3><p>{description}</p></li>
-                    ))}
-                </ol>
+                <div>
+                    <h3>{c.featureWhy}</h3>
+                    <p className="about-feature-intro">{c.featureIntro}</p>
+                </div>
             </section>
 
             <dl className="about-facts">

@@ -6,7 +6,6 @@ import {useLanguage} from "../i18n.jsx";
 import Badge from "../components/Badge.jsx";
 import Card from "../components/Card.jsx";
 import DocumentDownloads from "../components/DocumentDownloads.jsx";
-import {cn} from "../components/utils.js";
 
 export default function CredentialsPage() {
     const {language} = useLanguage();
@@ -39,7 +38,15 @@ export default function CredentialsPage() {
 
                 <div className="credential-filter-track mt-10 flex flex-wrap gap-2">
                     {categoryKeys.map((category, index) => (
-                        <button key={category} type="button" aria-pressed={activeCategory === category} onClick={() => setActiveCategory(category)} className={cn("credential-filter-button min-h-11 rounded-full border px-4 py-2 text-sm font-black transition", activeCategory === category ? "border-white bg-white text-slate-950" : "border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white")}>{category === "All" ? copy.allLabel : credentialCategories[index]}</button>
+                        <button
+                            key={category}
+                            type="button"
+                            aria-pressed={activeCategory === category}
+                            onClick={() => setActiveCategory(category)}
+                            className="credential-filter-button min-h-11 rounded-full border px-4 py-2 text-sm font-black transition"
+                        >
+                            {category === "All" ? copy.allLabel : credentialCategories[index]}
+                        </button>
                     ))}
                 </div>
 

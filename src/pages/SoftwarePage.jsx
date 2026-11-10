@@ -1,9 +1,7 @@
 import {ArrowDown, ArrowRight, ArrowUpRight} from "lucide-react";
 import {Link} from "react-router-dom";
-import DocumentDownloads from "../components/DocumentDownloads.jsx";
 import SoftwareProjectsSection from "../components/SoftwareProjectsSection.jsx";
 import {PROFILE} from "../data/profile.js";
-import {publications} from "../data/publications.js";
 import {selectedWork} from "../data/selectedWork.js";
 import {useLanguage} from "../i18n.jsx";
 import "./projects.css";
@@ -25,7 +23,7 @@ const labels = {
         contribution: "Mein Beitrag zum Mixer-Layout",
         publications: "Meine Forschungsarbeiten",
         publicationsIntro: "Drei Arbeiten über generative KI in Unternehmen, ihre Steuerung und ihren Einsatz für personalisierte Phishing-Mails.",
-        skills: "Mehr über meine Kompetenzen",
+        publicationsLink: "Publikationen und PDFs ansehen",
         work: {
             prisma: {
                 purpose: "Systematische Literaturrecherche",
@@ -60,7 +58,7 @@ const labels = {
         contribution: "My contribution to the mixer layout",
         publications: "My research",
         publicationsIntro: "Three papers on generative AI at work, its governance and its use in personalised phishing emails.",
-        skills: "More about my skills",
+        publicationsLink: "View publications and PDFs",
         work: {
             prisma: {
                 purpose: "Systematic literature reviews",
@@ -157,17 +155,7 @@ export default function SoftwarePage() {
             <section className="projects-wrap projects-block projects-publications" aria-labelledby="project-publications">
                 <h2 id="project-publications">{copy.publications}</h2>
                 <p className="projects-section-intro">{copy.publicationsIntro}</p>
-                <div className="projects-publications-grid">
-                    {publications.map((publication) => (
-                        <article key={publication.key} className="projects-publication">
-                            <p className="projects-eyebrow">{publication.type[language]} · {publication.year}</p>
-                            <h3>{publication.title[language]}</h3>
-                            <p>{publication.description[language]}</p>
-                            <DocumentDownloads documents={publication.documents} title={publication.title[language]}/>
-                        </article>
-                    ))}
-                </div>
-                <Link className="projects-text-link" to="/skills">{copy.skills}<ArrowRight aria-hidden="true" size={17}/></Link>
+                <Link className="projects-text-link" to="/skills#publications">{copy.publicationsLink}<ArrowRight aria-hidden="true" size={17}/></Link>
             </section>
         </main>
     );
