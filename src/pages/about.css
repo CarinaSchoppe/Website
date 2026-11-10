@@ -291,7 +291,7 @@
     padding: .55rem 1.15rem;
     border-inline-start: 3px solid var(--accent);
     border-radius: .3rem;
-    background: color-mix(in srgb, var(--paper-raised) 84%, var(--lavender));
+    background: color-mix(in srgb, var(--paper-raised) 84%, var(--brand-soft));
 }
 
 .about-business p {

@@ -1,9 +1,9 @@
 .home {
-    --home-spectrum: linear-gradient(90deg, #8a60bc, #c979a0 25%, #d7a557 50%, #58a995 75%, #6696cb);
-    --home-haze: #ded0f7a6;
+    --home-spectrum: linear-gradient(90deg, #da727b, #e69a63 17%, #dcb95e 33%, #66b49b 50%, #588fe0 68%, #9072c7 86%, #c97eb4);
+    --home-haze: #cbddffa6;
     padding-bottom: clamp(3rem, 6vw, 6rem);
 }
-[data-theme="night"] .home { --home-haze: #61478378; }
+[data-theme="night"] .home { --home-haze: #3b5f9a78; }
 .home-hero {
     position: relative;
     isolation: isolate;

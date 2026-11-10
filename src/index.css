@@ -15,8 +15,10 @@
     --ink: #1d2435;
     --muted: #4b556b;
     --line: #c9cfdd;
-    --accent: #523779;
-    --plum: #422b70;
+    --accent: #234f97;
+    --brand: #214e99;
+    --brand-soft: #deebff;
+    --brand-ink: #17345f;
     --coral: #f6b2a5;
     --butter: #f7e7b3;
     --mint: #c5e7d7;
@@ -37,7 +39,8 @@ html[data-theme="night"] {
     --ink: #f5f5fb;
     --muted: #ccd1e0;
     --line: #545b70;
-    --accent: #dac9f7;
+    --accent: #a9ccff;
+    --brand-soft: #bfd8ff;
 }
 body {
     background: var(--paper);
@@ -81,8 +84,8 @@ button { cursor: pointer; }
     flex: none;
     place-items: center;
     border: 1px solid var(--line);
-    background: var(--lavender);
-    color: #34244f;
+    background: var(--brand-soft);
+    color: var(--brand-ink);
     border-radius: .55rem;
     font: 800 .93rem/1 var(--display);
     letter-spacing: -.04em;
@@ -120,7 +123,7 @@ button { cursor: pointer; }
     font-size: .8rem;
     font-weight: 800;
 }
-.site-control:hover { background: var(--lavender); color: #241e2e; }
+.site-control:hover { background: var(--brand-soft); color: var(--brand-ink); }
 .site-menu-trigger { display: none; }
 .site-skip {
     position: fixed;
@@ -179,14 +182,15 @@ body:has(.site-menu[open]) { overflow: hidden; }
     line-height: 1.25;
     text-align: center;
 }
-.site-button-primary, .ui-button[data-button-variant="primary"] { color: #fffaf3; background: var(--plum); border-color: var(--plum); }
+.site-button-primary, .ui-button[data-button-variant="primary"] { color: #fff; background: var(--brand); border-color: var(--brand); }
 html[data-theme="night"] :is(.site-button-primary, .ui-button[data-button-variant="primary"]) {
-    color: #241e2e;
-    background: var(--lavender);
-    border-color: var(--lavender);
+    color: var(--brand-ink);
+    background: var(--brand-soft);
+    border-color: var(--brand-soft);
 }
-html[data-theme="night"] :is(.site-button-primary, .ui-button[data-button-variant="primary"]):hover { background: var(--butter); border-color: var(--butter); }
-.site-button:hover, .ui-button:hover { color: #241e2e; background: var(--lavender); border-color: #241e2e; }
+html[data-theme="night"] :is(.site-button-primary, .ui-button[data-button-variant="primary"]):hover { background: var(--accent); border-color: var(--accent); }
+.site-button:hover, .ui-button:hover { color: var(--brand-ink); background: var(--brand-soft); border-color: var(--brand); }
+:is(.site-button, .ui-button, .site-control):focus-visible { outline-color: var(--accent); }
 .site-button svg, .site-text-link svg { flex: none; }
 .site-text-link {
     display: inline-flex;
@@ -202,7 +206,7 @@ html[data-theme="night"] :is(.site-button-primary, .ui-button[data-button-varian
 }
 .site-text-link:hover { text-decoration-thickness: 2px; }
 
-.site-footer { background: #22263a; color: #f5f5fb; border-top: 1px solid var(--line); }
+.site-footer { background: #192941; color: #f5f5fb; border-top: 1px solid var(--line); }
 .site-footer-inner {
     display: grid;
     grid-template-columns: minmax(0, 1.22fr) minmax(0, .9fr) minmax(0, 1fr);
@@ -213,7 +217,7 @@ html[data-theme="night"] :is(.site-button-primary, .ui-button[data-button-varian
 }
 .site-footer-brand { font: 800 clamp(1.35rem, 2.45vw, 2rem)/1.15 var(--display); letter-spacing: -.035em; }
 .site-footer-inner p { margin-top: .7rem; color: #d3d7e6; max-width: 25rem; }
-.site-footer-inner h2 { margin-bottom: .55rem; font: 800 .73rem/1.4 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--lavender); }
+.site-footer-inner h2 { margin-bottom: .55rem; font: 800 .73rem/1.4 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--brand-soft); }
 .site-footer-inner a:hover { text-decoration: underline; text-underline-offset: .18em; }
 .site-footer nav ul { display: grid; grid-template-columns: repeat(2, minmax(0, auto)); gap: .4rem .75rem; }
 .site-footer-social { margin-top: .6rem; display: flex; flex-wrap: wrap; gap: .3rem 1rem; }
@@ -251,7 +255,7 @@ html[data-theme="night"] :is(.site-button-primary, .ui-button[data-button-varian
 .ui-badge[data-accent="emerald"] { --badge: var(--mint); }
 .ui-badge[data-accent="amber"] { --badge: var(--butter); }
 .ui-badge[data-accent="white"] { --badge: var(--paper-light); }
-.ui-photo { position: relative; overflow: hidden; background: var(--lavender); }
+.ui-photo { position: relative; overflow: hidden; background: var(--brand-soft); }
 .ui-photo-fallback { display: grid; min-height: 260px; height: 100%; place-content: center; gap: .65rem; padding: 1rem; color: #241e2e; text-align: center; }
 .ui-photo-fallback strong { font: 650 2rem/1 var(--display); }
 .ui-button[data-button-variant="dark"] { background: var(--ink); color: var(--paper); }

@@ -86,7 +86,7 @@ export default function SoftwarePage() {
                     <h1>{copy.title}</h1>
                     <p className="projects-lead">{copy.intro}</p>
                     <div className="projects-intro-actions">
-                        <Link className="projects-solid-link" to="#featured-projects">{copy.jump}<ArrowDown aria-hidden="true" size={17}/></Link>
+                        <Link className="site-button site-button-primary" to="#featured-projects">{copy.jump}<ArrowDown aria-hidden="true" size={17}/></Link>
                         <Link className="projects-text-link" to="/contact">{copy.contact}<ArrowRight aria-hidden="true" size={17}/></Link>
                     </div>
                 </div>

@@ -74,8 +74,7 @@
     margin-top: 1.4rem;
 }
 
-.projects-text-link,
-.projects-solid-link {
+.projects-text-link {
     display: inline-flex;
     width: fit-content;
     min-height: 44px;
@@ -100,18 +99,6 @@
 
 .projects-text-link:hover {
     text-decoration-thickness: 2px;
-}
-
-.projects-solid-link {
-    padding: .65rem .9rem;
-    border: 1px solid color-mix(in srgb, var(--plum), var(--accent) 35%);
-    border-radius: calc(var(--corner) * .6);
-    background: var(--plum);
-    color: #fff;
-}
-
-.projects-solid-link:hover {
-    background: color-mix(in srgb, var(--plum), #fff 12%);
 }
 
 .projects-overview {
