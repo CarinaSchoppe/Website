@@ -36,14 +36,14 @@ export default function CredentialsPage() {
                     <p className="text-lg leading-8 text-slate-300">{copy.intro}</p>
                 </div>
 
-                <div className="credential-filter-track mt-10 flex flex-wrap gap-2">
+                <div className="mt-10 flex flex-wrap gap-2" role="group" aria-label={language === "de" ? "Nachweise nach Kategorie filtern" : "Filter credentials by category"}>
                     {categoryKeys.map((category, index) => (
                         <button
                             key={category}
                             type="button"
                             aria-pressed={activeCategory === category}
                             onClick={() => setActiveCategory(category)}
-                            className="credential-filter-button min-h-11 rounded-full border px-4 py-2 text-sm font-black transition"
+                            className="site-filter-button min-h-11 rounded-full border px-4 py-2 text-sm font-extrabold"
                         >
                             {category === "All" ? copy.allLabel : credentialCategories[index]}
                         </button>

@@ -1,3 +1,4 @@
+import {ArrowLeft} from "lucide-react";
 import {Link, Navigate, useParams} from "react-router-dom";
 import {blogArticlesForLanguage} from "../data/blogArticles.js";
 import {useLanguage} from "../i18n.jsx";
@@ -19,6 +20,7 @@ export default function BlogPostPage() {
             takeaway: "Kernidee",
             sources: "Quellen und weiterführende Links",
             discuss: "Zu diesem Thema Kontakt aufnehmen",
+            contact: "Persönlicher Kontakt",
             more: "Weitere Beiträge",
             read: "Lesen",
         }
@@ -27,6 +29,7 @@ export default function BlogPostPage() {
             takeaway: "Key takeaway",
             sources: "Sources and further reading",
             discuss: "Get in touch about this topic",
+            contact: "Personal contact",
             more: "More articles",
             read: "Read",
         };
@@ -35,8 +38,8 @@ export default function BlogPostPage() {
     return (
         <main className="px-4 pb-24 pt-32 sm:px-6 lg:px-8">
             <article className="mx-auto max-w-5xl">
-                <Link to="/blog" className="text-sm font-black text-sky-100 transition hover:text-white">
-                    &lt; {copy.back}
+                <Link to="/blog" className="site-text-link text-sky-100">
+                    <ArrowLeft size={16} aria-hidden="true"/>{copy.back}
                 </Link>
 
                 <header className="mt-8">
@@ -53,10 +56,15 @@ export default function BlogPostPage() {
                     </p>
                 </header>
 
-                <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_18rem] lg:items-start">
+                <section className="soft-section mt-6 max-w-4xl p-5" aria-labelledby="article-takeaway">
+                    <h2 id="article-takeaway" className="text-lg text-white">{copy.takeaway}</h2>
+                    <p className="mt-2 text-base leading-7 text-slate-300">{post.takeaway}</p>
+                </section>
+
+                <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_18rem] lg:items-start">
                     <div className="space-y-8">
                         {post.body.map((section) => (
-                            <section key={section.heading} className="rounded-[2rem] border border-white/10 bg-white/[0.055] p-6 shadow-[0_22px_80px_rgba(0,0,0,.2)] backdrop-blur-2xl sm:p-8">
+                            <section key={section.heading} className="soft-section p-5 sm:p-8">
                                 <h2 className="text-2xl font-black text-white">{section.heading}</h2>
                                 <div className="mt-5 space-y-5 text-base leading-8 text-slate-300">
                                     {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
@@ -65,14 +73,9 @@ export default function BlogPostPage() {
                         ))}
                     </div>
 
-                    <aside className="space-y-5 lg:sticky lg:top-28">
+                    <aside className="lg:sticky lg:top-28" aria-labelledby="article-sources">
                         <Card>
-                            <Badge tone="emerald">{copy.takeaway}</Badge>
-                            <p className="mt-5 text-sm leading-7 text-slate-300">{post.takeaway}</p>
-                        </Card>
-
-                        <Card>
-                            <h2 className="text-lg font-black text-white">{copy.sources}</h2>
+                            <h2 id="article-sources" className="text-lg font-black text-white">{copy.sources}</h2>
                             <div className="mt-4 space-y-3">
                                 {post.sources.map((source) => (
                                     <a key={source.href} href={source.href} target="_blank" rel="noreferrer" className="block rounded-2xl border border-white/10 bg-white/[0.055] p-3 text-sm font-bold leading-6 text-sky-100 transition hover:border-sky-200/35 hover:bg-white/[0.09]">
@@ -84,14 +87,9 @@ export default function BlogPostPage() {
                     </aside>
                 </div>
 
-                <section className="mt-12 rounded-[2rem] border border-white/10 bg-gradient-to-br from-sky-300/13 via-white/[0.06] to-blue-300/10 p-6 shadow-[0_24px_90px_rgba(0,0,0,.22)] backdrop-blur-2xl sm:p-8">
-                    <div className="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
-                        <div>
-                            <h2 className="text-2xl font-black text-white">{copy.discuss}</h2>
-                            <p className="mt-2 text-sm leading-7 text-slate-300">{post.takeaway}</p>
-                        </div>
-                        <Button to="/contact#contact-options">{copy.discuss}</Button>
-                    </div>
+                <section className="soft-section mt-10 flex flex-wrap items-center justify-between gap-4 p-5 sm:p-6">
+                    <h2 className="text-xl text-white">{copy.discuss}</h2>
+                    <Button to="/contact#contact-options">{copy.contact}</Button>
                 </section>
 
                 <section className="mt-12">
