@@ -33,6 +33,12 @@ const copy = {
             ["Software & Automatisierung", "Ich entwickle Werkzeuge für wiederkehrende Abläufe, zum Beispiel für Literaturrecherche und E-Mail-Versand. Für OpenXLR arbeite ich mit anderen Entwicklern an Linux-Software.", "Softwareprojekte ansehen", "/projects"],
             ["KI & Forschung", "Ich untersuche, wie Beschäftigte mit generativer KI arbeiten und wie Unternehmen den Einsatz steuern können. Dazu gehört auch die Frage, wie KI Sicherheitsrisiken verändert.", "Forschungsarbeiten ansehen", "/skills#publications"],
         ],
+        valuesTitle: "Wofür ich stehe",
+        values: [
+            ["Selbst ausprobieren", "Eine Netzwerkübung kann damit beginnen, einen Verbindungsfehler einzugrenzen. Mir ist wichtig, dass Teilnehmende am Ende erklären können, warum ihre Lösung funktioniert."],
+            ["Entscheidungen nachvollziehen", "Meine Literatursoftware PRISMA hält fest, welche Studien bei der Vorauswahl herausfallen und warum. So lassen sich Entscheidungen später prüfen."],
+            ["Vielfalt und Respekt", "Bei SCHLAU NRW habe ich ehrenamtlich Schulworkshops zu Vielfalt und Antidiskriminierung begleitet."],
+        ],
         selected: "Ausgewählte Softwareprojekte",
         allProjects: "Alle Projekte",
         writing: "Fachtexte",
@@ -66,6 +72,12 @@ const copy = {
             ["Software & automation", "I build tools for recurring tasks such as literature reviews and email. For OpenXLR, I work alongside other developers on Linux software.", "View software projects", "/projects"],
             ["AI & research", "I study how people work with generative AI, how organisations govern its use and how it changes security risks.", "View research", "/skills#publications"],
         ],
+        valuesTitle: "What matters to me",
+        values: [
+            ["Learning by doing", "A networking exercise might start with tracing a connection fault. I want learners to be able to explain why their solution works."],
+            ["Traceable decisions", "My literature review tool PRISMA records which studies were screened out and why. That makes those decisions possible to review later."],
+            ["Diversity and respect", "As a volunteer with SCHLAU NRW, I helped run school workshops on diversity and anti-discrimination."],
+        ],
         selected: "Selected software projects",
         allProjects: "All projects",
         writing: "Articles",
@@ -89,7 +101,7 @@ export default function HomePage() {
             <section className="home-hero" aria-labelledby="home-title">
                 <div className="home-hero-copy">
                     <p className="home-role">{c.role}</p>
-                    <h1 id="home-title"><span>Carina Sophie</span> Schoppe</h1>
+                    <h1 id="home-title"><span>Carina Sophie</span> <span className="home-surname">Schoppe</span></h1>
                     <p className="home-intro">{c.intro}</p>
                     <div className="home-hero-actions">
                         <Link className="site-button site-button-primary" to="/contact">{c.contact}<ArrowRight size={17} aria-hidden="true"/></Link>
@@ -126,7 +138,6 @@ export default function HomePage() {
                         <h2 id="focus-title">{c.focus}</h2>
                         <p>{c.focusIntro}</p>
                     </div>
-                    <Link className="site-text-link" to="/about">{c.profile}<ArrowRight size={16} aria-hidden="true"/></Link>
                 </div>
                 <div className="home-capabilities">
                     {c.capabilities.map(([title, description, action, href], index) => {
@@ -143,6 +154,21 @@ export default function HomePage() {
                             </article>
                         );
                     })}
+                </div>
+            </section>
+
+            <section className="home-section home-values" aria-labelledby="values-title">
+                <div className="home-section-heading">
+                    <h2 id="values-title">{c.valuesTitle}</h2>
+                    <Link className="site-text-link" to="/about">{c.profile}<ArrowRight size={16} aria-hidden="true"/></Link>
+                </div>
+                <div className="home-values-list">
+                    {c.values.map(([title, description], index) => (
+                        <div key={title} className={`home-value tone-${capabilityTones[index]}`}>
+                            <h3>{title}</h3>
+                            <p>{description}</p>
+                        </div>
+                    ))}
                 </div>
             </section>
 
