@@ -1,5 +1,7 @@
 import {useSiteContent} from "../data/localizedContent.js";
+import {PROFILE} from "../data/profile.js";
 import {publications} from "../data/publications.js";
+import {teachingTopics} from "../data/teachingTopics.js";
 import {useLanguage} from "../i18n.jsx";
 import Badge from "../components/Badge.jsx";
 import Button from "../components/Button.jsx";
@@ -29,57 +31,45 @@ function PublicationCard({downloadLabel, language, publication}) {
 
 export default function SkillsPage() {
     const {language} = useLanguage();
-    const {skillGroups, trainingTopics} = useSiteContent();
+    const {skillGroups} = useSiteContent();
     const copy = language === "de"
         ? {
-            badge: "Kompetenzen & Themen",
-            title: "Fachliche Schwerpunkte in AI, Software, Cybersecurity und digitaler Bildung.",
-            formats: "Luminovia ansehen",
+            badge: "Lehre, Software und Forschung",
+            title: "Was ich unterrichte und entwickle.",
+            intro: "Ich unterrichte IT und Wirtschaft für Erwachsene. In meinen Kursen lösen Teilnehmende Aufgaben aus ihrem Berufsalltag. Was ich selbst programmiere und in Projekten lerne, fließt in meine Übungen ein.",
+            formats: "Luminovia Training & Consulting",
             credentials: "Nachweise ansehen",
-            clusters: "Kompetenzfelder",
-            clustersTitle: "Themen aus Projekten, Lehre, Forschung und beruflicher Praxis.",
-            consultingTitle: "Fachliche Schwerpunkte",
-            consultingCopy: "Die Übersicht zeigt, wie meine technischen, wissenschaftlichen und didaktischen Kompetenzen zusammenwirken. Angebote für Unternehmen werden separat auf Luminovia dargestellt.",
-            consultingAreas: [
-                ["AI & Automatisierung", "Generative AI, Prompt-Workflows, AI Governance, systematische Literaturreviews, Forschungswerkzeuge und verantwortungsvolle Nutzung."],
-                ["Softwareentwicklung", "Programmierung, APIs, Automatisierung, Datenflüsse sowie die Struktur und Umsetzung technischer Projekte."],
-                ["Cybersecurity", "Security Awareness, Web Security, SOC-Grundlagen, Pentesting und eine konsequent defensive Sicherheitsperspektive."],
-                ["Digitale Bildung & Didaktik", "Lernarchitektur, erwachsenengerechte Erklärungen, praxisnahe Materialien, Übungen und Transfer in den Arbeitsalltag."],
-                ["Wirtschaftsinformatik", "Prozesse, Informationssysteme, IT-Management, HCI und fundierte Technologieentscheidungen in Organisationen."],
-                ["Projektmanagement & Agile", "Scrum, Projektstruktur, Stakeholder-Kommunikation, AI-gestützte Projektarbeit und belastbare Entscheidungsgrundlagen."],
-                ["Daten & Analyse", "SQL, Datenmodelle, Forschungsdaten, Datenbereinigung, Auswertung und datenbasierte Argumentation."],
-            ],
+            teaching: "Unterrichtsthemen",
+            teachingCopy: "Ich konzipiere und leite Kurse auf Deutsch und Englisch für Teams, Bildungsanbieter und Hochschulen. Dazu gehören Grundlagenkurse, Laborübungen und IHK-Prüfungsvorbereitung. Firmentrainings, Workshops und Beratung biete ich über mein Unternehmen Luminovia an.",
+            projectTitle: "Software aus meiner Praxis",
+            projectCopy: "Ich konzipiere und programmiere eigene Werkzeuge, etwa die PRISMA-Pipeline für systematische Literaturrecherchen und den Automatic Mail Sender. Bei OpenXLR entwickle ich im Open-Source-Team Funktionen für die Linux-Audiosteuerung mit.",
+            projects: "Softwareprojekte ansehen",
+            skills: "Werkzeuge, Methoden und weitere Kompetenzen",
             publications: "Publikationen",
             publicationsTitle: "Publikationen und wissenschaftliche Arbeiten.",
-            publicationsCopy: "Die Arbeiten dokumentieren meine Auseinandersetzung mit generativer AI, AI Governance, Mensch-Maschine-Interaktion, Cybersecurity Awareness und verantwortungsvoller digitaler Transformation.",
+            publicationsCopy: "In diesen Arbeiten beschäftige ich mich mit generativer KI, KI-Governance, Mensch-Maschine-Interaktion und IT-Sicherheit.",
             downloadPublication: "PDF herunterladen",
             jumpLabel: "Auf dieser Seite",
-            jumpItems: [["#consulting-skills", "Schwerpunkte"], ["#publications", "Publikationen"], ["#skill-map", "Kompetenzen"], ["#clusters", "Themenfelder"]],
+            jumpItems: [["#unterricht", "Unterricht"], ["#softwarepraxis", "Software"], ["#publications", "Publikationen"], ["#skill-map", "Kompetenzen"]],
         }
         : {
-            badge: "Skills & topics",
-            title: "Professional strengths across AI, software, cybersecurity and digital education.",
-            formats: "View Luminovia",
+            badge: "Teaching, software and research",
+            title: "What I teach and build.",
+            intro: "I teach IT and business to adults. In my courses, learners work on tasks they recognise from their jobs. I draw on the software I write and the lessons from my projects when I design exercises.",
+            formats: "Luminovia Training & Consulting",
             credentials: "View credentials",
-            clusters: "Skill clusters",
-            clustersTitle: "Fields across portfolio, teaching, research and project work.",
-            consultingTitle: "Capability map",
-            consultingCopy: "This overview shows how my technical, academic and educational capabilities work together. Services for organisations are presented separately on Luminovia.",
-            consultingAreas: [
-                ["AI & automation", "Generative AI, prompt workflows, AI governance, literature reviews, research tooling and responsible use."],
-                ["Software development", "Programming, APIs, automation, data flows, technical project structure and implementation logic."],
-                ["Cybersecurity", "Security awareness, web security, SOC foundations, pentest learning and defensive perspectives."],
-                ["Digital education / instructional design", "Learning architecture, clear explanations for adult learners, practical materials, exercises and transfer into the workplace."],
-                ["Business information systems", "Processes, systems, IT management, digital business, HCI and organisational technology decisions."],
-                ["Project management / agile", "Scrum, project structure, stakeholder communication, AI-supported project work and decision preparation."],
-                ["Data / analytics", "SQL, data models, research data, analysis, data cleanup and evidence-based argumentation."],
-            ],
+            teaching: "Teaching topics",
+            teachingCopy: "I design and teach courses in German and English for teams, education providers and universities. This includes introductory courses, hands-on labs and preparation for German IHK exams. I provide corporate training, workshops and consulting through my company, Luminovia.",
+            projectTitle: "Software I build and contribute to",
+            projectCopy: "I design and build my own tools, including the PRISMA pipeline for systematic literature reviews and Automatic Mail Sender. I also contribute Linux audio control features to OpenXLR as part of its open-source team.",
+            projects: "Explore software projects",
+            skills: "Tools, methods and other skills",
             publications: "Publications",
             publicationsTitle: "Publications and academic work.",
-            publicationsCopy: "These papers document my work on generative AI, AI governance, human-machine interaction, cybersecurity awareness and responsible digital transformation.",
+            publicationsCopy: "These papers cover my work on generative AI, AI governance, human–computer interaction and cybersecurity.",
             downloadPublication: "Download PDF",
             jumpLabel: "On this page",
-            jumpItems: [["#consulting-skills", "Fields"], ["#publications", "Publications"], ["#skill-map", "Skills"], ["#clusters", "Clusters"]],
+            jumpItems: [["#unterricht", "Teaching"], ["#softwarepraxis", "Software"], ["#publications", "Publications"], ["#skill-map", "Skills"]],
         };
     return (
         <main className="px-4 pb-24 pt-32 sm:px-6 lg:px-8">
@@ -89,37 +79,46 @@ export default function SkillsPage() {
                     <h1 className="max-w-5xl text-5xl font-black tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl">
                         {copy.title}
                     </h1>
+                    <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">{copy.intro}</p>
                 </div>
 
-                <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                    <Button href="https://luminovia.org">{copy.formats}</Button>
-                    <Button to="/credentials" variant="secondary">{copy.credentials}</Button>
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                    <Button to="#unterricht">{copy.teaching}</Button>
+                    <Button href={PROFILE.luminovia} variant="secondary">{copy.formats}</Button>
                 </div>
                 <SectionJumpNav label={copy.jumpLabel} items={copy.jumpItems} className="mt-8"/>
 
-                <section id="consulting-skills" className="mt-14">
+                <section id="unterricht" className="mt-14" aria-labelledby="consulting-skills" tabIndex={-1}>
                     <div className="grid gap-5 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
-                        <div>
-                            <Badge tone="violet">{copy.consultingTitle}</Badge>
-                            <h2 className="mt-5 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">{copy.consultingTitle}</h2>
-                        </div>
-                        <p className="text-lg leading-8 text-slate-300">{copy.consultingCopy}</p>
+                        <h2 id="consulting-skills" className="text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">{copy.teaching}</h2>
+                        <p className="text-lg leading-8 text-slate-300">{copy.teachingCopy}</p>
                     </div>
-                    <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-                        {copy.consultingAreas.map(([title, description]) => (
-                            <Card key={title}>
-                                <h3 className="text-2xl font-black text-white">{title}</h3>
-                                <p className="mt-4 text-sm leading-7 text-slate-300">{description}</p>
-                            </Card>
-                        ))}
+                    <div id="clusters" className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                        {teachingTopics.map((topic) => {
+                            const [title, description] = topic[language];
+                            return (
+                                <Card key={topic.id}>
+                                    <h3 className="text-xl font-black text-white">{title}</h3>
+                                    <p className="mt-3 text-base leading-7 text-slate-300">{description}</p>
+                                </Card>
+                            );
+                        })}
                     </div>
                 </section>
 
-                <section id="publications" className="mt-16" tabIndex={-1}>
+                <section id="softwarepraxis" className="soft-section mt-14 grid gap-5 p-5 sm:p-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end" aria-labelledby="softwarepraxis-title" tabIndex={-1}>
+                    <div>
+                        <h2 id="softwarepraxis-title" className="text-3xl font-black tracking-[-0.04em] text-white sm:text-4xl">{copy.projectTitle}</h2>
+                        <p className="mt-3 max-w-3xl text-base leading-7 text-slate-300">{copy.projectCopy}</p>
+                    </div>
+                    <Button to="/projects" variant="secondary">{copy.projects}</Button>
+                </section>
+
+                <section id="publications" className="mt-16" aria-labelledby="publications-title" tabIndex={-1}>
                     <div className="grid gap-5 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
                         <div>
                             <Badge tone="emerald">{copy.publications}</Badge>
-                            <h2 className="mt-5 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">{copy.publicationsTitle}</h2>
+                            <h2 id="publications-title" className="mt-5 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">{copy.publicationsTitle}</h2>
                         </div>
                         <p className="text-lg leading-8 text-slate-300">{copy.publicationsCopy}</p>
                     </div>
@@ -130,33 +129,18 @@ export default function SkillsPage() {
                     </div>
                 </section>
 
-                <section id="skill-map" className="mt-14">
-                    <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+                <section id="skill-map" className="mt-14" aria-labelledby="skill-map-title" tabIndex={-1}>
+                    <div className="flex flex-wrap items-end justify-between gap-4">
+                        <h2 id="skill-map-title" className="text-3xl font-black tracking-[-0.04em] text-white sm:text-4xl">{copy.skills}</h2>
+                        <Button to="/credentials" variant="secondary">{copy.credentials}</Button>
+                    </div>
+                    <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
                         {skillGroups.map((group) => (
                             <Card key={group.group}>
-                                <h2 className="text-2xl font-black text-white">{group.group}</h2>
+                                <h3 className="text-2xl font-black text-white">{group.group}</h3>
                                 <div className="mt-5 flex flex-wrap gap-2">
                                     {group.items.map((item) => (
                                         <TopicLink key={item} item={item} className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-bold text-slate-200 transition hover:border-sky-200/40 hover:bg-sky-200/10"/>
-                                    ))}
-                                </div>
-                            </Card>
-                        ))}
-                    </div>
-                </section>
-
-                <section id="clusters" className="mt-16">
-                    <div className="mb-7">
-                        <Badge tone="emerald">{copy.clusters}</Badge>
-                        <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">{copy.clustersTitle}</h2>
-                    </div>
-                    <div className="grid gap-5 lg:grid-cols-4">
-                        {trainingTopics.map((topic) => (
-                            <Card key={topic.group} className="bg-gradient-to-br from-sky-300/10 via-white/[0.04] to-violet-300/10">
-                                <h3 className="text-2xl font-black text-white">{topic.group}</h3>
-                                <div className="mt-5 grid gap-2">
-                                    {topic.items.map((item) => (
-                                        <TopicLink key={item} item={item} className="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-sm font-bold text-slate-200 transition hover:border-sky-200/40 hover:bg-sky-200/10"/>
                                     ))}
                                 </div>
                             </Card>

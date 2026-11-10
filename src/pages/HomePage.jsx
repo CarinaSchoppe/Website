@@ -14,7 +14,7 @@ const capabilityTones = ["butter", "mint", "sky"];
 const copy = {
     de: {
         role: "IT-Dozentin · Wirtschaftsinformatikerin",
-        intro: "Ich unterrichte Erwachsene und Teams in IT, entwickle Software für wiederkehrende Aufgaben und forsche zum Einsatz von KI im Arbeitsalltag.",
+        intro: "Ich unterrichte KI, IT und Wirtschaft. Ich programmiere eigene Anwendungen und Automatisierungen und forsche dazu, wie Menschen KI bei der Arbeit einsetzen.",
         location: "Brisbane, Australien",
         languages: "Deutsch & Englisch",
         portraitAlt: "Porträt von Carina Sophie Schoppe",
@@ -28,10 +28,10 @@ const copy = {
         ],
         credentials: "Alle Qualifikationen",
         focus: "Meine Schwerpunkte",
-        focusIntro: "Ich arbeite mit Bildungsanbietern und Unternehmen. Das sind die Themen, die ich in Unterricht, Projekte und Forschung einbringe.",
+        focusIntro: "Ich entwickle Kurse, Übungen und Lernmaterialien für Erwachsene. Beispiele aus meiner Softwarearbeit und Forschung bringe ich direkt in den Unterricht ein.",
         capabilities: [
-            ["IT-Training", "Ich konzipiere und gebe Kurse für Erwachsene. Teilnehmende arbeiten mit Übungen zu Python, SQL, Linux, Netzwerken und IT-Sicherheit.", "Trainings bei Luminovia", PROFILE.luminovia],
-            ["Software & Automatisierung", "Ich entwickle Werkzeuge für wiederkehrende Abläufe, zum Beispiel für Literaturrecherche und E-Mail-Versand. Für OpenXLR arbeite ich mit anderen Entwicklern an Linux-Software.", "Softwareprojekte ansehen", "/projects"],
+            ["Lehre in KI, IT und Wirtschaft", "Ich unterrichte IT-Sicherheit, Softwareentwicklung, Datenbanken und Netzwerke ebenso wie Buchhaltungsgrundlagen, Arbeitsrecht und Datenschutz.", "Alle Lehrthemen ansehen", "/skills#unterricht"],
+            ["Software & Automatisierung", "Ich habe PRISMA für systematische Literaturrecherchen und den Automatic Mail Sender für personalisierte E-Mails entwickelt. Bei OpenXLR arbeite ich am Linux-Audiomixer mit.", "Softwareprojekte ansehen", "/projects"],
             ["KI & Forschung", "Ich untersuche, wie Beschäftigte mit generativer KI arbeiten und wie Unternehmen den Einsatz steuern können. Dazu gehört auch die Frage, wie KI Sicherheitsrisiken verändert.", "Forschungsarbeiten ansehen", "/skills#publications"],
         ],
         valuesTitle: "Wofür ich stehe",
@@ -44,16 +44,17 @@ const copy = {
         allProjects: "Alle Projekte",
         writing: "Fachtexte",
         allWriting: "Alle Texte",
-        profile: "Mehr zu meinem Werdegang",
+        profile: "Mein Lebenslauf und Werdegang",
         contactTitle: "Zusammenarbeit anfragen",
         contactCopy: "Für Lehrprojekte, Gastvorträge, Forschungsfragen und technische Zusammenarbeit erreichen Sie mich direkt.",
-        businessTitle: "Training und Beratung für Unternehmen",
-        businessCopy: "Workshops, Firmentrainings und Beratung biete ich über mein Unternehmen Luminovia Training & Consulting an.",
-        businessLink: "Zu Luminovia",
+        linkedin: "Mein LinkedIn-Profil",
+        businessLabel: "Mein Unternehmen",
+        businessCopy: "Ich habe Luminovia gegründet. Dort biete ich Unternehmen und Bildungsanbietern Live-Trainings, Workshops und Beratung zu KI, IT und Cybersicherheit an, auf Deutsch und Englisch.",
+        businessLink: "luminovia.org besuchen",
     },
     en: {
         role: "IT lecturer · Business information systems",
-        intro: "I teach IT to adults and teams, build software for recurring tasks and research how AI is used at work.",
+        intro: "I teach AI, IT and business. I build my own software and automation tools and research how people use AI at work.",
         location: "Brisbane, Australia",
         languages: "English & German",
         portraitAlt: "Portrait of Carina Sophie Schoppe",
@@ -67,10 +68,10 @@ const copy = {
         ],
         credentials: "All qualifications",
         focus: "What I do",
-        focusIntro: "I work with education providers and organisations. These are the areas I bring to training, projects and research.",
+        focusIntro: "I design courses, practical exercises and materials for adult learners. I bring examples from my software projects and research into the classroom.",
         capabilities: [
-            ["IT training", "I design and teach courses for adults, with practical exercises in Python, SQL, Linux, networking and IT security.", "Training at Luminovia", PROFILE.luminovia],
-            ["Software & automation", "I build tools for recurring tasks such as literature reviews and email. For OpenXLR, I work alongside other developers on Linux software.", "View software projects", "/projects"],
+            ["Teaching AI, IT and business", "I teach cybersecurity, software development, databases and networking, as well as accounting fundamentals, employment law and data protection.", "Explore teaching topics", "/skills#unterricht"],
+            ["Software & automation", "I built PRISMA for systematic literature reviews and Automatic Mail Sender for personalised email. I also contribute to the OpenXLR audio mixer for Linux.", "View software projects", "/projects"],
             ["AI & research", "I study how people work with generative AI, how organisations govern its use and how it changes security risks.", "View research", "/skills#publications"],
         ],
         valuesTitle: "What matters to me",
@@ -83,12 +84,13 @@ const copy = {
         allProjects: "All projects",
         writing: "Articles",
         allWriting: "All articles",
-        profile: "More about my background",
+        profile: "My CV and career story",
         contactTitle: "Work with me",
         contactCopy: "Contact me directly about teaching projects, guest lectures, research or technical collaboration.",
-        businessTitle: "Training and consulting for organisations",
-        businessCopy: "I offer workshops, company training and consulting through my business, Luminovia Training & Consulting.",
-        businessLink: "Visit Luminovia",
+        linkedin: "My LinkedIn profile",
+        businessLabel: "My business",
+        businessCopy: "I founded Luminovia to offer live training, workshops and consulting in AI, IT and cybersecurity for organisations and education providers. I work in English and German.",
+        businessLink: "Visit luminovia.org",
     },
 };
 
@@ -143,15 +145,12 @@ export default function HomePage() {
                 <div className="home-capabilities">
                     {c.capabilities.map(([title, description, action, href], index) => {
                         const Icon = capabilityIcons[index];
-                        const content = <>{action}<ArrowUpRight size={15} aria-hidden="true"/></>;
                         return (
                             <article key={title} className={`home-capability tone-${capabilityTones[index]}`}>
                                 <span className="home-capability-icon"><Icon size={20} aria-hidden="true"/></span>
                                 <h3>{title}</h3>
                                 <p>{description}</p>
-                                {href === PROFILE.luminovia
-                                    ? <a className="site-text-link" href={href}>{content}</a>
-                                    : <Link className="site-text-link" to={href}>{content}</Link>}
+                                <Link className="site-text-link" to={href}>{action}<ArrowRight size={15} aria-hidden="true"/></Link>
                             </article>
                         );
                     })}
@@ -161,7 +160,7 @@ export default function HomePage() {
             <section className="home-section home-values" aria-labelledby="values-title">
                 <div className="home-section-heading">
                     <h2 id="values-title">{c.valuesTitle}</h2>
-                    <Link className="site-text-link" to="/about">{c.profile}<ArrowRight size={16} aria-hidden="true"/></Link>
+                    <Link className="site-text-link" to="/my-way">{c.profile}<ArrowRight size={16} aria-hidden="true"/></Link>
                 </div>
                 <div className="home-values-list">
                     {c.values.map(([title, description], index) => (
@@ -220,10 +219,19 @@ export default function HomePage() {
                 <div className="home-contact-personal">
                     <h2 id="contact-title">{c.contactTitle}</h2>
                     <p>{c.contactCopy}</p>
-                    <Link className="site-button site-button-primary" to="/contact">{c.contact}<ArrowRight size={17} aria-hidden="true"/></Link>
+                    <div className="home-contact-actions">
+                        <Link className="site-button site-button-primary" to="/contact">{c.contact}<ArrowRight size={17} aria-hidden="true"/></Link>
+                        <a className="site-text-link" href={PROFILE.linkedin}>{c.linkedin}<ArrowUpRight size={16} aria-hidden="true"/></a>
+                    </div>
                 </div>
                 <div className="home-contact-business">
-                    <h3>{c.businessTitle}</h3>
+                    <div className="home-business-heading">
+                        <img src={IMAGES.luminoviaLogoMark} alt="" width="44" height="44" loading="lazy"/>
+                        <div>
+                            <p className="site-kicker">{c.businessLabel}</p>
+                            <h3>Luminovia Training &amp; Consulting</h3>
+                        </div>
+                    </div>
                     <p>{c.businessCopy}</p>
                     <a className="site-text-link" href={PROFILE.luminovia}>{c.businessLink}<ArrowUpRight size={17} aria-hidden="true"/></a>
                 </div>

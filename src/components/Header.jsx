@@ -4,7 +4,7 @@ import {Link, NavLink} from "react-router-dom";
 import {navItems, PROFILE} from "../data/profile.js";
 import {useLanguage} from "../i18n.jsx";
 
-const primaryItems = ["/about", "/projects", "/credentials", "/#referenzen", "/blog", "/contact"]
+const primaryItems = ["/about", "/skills", "/projects", "/credentials", "/#referenzen", "/blog", "/contact"]
     .map((path) => navItems.find((item) => item.to === path));
 
 function PortfolioNavLink({item, onClick, children}) {

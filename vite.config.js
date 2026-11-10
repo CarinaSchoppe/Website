@@ -9,10 +9,10 @@ const prerenderRoutes = [
     ["/projects", "Projekte | Carina Sophie Schoppe", "Softwareprojekte, Automation und technische Experimente von Carina Sophie Schoppe, darunter Forschungswerkzeuge, Datenworkflows, Kotlin- und Mobile-Projekte."],
     ["/software", "Projekte | Carina Sophie Schoppe", "Softwareprojekte, Automation und technische Experimente von Carina Sophie Schoppe, darunter Forschungswerkzeuge, Datenworkflows, Kotlin- und Mobile-Projekte."],
     ["/portfolio", "Portfolio | Carina Sophie Schoppe", "Portfolio mit öffentlichen Projekten, technischen Arbeiten und Informationen zum beruflichen Profil von Carina Sophie Schoppe."],
-    ["/skills", "Kompetenzen | Carina Sophie Schoppe", "Kompetenzprofil von Carina Sophie Schoppe zu AI, Softwareentwicklung, Cybersecurity, Wirtschaftsinformatik, Forschung und digitaler Bildung."],
+    ["/skills", "Lehrthemen und Kompetenzen | Carina Sophie Schoppe", "Unterricht zu KI, IT-Sicherheit, Software, Datenbanken, Netzwerken, Wirtschaft, Buchhaltung, Arbeitsrecht und Datenschutz mit Beispielen aus der Praxis."],
     ["/credentials", "Nachweise | Carina Sophie Schoppe", "Abschlüsse, Zertifikate und fachliche Nachweise von Carina Sophie Schoppe, darunter B.Sc., M.Sc., MBA, TAE40122 und AI-Zertifikate."],
-    ["/my-way", "Werdegang | Carina Sophie Schoppe", "Beruflicher Werdegang von Carina Sophie Schoppe durch Wirtschaftsinformatik, Softwarepraxis, AI, Forschung, Lehre und Brisbane."],
-    ["/about", "Über Carina | Carina Sophie Schoppe", "Persönliches Profil von Carina Sophie Schoppe zwischen Software, Forschung, digitaler Bildung, AI, Cybersecurity und Unternehmertum."],
+    ["/my-way", "Werdegang | Carina Sophie Schoppe", "Carina Sophie Schoppes Lebenslauf und Werdegang von Wirtschaftsinformatik und Lehre in Deutschland bis zu Software, KI-Forschung und Luminovia in Brisbane."],
+    ["/about", "Über Carina | Carina Sophie Schoppe", "Carina Sophie Schoppe ist IT-Dozentin, Softwareentwicklerin und Gründerin von Luminovia Training & Consulting. Persönlicher Werdegang und LinkedIn-Profil."],
     ["/blog", "Blog | Carina Sophie Schoppe", "Texte von Carina Sophie Schoppe zu AI, Governance, digitaler Bildung, Projektarbeit, Cybersecurity, Automationsrisiken und moderner Arbeit."],
     ...blogIndexForLanguage("de").map(({slug, title, excerpt}) => [
         `/blog/${slug}`,

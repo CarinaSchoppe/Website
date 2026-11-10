@@ -73,9 +73,9 @@ describe("full static site route coverage", () => {
         const footer = within(screen.getByRole("contentinfo"));
 
         expect(within(headerNav).getAllByRole("link").map((link) => link.getAttribute("href")).sort()).toEqual([
-            "/#referenzen", "/about", "/blog", "/contact", "/credentials", "/projects",
+            "/#referenzen", "/about", "/blog", "/contact", "/credentials", "/projects", "/skills",
         ]);
-        expect(footer.getByRole("link", {name: /^Skills$/i})).toHaveAttribute("href", "/skills");
+        expect(footer.getByRole("link", {name: /^Teaching$/i})).toHaveAttribute("href", "/skills");
         expect(footer.getByRole("link", {name: /^Credentials$/i})).toHaveAttribute("href", "/credentials");
     });
 

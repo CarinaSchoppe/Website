@@ -9,7 +9,7 @@ const dictionaries = {
         languageName: "English",
         switchLabel: "DE",
         nav: {
-            skills: "Skills",
+            skills: "Teaching",
             software: "Projects",
             about: "About",
             credentials: "Credentials",
@@ -67,7 +67,7 @@ const dictionaries = {
         languageName: "Deutsch",
         switchLabel: "EN",
         nav: {
-            skills: "Kompetenzen",
+            skills: "Lehrthemen",
             software: "Projekte",
             about: "Über mich",
             credentials: "Nachweise",

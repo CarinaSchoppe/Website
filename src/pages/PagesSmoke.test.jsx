@@ -9,7 +9,7 @@ const routes = [
     ["/projects", /Software projects and open source/i],
     ["/software", /Software projects and open source/i],
     ["/portfolio", /Software projects and open source/i],
-    ["/skills", /Professional strengths across AI/i],
+    ["/skills", /^What I teach and build\.$/i],
     ["/credentials", /Degrees, certificates/i],
     ["/my-way", /professional path through technology/i],
     ["/about", /^Carina Sophie Schoppe$/i],
@@ -34,6 +34,27 @@ describe("static page routes", () => {
         render(<App/>);
 
         expect(await screen.findByRole("heading", {level: 1, name: heading})).toBeInTheDocument();
+    });
+
+    it("shows the teaching range and its Luminovia link in both languages", async () => {
+        const user = userEvent.setup();
+        window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "de");
+        window.history.pushState({}, "Teaching", "/skills");
+        render(<App/>);
+
+        const topics = await screen.findByRole("region", {name: "Unterrichtsthemen"});
+        expect(topics).toHaveAttribute("id", "unterricht");
+        expect(within(topics).getAllByRole("heading", {level: 3})).toHaveLength(8);
+        expect(within(topics).getByRole("heading", {name: /Buchhaltung/i})).toBeInTheDocument();
+        expect(within(topics).getByRole("heading", {name: /Arbeitsrecht und Datenschutz/i})).toBeInTheDocument();
+        expect(within(screen.getByRole("main")).getByRole("link", {name: "Luminovia Training & Consulting", exact: true})).toHaveAttribute("href", "https://luminovia.org");
+
+        await user.click(screen.getByRole("button", {name: /Sprache auf Englisch wechseln/i}));
+
+        const englishTopics = screen.getByRole("region", {name: "Teaching topics"});
+        expect(within(englishTopics).getAllByRole("heading", {level: 3})).toHaveLength(8);
+        expect(within(englishTopics).getByRole("heading", {name: /Bookkeeping/i})).toBeInTheDocument();
+        expect(within(englishTopics).getByRole("heading", {name: /Employment law and data protection/i})).toBeInTheDocument();
     });
 
     it("opens and closes the mobile navigation", async () => {

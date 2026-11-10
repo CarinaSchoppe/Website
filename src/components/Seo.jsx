@@ -11,7 +11,7 @@ const routeMeta = {
     en: {
         "/": {
             title: "Carina Sophie Schoppe | Portfolio",
-            description: "Carina Sophie Schoppe is an IT lecturer and business information systems specialist. Explore her training, software projects, AI research and qualifications.",
+            description: "Carina Sophie Schoppe teaches AI, IT and business, develops software and founded Luminovia Training & Consulting. Explore her teaching, projects and career.",
         },
         "/projects": {
             title: "Projects | Carina Sophie Schoppe",
@@ -26,8 +26,8 @@ const routeMeta = {
             description: "Portfolio overview for public projects, technical work and professional profile information.",
         },
         "/skills": {
-            title: "Skills | Carina Sophie Schoppe",
-            description: "Personal skill overview across AI, software development, cybersecurity, business computer science, research and digital education.",
+            title: "Teaching topics and skills | Carina Sophie Schoppe",
+            description: "Teaching in AI, cybersecurity, software, databases, networking, business, accounting, employment law and data protection, with examples from Carina’s courses.",
         },
         "/credentials": {
             title: "Credentials | Carina Sophie Schoppe",
@@ -35,11 +35,11 @@ const routeMeta = {
         },
         "/my-way": {
             title: "Story | Carina Sophie Schoppe",
-            description: "Professional timeline through business computer science, software practice, AI, research, TAE40122 and Brisbane.",
+            description: "Carina Sophie Schoppe’s CV and story from business information systems and teaching in Germany to software, AI research and Luminovia in Brisbane.",
         },
         "/about": {
             title: "About | Carina Sophie Schoppe",
-            description: "Personal profile of Carina Sophie Schoppe between software, research, digital education, AI, cybersecurity and entrepreneurship.",
+            description: "Meet Carina Sophie Schoppe, IT lecturer, software developer and founder of Luminovia Training & Consulting. Explore her background and LinkedIn profile.",
         },
         "/blog": {
             title: "Blog | Carina Sophie Schoppe",
@@ -61,7 +61,7 @@ const routeMeta = {
     de: {
         "/": {
             title: "Carina Sophie Schoppe | Portfolio",
-            description: "Carina Sophie Schoppe ist IT-Dozentin und Wirtschaftsinformatikerin. Schwerpunkte, Softwareprojekte und Qualifikationen in IT-Training, Automatisierung und KI-Forschung.",
+            description: "Carina Sophie Schoppe unterrichtet KI, IT und Wirtschaft, entwickelt Software und hat Luminovia Training & Consulting gegründet. Lehrthemen, Projekte und Lebenslauf.",
         },
         "/projects": {
             title: "Projekte | Carina Sophie Schoppe",
@@ -76,8 +76,8 @@ const routeMeta = {
             description: "Portfolio-Übersicht mit öffentlichen Projekten, technischen Arbeiten und Informationen zum beruflichen Profil von Carina Sophie Schoppe.",
         },
         "/skills": {
-            title: "Kompetenzen | Carina Sophie Schoppe",
-            description: "Persönliche Kompetenzübersicht zu AI, Softwareentwicklung, Cybersecurity, Wirtschaftsinformatik, Forschung und digitaler Bildung.",
+            title: "Lehrthemen und Kompetenzen | Carina Sophie Schoppe",
+            description: "Unterricht zu KI, IT-Sicherheit, Software, Datenbanken, Netzwerken, Wirtschaft, Buchhaltung, Arbeitsrecht und Datenschutz mit Beispielen aus der Praxis.",
         },
         "/credentials": {
             title: "Nachweise | Carina Sophie Schoppe",
@@ -85,11 +85,11 @@ const routeMeta = {
         },
         "/my-way": {
             title: "Werdegang | Carina Sophie Schoppe",
-            description: "Professionelle Timeline durch Wirtschaftsinformatik, Softwarepraxis, AI, Forschung, TAE40122 und Brisbane.",
+            description: "Carina Sophie Schoppes Lebenslauf und Werdegang von Wirtschaftsinformatik und Lehre in Deutschland bis zu Software, KI-Forschung und Luminovia in Brisbane.",
         },
         "/about": {
             title: "Über Carina | Carina Sophie Schoppe",
-            description: "Persönliches Profil von Carina Sophie Schoppe zwischen Software, Forschung, digitaler Bildung, AI, Cybersecurity und Unternehmertum.",
+            description: "Carina Sophie Schoppe ist IT-Dozentin, Softwareentwicklerin und Gründerin von Luminovia Training & Consulting. Persönlicher Werdegang und LinkedIn-Profil.",
         },
         "/blog": {
             title: "Blog | Carina Sophie Schoppe",
@@ -160,7 +160,7 @@ function buildPersonSchema() {
         url: `${SITE_URL}/`,
         image: DEFAULT_IMAGE,
         email: PROFILE.email,
-        jobTitle: "Software, research and digital education portfolio",
+        jobTitle: "IT lecturer and software developer",
         address: {
             "@type": "PostalAddress",
             addressLocality: "Brisbane",
@@ -168,7 +168,8 @@ function buildPersonSchema() {
             addressCountry: "AU",
         },
         knowsLanguage: ["German", "English", "Spanish"],
-        sameAs: [PROFILE.linkedin, PROFILE.github, PROFILE.luminovia],
+        sameAs: [PROFILE.linkedin, PROFILE.github],
+        worksFor: {"@type": "Organization", name: "Luminovia Training & Consulting", url: PROFILE.luminovia},
         alumniOf: ["University of Paderborn", "IU International University"],
     };
 }

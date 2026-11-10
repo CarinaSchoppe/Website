@@ -8,25 +8,26 @@ import "./about.css";
 const copy = {
     de: {
         kicker: "Über mich",
-        role: "IT-Dozentin und Wirtschaftsinformatikerin",
-        intro: "Für Bildungsanbieter und Unternehmen gebe ich Kurse zu angewandter KI, Programmierung und IT-Sicherheit. Daneben entwickle ich Open-Source-Software und untersuche, wie KI die Arbeit verändert.",
+        role: "IT-Dozentin, Wirtschaftsinformatikerin und Gründerin von Luminovia",
+        intro: "Ich unterrichte Erwachsene und Teams und entwickle die Übungen und Kursmaterialien dafür selbst. Ich programmiere eigene Werkzeuge für Literaturrecherche und Automatisierung, arbeite an Open-Source-Projekten mit und forsche dazu, wie KI die Arbeit verändert.",
         location: "Brisbane, Australien",
         portrait: "Porträt von Carina Sophie Schoppe",
         tablet: "Carina hält im Stehen ein Tablet und einen Stift",
-        contact: "Kontakt aufnehmen",
-        credentials: "Qualifikationen ansehen",
+        career: "Lebenslauf ansehen",
+        linkedin: "Mein LinkedIn-Profil",
         facts: [
             ["Studium", "M. Sc. Wirtschaftsinformatik und MBA"],
             ["Berufliche Bildung", "Certificate IV in Training and Assessment (TAE40122)"],
             ["Unterrichtssprachen", "Deutsch und Englisch"],
         ],
-        approachTitle: "Lehre und Forschung in der Praxis",
+        approachTitle: "Wie ich unterrichte, forsche und programmiere",
         teachingTitle: "Woran erkennt man eine Phishing-Mail?",
         teaching: "Eine Übung zur IT-Sicherheit kann mit einer verdächtigen E-Mail anfangen. Wir sehen uns Absender und Links an und fragen, warum die Nachricht so dringend klingt. Danach besprechen wir, wie man im Betrieb mit so einer E-Mail umgehen würde.",
         researchTitle: "Wer entscheidet, wenn KI mitarbeitet?",
         research: "In meiner Masterarbeit habe ich untersucht, was generative KI für Beschäftigte in deutschen Unternehmen verändert. Für meine MBA-Arbeit wollte ich wissen, wie Führungskräfte ihren Einsatz in wissensintensiven Organisationen steuern können.",
         software: "Meine Literatursoftware PRISMA hält fest, welche Studien bei der Vorauswahl herausgefallen sind und warum. So kann man die Entscheidungen auch später noch prüfen.",
         publications: "Meine wissenschaftlichen Arbeiten",
+        projects: "Meine Softwareprojekte",
         pathLabel: "Mein Werdegang",
         pathTitle: "Von Paderborn nach Brisbane",
         path: [
@@ -34,39 +35,41 @@ const copy = {
             ["2021", "IT-Sicherheit für kleine Unternehmen", "Im Projekt KMUeinfachSicher erarbeitete ich Lernmaterial zu Passwörtern und zum sicheren Umgang mit Daten."],
             ["2022", "Workshops zu Vielfalt", "Bei SCHLAU NRW habe ich ehrenamtlich Schulworkshops zu Vielfalt und Antidiskriminierung begleitet und moderiert."],
             ["2025", "Bachelor und Master", "Ich schloss den Bachelor an der Universität Paderborn und den Master an der IU ab, beide in Wirtschaftsinformatik."],
-            ["2026", "Unterricht von Brisbane aus", "Ich schloss meinen MBA ab und erwarb mit dem Certificate IV in Training and Assessment eine australische Lehrqualifikation für die berufliche Bildung."],
+            ["2026", "Unterricht und Forschung von Brisbane aus", "Ich schloss meinen MBA ab, erwarb eine australische Lehrqualifikation und arbeitete als Forschungsassistentin an der University of Queensland zu Agentic AI."],
         ],
         fullPath: "Mein vollständiger Werdegang",
         nextLabel: "Mehr über meine Arbeit",
         next: [
             ["Kompetenzen", "Meine fachlichen Schwerpunkte", "/skills"],
+            ["Qualifikationen", "Abschlüsse und berufliche Nachweise", "/credentials"],
             ["Texte", "Was ich über KI und Bildung schreibe", "/blog"],
             ["Kontakt", "Kooperationen, Forschung und Gastvorträge", "/contact"],
         ],
-        business: "Luminovia Training & Consulting ist mein Unternehmen für Firmentrainings und Beratung.",
-        businessLink: "Zu Luminovia",
+        business: "Bei Luminovia konzipiere und leite ich Workshops und Schulungen zu KI, IT und IT-Sicherheit. Das Unternehmen bietet Trainings und Beratung für Teams, Hochschulen und Bildungsanbieter an.",
+        businessLink: "luminovia.org besuchen",
     },
     en: {
         kicker: "About me",
-        role: "IT lecturer and business information systems specialist",
-        intro: "I teach applied AI, programming and IT security for education providers and organisations. I also develop open source software and research how AI changes the way people work.",
+        role: "IT lecturer, business information systems specialist and founder of Luminovia",
+        intro: "I teach adults and teams and design my own exercises and course materials. I build tools for literature reviews and automation, contribute to open-source projects and study how AI changes the way people work.",
         location: "Brisbane, Australia",
         portrait: "Portrait of Carina Sophie Schoppe",
         tablet: "Carina standing with a tablet and stylus",
-        contact: "Get in touch",
-        credentials: "View my credentials",
+        career: "View my CV",
+        linkedin: "My LinkedIn profile",
         facts: [
             ["Degrees", "MSc in Business Information Systems and MBA"],
             ["Vocational education", "Certificate IV in Training and Assessment (TAE40122)"],
             ["Teaching languages", "English and German"],
         ],
-        approachTitle: "Teaching and research in practice",
+        approachTitle: "How I teach, research and write software",
         teachingTitle: "How do you spot a phishing email?",
         teaching: "A security exercise might start with a suspicious email. We check the sender and the links and ask why the message sounds so urgent. Then we talk about how we’d handle the same email at work.",
         researchTitle: "Who makes the call when AI is involved?",
         research: "My master’s thesis looked at what generative AI changes for employees in German companies. For my MBA, I wanted to understand how leaders in knowledge-intensive organisations can oversee its use.",
         software: "My literature review tool PRISMA records which papers were screened out and why, so you can go back and check those decisions.",
         publications: "Read my academic work",
+        projects: "My software projects",
         pathLabel: "My background",
         pathTitle: "From Paderborn to Brisbane",
         path: [
@@ -74,17 +77,18 @@ const copy = {
             ["2021", "IT security for small businesses", "At KMUeinfachSicher, I helped write learning materials on password security and handling data safely."],
             ["2022", "Workshops on diversity", "I volunteered with SCHLAU NRW, helping run school workshops on diversity and anti-discrimination."],
             ["2025", "Bachelor’s and master’s degrees", "I completed my bachelor’s at the University of Paderborn and my master’s at IU, both in Business Information Systems."],
-            ["2026", "Teaching from Brisbane", "I completed my MBA and earned the Certificate IV in Training and Assessment, an Australian qualification for vocational educators."],
+            ["2026", "Teaching and research from Brisbane", "I completed my MBA, gained an Australian teaching qualification and worked as a research assistant on agentic AI at The University of Queensland."],
         ],
         fullPath: "See my full timeline",
         nextLabel: "More about my work",
         next: [
             ["Skills", "What I specialise in", "/skills"],
+            ["Credentials", "My degrees and professional qualifications", "/credentials"],
             ["Writing", "What I write about AI and education", "/blog"],
             ["Contact", "Collaboration, research and guest lectures", "/contact"],
         ],
-        business: "I run Luminovia Training & Consulting, where I offer training and advice for organisations.",
-        businessLink: "Visit Luminovia",
+        business: "At Luminovia, I design and lead workshops and courses on AI, IT and cybersecurity. The company provides training and consulting to teams, universities and education providers.",
+        businessLink: "Visit luminovia.org",
     },
 };
 
@@ -101,8 +105,8 @@ export default function AboutPage() {
                     <p className="about-role">{c.role}</p>
                     <p className="about-lede">{c.intro}</p>
                     <div className="about-hero-actions">
-                        <Link className="site-button site-button-primary" to="/contact">{c.contact}<ArrowRight size={17} aria-hidden="true"/></Link>
-                        <Link className="site-text-link" to="/credentials">{c.credentials}<ArrowRight size={17} aria-hidden="true"/></Link>
+                        <Link className="site-button site-button-primary" to="/my-way">{c.career}<ArrowRight size={17} aria-hidden="true"/></Link>
+                        <a className="site-text-link" href={PROFILE.linkedin}>{c.linkedin}<ArrowUpRight size={17} aria-hidden="true"/></a>
                     </div>
                 </div>
 
@@ -146,11 +150,14 @@ export default function AboutPage() {
                     <h3>{c.researchTitle}</h3>
                     <p>{c.research}</p>
                     <p>{c.software}</p>
-                    <Link className="site-text-link about-publications" to="/skills#publications">{c.publications}<ArrowRight size={17} aria-hidden="true"/></Link>
+                    <div className="about-hero-actions about-method-links">
+                        <Link className="site-text-link" to="/skills#publications">{c.publications}<ArrowRight size={17} aria-hidden="true"/></Link>
+                        <Link className="site-text-link" to="/projects">{c.projects}<ArrowRight size={17} aria-hidden="true"/></Link>
+                    </div>
                 </div>
             </section>
 
-            <section className="about-path" id="about-path" aria-labelledby="about-path-title">
+            <section className="about-path" id="about-path" aria-labelledby="about-path-title" tabIndex={-1}>
                 <div className="about-path-heading">
                     <p className="about-kicker">{c.pathLabel}</p>
                     <h2 id="about-path-title">{c.pathTitle}</h2>
@@ -166,6 +173,15 @@ export default function AboutPage() {
                 </ol>
             </section>
 
+            <section className="about-business" aria-labelledby="about-business-title">
+                <img src={IMAGES.luminoviaLogoMark} alt="" width="58" height="58" loading="lazy"/>
+                <div>
+                    <h2 id="about-business-title">Luminovia Training &amp; Consulting</h2>
+                    <p>{c.business}</p>
+                </div>
+                <a className="site-text-link" href={PROFILE.luminovia}>{c.businessLink}<ArrowUpRight size={17} aria-hidden="true"/></a>
+            </section>
+
             <section className="about-next" aria-labelledby="about-next-title">
                 <h2 id="about-next-title">{c.nextLabel}</h2>
                 <div className="about-next-links">
@@ -175,10 +191,6 @@ export default function AboutPage() {
                             <ArrowRight size={20} aria-hidden="true"/>
                         </Link>
                     ))}
-                </div>
-                <div className="about-business">
-                    <p>{c.business}</p>
-                    <a className="site-text-link" href={PROFILE.luminovia}>{c.businessLink}<ArrowUpRight size={17} aria-hidden="true"/></a>
                 </div>
             </section>
         </main>

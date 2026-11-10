@@ -19,6 +19,9 @@ describe("App routing and language", () => {
         expect(screen.getByRole("heading", {name: /Meine Schwerpunkte/i})).toBeInTheDocument();
         expect(screen.getByRole("region", {name: "Referenzen"})).toHaveAttribute("id", "referenzen");
         expect(screen.getByRole("link", {name: "Firmentraining & Beratung"})).toHaveAttribute("href", "https://luminovia.org");
+        expect(screen.getByRole("link", {name: "Alle Lehrthemen ansehen"})).toHaveAttribute("href", "/skills#unterricht");
+        expect(screen.getByRole("link", {name: "Mein Lebenslauf und Werdegang"})).toHaveAttribute("href", "/my-way");
+        expect(screen.getByRole("link", {name: "Mein LinkedIn-Profil"})).toHaveAttribute("href", "https://www.linkedin.com/in/carinaschoppe/");
         expect(document.documentElement.lang).toBe("de");
         expect(window.localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("de");
 
@@ -27,6 +30,9 @@ describe("App routing and language", () => {
         expect(screen.getByRole("heading", {name: /^Carina Sophie Schoppe$/i})).toBeInTheDocument();
         expect(screen.getByRole("heading", {name: /What I do/i})).toBeInTheDocument();
         expect(screen.getByRole("region", {name: "References"})).toHaveAttribute("id", "referenzen");
+        expect(screen.getByRole("link", {name: "Explore teaching topics"})).toHaveAttribute("href", "/skills#unterricht");
+        expect(screen.getByRole("link", {name: "My CV and career story"})).toHaveAttribute("href", "/my-way");
+        expect(screen.getByRole("link", {name: "My LinkedIn profile"})).toHaveAttribute("href", "https://www.linkedin.com/in/carinaschoppe/");
         expect(document.documentElement.lang).toBe("en");
         expect(window.localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("en");
     });
@@ -58,7 +64,7 @@ describe("App routing and language", () => {
     it.each([
         ["/blog", /Writing on AI, digital education/i],
         ["/contact", /Contact Carina Sophie Schoppe/i],
-        ["/skills", /Professional strengths across AI/i],
+        ["/skills", /^What I teach and build\.$/i],
         ["/about", /^Carina Sophie Schoppe$/i],
         ["/credentials", /Degrees, certificates/i],
         ["/my-way", /professional path through technology/i],

@@ -1,8 +1,9 @@
+import {ArrowLeft, ArrowRight, ArrowUpRight} from "lucide-react";
+import {Link} from "react-router-dom";
 import {useSiteContent} from "../data/localizedContent.js";
 import {useLanguage} from "../i18n.jsx";
-import {IMAGES} from "../data/profile.js";
+import {IMAGES, PROFILE} from "../data/profile.js";
 import Badge from "../components/Badge.jsx";
-import Button from "../components/Button.jsx";
 import Card from "../components/Card.jsx";
 import Photo from "../components/Photo.jsx";
 
@@ -18,34 +19,36 @@ export default function MyWayPage() {
     const copy = language === "de"
         ? {
             badge: "Werdegang",
-            title: "Mein beruflicher Weg durch IT, Wirtschaft und digitale Bildung.",
-            intro: "Der Zeitstrahl zeigt die Stationen, aus denen mein heutiges Profil entstanden ist: Softwareentwicklung, Wirtschaftsinformatik, Forschung, AI, Lehre und der Wechsel nach Brisbane.",
+            title: "Mein beruflicher Weg durch IT, Wirtschaft und Bildung.",
+            intro: "Ich bin in Bodenwerder im Weserbergland aufgewachsen und ging in Holzminden zur Schule. Sprachaufenthalte in Australien, England und Spanien gaben mir früh die Gelegenheit, in anderen Ländern zu lernen. Heute unterrichte ich von Brisbane aus auf Deutsch und Englisch.",
+            back: "Zurück zu meinem Profil",
+            linkedin: "Mein LinkedIn-Profil",
             skills: "Kompetenzen ansehen",
-            request: "Projekte ansehen",
-            education: "Bildung",
-            educationCopy: "B.Sc. und M.Sc. in Wirtschaftsinformatik, MBA sowie die australische Trainingsqualifikation TAE40122.",
-            work: "Praxis",
-            workCopy: "Softwareentwicklung, digitale Bildung, Unternehmertum, Forschung und ausgewählte technische Projekte.",
-            now: "Heute",
-            nowCopy: "Heute lebe ich in Brisbane. carinaschoppe.com bündelt mein öffentliches Profil; Luminovia ist der eigenständige Auftritt für Firmentrainings und Consulting.",
-            timeline: "Zeitstrahl",
-            milestones: "Aktuelle Stationen zuerst.",
+            projects: "Softwareprojekte ansehen",
+            study: "Vom Studium in den Unterricht",
+            studyCopy: "2019 begann ich in Paderborn mit Wirtschaftsinformatik und machte mich im selben Jahr als Dozentin und Beraterin selbstständig. Bei KMUeinfachSicher entwickelte ich Lernmaterial für kleine Betriebe. Über bytes Coding verband ich die Softwareentwicklung mit der Bildungsarbeit.",
+            today: "Brisbane und Luminovia",
+            todayCopy: "Nach Bachelor, Master und MBA erwarb ich in Australien das Certificate IV in Training and Assessment (TAE40122). Mit meinem Unternehmen Luminovia Training & Consulting biete ich Workshops und Beratung an. An der University of Queensland habe ich als Forschungsassistentin zu Agentic AI gearbeitet.",
+            business: "Zu luminovia.org",
+            timeline: "Lebenslauf",
+            order: "Die jüngsten Stationen stehen oben.",
             portrait: "Carina Sophie Schoppe vor einer Glasfassade",
         }
         : {
-            badge: "Story",
-            title: "My professional path through technology, business and digital education.",
-            intro: "This timeline traces the experiences that shaped my current profile: software development, business information systems, research, AI, teaching and the move to Brisbane.",
+            badge: "My background",
+            title: "My professional path through technology, business and education.",
+            intro: "I grew up in Bodenwerder in Germany’s Weserbergland region and went to school in Holzminden. I spent time in Australia, England and Spain learning languages. Today, I teach in English and German from Brisbane.",
+            back: "Back to my profile",
+            linkedin: "My LinkedIn profile",
             skills: "View skills",
-            request: "View projects",
-            education: "Education",
-            educationCopy: "B.Sc. and M.Sc. in Business Computer Science, an MBA and the Australian TAE40122 training qualification.",
-            work: "Practice",
-            workCopy: "Software development, digital education, entrepreneurship, research and selected project work.",
-            now: "Today",
-            nowCopy: "I am now based in Brisbane. carinaschoppe.com presents my public profile, while Luminovia is the separate home for company training and consulting.",
-            timeline: "Timeline",
-            milestones: "Current milestones first.",
+            projects: "View software projects",
+            study: "From university to the classroom",
+            studyCopy: "I began studying Business Information Systems in Paderborn in 2019 and started freelancing as a lecturer and consultant that same year. I developed learning materials for small businesses through KMUeinfachSicher. At bytes Coding, I combined software development with education.",
+            today: "Brisbane and Luminovia",
+            todayCopy: "After completing my bachelor’s, master’s and MBA, I gained Australia’s Certificate IV in Training and Assessment (TAE40122). I offer workshops and consulting through my company, Luminovia Training & Consulting. I also worked as a research assistant on agentic AI at The University of Queensland.",
+            business: "Visit luminovia.org",
+            timeline: "CV and career timeline",
+            order: "Most recent milestones first.",
             portrait: "Carina Sophie Schoppe in front of a glass building",
         };
     return (
@@ -60,60 +63,46 @@ export default function MyWayPage() {
                         <p className="mt-6 text-lg leading-8 text-slate-300">
                             {copy.intro}
                         </p>
-                        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                            <Button to="/skills">{copy.skills}</Button>
-                            <Button to="/projects" variant="secondary">{copy.request}</Button>
+                        <div className="mt-5 flex flex-wrap gap-x-5">
+                            <Link to="/about#about-path" className="site-text-link"><ArrowLeft size={16} aria-hidden="true"/>{copy.back}</Link>
+                            <a href={PROFILE.linkedin} className="site-text-link">{copy.linkedin}<ArrowUpRight size={17} aria-hidden="true"/></a>
                         </div>
                     </div>
-                    <div className="grid gap-4 sm:grid-cols-2">
-                        <Photo src={IMAGES.outdoor} alt={copy.portrait} className="aspect-[3/4] rounded-3xl" imgClass="object-[50%_20%]"/>
-                        <div className="grid gap-4">
-                            <Card>
-                                <h2 className="text-2xl font-black text-white">{copy.education}</h2>
-                                <p className="mt-3 text-sm leading-7 text-slate-300">{copy.educationCopy}</p>
-                            </Card>
-                            <Card>
-                                <h2 className="text-2xl font-black text-white">{copy.work}</h2>
-                                <p className="mt-3 text-sm leading-7 text-slate-300">{copy.workCopy}</p>
-                            </Card>
-                            <Card>
-                                <h2 className="text-2xl font-black text-white">{copy.now}</h2>
-                                <p className="mt-3 text-sm leading-7 text-slate-300">{copy.nowCopy}</p>
-                            </Card>
-                        </div>
-                    </div>
+                    <Photo src={IMAGES.outdoor} alt={copy.portrait} className="aspect-[4/3] w-full max-w-120 rounded-2xl lg:justify-self-end" imgClass="object-[50%_20%]" sizes="(min-width: 520px) 480px, 90vw"/>
                 </div>
 
-                <section className="mt-16">
-                    <div className="mb-8 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
-                        <div>
-                            <Badge tone="violet">{copy.timeline}</Badge>
-                            <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">{copy.milestones}</h2>
-                        </div>
-                    </div>
-                    <div className="relative">
-                        <div className="absolute bottom-0 left-12 top-0 hidden w-px bg-gradient-to-b from-sky-200/60 via-white/15 to-blue-300/35 md:block"/>
-                        <div className="grid gap-5">
-                            {orderedMilestones.map((item) => (
-                                <div key={`${item.year}-${item.title}`} className="relative md:pl-32">
-                                    <div className="absolute left-0 top-7 hidden min-h-11 w-24 place-items-center rounded-2xl border border-sky-200/30 bg-[#0B1224]/95 px-3 text-center text-[11px] font-black leading-tight text-sky-100 shadow-[0_12px_40px_rgba(37,99,235,.18)] md:grid">
-                                        {item.year}
-                                    </div>
-                                    <Card className="bg-gradient-to-br from-white/[0.08] via-sky-300/[0.045] to-blue-300/[0.04]">
-                                        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                                            <div>
-                                                <div className="text-sm font-black uppercase tracking-[0.18em] text-sky-100">{item.category}</div>
-                                                <h3 className="mt-3 text-2xl font-black text-white">{item.title}</h3>
-                                            </div>
-                                            <div className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-black text-white">{item.year}</div>
-                                        </div>
-                                        <p className="mt-4 text-sm leading-7 text-slate-300 sm:text-base">{item.copy}</p>
-                                    </Card>
+                <div className="mt-10 grid gap-4 md:grid-cols-2">
+                    <Card>
+                        <h2 className="text-2xl text-white">{copy.study}</h2>
+                        <p className="mt-3 leading-7 text-slate-300">{copy.studyCopy}</p>
+                    </Card>
+                    <Card>
+                        <h2 className="text-2xl text-white">{copy.today}</h2>
+                        <p className="mt-3 leading-7 text-slate-300">{copy.todayCopy}</p>
+                        <a className="site-text-link mt-2" href={PROFILE.luminovia}>{copy.business}<ArrowUpRight size={17} aria-hidden="true"/></a>
+                    </Card>
+                </div>
+
+                <section className="mt-16" aria-labelledby="career-timeline-title">
+                    <h2 id="career-timeline-title" className="text-4xl tracking-[-0.04em] text-white sm:text-5xl">{copy.timeline}</h2>
+                    <p className="mt-3 text-slate-300">{copy.order}</p>
+                    <ol className="mt-6 border-t border-white/10">
+                        {orderedMilestones.map((item) => (
+                            <li key={`${item.year}-${item.title}`} className="grid gap-2 border-b border-white/10 py-5 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-4">
+                                <span className="font-extrabold tabular-nums text-sky-100">{item.year}</span>
+                                <div>
+                                    <p className="text-xs font-extrabold uppercase tracking-wider text-slate-300">{item.category}</p>
+                                    <h3 className="mt-1 text-xl text-white">{item.title}</h3>
+                                    <p className="mt-2 max-w-3xl leading-7 text-slate-300">{item.copy}</p>
                                 </div>
-                            ))}
-                        </div>
-                    </div>
+                            </li>
+                        ))}
+                    </ol>
                 </section>
+                <div className="mt-8 flex flex-wrap gap-x-5">
+                    <Link className="site-text-link" to="/skills">{copy.skills}<ArrowRight size={17} aria-hidden="true"/></Link>
+                    <Link className="site-text-link" to="/projects">{copy.projects}<ArrowRight size={17} aria-hidden="true"/></Link>
+                </div>
             </div>
         </main>
     );
