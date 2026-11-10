@@ -124,7 +124,7 @@ export default function HomePage() {
                             width={960}
                             height={1440}
                             fetchPriority="high"
-                            sizes="(min-width: 1160px) 430px, (min-width: 821px) 38vw, 84vw"
+                            sizes="(min-width: 1400px) 440px, (min-width: 721px) 32vw, (min-width: 610px) 485px, calc(91vw - 3.5rem)"
                         />
                         <span className="home-portrait-tab" aria-hidden="true"/>
                     </div>

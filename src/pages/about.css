@@ -14,28 +14,24 @@
 
 .about-page h1 {
     font-size: clamp(2.8rem, 5.6vw, 5.5rem);
-    line-height: .98;
-    letter-spacing: -.055em;
+    line-height: 1.02;
+    letter-spacing: -.047em;
     text-wrap: wrap;
 }
 
 .about-page h1 em {
     display: block;
-    margin-top: .1em;
-    font-weight: 500;
+    margin-top: .035em;
+    font-weight: 510;
     font-style: italic;
-    color: var(--about-accent, #593879);
-}
-
-[data-theme="night"] .about-page {
-    --about-accent: #decdf7;
+    color: var(--accent, #593879);
 }
 
 .about-page h2,
 .about-method-copy .about-teaching-title {
     font-size: clamp(2.15rem, 4vw, 3.65rem);
-    line-height: 1.04;
-    letter-spacing: -.045em;
+    line-height: 1.09;
+    letter-spacing: -.035em;
     text-wrap: balance;
 }
 
@@ -60,13 +56,15 @@
 .about-kicker::before {
     width: .8rem;
     height: .8rem;
+    flex: 0 0 auto;
+    border-radius: 50%;
     background: var(--coral, #fa806d);
     content: "";
 }
 
 .about-hero {
     display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(0, .9fr);
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
     align-items: center;
     gap: clamp(2rem, 6vw, 5.5rem);
 }
@@ -106,25 +104,20 @@
 }
 
 .about-hero-figure {
+    --portrait-curve: clamp(2.5rem, 7vw, 6rem);
     position: relative;
+    isolation: isolate;
     margin: 0;
-    border: 1px solid #241e2e;
-    background: var(--butter, #ffe180);
-    color: #241e2e;
-    padding: 0 .85rem;
+    padding: clamp(.9rem, 2.6vw, 2rem) clamp(.9rem, 3.2vw, 2.6rem) 0 0;
 }
 
 .about-hero-figure::before {
-    display: block;
-    height: .85rem;
-    background: linear-gradient(
-        90deg,
-        var(--coral, #fa806d) 0 20%,
-        var(--butter, #ffe180) 20% 40%,
-        var(--mint, #b9dfca) 40% 60%,
-        var(--sky, #b8d9f4) 60% 80%,
-        var(--lavender, #decdf7) 80%
-    );
+    position: absolute;
+    z-index: -1;
+    inset: 0 0 1.55rem 14%;
+    border-start-end-radius: var(--portrait-curve);
+    background: radial-gradient(circle, #42275f40 1px, transparent 1.3px) 0 0 / 11px 11px,
+        var(--butter, #ffe180);
     content: "";
 }
 
@@ -135,7 +128,10 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: .15rem 1rem;
-    padding-block: .5rem;
+    padding: .5rem .75rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper-raised);
+    color: var(--ink);
     font-size: .79rem;
     font-weight: 750;
 }
@@ -156,6 +152,7 @@
 .about-portrait {
     aspect-ratio: 5 / 5.4;
     border: 1px solid #241e2e;
+    border-start-end-radius: calc(var(--portrait-curve) * .72);
 }
 
 .about-portrait img {
@@ -169,20 +166,23 @@
     gap: clamp(1.8rem, 6vw, 5.5rem);
     margin-block: clamp(3rem, 8vw, 7rem);
     padding: clamp(1.2rem, 3.5vw, 2.75rem);
-    background: var(--lavender, #decdf7);
-    color: #241e2e;
+    border: 1px solid var(--line);
+    border-end-start-radius: clamp(1.5rem, 4vw, 3rem);
+    background: var(--paper-raised);
 }
 
 .about-method-art {
     display: grid;
-    padding: clamp(.6rem, 1.5vw, 1.1rem);
-    border: 1px solid #241e2e;
-    background: var(--mint, #b9dfca);
+    padding: clamp(.75rem, 2vw, 1.4rem);
+    border-end-start-radius: clamp(1.4rem, 3vw, 2.4rem);
+    background: repeating-linear-gradient(0deg, #42275f28 0 1px, transparent 1px 9px),
+        var(--lavender, #decdf7);
 }
 
 .about-fullbody {
     aspect-ratio: 4 / 5.6;
     border: 1px solid #241e2e;
+    border-end-start-radius: clamp(.9rem, 2vw, 1.5rem);
 }
 
 .about-fullbody img {
@@ -210,8 +210,8 @@
 .about-path-list p {
     max-width: 56ch;
     margin-top: .75rem;
-    font-size: 1rem;
-    line-height: 1.72;
+    font-size: clamp(1rem, 1.16vw, 1.075rem);
+    line-height: 1.7;
 }
 
 .about-path {
@@ -240,6 +240,7 @@
 .about-route-track {
     flex: 1;
     height: .6rem;
+    border-radius: 99px;
     background: linear-gradient(90deg, var(--coral) 0 25%, var(--butter) 25% 50%, var(--mint) 50% 75%, var(--sky) 75%);
 }
 
@@ -267,6 +268,7 @@
 
 .about-path-list time {
     padding: .28rem .45rem;
+    border-radius: 99px;
     background: var(--sky, #b8d9f4);
     color: #241e2e;
     font-size: .92rem;
@@ -353,6 +355,7 @@
     gap: .35rem 1.25rem;
     margin-top: 1rem;
     padding: .65rem 1.25rem;
+    border-radius: .45rem;
     background: var(--mint, #b9dfca);
     color: #241e2e;
 }

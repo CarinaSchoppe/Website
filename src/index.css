@@ -24,20 +24,23 @@
 
 :root {
     color-scheme: light;
-    --paper-light: #faf6ee;
+    --paper-light: #fcf6ed;
     --paper: var(--paper-light);
-    --paper-raised: #fffdf8;
-    --ink: #241e2e;
-    --muted: #504656;
-    --line: #a89da5;
-    --accent: #5e377a;
-    --plum: #42275f;
-    --coral: #fa806d;
-    --butter: #ffe180;
-    --mint: #b9dfca;
-    --lavender: #decdf7;
-    --sky: #b8d9f4;
-    --rose: #f4bcda;
+    --paper-raised: #fffdf7;
+    --ink: #251c2e;
+    --muted: #514458;
+    --line: #aa9bab;
+    --accent: #63337d;
+    --plum: #3f2457;
+    --coral: #ff8c76;
+    --butter: #ffdf76;
+    --mint: #b6e4cf;
+    --lavender: #e3cbfa;
+    --sky: #b6dcf8;
+    --rose: #f6bedb;
+    --print-wash: #eedcf5;
+    --print-dots: #9668a335;
+    --corner: 1.45rem;
     --display: Fraunces, Georgia, serif;
     --sans: Manrope, system-ui, sans-serif;
     --site-width: 80rem;
@@ -46,12 +49,14 @@
 }
 html[data-theme="night"] {
     color-scheme: dark;
-    --paper: #211a28;
-    --paper-raised: #2c2335;
-    --ink: #fff7f0;
-    --muted: #e3d5e9;
-    --line: #72647c;
-    --accent: #decdf7;
+    --paper: #1f1828;
+    --paper-raised: #2b2135;
+    --ink: #fff8f0;
+    --muted: #e1d2e7;
+    --line: #776580;
+    --accent: #e8d0ff;
+    --print-wash: #382747;
+    --print-dots: #c7a7de3d;
 }
 body {
     background: var(--paper);
@@ -103,6 +108,7 @@ button { cursor: pointer; }
     border: 1px solid #241e2e;
     background: var(--lavender);
     color: #241e2e;
+    border-radius: .25rem .75rem .25rem .25rem;
     font: 650 1.1rem/1 var(--display);
     letter-spacing: -.1em;
     padding-right: .08em;

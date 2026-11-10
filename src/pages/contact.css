@@ -13,7 +13,7 @@
 }
 .contact-lead h1 + p { max-width: 35rem; font-size: clamp(1.02rem, 1.6vw, 1.19rem); color: var(--muted); line-height: 1.7; }
 .contact-actions { display: flex; flex-wrap: wrap; gap: .6rem 1.15rem; margin-top: 1.25rem; }
-.contact-details { padding: clamp(1.15rem, 3.2vw, 2.4rem); background: var(--paper-raised); border: 1px solid var(--line); border-top: .5rem solid var(--lavender); }
+.contact-details { padding: clamp(1.15rem, 3.2vw, 2.4rem); background: var(--paper-raised); border: 1px solid var(--line); border-top: .5rem solid var(--lavender); border-radius: .35rem var(--corner) .35rem .35rem; }
 .contact-details h2, .contact-appointment h2 { font-size: clamp(1.9rem, 3.2vw, 3.2rem); letter-spacing: -.04em; }
 .contact-details dl { margin-block: 1rem; border-top: 1px solid var(--line); }
 .contact-details dl > div { display: grid; gap: .3rem; padding-block: .75rem; border-bottom: 1px solid var(--line); }
@@ -30,6 +30,7 @@
     padding: clamp(1.1rem, 3vw, 2.35rem);
     margin-top: clamp(2rem, 5vw, 5rem);
     border: 1px solid #241e2e;
+    border-radius: .35rem var(--corner) .35rem .35rem;
 }
 .contact-business h2 { font-size: clamp(1.4rem, 2.7vw, 2.2rem); margin-block: .3rem; }
 .contact-business a { align-self: center; }
@@ -41,4 +42,11 @@
 @media (max-width: 720px) {
     .contact-hero { grid-template-columns: minmax(0, 1fr); }
     .contact-business { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 465px) {
+    .contact-page { padding-top: 1.9rem; }
+    .contact-lead h1 { margin-block: .5rem .85rem; }
+    .contact-lead h1 + p { line-height: 1.65; }
+    .contact-actions { margin-top: .95rem; }
 }

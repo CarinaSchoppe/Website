@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
   <title id="title">Carina Sophie Schoppe</title>
-  <path fill="#decdf7" stroke="#241e2e" stroke-width="3" d="M3 3h90v90H3z"/>
+  <path fill="#e3cbfa" stroke="#241e2e" stroke-width="3" d="M3 3h67a23 23 0 0 1 23 23v67H3z"/>
   <path stroke="#241e2e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M44 36a16 16 0 1 0 0 24m31-22c-4-9-22-8-22 2 0 9 22 7 22 17 0 10-18 12-24 3"/>
-  <path fill="#fa806d" d="M5 79h17v12H5z"/>
-  <path fill="#ffe180" d="M22 79h17v12H22z"/>
-  <path fill="#b9dfca" d="M39 79h17v12H39z"/>
-  <path fill="#b8d9f4" d="M56 79h17v12H56z"/>
-  <path fill="#f4bcda" d="M73 79h18v12H73z"/>
+  <path fill="#ff8c76" d="M5 79h17v12H5z"/>
+  <path fill="#ffdf76" d="M22 79h17v12H22z"/>
+  <path fill="#b6e4cf" d="M39 79h17v12H39z"/>
+  <path fill="#b6dcf8" d="M56 79h17v12H56z"/>
+  <path fill="#f6bedb" d="M73 79h18v12H73z"/>
 </svg>
