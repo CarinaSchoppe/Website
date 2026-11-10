@@ -8,8 +8,8 @@ export const selectedWork = [
         tone: "lavender",
         type: {de: "Forschungssoftware", en: "Research software"},
         description: {
-            de: "Eine Pipeline für systematische Literaturrecherchen. Sie durchsucht Fachdatenbanken, führt doppelte Treffer zusammen und dokumentiert, warum Studien in die Auswahl kommen.",
-            en: "A pipeline for systematic literature reviews. It searches scholarly databases, merges duplicate records and records why studies make the shortlist.",
+            de: "Meine quelloffene Anwendung für systematische Literaturreviews. Sie verbindet die Suche in wissenschaftlichen Quellen mit der Vorauswahl und dokumentiert die Gründe für Ein- und Ausschlüsse.",
+            en: "My open-source application for systematic literature reviews. It connects scholarly searches with screening and records why studies were included or excluded.",
         },
         image: `${base}images/work-prisma.svg`,
         imageAlt: {

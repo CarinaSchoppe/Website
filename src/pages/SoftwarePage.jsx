@@ -30,7 +30,11 @@ const labels = {
             prisma: {
                 purpose: "Systematische Literaturrecherche",
                 evidence: "Was die Pipeline liefert",
-                features: ["Zusammengeführte Treffer aus mehreren Fachdatenbanken", "CSV-Exporte und ein Bericht zu Ein- und Ausschlüssen"],
+                features: [
+                    "Treffer aus mehreren wissenschaftlichen Quellen, abgeglichen nach DOI und Titel und über Zitationen erweitert",
+                    "Ein- und Ausschlüsse mit Begründungen sowie Flussdiagramme im PRISMA-Stil",
+                    "Wiederholbare Läufe mit gespeicherten Einstellungen und einem in SQLite gesicherten Bearbeitungsstand",
+                ],
             },
             mail: {
                 purpose: "Personalisierte E-Mails vorbereiten",
@@ -61,7 +65,11 @@ const labels = {
             prisma: {
                 purpose: "Systematic literature reviews",
                 evidence: "What the pipeline produces",
-                features: ["Merged results from multiple scholarly databases", "CSV exports and a report on included and excluded papers"],
+                features: [
+                    "Records from multiple scholarly sources, deduplicated by DOI and title and expanded through citations",
+                    "Inclusion and exclusion decisions with reasons, plus PRISMA-style flow diagrams",
+                    "Repeatable runs with saved settings and review progress stored in SQLite",
+                ],
             },
             mail: {
                 purpose: "Preparing personalised emails",

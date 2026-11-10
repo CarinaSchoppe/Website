@@ -14,7 +14,7 @@ const capabilityTones = ["butter", "mint", "sky"];
 const copy = {
     de: {
         role: "IT-Dozentin · Softwareentwicklerin · Wirtschaftsinformatikerin",
-        intro: "Ich möchte verstehen, wie Dinge funktionieren, und weitergeben, was ich dabei lerne. Deshalb unterrichte ich KI, IT und Wirtschaft, programmiere eigene Software und forsche dazu, wie Menschen mit KI arbeiten.",
+        intro: "Ich entwickle Software für systematische Literaturreviews, forsche zu generativer KI im Arbeitsalltag und unterrichte IT und Wirtschaft. Mich interessiert, wie Menschen Entscheidungen treffen, die sie später erklären und prüfen können.",
         location: "Brisbane, Australien",
         languages: "Deutsch & Englisch",
         portraitAlt: "Porträt von Carina Sophie Schoppe",
@@ -32,14 +32,14 @@ const copy = {
         focusIntro: "Ich entwickle Kurse, Übungen und Lernmaterialien für Erwachsene. Beispiele aus meiner Softwarearbeit und Forschung bringe ich direkt in den Unterricht ein.",
         capabilities: [
             ["Lehre in KI, IT und Wirtschaft", "Ich unterrichte IT-Sicherheit, Softwareentwicklung, Datenbanken und Netzwerke ebenso wie Buchhaltungsgrundlagen, Arbeitsrecht und Datenschutz.", "Alle Lehrthemen ansehen", "/skills#unterricht"],
-            ["Software & Automatisierung", "Ich habe PRISMA für systematische Literaturrecherchen und den Automatic Mail Sender für personalisierte E-Mails entwickelt. Bei OpenXLR arbeite ich am Linux-Audiomixer mit.", "Softwareprojekte ansehen", "/projects"],
+            ["Software & Automatisierung", "Meine PRISMA-Pipeline bündelt Literaturrecherche, Zitationssuche und die Vorauswahl von Studien. Sie hält fest, warum Arbeiten ein- oder ausgeschlossen wurden.", "PRISMA ansehen", "/projects#prisma"],
             ["KI & Forschung", "Ich untersuche, wie Beschäftigte mit generativer KI arbeiten und wie Unternehmen den Einsatz steuern können. Dazu gehört auch die Frage, wie KI Sicherheitsrisiken verändert.", "Forschungsarbeiten ansehen", "/skills#publications"],
         ],
-        valuesTitle: "Was mich ausmacht",
-        personal: "Ich bin im Weserbergland aufgewachsen und lebe heute in Brisbane. Ich zeichne gern. Beim Programmieren probiere ich auch abseits meiner Arbeit Ideen aus, zum Beispiel mit eigenen Minecraft-Plugins.",
+        valuesTitle: "Wie ich arbeite",
+        personal: "Wenn eine Software Ergebnisse sortiert oder Vorschläge macht, will ich verstehen, worauf sie sich stützt. Das ist mir auch im Unterricht wichtig. Teilnehmende sollen erklären können, warum ihre Lösung funktioniert.",
         values: [
             ["Selbst ausprobieren", "Eine Netzwerkübung kann damit beginnen, einen Verbindungsfehler einzugrenzen. Mir ist wichtig, dass Teilnehmende am Ende erklären können, warum ihre Lösung funktioniert."],
-            ["Entscheidungen nachvollziehen", "Meine Literatursoftware PRISMA hält fest, welche Studien bei der Vorauswahl herausfallen und warum. So lassen sich Entscheidungen später prüfen."],
+            ["Verantwortung klären", "In meiner MBA-Arbeit habe ich untersucht, wie Unternehmen beim Einsatz generativer KI Zuständigkeiten festlegen und Risiken beobachten können."],
             ["Vielfalt und Respekt", "Bei SCHLAU NRW habe ich ehrenamtlich Schulworkshops zu Vielfalt und Antidiskriminierung begleitet."],
         ],
         selected: "Ausgewählte Softwareprojekte",
@@ -56,7 +56,7 @@ const copy = {
     },
     en: {
         role: "IT lecturer · Software developer · Business information systems",
-        intro: "I like to understand how things work and explain what I’ve learned. I teach AI, IT and business, write my own software and research how people work with AI.",
+        intro: "I build software for systematic literature reviews, study how people use generative AI at work, and teach IT and business. I’m interested in how people make decisions they can explain and review later.",
         location: "Brisbane, Australia",
         languages: "English & German",
         portraitAlt: "Portrait of Carina Sophie Schoppe",
@@ -74,14 +74,14 @@ const copy = {
         focusIntro: "I design courses, practical exercises and materials for adult learners. I bring examples from my software projects and research into the classroom.",
         capabilities: [
             ["Teaching AI, IT and business", "I teach cybersecurity, software development, databases and networking, as well as accounting fundamentals, employment law and data protection.", "Explore teaching topics", "/skills#unterricht"],
-            ["Software & automation", "I built PRISMA for systematic literature reviews and Automatic Mail Sender for personalised email. I also contribute to the OpenXLR audio mixer for Linux.", "View software projects", "/projects"],
+            ["Software & automation", "My PRISMA pipeline brings together literature searches, citation tracking and screening. It records why papers were included or excluded.", "Explore PRISMA", "/projects#prisma"],
             ["AI & research", "I study how people work with generative AI, how organisations govern its use and how it changes security risks.", "View research", "/skills#publications"],
         ],
-        valuesTitle: "A little about me",
-        personal: "I grew up in Germany’s Weserbergland region and now live in Brisbane. I enjoy drawing. I also code for fun, including building my own Minecraft plugins.",
+        valuesTitle: "How I work",
+        personal: "When software ranks results or makes a recommendation, I want to understand what it’s based on. I bring that same expectation into the classroom. Learners should be able to explain why their solution works.",
         values: [
             ["Learning by doing", "A networking exercise might start with tracing a connection fault. I want learners to be able to explain why their solution works."],
-            ["Traceable decisions", "My literature review tool PRISMA records which studies were screened out and why. That makes those decisions possible to review later."],
+            ["Clarifying responsibility", "In my MBA thesis, I looked at how organisations can assign responsibility and monitor risks when using generative AI."],
             ["Diversity and respect", "As a volunteer with SCHLAU NRW, I helped run school workshops on diversity and anti-discrimination."],
         ],
         selected: "Selected software projects",

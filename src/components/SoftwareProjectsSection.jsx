@@ -15,13 +15,13 @@ export default function SoftwareProjectsSection({compact = false}) {
     const copy = language === "de"
         ? {
             title: compact ? "Softwareprojekte" : "Weitere Projekte",
-            intro: "Ein Notebook für doppelte Dateien, Plugins für Minecraft und frühere Experimente mit Android und Java.",
+            intro: compact ? "Eigene Anwendungen für Recherche, Automatisierung und den Alltag." : "Ein Python-Notebook zur Dateibereinigung und ein Soundboard für Android.",
             viewAll: "Projektportfolio ansehen",
             technologies: "Technologien",
         }
         : {
             title: compact ? "Software projects" : "More projects",
-            intro: "A notebook for finding duplicate files, Minecraft plugins and earlier experiments with Android and Java.",
+            intro: compact ? "My software for research, automation and everyday tasks." : "A Python notebook for cleaning up duplicate files and an Android soundboard.",
             viewAll: "View all projects",
             technologies: "Technologies",
         };

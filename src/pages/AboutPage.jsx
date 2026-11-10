@@ -2,40 +2,46 @@ import {ArrowRight, ArrowUpRight, MapPin} from "lucide-react";
 import {Link} from "react-router-dom";
 import Photo from "../components/Photo.jsx";
 import {IMAGES, PROFILE} from "../data/profile.js";
+import {selectedWork} from "../data/selectedWork.js";
 import {useLanguage} from "../i18n.jsx";
 import "./about.css";
+
+const prismaProject = selectedWork.find(({id}) => id === "prisma");
 
 const copy = {
     de: {
         kicker: "Über mich",
-        intro: "Ich bin in Bodenwerder im Weserbergland aufgewachsen und lebe heute in Brisbane. Ich will wissen, wie Dinge funktionieren. Besonders gern probiere ich etwas selbst aus, bis ich es erklären oder daraus etwas Eigenes bauen kann.",
+        intro: "Ich entwickle Forschungssoftware und unterrichte IT und Wirtschaft. Mich interessiert, wie Menschen mit KI arbeiten und woran sie erkennen können, ob ein Ergebnis eine Entscheidung trägt.",
         location: "Brisbane, Australien",
         portrait: "Porträt von Carina Sophie Schoppe",
         tablet: "Carina hält im Stehen ein Tablet und einen Stift",
         career: "Lebenslauf ansehen",
         linkedin: "Mein LinkedIn-Profil",
-        personalTitle: "Was mich ausmacht",
-        personal: [
-            ["Zeichnen und Farbe", "Ich zeichne gern. Blau ist meine Lieblingsfarbe, und ich mag es, wenn alle Regenbogenfarben zusammenkommen."],
-            ["Eigene Ideen ausprobieren", "Ich programmiere auch aus Spaß an der Sache. Für Minecraft habe ich mit Skylife ein eigenes Minispiel entwickelt."],
-            ["Vielfalt und Respekt", "Bei SCHLAU NRW habe ich ehrenamtlich Schulworkshops zu Vielfalt und Antidiskriminierung begleitet. Im Unterricht ist mir wichtig, dass sich alle trauen, Fragen zu stellen."],
+        featureJump: "PRISMA ansehen",
+        featureLabel: "Forschungssoftware · Eigenentwicklung",
+        featureIntro: "Bei einem systematischen Literaturreview muss sich später nachvollziehen lassen, wie aus den Suchtreffern die ausgewerteten Studien wurden. Dafür habe ich eine quelloffene Python-Anwendung gebaut. Sie lässt sich am Desktop bedienen und über die Kommandozeile mit gespeicherten Einstellungen erneut ausführen.",
+        featureSteps: [
+            ["Literatur erschließen", "Die Pipeline sammelt Treffer aus wissenschaftlichen Quellen wie OpenAlex, Crossref und PubMed. Über Zitationen findet sie sowohl ältere Quellen als auch neuere Arbeiten, die darauf aufbauen."],
+            ["Treffer prüfen", "Sie erkennt Dubletten anhand von DOI und Titel. Bei der Vorauswahl können Regeln oder KI helfen, Titel und Abstracts anhand festgelegter Kriterien zu bewerten."],
+            ["Auswahl belegen", "Die Berichte halten die Gründe für Ein- und Ausschlüsse fest. Ein Flussdiagramm zeigt, wie viele Treffer nach den einzelnen Schritten übrig bleiben."],
         ],
+        featureDetails: "Zum Projekt",
+        featureSource: "Quellcode auf GitHub",
         facts: [
             ["Studium", "M. Sc. Wirtschaftsinformatik und MBA"],
             ["Berufliche Bildung", "Certificate IV in Training and Assessment (TAE40122)"],
             ["Unterrichtssprachen", "Deutsch und Englisch"],
         ],
-        approachTitle: "Wie ich unterrichte, forsche und programmiere",
-        approach: "Als Wirtschaftsinformatikerin und IT-Dozentin entwickle ich meine Übungen und Kursmaterialien selbst. Ich programmiere eigene Werkzeuge für Literaturrecherche und Automatisierung und arbeite an Open-Source-Projekten mit.",
-        teachingTitle: "Woran erkennt man eine Phishing-Mail?",
-        teaching: "Eine Übung zur IT-Sicherheit kann mit einer verdächtigen E-Mail anfangen. Wir sehen uns Absender und Links an und fragen, warum die Nachricht so dringend klingt. Danach besprechen wir, wie man im Betrieb mit so einer E-Mail umgehen würde.",
-        researchTitle: "Wer entscheidet, wenn KI mitarbeitet?",
-        research: "In meiner Masterarbeit habe ich untersucht, was generative KI für Beschäftigte in deutschen Unternehmen verändert. Für meine MBA-Arbeit wollte ich wissen, wie Führungskräfte ihren Einsatz in wissensintensiven Organisationen steuern können.",
-        software: "Meine Literatursoftware PRISMA hält fest, welche Studien bei der Vorauswahl herausgefallen sind und warum. So kann man die Entscheidungen auch später noch prüfen.",
+        approachTitle: "Wie Forschung in meine Lehre einfließt",
+        researchTitle: "Generative KI im Arbeitsalltag",
+        research: "Für meine Masterarbeit habe ich Studien dazu ausgewertet, wie Beschäftigte in deutschen Unternehmen generative KI in der Kundenkommunikation, Softwareentwicklung und Datenanalyse einsetzen. In meiner MBA-Arbeit habe ich einen Rahmen dafür entwickelt, wie Führungskräfte Zuständigkeiten klären und Risiken beim Einsatz generativer KI beobachten können.",
+        teachingTitle: "Sicherheitsentscheidungen begründen",
+        teaching: "In meiner Bachelorarbeit habe ich untersucht, wie generative KI Phishing-Nachrichten glaubwürdiger machen kann. Im Unterricht beginne ich mit einem konkreten Fall. Die Teilnehmenden prüfen eine verdächtige E-Mail und begründen, ob sie sie melden würden. Mir ist wichtig, dass sie ihr Urteil auch auf eine anders aufgebaute Nachricht übertragen können.",
         publications: "Meine wissenschaftlichen Arbeiten",
         projects: "Meine Softwareprojekte",
         pathLabel: "Mein Werdegang",
         pathTitle: "Von Paderborn nach Brisbane",
+        pathIntro: "Ich bin in Bodenwerder im Weserbergland aufgewachsen und lebe heute in Brisbane.",
         path: [
             ["2019", "Studium und erste Kurse", "An der Universität Paderborn begann ich mit Wirtschaftsinformatik. Im selben Jahr machte ich mich als Dozentin und Beraterin selbstständig."],
             ["2021", "IT-Sicherheit für kleine Unternehmen", "Im Projekt KMUeinfachSicher erarbeitete ich Lernmaterial zu Passwörtern und zum sicheren Umgang mit Daten."],
@@ -56,34 +62,37 @@ const copy = {
     },
     en: {
         kicker: "About me",
-        intro: "I grew up in Bodenwerder in Germany’s Weserbergland region and now live in Brisbane. I’m curious about how things work. I like trying things for myself until I can explain them or build something of my own.",
+        intro: "I build research software and teach IT and business. I’m interested in how people work with AI and how they tell whether its results are sound enough to act on.",
         location: "Brisbane, Australia",
         portrait: "Portrait of Carina Sophie Schoppe",
         tablet: "Carina standing with a tablet and stylus",
         career: "View my CV",
         linkedin: "My LinkedIn profile",
-        personalTitle: "A little more about me",
-        personal: [
-            ["Drawing and colour", "I like to draw. Blue is my favourite colour, and I love seeing all the colours of the rainbow together."],
-            ["Trying out my own ideas", "I also write software for fun. I built my own Minecraft minigame called Skylife."],
-            ["Diversity and respect", "I volunteered with SCHLAU NRW, helping run school workshops on diversity and anti-discrimination. When I teach, I want everyone to feel comfortable asking questions."],
+        featureJump: "Explore PRISMA",
+        featureLabel: "Research software I built",
+        featureIntro: "A systematic literature review needs a record of how the initial search led to the studies that were analysed. I built an open-source Python application for that workflow. Researchers can use it on the desktop or rerun a review from the command line with saved settings.",
+        featureSteps: [
+            ["Find the literature", "The pipeline collects records from scholarly sources such as OpenAlex, Crossref and PubMed. It follows citations to find both earlier sources and newer studies that build on them."],
+            ["Screen the records", "It identifies duplicates by DOI and title. Rules or AI can assist with screening titles and abstracts against defined criteria."],
+            ["Document the selection", "Reports record the reasons for including or excluding studies. A flow diagram shows how many records remain after each stage."],
         ],
+        featureDetails: "Project details",
+        featureSource: "Source code on GitHub",
         facts: [
             ["Degrees", "MSc in Business Information Systems and MBA"],
             ["Vocational education", "Certificate IV in Training and Assessment (TAE40122)"],
             ["Teaching languages", "English and German"],
         ],
-        approachTitle: "How I teach, research and write software",
-        approach: "I’m an IT lecturer with a background in business information systems. I design my own exercises and course materials, build tools for literature reviews and automation, and contribute to open-source projects.",
-        teachingTitle: "How do you spot a phishing email?",
-        teaching: "A security exercise might start with a suspicious email. We check the sender and the links and ask why the message sounds so urgent. Then we talk about how we’d handle the same email at work.",
-        researchTitle: "Who makes the call when AI is involved?",
-        research: "My master’s thesis looked at what generative AI changes for employees in German companies. For my MBA, I wanted to understand how leaders in knowledge-intensive organisations can oversee its use.",
-        software: "My literature review tool PRISMA records which papers were screened out and why, so you can go back and check those decisions.",
+        approachTitle: "How my research informs my teaching",
+        researchTitle: "Generative AI at work",
+        research: "For my master’s thesis, I reviewed studies on how people in German companies use generative AI in customer communication, software development and data analysis. In my MBA thesis, I developed a framework for how leaders can assign responsibility and monitor risks when using generative AI.",
+        teachingTitle: "Explaining a security decision",
+        teaching: "My bachelor’s thesis examined how generative AI can make phishing emails more convincing. In class, I start with a case. Learners examine a suspicious email and explain whether they would report it. I want them to be able to apply that judgement when the next message looks different.",
         publications: "Read my academic work",
         projects: "My software projects",
         pathLabel: "My background",
         pathTitle: "From Paderborn to Brisbane",
+        pathIntro: "I grew up in Bodenwerder in Germany’s Weserbergland region and now live in Brisbane.",
         path: [
             ["2019", "My degree and my first classes", "I began studying Business Information Systems at the University of Paderborn. That same year I started freelancing as a lecturer and consultant."],
             ["2021", "IT security for small businesses", "At KMUeinfachSicher, I helped write learning materials on password security and handling data safely."],
@@ -116,7 +125,8 @@ export default function AboutPage() {
                     <h1 id="about-title">{PROFILE.name}</h1>
                     <p className="about-lede">{c.intro}</p>
                     <div className="about-hero-actions">
-                        <Link className="site-button site-button-primary" to="/my-way">{c.career}<ArrowRight size={17} aria-hidden="true"/></Link>
+                        <Link className="site-button site-button-primary" to="#forschungssoftware">{c.featureJump}<ArrowRight size={17} aria-hidden="true"/></Link>
+                        <Link className="site-text-link" to="/my-way">{c.career}<ArrowRight size={17} aria-hidden="true"/></Link>
                         <a className="site-text-link" href={PROFILE.linkedin}>{c.linkedin}<ArrowUpRight size={17} aria-hidden="true"/></a>
                     </div>
                 </div>
@@ -137,16 +147,21 @@ export default function AboutPage() {
                 </figure>
             </section>
 
-            <section className="about-personal" aria-labelledby="about-personal-title">
-                <h2 id="about-personal-title">{c.personalTitle}</h2>
-                <div className="about-personal-notes">
-                    {c.personal.map(([title, description]) => (
-                        <div key={title}>
-                            <h3>{title}</h3>
-                            <p>{description}</p>
-                        </div>
-                    ))}
+            <section className="about-feature" id="forschungssoftware" aria-labelledby="about-feature-title" tabIndex={-1}>
+                <div>
+                    <p className="about-kicker">{c.featureLabel}</p>
+                    <h2 id="about-feature-title">PRISMA Literature Review Pipeline</h2>
+                    <p className="about-feature-intro">{c.featureIntro}</p>
+                    <div className="about-hero-actions">
+                        <Link className="site-text-link" to={`/projects#${prismaProject.id}`}>{c.featureDetails}<ArrowRight size={17} aria-hidden="true"/></Link>
+                        <a className="site-text-link" href={prismaProject.href}>{c.featureSource}<ArrowUpRight size={17} aria-hidden="true"/></a>
+                    </div>
                 </div>
+                <ol className="about-feature-steps">
+                    {c.featureSteps.map(([title, description]) => (
+                        <li key={title}><h3>{title}</h3><p>{description}</p></li>
+                    ))}
+                </ol>
             </section>
 
             <dl className="about-facts">
@@ -168,12 +183,10 @@ export default function AboutPage() {
                 </div>
                 <div className="about-method-copy">
                     <h2 id="about-method-title">{c.approachTitle}</h2>
-                    <p>{c.approach}</p>
-                    <h3>{c.teachingTitle}</h3>
-                    <p>{c.teaching}</p>
                     <h3>{c.researchTitle}</h3>
                     <p>{c.research}</p>
-                    <p>{c.software}</p>
+                    <h3>{c.teachingTitle}</h3>
+                    <p>{c.teaching}</p>
                     <div className="about-hero-actions about-method-links">
                         <Link className="site-text-link" to="/skills#publications">{c.publications}<ArrowRight size={17} aria-hidden="true"/></Link>
                         <Link className="site-text-link" to="/projects">{c.projects}<ArrowRight size={17} aria-hidden="true"/></Link>
@@ -185,6 +198,7 @@ export default function AboutPage() {
                 <div className="about-path-heading">
                     <p className="about-kicker">{c.pathLabel}</p>
                     <h2 id="about-path-title">{c.pathTitle}</h2>
+                    <p className="about-path-intro">{c.pathIntro}</p>
                     <Link className="site-text-link about-path-link" to="/my-way">{c.fullPath}<ArrowRight size={18} aria-hidden="true"/></Link>
                 </div>
                 <ol className="about-path-list">
