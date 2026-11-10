@@ -31,7 +31,8 @@
     --about-accent: #decdf7;
 }
 
-.about-page h2 {
+.about-page h2,
+.about-method-copy .about-teaching-title {
     font-size: clamp(2.15rem, 4vw, 3.65rem);
     line-height: 1.04;
     letter-spacing: -.045em;
@@ -192,7 +193,8 @@
     padding-block: .75rem;
 }
 
-.about-method-copy h2 {
+.about-method-copy .about-teaching-title {
+    margin-top: 0;
     text-wrap: initial;
 }
 
@@ -225,8 +227,26 @@
     text-wrap: initial;
 }
 
-.about-path-heading .about-text-link {
-    margin-top: .75rem;
+.about-route {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    max-width: 18rem;
+    margin-top: 1.25rem;
+    font-size: .8rem;
+    font-weight: 800;
+}
+
+.about-route-track {
+    flex: 1;
+    height: .6rem;
+    background: linear-gradient(90deg, var(--coral) 0 25%, var(--butter) 25% 50%, var(--mint) 50% 75%, var(--sky) 75%);
+}
+
+.about-path-links {
+    display: grid;
+    justify-items: start;
+    margin-top: 1rem;
 }
 
 .about-path-list {
@@ -264,6 +284,10 @@
 
 .about-path-list li:nth-child(4) time {
     background: var(--butter, #ffe180);
+}
+
+.about-path-list li:nth-child(5) time {
+    background: var(--coral, #fa806d);
 }
 
 .about-path-list p {

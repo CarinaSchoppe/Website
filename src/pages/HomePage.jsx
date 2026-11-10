@@ -1,7 +1,7 @@
 import {ArrowDownRight, ArrowRight, ArrowUpRight, MapPin} from "lucide-react";
 import {Link} from "react-router-dom";
 import Photo from "../components/Photo.jsx";
-import {useSiteContent} from "../data/localizedContent.js";
+import {blogIndexForLanguage} from "../data/blogIndex.js";
 import {IMAGES, PROFILE} from "../data/profile.js";
 import {selectedWork} from "../data/selectedWork.js";
 import {useLanguage} from "../i18n.jsx";
@@ -12,7 +12,7 @@ const copy = {
         label: "IT-Dozentin · Wirtschaftsinformatikerin",
         title: "Ich mache IT",
         emphasis: "greifbar.",
-        intro: "Ich bin Carina Sophie Schoppe. Ich unterrichte IT, entwickle Software und forsche dazu, wie Menschen mit KI arbeiten.",
+        intro: "Ich bin Carina Sophie Schoppe. Ich unterrichte Erwachsene in IT, schreibe Software für konkrete Aufgaben und erforsche, wie KI unseren Arbeitsalltag verändert.",
         location: "Brisbane, Australien",
         portraitAlt: "Carina Sophie Schoppe sitzt lächelnd mit Tablet und Stift auf einem Hocker",
         about: "Mehr über mich",
@@ -24,10 +24,10 @@ const copy = {
         ],
         workLabel: "Was mich auszeichnet",
         workTitle: "So arbeite ich.",
-        approachText: [
-            "In meinen Kursen wird aus einem Begriff eine Aufgabe: ein Netzwerk aufbauen, eine SQL-Abfrage testen oder im Linux-Terminal herausfinden, warum etwas nicht läuft. Ich unterrichte auf Deutsch und Englisch.",
-            "Ich programmiere gern dort, wo ich im Alltag Reibung sehe. Manchmal entsteht daraus ein Werkzeug für wiederkehrende Aufgaben. Manchmal ist es ein gezielter Beitrag zu einem bestehenden Open-Source-Projekt.",
-            "Mich interessiert, was passiert, wenn KI Teil echter Arbeitsabläufe wird: Wer prüft die Ergebnisse? Wo entstehen neue Risiken? Und welche Entscheidungen sollen Menschen selbst treffen?",
+        approachNotes: [
+            ["Warum antwortet der Server nicht?", "So kann eine Aufgabe in meinem Unterricht anfangen. Die Gruppe prüft das Netzwerk Schritt für Schritt und erklärt anschließend, woran sie den Fehler erkannt hat. Ich unterrichte auf Deutsch und Englisch."],
+            ["Erst testen, dann senden.", "Mein Mail-Werkzeug hat einen Testlauf. Damit kann ich Empfängerliste und Vorlagen prüfen, bevor echte Nachrichten rausgehen. Solche kleinen Funktionen sparen mir Arbeit."],
+            ["Woran erkenne ich eine gute Fälschung?", "In einer wissenschaftlichen Arbeit habe ich untersucht, wie überzeugend ChatGPT personalisierte Phishing-Mails schreiben kann. Solche Fragen interessieren mich auch bei KI im Arbeitsalltag."],
         ],
         milestonesLabel: "Aus meinem Werdegang",
         milestones: [
@@ -37,8 +37,8 @@ const copy = {
         ],
         credentials: "Qualifikationen ansehen",
         selectedLabel: "Aus dem Projektarchiv",
-        selectedTitle: "Was ich gebaut habe.",
-        selectedIntro: "Drei Projekte, an denen man sieht, wie unterschiedlich praktische IT-Arbeit aussehen kann.",
+        selectedTitle: "Software, an der ich arbeite",
+        selectedIntro: "Literatur für eine Studie sichten, E-Mails vorbereiten oder ein Audiointerface unter Linux steuern. An diesen drei Aufgaben habe ich gearbeitet.",
         allProjects: "Alle Projekte",
         writingLabel: "Zum Weiterlesen",
         writingTitle: "Worüber ich schreibe.",
@@ -49,14 +49,14 @@ const copy = {
         message: "Kontakt aufnehmen",
         businessLabel: "Für Unternehmen",
         businessTitle: "Luminovia Training & Consulting",
-        businessCopy: "Unter meiner eigenen Marke biete ich Firmentrainings und Beratung an.",
+        businessCopy: "Bei Luminovia findest du meine Firmentrainings, Workshops und Beratung.",
         businessLink: "Zu Luminovia",
     },
     en: {
         label: "IT lecturer · Business information systems",
         title: "I make IT",
         emphasis: "tangible.",
-        intro: "I’m Carina Sophie Schoppe. I teach IT, build software, and research how people work with AI.",
+        intro: "I’m Carina Sophie Schoppe. I teach IT to adults, write software for everyday tasks and research how AI changes the way we work.",
         location: "Brisbane, Australia",
         portraitAlt: "Carina Sophie Schoppe smiling on a stool with a tablet and stylus",
         about: "More about me",
@@ -68,10 +68,10 @@ const copy = {
         ],
         workLabel: "What defines my work",
         workTitle: "How I work.",
-        approachText: [
-            "In my classes, a concept becomes a task: build a network, test a SQL query, or find out why something isn’t working in a Linux terminal. I teach in German and English.",
-            "I like to write software when I run into a problem worth solving. Sometimes that means building a tool for a repetitive task. Sometimes it means making a focused contribution to an existing open source project.",
-            "I’m curious about what happens when AI becomes part of everyday work. Who checks the results? What new risks appear? And which decisions should people make themselves?",
+        approachNotes: [
+            ["Why isn’t the server responding?", "A class exercise might start with this question. We check the network step by step, then explain what gave the problem away. I teach in German and English."],
+            ["Test before you send.", "My mail tool has a dry-run mode. I can check the recipient list and templates before any real messages go out. Small features like that save me time."],
+            ["What gives a convincing fake away?", "In one research paper I examined how convincingly ChatGPT could write personalised phishing emails. It’s the kind of question I keep coming back to when AI shows up at work."],
         ],
         milestonesLabel: "A few milestones",
         milestones: [
@@ -81,8 +81,8 @@ const copy = {
         ],
         credentials: "View my credentials",
         selectedLabel: "From the project archive",
-        selectedTitle: "What I’ve built.",
-        selectedIntro: "Three projects that show the different shapes practical IT work can take.",
+        selectedTitle: "Software I work on",
+        selectedIntro: "Screening studies, preparing emails and controlling an audio interface on Linux. Here’s what I built or contributed along the way.",
         allProjects: "All projects",
         writingLabel: "Further reading",
         writingTitle: "What I write about.",
@@ -93,16 +93,15 @@ const copy = {
         message: "Get in touch",
         businessLabel: "For organisations",
         businessTitle: "Luminovia Training & Consulting",
-        businessCopy: "I offer company training and consulting through my own business.",
+        businessCopy: "Luminovia is where I offer company training, workshops and consulting.",
         businessLink: "Visit Luminovia",
     },
 };
 
 export default function HomePage() {
     const {language} = useLanguage();
-    const {blogPosts} = useSiteContent();
     const c = copy[language];
-    const posts = [...blogPosts].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 2);
+    const posts = [...blogIndexForLanguage(language)].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 2);
 
     return (
         <main className="home site-width">
@@ -151,7 +150,8 @@ export default function HomePage() {
                 <div className="home-method-notes">
                     {c.approaches.map(({label, tone}, index) => (
                         <article key={tone} className={`home-method-note tone-${tone}`} id={`work-${tone}`}>
-                            <h3>{label}</h3><p>{c.approachText[index]}</p>
+                            <p className="site-kicker home-note-label">{label}</p>
+                            <div><h3>{c.approachNotes[index][0]}</h3><p>{c.approachNotes[index][1]}</p></div>
                         </article>
                     ))}
                 </div>

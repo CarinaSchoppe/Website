@@ -83,7 +83,7 @@ describe("full static site route coverage", () => {
         ["/projects/", /Software I build/i],
         ["/credentials/", /Degrees, certificates|Abschlüsse, Zertifikate/i],
         ["/my-way/", /professional path through technology|beruflicher Weg durch IT/i],
-        ["/blog/", /Writing on AI, digital education|Texte zu AI/i],
+        ["/blog/", /Writing on AI, digital education|Texte zu KI/i],
     ])("renders trailing-slash route %s", async (route, heading) => {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
         window.history.pushState({}, "Trailing route", route);

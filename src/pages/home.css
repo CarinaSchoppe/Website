@@ -51,7 +51,8 @@
     right: -1px;
     width: clamp(1.2rem, 4vw, 3.6rem);
     height: 30%;
-    background: var(--coral);
+    background: linear-gradient(180deg,
+        var(--coral) 0 45%, var(--butter) 45% 67%, var(--mint) 67% 85%, var(--sky) 85%);
     border: 1px solid #241e2e;
     border-right: 0;
 }
@@ -103,7 +104,7 @@
 .home-method-notes { border-top: 1px solid var(--line); }
 .home-method-note {
     display: grid;
-    grid-template-columns: minmax(8rem, .67fr) minmax(0, 1.33fr);
+    grid-template-columns: minmax(6.4rem, .42fr) minmax(0, 1.58fr);
     gap: clamp(1rem, 3vw, 2.4rem);
     padding: 1.25rem 0 1.3rem .85rem;
     border-bottom: 1px solid var(--line);
@@ -113,7 +114,14 @@
     scroll-margin-top: 6.5rem;
 }
 .home-method-note h3 { font-size: clamp(1.35rem, 2vw, 1.8rem); line-height: 1.18; }
-.home-method-note p { color: var(--muted); line-height: 1.65; }
+.home-note-label {
+    align-self: start;
+    width: fit-content;
+    padding: .3rem .48rem;
+    background: var(--tone);
+    color: #241e2e;
+}
+.home-method-note h3 + p { margin-top: .4rem; color: var(--muted); line-height: 1.7; }
 .home-milestones {
     display: flex;
     align-items: center;

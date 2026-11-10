@@ -65,7 +65,7 @@ function getHashTarget(hash) {
 }
 
 function ScrollToHash() {
-    const {pathname, hash} = useLocation();
+    const {key, hash} = useLocation();
 
     useEffect(() => {
         if (!hash) {
@@ -73,20 +73,14 @@ function ScrollToHash() {
             return;
         }
 
-        window.scrollTo({top: 0, behavior: "auto"});
+        const target = getHashTarget(hash);
+        if (!target) return;
 
-        const scrollToTarget = () => {
-            getHashTarget(hash)?.scrollIntoView({behavior: "auto", block: "start"});
-        };
-
-        globalThis.requestAnimationFrame(scrollToTarget);
-        const timeout = globalThis.setTimeout(scrollToTarget, 120);
-        const lateTimeout = globalThis.setTimeout(scrollToTarget, 360);
-        return () => {
-            globalThis.clearTimeout(timeout);
-            globalThis.clearTimeout(lateTimeout);
-        };
-    }, [pathname, hash]);
+        const frame = globalThis.requestAnimationFrame(() => {
+            target.scrollIntoView({behavior: "auto", block: "start"});
+        });
+        return () => globalThis.cancelAnimationFrame(frame);
+    }, [key, hash]);
 
     return null;
 }
@@ -117,6 +111,7 @@ function routeElement(Component) {
         <AppErrorBoundary>
             <Suspense fallback={<div className="min-h-[55vh]" aria-hidden="true"/>}>
                 <Component/>
+                <ScrollToHash/>
             </Suspense>
         </AppErrorBoundary>
     );
@@ -146,12 +141,11 @@ export default function App() {
         <LanguageProvider>
             <BrowserRouter basename={ROUTER_BASENAME} future={{v7_relativeSplatPath: true, v7_startTransition: true}}>
                 <Seo/>
-                <ScrollToHash/>
                 <div data-theme={theme} className="theme-root">
                     <Header theme={theme} onToggleTheme={toggleTheme}/>
                     <div id="main-content" className="site-content" tabIndex={-1}>
                         <Routes>
-                            <Route path="/" element={<AppErrorBoundary><HomePage/></AppErrorBoundary>}/>
+                            <Route path="/" element={routeElement(HomePage)}/>
                             {pageRoutes("/credentials", CredentialsPage)}
                             {pageRoutes("/portfolio", SoftwarePage)}
                             {pageRoutes("/about", AboutPage)}
@@ -167,10 +161,10 @@ export default function App() {
                             <Route path="*" element={routeElement(NotFoundPage)}/>
                         </Routes>
                     </div>
+                    <DeferredAnalyticsConsent/>
                     <div className="relative z-10">
                         <Footer/>
                     </div>
-                    <DeferredAnalyticsConsent/>
                 </div>
             </BrowserRouter>
         </LanguageProvider>

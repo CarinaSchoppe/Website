@@ -28,8 +28,9 @@ export default function MyWayPage() {
             workCopy: "Softwareentwicklung, digitale Bildung, Unternehmertum, Forschung und ausgewählte technische Projekte.",
             now: "Heute",
             nowCopy: "Heute lebe ich in Brisbane. carinaschoppe.com bündelt mein öffentliches Profil; Luminovia ist der eigenständige Auftritt für Firmentrainings und Consulting.",
-            timeline: "Timeline",
-            milestones: "Aktuelle Stationen zuerst."
+            timeline: "Zeitstrahl",
+            milestones: "Aktuelle Stationen zuerst.",
+            portrait: "Carina Sophie Schoppe vor einer Glasfassade",
         }
         : {
             badge: "Story",
@@ -44,7 +45,8 @@ export default function MyWayPage() {
             now: "Today",
             nowCopy: "I am now based in Brisbane. carinaschoppe.com presents my public profile, while Luminovia is the separate home for company training and consulting.",
             timeline: "Timeline",
-            milestones: "Current milestones first."
+            milestones: "Current milestones first.",
+            portrait: "Carina Sophie Schoppe in front of a glass building",
         };
     return (
         <main className="px-4 pb-24 pt-32 sm:px-6 lg:px-8">
@@ -64,7 +66,7 @@ export default function MyWayPage() {
                         </div>
                     </div>
                     <div className="grid gap-4 sm:grid-cols-2">
-                        <Photo src={IMAGES.outdoor} alt="Professional outdoor portrait of Carina Sophie Schoppe" className="aspect-[3/4] rounded-3xl" imgClass="object-[50%_20%]"/>
+                        <Photo src={IMAGES.outdoor} alt={copy.portrait} className="aspect-[3/4] rounded-3xl" imgClass="object-[50%_20%]"/>
                         <div className="grid gap-4">
                             <Card>
                                 <h2 className="text-2xl font-black text-white">{copy.education}</h2>

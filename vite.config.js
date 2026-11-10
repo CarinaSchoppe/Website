@@ -2,6 +2,7 @@ import {defineConfig} from "vitest/config";
 import preact from "@preact/preset-vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import {blogIndexForLanguage} from "./src/data/blogIndex.js";
 
 const siteUrl = "https://carinaschoppe.com";
 const prerenderRoutes = [
@@ -13,11 +14,11 @@ const prerenderRoutes = [
     ["/my-way", "Werdegang | Carina Sophie Schoppe", "Beruflicher Werdegang von Carina Sophie Schoppe durch Wirtschaftsinformatik, Softwarepraxis, AI, Forschung, Lehre und Brisbane."],
     ["/about", "Über Carina | Carina Sophie Schoppe", "Persönliches Profil von Carina Sophie Schoppe zwischen Software, Forschung, digitaler Bildung, AI, Cybersecurity und Unternehmertum."],
     ["/blog", "Blog | Carina Sophie Schoppe", "Texte von Carina Sophie Schoppe zu AI, Governance, digitaler Bildung, Projektarbeit, Cybersecurity, Automationsrisiken und moderner Arbeit."],
-    ["/blog/agentic-ai-from-demo-to-delegation", "Agentic AI: vom Demo zur delegierten Arbeit | Carina Sophie Schoppe Blog", "Beitrag zu Agentic AI, delegierten Workflows, menschlicher Prüfung und belastbarem Organisationsdesign."],
-    ["/blog/project-management-in-the-age-of-ai", "Projektmanagement im Zeitalter von AI | Carina Sophie Schoppe Blog", "Beitrag darüber, wie AI Projektmanagement, Koordination, Risikoarbeit und Delivery-Routinen verändert."],
-    ["/blog/teaching-with-ai-without-losing-learning", "Lehren mit KI, ohne das Lernen zu verlieren | Carina Sophie Schoppe Blog", "Beitrag zum praktischen KI-Einsatz in Bildung, Lerndesign, Prüfungen und Kompetenzentwicklung."],
-    ["/blog/from-industry-4-0-to-5-0-human-above-the-loop", "Von Industry 4.0 zu 5.0 | Carina Sophie Schoppe Blog", "Beitrag zu Industry 5.0, Human-in-the-Loop, Human-above-the-Loop und verantwortlicher AI-Aufsicht."],
-    ["/blog/ai-automation-risks-hallucinations-token-burn-rate-limits", "Risiken der AI-Automation | Carina Sophie Schoppe Blog", "Beitrag zu Halluzinationen, Tokenverbrauch, Ratelimits und resilientem Prozessdesign in AI-Automationen."],
+    ...blogIndexForLanguage("de").map(({slug, title, excerpt}) => [
+        `/blog/${slug}`,
+        `${title} | Carina Sophie Schoppe Blog`,
+        excerpt,
+    ]),
     ["/contact", "Kontakt | Carina Sophie Schoppe", "Kontakt zu Carina Sophie Schoppe für Kooperationen, Projekte, Forschung, Gastvorträge oder Fragen zum beruflichen Profil. Unternehmensanfragen werden an Luminovia verwiesen."],
     ["/imprint", "Impressum | Carina Sophie Schoppe", "Impressum und Kontaktinformationen von Carina Sophie Schoppe."],
     ["/privacy", "Datenschutzerklärung | Carina Sophie Schoppe", "Datenschutzerklärung der Website von Carina Sophie Schoppe mit Informationen zu Analytics und Kontaktaufnahme."],
@@ -41,6 +42,7 @@ function withRouteHead(html, [path, title, description]) {
         .replace(/\s*<link\b(?=[^>]*\bdata-hero-preload\b)[^>]*>/, "")
         .replace(/<title>.*?<\/title>/, `<title>${escapeHtmlAttribute(title)}</title>`)
         .replace(/<meta content="[^"]*" name="description"\/>/, `<meta content="${escapeHtmlAttribute(description)}" name="description"/>`)
+        .replace(/<meta content="website" property="og:type"\/>/, `<meta content="${path.startsWith("/blog/") ? "article" : "website"}" property="og:type"/>`)
         .replace(/<meta content="[^"]*" property="og:title"\/>/, `<meta content="${escapeHtmlAttribute(title)}" property="og:title"/>`)
         .replace(/<meta content="[^"]*" property="og:description"\/>/, `<meta content="${escapeHtmlAttribute(description)}" property="og:description"/>`)
         .replace(/<meta content="[^"]*" property="og:url"\/>/, `<meta content="${canonical}" property="og:url"/>`)

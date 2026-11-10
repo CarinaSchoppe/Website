@@ -8,7 +8,7 @@ const primaryItems = ["/about", "/projects", "/blog", "/contact"]
     .map((path) => navItems.find((item) => item.to === path));
 
 function LanguageToggle({language, toggleLanguage}) {
-    const label = language === "de" ? "Sprache auf Englisch wechseln" : "Switch language to German";
+    const label = language === "de" ? "EN · Sprache auf Englisch wechseln" : "DE · Switch language to German";
     return (
         <button type="button" onClick={toggleLanguage} className="site-control" aria-label={label}>
             <Globe2 size={17} aria-hidden="true"/><span>{language === "de" ? "EN" : "DE"}</span>
@@ -33,14 +33,13 @@ export default function Header({theme, onToggleTheme}) {
     const menu = useRef(null);
     const {t, toggleLanguage, language} = useLanguage();
     const close = () => menu.current.close();
-    const homeLabel = language === "de" ? "Carina Sophie Schoppe – Startseite" : "Carina Sophie Schoppe – Home";
 
     return (
         <>
             <a className="site-skip" href="#main-content">{language === "de" ? "Zum Inhalt springen" : "Skip to content"}</a>
             <header className="site-header">
                 <div className="site-width site-header-inner">
-                    <NavLink to="/" className="site-brand" aria-label={homeLabel}>
+                    <NavLink to="/" className="site-brand">
                         <span className="site-brand-mark" aria-hidden="true">CS</span>
                         <span className="site-brand-name">Carina Sophie Schoppe</span>
                     </NavLink>

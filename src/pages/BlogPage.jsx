@@ -1,6 +1,6 @@
 import {useRef, useState} from "react";
 import {Link} from "react-router-dom";
-import {useSiteContent} from "../data/localizedContent.js";
+import {blogIndexForLanguage} from "../data/blogIndex.js";
 import {useLanguage} from "../i18n.jsx";
 import Badge from "../components/Badge.jsx";
 import Button from "../components/Button.jsx";
@@ -9,6 +9,7 @@ function BlogCard({post, readLabel, className = ""}) {
     return (
         <Link
             to={`/blog/${post.slug}`}
+            draggable={false}
             className={`soft-link-card group flex min-h-[22rem] w-[82vw] shrink-0 snap-start flex-col p-5 focus:outline-none focus:ring-2 focus:ring-sky-200/80 sm:w-[25rem] lg:w-[28rem] ${className}`}
         >
             <Badge tone="white">{post.category}</Badge>
@@ -25,7 +26,7 @@ function BlogCard({post, readLabel, className = ""}) {
 
 function BlogCarousel({posts, readLabel, label, previousLabel, nextLabel}) {
     const scrollerRef = useRef(null);
-    const dragState = useRef({active: false, startX: 0, scrollLeft: 0});
+    const dragState = useRef({pointerId: null, startX: 0, scrollLeft: 0, moved: false});
     const [dragging, setDragging] = useState(false);
 
     function scrollByCards(direction) {
@@ -36,24 +37,50 @@ function BlogCarousel({posts, readLabel, label, previousLabel, nextLabel}) {
 
     function startDrag(event) {
         const node = scrollerRef.current;
-        if (!node) return;
-        dragState.current = {active: true, startX: event.clientX, scrollLeft: node.scrollLeft};
-        setDragging(true);
-        node.setPointerCapture?.(event.pointerId);
+        if (!node || event.button !== 0) return;
+
+        dragState.current = {
+            pointerId: event.pointerType === "touch" ? null : event.pointerId,
+            startX: event.clientX,
+            scrollLeft: node.scrollLeft,
+            moved: false,
+        };
     }
 
     function moveDrag(event) {
         const node = scrollerRef.current;
-        if (!node || !dragState.current.active) return;
+        const drag = dragState.current;
+        if (!node || drag.pointerId !== event.pointerId || event.buttons === 0) return;
+
+        const distance = event.clientX - drag.startX;
+        if (!drag.moved) {
+            // A press on an article remains a normal link click until the pointer drags.
+            if (Math.abs(distance) < 6) return;
+            drag.moved = true;
+            node.setPointerCapture?.(event.pointerId);
+            setDragging(true);
+        }
+
         event.preventDefault();
-        node.scrollLeft = dragState.current.scrollLeft - (event.clientX - dragState.current.startX);
+        node.scrollLeft = drag.scrollLeft - distance;
     }
 
     function endDrag(event) {
-        const node = scrollerRef.current;
-        dragState.current.active = false;
-        setDragging(false);
-        node?.releasePointerCapture?.(event.pointerId);
+        const drag = dragState.current;
+        if (drag.pointerId !== event.pointerId) return;
+        drag.pointerId = null;
+
+        if (drag.moved) {
+            scrollerRef.current?.releasePointerCapture?.(event.pointerId);
+            setDragging(false);
+        }
+    }
+
+    function preventDragClick(event) {
+        if (dragState.current.moved && event.detail > 0) {
+            event.preventDefault();
+            dragState.current.moved = false;
+        }
     }
 
     function handleKeyDown(event) {
@@ -86,7 +113,8 @@ function BlogCarousel({posts, readLabel, label, previousLabel, nextLabel}) {
                 onPointerMove={moveDrag}
                 onPointerUp={endDrag}
                 onPointerCancel={endDrag}
-                className={`blog-carousel flex snap-x snap-mandatory gap-5 overflow-x-auto pb-5 pr-4 [scrollbar-color:rgba(125,211,252,.46)_rgba(255,255,255,.06)] [scrollbar-width:thin] focus:outline-none focus:ring-2 focus:ring-sky-200/70 ${dragging ? "cursor-grabbing" : "cursor-grab"}`}
+                onClickCapture={preventDragClick}
+                className={`blog-carousel flex snap-x snap-mandatory gap-5 overflow-x-auto pb-5 pr-4 [scrollbar-color:rgba(125,211,252,.46)_rgba(255,255,255,.06)] [scrollbar-width:thin] focus:outline-none focus:ring-2 focus:ring-sky-200/70 ${dragging ? "cursor-grabbing select-none" : ""}`}
             >
                 {posts.map((post) => <BlogCard key={post.slug} post={post} readLabel={readLabel}/>)}
             </div>
@@ -96,7 +124,7 @@ function BlogCarousel({posts, readLabel, label, previousLabel, nextLabel}) {
 
 export default function BlogPage() {
     const {language} = useLanguage();
-    const {blogPosts} = useSiteContent();
+    const blogPosts = blogIndexForLanguage(language);
     const [activeCategory, setActiveCategory] = useState("All");
     const filterTrackRef = useRef(null);
     const hubCategories = [
@@ -117,8 +145,8 @@ export default function BlogPage() {
     const remainingPosts = sortedPosts.slice(1);
     const copy = language === "de"
         ? {
-            title: "Texte zu AI, digitaler Bildung und verantwortungsvoller Technologie.",
-            intro: "Hier analysiere ich, wie AI, Automatisierung und digitale Systeme Arbeit und Bildung verändern. Im Mittelpunkt stehen nachvollziehbare Einordnungen, praktische Folgen und die Frage, wie Technologie verantwortungsvoll eingesetzt werden kann.",
+            title: "Texte zu KI, digitaler Bildung und Verantwortung.",
+            intro: "Ich schreibe darüber, was sich im Unterricht und am Arbeitsplatz verändert, wenn KI mitarbeitet. Besonders interessieren mich die Entscheidungen, die Menschen dabei treffen müssen.",
             featured: "Neuester Beitrag",
             latest: "Weitere Beiträge",
             read: "Artikel lesen",
@@ -131,7 +159,7 @@ export default function BlogPage() {
         }
         : {
             title: "Writing on AI, digital education and responsible technology.",
-            intro: "I analyse how AI, automation and digital systems are changing work and education. The focus is on clear interpretation, practical consequences and responsible technology use.",
+            intro: "I write about what changes in the classroom and at work when AI becomes part of the job. I’m especially interested in the decisions people have to make along the way.",
             featured: "Featured latest post",
             latest: "More articles",
             read: "Read article",
@@ -203,8 +231,7 @@ export default function BlogPage() {
                             <Button to="/contact#contact-options" variant="secondary">{copy.suggest}</Button>
                         </div>
                         <Link to={`/blog/${featuredPost.slug}`} className="soft-link-card group flex min-h-[360px] flex-col p-6 sm:p-8">
-                            <Badge tone="orange">{copy.featured}</Badge>
-                            <div className="mt-6 flex flex-wrap gap-2 text-xs font-black uppercase tracking-[0.14em] text-slate-500">
+                            <div className="flex flex-wrap gap-2 text-xs font-black uppercase tracking-[0.14em] text-slate-500">
                                 <span>{featuredPost.category}</span>
                                 <span>{featuredPost.date}</span>
                                 <span>{featuredPost.readTime}</span>

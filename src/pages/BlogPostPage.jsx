@@ -1,5 +1,5 @@
 import {Link, Navigate, useParams} from "react-router-dom";
-import {useSiteContent} from "../data/localizedContent.js";
+import {blogArticlesForLanguage} from "../data/blogArticles.js";
 import {useLanguage} from "../i18n.jsx";
 import Badge from "../components/Badge.jsx";
 import Button from "../components/Button.jsx";
@@ -8,7 +8,7 @@ import Card from "../components/Card.jsx";
 export default function BlogPostPage() {
     const {slug} = useParams();
     const {language} = useLanguage();
-    const {blogPosts} = useSiteContent();
+    const blogPosts = blogArticlesForLanguage(language);
     const post = blogPosts.find((item) => item.slug === slug);
 
     if (!post) return <Navigate to="/blog" replace/>;

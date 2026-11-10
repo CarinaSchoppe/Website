@@ -1,11 +1,14 @@
 import {readFileSync} from "node:fs";
 import {join} from "node:path";
 import {describe, expect, it} from "vitest";
+import {blogArticlesForLanguage} from "./blogArticles.js";
 import {localizedSiteContentForLanguage} from "./localizedContent.js";
 
 const sourceFiles = [
     "src/i18n.jsx",
     "src/data/localizedContent.js",
+    "src/data/blogIndex.js",
+    "src/data/blogArticles.js",
     "src/pages/BlogPage.jsx",
     "src/pages/ContactPage.jsx",
     "src/pages/SkillsPage.jsx",
@@ -22,6 +25,7 @@ describe("German localisation quality", () => {
         const sourceText = sourceFiles.map(readProjectFile).join("\n");
         const renderedData = JSON.stringify({
             site: localizedSiteContentForLanguage("de"),
+            articles: blogArticlesForLanguage("de"),
         });
 
         for (const badCharacter of badCharacters) {

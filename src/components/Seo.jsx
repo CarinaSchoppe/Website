@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
-import {localizedSiteContentForLanguage} from "../data/localizedContent.js";
+import {blogIndexForLanguage} from "../data/blogIndex.js";
 import {PROFILE} from "../data/profile.js";
 import {useLanguage} from "../i18n.jsx";
 
@@ -243,7 +243,7 @@ export default function Seo() {
         const blogMatch = normalizedPathname.match(/^\/blog\/([^/]+)$/);
         if (!blogMatch) return undefined;
 
-        const post = localizedSiteContentForLanguage(language).blogPosts.find((item) => item.slug === blogMatch[1]);
+        const post = blogIndexForLanguage(language).find((item) => item.slug === blogMatch[1]);
         if (!post) return undefined;
 
         const canonical = `${SITE_URL}${normalizedPathname}`;

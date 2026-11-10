@@ -56,7 +56,7 @@ describe("App routing and language", () => {
         ["/blog", /Writing on AI, digital education/i],
         ["/contact", /Contact Carina Sophie Schoppe/i],
         ["/skills", /Professional strengths across AI/i],
-        ["/about", /Explain technology/i],
+        ["/about", /From Paderborn to Brisbane/i],
         ["/credentials", /Degrees, certificates/i],
         ["/my-way", /professional path through technology/i],
         ["/portfolio", /Software I build/i],

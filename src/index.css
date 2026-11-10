@@ -18,7 +18,7 @@
     font-family: Fraunces;
     src: url("./assets/fonts/fraunces-italic.woff2") format("woff2");
     font-style: italic;
-    font-weight: 400 700;
+    font-weight: 510;
     font-display: swap;
 }
 
@@ -283,17 +283,13 @@ html[data-theme="night"] :is(.site-button-primary, .ui-button[data-button-varian
 .privacy-title { overflow-wrap: anywhere; }
 
 .analytics-consent {
-    position: fixed;
-    z-index: 60;
-    inset: auto 1rem 1rem;
-    max-width: 46rem;
-    margin-inline: auto;
+    width: min(46rem, calc(100% - 2 * var(--site-gutter)));
+    margin: 0 auto 1.5rem;
     padding: 1rem;
     color: var(--ink);
     background: var(--paper-raised);
     border: 1px solid var(--line);
     border-top: 4px solid var(--coral);
-    box-shadow: 0 .4rem 1.6rem #241e2e26;
 }
 .analytics-consent p { color: var(--muted); }
 

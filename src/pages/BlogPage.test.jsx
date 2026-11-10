@@ -49,8 +49,10 @@ describe("BlogPage", () => {
         await user.click(screen.getByRole("button", {name: /Scroll blog posts left/i}));
         fireEvent.keyDown(carousel, {key: "ArrowRight"});
         fireEvent.keyDown(carousel, {key: "ArrowLeft"});
-        fireEvent.pointerDown(carousel, {pointerId: 1, clientX: 200});
-        fireEvent.pointerMove(carousel, {pointerId: 1, clientX: 150});
+        fireEvent.pointerDown(carousel, {pointerId: 1, button: 0, clientX: 200});
+        fireEvent.pointerMove(carousel, {pointerId: 1, buttons: 1, clientX: 198});
+        expect(carousel.setPointerCapture).not.toHaveBeenCalled();
+        fireEvent.pointerMove(carousel, {pointerId: 1, buttons: 1, clientX: 150});
         fireEvent.pointerUp(carousel, {pointerId: 1});
 
         expect(scrollBy).toHaveBeenCalledTimes(4);
@@ -59,6 +61,8 @@ describe("BlogPage", () => {
         expect(carousel.scrollLeft).toBe(170);
         expect(carousel.setPointerCapture).toHaveBeenCalledWith(1);
         expect(carousel.releasePointerCapture).toHaveBeenCalledWith(1);
+        fireEvent.click(screen.getByRole("link", {name: /Project management/i}), {detail: 1});
+        expect(screen.getByRole("heading", {name: /Writing on AI/i})).toBeInTheDocument();
     });
 
     it("keeps the category rail keyboard-scrollable and filters its articles", async () => {
@@ -83,11 +87,16 @@ describe("BlogPage", () => {
         expect(screen.getAllByRole("link", {name: /Agentic AI/i}).length).toBeGreaterThan(0);
     });
 
-    it("opens a dedicated article page when a blog card is clicked", async () => {
-        const user = userEvent.setup();
+    it("opens a dedicated article page when a blog card is clicked", () => {
         renderBlog();
 
-        await user.click(screen.getAllByRole("link", {name: /Project management/i})[0]);
+        const carousel = screen.getByRole("region", {name: /More articles/i});
+        carousel.setPointerCapture = vi.fn();
+        const card = screen.getByRole("link", {name: /Project management/i});
+        fireEvent.pointerDown(card, {pointerId: 1, pointerType: "mouse", button: 0, clientX: 200});
+        fireEvent.pointerUp(card, {pointerId: 1});
+        expect(carousel.setPointerCapture).not.toHaveBeenCalled();
+        fireEvent.click(card);
 
         expect(screen.getByRole("heading", {name: /less administration, more judgement/i})).toBeInTheDocument();
         expect(screen.getByText(/Sources and further reading/i)).toBeInTheDocument();
@@ -97,6 +106,6 @@ describe("BlogPage", () => {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "de");
         renderBlog();
 
-        expect(screen.getByRole("heading", {name: /Texte zu AI/i})).toBeInTheDocument();
+        expect(screen.getByRole("heading", {name: /Texte zu KI/i})).toBeInTheDocument();
     });
 });

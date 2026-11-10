@@ -12,7 +12,7 @@ const routes = [
     ["/skills", /Professional strengths across AI/i],
     ["/credentials", /Degrees, certificates/i],
     ["/my-way", /professional path through technology/i],
-    ["/about", /Explain technology/i],
+    ["/about", /From Paderborn to Brisbane/i],
     ["/blog", /Writing on AI, digital education/i],
     ["/contact", /Contact Carina Sophie Schoppe/i],
     ["/training", /Oops, there is nothing here/i],

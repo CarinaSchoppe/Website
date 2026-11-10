@@ -8,68 +8,72 @@ import "./about.css";
 const copy = {
     de: {
         kicker: "Über mich",
-        title: ["Technik erklären.", "Selbst ausprobieren."],
-        intro: "Ich bin Carina Sophie Schoppe. Ich gebe IT-Kurse für Erwachsene, entwickle Open-Source-Software und erforsche, wie generative KI die Arbeit verändert.",
-        location: "Brisbane, Australien",
+        title: ["Von Paderborn", "nach Brisbane"],
+        intro: "Ich bin Carina Sophie Schoppe. Während meines Studiums in Paderborn habe ich angefangen, IT zu unterrichten. Heute gebe ich von Brisbane aus Kurse für Erwachsene und entwickle Software, etwa für die Literaturrecherche.",
         language: "Deutsch & Englisch",
-        portrait: "Carina Sophie Schoppe vor einer Glasfassade",
-        tablet: "Carina hält ein Tablet und einen Stift",
-        storyLink: "Mein Weg nach Brisbane",
-        approachLabel: "So arbeite ich",
-        teachingTitle: "Vom Beispiel zur eigenen Lösung",
-        teaching: "Im Kurs arbeiten wir mit konkreten Aufgaben. Bei IT-Sicherheit kann das eine verdächtige E-Mail sein. Wir suchen nach Hinweisen, prüfen unsere Vermutungen und besprechen, wie sich dieselbe Prüfung im Arbeitsalltag anwenden lässt. Tempo und Tiefe passe ich an die Gruppe an.",
+        portrait: "Carina im Shirt des Fachschaftsrats Wirtschaftsinformatik",
+        tablet: "Carina hält im Stehen ein Tablet und einen Stift",
+        storyLink: "Zum Werdegang",
+        approachTitle: "Einblicke in meine Arbeit",
+        approachLabel: "Ein Blick in meinen Unterricht",
+        teachingTitle: "Woran erkennt man eine Phishing-Mail?",
+        teaching: "Eine Übung zur IT-Sicherheit kann mit einer verdächtigen E-Mail anfangen. Wir sehen uns Absender und Links an und fragen, warum die Nachricht so dringend klingt. Danach besprechen wir, wie man im Betrieb mit so einer E-Mail umgehen würde.",
         researchTitle: "Wer entscheidet, wenn KI mitarbeitet?",
-        research: "In meiner Masterarbeit habe ich untersucht, welche Chancen und Risiken generative KI für Beschäftigte in deutschen Unternehmen birgt. In meiner MBA-Arbeit ging es darum, wie Führungskräfte den Einsatz in wissensintensiven Organisationen steuern können. Auch beim Entwickeln achte ich auf Nachvollziehbarkeit. Meine Literatursoftware PRISMA hält zum Beispiel fest, welche Studien ausgesondert wurden und warum.",
+        research: "In meiner Masterarbeit habe ich untersucht, was generative KI für Beschäftigte in deutschen Unternehmen verändert. Für meine MBA-Arbeit wollte ich wissen, wie Führungskräfte ihren Einsatz in wissensintensiven Organisationen steuern können.",
+        software: "Meine Literatursoftware PRISMA hält fest, welche Studien bei der Vorauswahl herausgefallen sind und warum. So kann man die Entscheidungen auch später noch prüfen.",
         publications: "Meine wissenschaftlichen Arbeiten",
-        pathLabel: "Mein Werdegang",
-        pathTitle: "Von Paderborn nach Brisbane",
+        pathTitle: "Stationen auf meinem Weg",
         path: [
-            ["2019", "Studium und erste Kurse", "Ich begann mein Wirtschaftsinformatikstudium an der Universität Paderborn und machte mich als Dozentin und Beraterin selbstständig."],
-            ["2021", "IT-Sicherheit erklären", "Im Projekt KMUeinfachSicher bereitete ich Themen wie Passwörter und den Umgang mit Daten für kleine und mittlere Unternehmen auf."],
-            ["2022", "Bildung zu Vielfalt", "Bei SCHLAU NRW habe ich ehrenamtlich Bildungsworkshops zu Vielfalt und Antidiskriminierung begleitet und moderiert."],
-            ["2026", "Internationale Lehre", "Ich schloss meinen MBA und das australische Certificate IV in Training and Assessment ab. Heute unterrichte ich von Brisbane aus auf Deutsch und Englisch."],
+            ["2019", "Studium und erste Kurse", "An der Universität Paderborn begann ich mit Wirtschaftsinformatik. Im selben Jahr machte ich mich als Dozentin und Beraterin selbstständig."],
+            ["2021", "IT-Sicherheit für kleine Unternehmen", "Im Projekt KMUeinfachSicher erarbeitete ich Lernmaterial zu Passwörtern und zum sicheren Umgang mit Daten."],
+            ["2022", "Workshops zu Vielfalt", "Bei SCHLAU NRW habe ich ehrenamtlich Schulworkshops zu Vielfalt und Antidiskriminierung begleitet und moderiert."],
+            ["2025", "Bachelor und Master", "Ich schloss den Bachelor an der Universität Paderborn und den Master an der IU ab, beide in Wirtschaftsinformatik."],
+            ["2026", "Unterricht von Brisbane aus", "Ich schloss meinen MBA ab und erwarb mit dem Certificate IV in Training and Assessment eine australische Lehrqualifikation für die berufliche Bildung."],
         ],
-        fullPath: "Zum vollständigen Werdegang",
+        fullPath: "Mein vollständiger Werdegang",
+        credentials: "Abschlüsse und Zertifikate",
         nextLabel: "Mehr über meine Arbeit",
         next: [
             ["Kompetenzen", "Meine fachlichen Schwerpunkte", "/skills"],
             ["Texte", "Was ich über KI und Bildung schreibe", "/blog"],
             ["Kontakt", "Kooperationen, Forschung und Gastvorträge", "/contact"],
         ],
-        business: "Trainings für Unternehmen und Beratung biete ich über Luminovia Training & Consulting an.",
+        business: "Luminovia Training & Consulting ist mein Unternehmen für Firmentrainings und Beratung.",
         businessLink: "Zu Luminovia",
     },
     en: {
         kicker: "About me",
-        title: ["Explain technology.", "Try it yourself."],
-        intro: "I’m Carina Sophie Schoppe. I teach IT to adults, develop open-source software and research how generative AI changes the way we work.",
-        location: "Brisbane, Australia",
+        title: ["From Paderborn", "to Brisbane"],
+        intro: "I’m Carina Sophie Schoppe. I started teaching IT while studying in Paderborn. I now teach adults from Brisbane and build software for tasks like finding and reviewing research papers.",
         language: "English & German",
-        portrait: "Carina Sophie Schoppe in front of a glass building",
-        tablet: "Carina holding a tablet and stylus",
-        storyLink: "My path to Brisbane",
-        approachLabel: "How I work",
-        teachingTitle: "From a worked example to your own solution",
-        teaching: "In class, we start with a practical task. In IT security, that might be a suspicious email. We look for clues, check our assumptions and discuss how to make the same checks at work. I adjust the pace and depth to the group.",
-        researchTitle: "Who decides when AI is involved?",
-        research: "My master’s thesis looked at the opportunities and risks of generative AI for employees in German companies. In my MBA research, I examined how leaders can govern its use in knowledge-intensive organisations. I bring that interest in transparency to software too. My literature review tool PRISMA records which studies were screened out and why.",
+        portrait: "Carina wearing a Business Information Systems student council shirt",
+        tablet: "Carina standing with a tablet and stylus",
+        storyLink: "My career so far",
+        approachTitle: "A closer look at my work",
+        approachLabel: "Inside an IT class",
+        teachingTitle: "How do you spot a phishing email?",
+        teaching: "A security exercise might start with a suspicious email. We check the sender and the links and ask why the message sounds so urgent. Then we talk about how we’d handle the same email at work.",
+        researchTitle: "Who makes the call when AI is involved?",
+        research: "My master’s thesis looked at what generative AI changes for employees in German companies. For my MBA, I wanted to understand how leaders in knowledge-intensive organisations can oversee its use.",
+        software: "My literature review tool PRISMA records which papers were screened out and why, so you can go back and check those decisions.",
         publications: "Read my academic work",
-        pathLabel: "My background",
-        pathTitle: "From Paderborn to Brisbane",
+        pathTitle: "My career so far",
         path: [
-            ["2019", "Study and early teaching", "I started studying Business Computer Science at the University of Paderborn and began working as a freelance lecturer and consultant."],
-            ["2021", "Explaining IT security", "At KMUeinfachSicher I helped turn topics such as password security and data handling into learning materials for small and medium-sized businesses."],
-            ["2022", "Education on diversity", "I volunteered with SCHLAU NRW, supporting and facilitating workshops on diversity and anti-discrimination."],
-            ["2026", "Teaching internationally", "I completed my MBA and the Australian Certificate IV in Training and Assessment. I now teach in English and German from Brisbane."],
+            ["2019", "My degree and my first classes", "I began studying Business Information Systems at the University of Paderborn. That same year I started freelancing as a lecturer and consultant."],
+            ["2021", "IT security for small businesses", "At KMUeinfachSicher, I helped write learning materials on password security and handling data safely."],
+            ["2022", "Workshops on diversity", "I volunteered with SCHLAU NRW, helping run school workshops on diversity and anti-discrimination."],
+            ["2025", "Bachelor’s and master’s degrees", "I completed my bachelor’s at the University of Paderborn and my master’s at IU, both in Business Information Systems."],
+            ["2026", "Teaching from Brisbane", "I completed my MBA and earned the Certificate IV in Training and Assessment, an Australian qualification for vocational educators."],
         ],
-        fullPath: "Explore my full professional timeline",
+        fullPath: "See my full timeline",
+        credentials: "Degrees and certificates",
         nextLabel: "More about my work",
         next: [
             ["Skills", "What I specialise in", "/skills"],
             ["Writing", "What I write about AI and education", "/blog"],
             ["Contact", "Collaboration, research and guest lectures", "/contact"],
         ],
-        business: "I offer company training and consulting through Luminovia Training & Consulting.",
+        business: "I run Luminovia Training & Consulting, where I offer training and advice for organisations.",
         businessLink: "Visit Luminovia",
     },
 };
@@ -99,13 +103,14 @@ export default function AboutPage() {
                         sizes="(min-width: 1230px) 420px, (min-width: 801px) 36vw, 90vw"
                     />
                     <figcaption>
-                        <span>{c.location}</span>
+                        <span>{PROFILE.name}</span>
                         <span>{c.language}</span>
                     </figcaption>
                 </figure>
             </section>
 
             <section className="about-method" aria-labelledby="about-method-title">
+                <h2 id="about-method-title" className="sr-only">{c.approachTitle}</h2>
                 <div className="about-method-art">
                     <Photo
                         src={IMAGES.fullBody}
@@ -118,19 +123,25 @@ export default function AboutPage() {
                 </div>
                 <div className="about-method-copy">
                     <p className="about-kicker">{c.approachLabel}</p>
-                    <h2 id="about-method-title">{c.teachingTitle}</h2>
+                    <h3 className="about-teaching-title">{c.teachingTitle}</h3>
                     <p>{c.teaching}</p>
                     <h3>{c.researchTitle}</h3>
                     <p>{c.research}</p>
+                    <p>{c.software}</p>
                     <Link className="about-text-link about-publications" to="/skills#publications">{c.publications}<ArrowRight size={17} aria-hidden="true"/></Link>
                 </div>
             </section>
 
             <section className="about-path" id="about-path" aria-labelledby="about-path-title">
                 <div className="about-path-heading">
-                    <p className="about-kicker">{c.pathLabel}</p>
                     <h2 id="about-path-title">{c.pathTitle}</h2>
-                    <Link className="about-text-link" to="/my-way">{c.fullPath}<ArrowRight size={18} aria-hidden="true"/></Link>
+                    <div className="about-route" aria-hidden="true">
+                        <span>Paderborn</span><span className="about-route-track"/><span>Brisbane</span>
+                    </div>
+                    <div className="about-path-links">
+                        <Link className="about-text-link" to="/my-way">{c.fullPath}<ArrowRight size={18} aria-hidden="true"/></Link>
+                        <Link className="about-text-link" to="/credentials">{c.credentials}<ArrowRight size={18} aria-hidden="true"/></Link>
+                    </div>
                 </div>
                 <ol className="about-path-list">
                     {c.path.map(([year, title, description]) => (

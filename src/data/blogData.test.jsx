@@ -1,5 +1,7 @@
 import {describe, expect, it} from "vitest";
-import {blogPosts} from "./content.js";
+import {blogArticlesForLanguage} from "./blogArticles.js";
+
+const blogPosts = blogArticlesForLanguage("en");
 
 describe("blog post data", () => {
     it("contains the publish-ready AI, project-management, education and automation-risk articles", () => {
