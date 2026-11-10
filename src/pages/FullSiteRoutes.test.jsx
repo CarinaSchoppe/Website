@@ -69,20 +69,18 @@ describe("full static site route coverage", () => {
 
         render(<App/>);
 
-        const [headerNav] = await screen.findAllByRole("navigation");
+        const headerNav = within(await screen.findByRole("banner")).getByRole("navigation");
+        const footer = within(screen.getByRole("contentinfo"));
 
-        expect(within(headerNav).queryByRole("link", {name: /^Training$/i})).not.toBeInTheDocument();
-        expect(within(headerNav).queryByRole("link", {name: /^Training$/i})).not.toBeInTheDocument();
-        expect(within(headerNav).getByRole("link", {name: /^Projects$/i})).toHaveAttribute("href", "/projects");
-        expect(within(headerNav).getByRole("link", {name: /^Skills$/i})).toHaveAttribute("href", "/skills");
-        expect(within(headerNav).getByRole("link", {name: /^Credentials$/i})).toHaveAttribute("href", "/credentials");
-        expect(within(headerNav).getByRole("link", {name: /^Writing$/i})).toHaveAttribute("href", "/blog");
-        expect(within(headerNav).getByRole("link", {name: /^About$/i})).toHaveAttribute("href", "/about");
-        expect(within(headerNav).getByRole("link", {name: /^Contact$/i})).toHaveAttribute("href", "/contact");
+        expect(within(headerNav).getAllByRole("link").map((link) => link.getAttribute("href")).sort()).toEqual([
+            "/about", "/blog", "/contact", "/projects",
+        ]);
+        expect(footer.getByRole("link", {name: /^Skills$/i})).toHaveAttribute("href", "/skills");
+        expect(footer.getByRole("link", {name: /^Credentials$/i})).toHaveAttribute("href", "/credentials");
     });
 
     it.each([
-        ["/projects/", /Software projects, automation/i],
+        ["/projects/", /Software I build/i],
         ["/credentials/", /Degrees, certificates|Abschlüsse, Zertifikate/i],
         ["/my-way/", /professional path through technology|beruflicher Weg durch IT/i],
         ["/blog/", /Writing on AI, digital education|Texte zu AI/i],

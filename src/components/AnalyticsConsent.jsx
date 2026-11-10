@@ -51,19 +51,19 @@ export default function AnalyticsConsent() {
     }
 
     return (
-        <div className="analytics-consent fixed inset-x-3 bottom-3 z-[80] mx-auto max-w-3xl rounded-3xl border border-white/15 bg-[#080D19]/95 p-4 shadow-2xl shadow-black/50 backdrop-blur-xl sm:bottom-5 sm:p-5">
+        <div className="analytics-consent">
             <div className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
                 <div>
-                    <div className="text-sm font-black text-white">{t.analytics.title}</div>
-                    <p className="mt-1 text-sm leading-6 text-slate-300">
+                    <div className="text-sm font-extrabold">{t.analytics.title}</div>
+                    <p className="mt-1 text-sm leading-6">
                         {t.analytics.copy}
                     </p>
                 </div>
                 <div className="grid grid-cols-2 gap-2 sm:flex">
-                    <button onClick={() => choose("declined")} className="rounded-full border border-white/10 px-4 py-3 text-sm font-black text-slate-200 transition hover:bg-white/10">
+                    <button onClick={() => choose("declined")} className="site-button">
                         {t.analytics.decline}
                     </button>
-                    <button onClick={() => choose("accepted")} className="rounded-full bg-white px-4 py-3 text-sm font-black text-slate-950 transition hover:bg-sky-100">
+                    <button onClick={() => choose("accepted")} className="site-button site-button-primary">
                         {t.analytics.accept}
                     </button>
                 </div>

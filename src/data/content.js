@@ -257,7 +257,7 @@ export const credentialCategories = ["All", "Teaching", "Academic", "AI", "Cyber
 export const selectedProjects = [
     {title: "Digital Education Systems", tag: "Instructional design", stack: "ADDIE | blended learning | adult education", copy: "Course concepts, hands-on labs, learning checks and structured learning paths for IT, business and AI education contexts.", link: PROFILE.github},
     {title: "Cybersecurity Learning Labs", tag: "Teaching proof", stack: "TryHackMe | SOC | Web security | Pentest+", copy: "Hands-on security learning paths used to strengthen practical teaching capability in web security, SOC foundations and penetration-testing basics.", link: PROFILE.github},
-    {title: "PISMA Literature Review Pipeline", tag: "AI research automation", stack: "Python | AI | research tooling | data pipelines", copy: "A research workflow project for academic search, paper ranking, abstract analysis and structured systematic literature-review datasets.", link: "https://github.com/CarinaSchoppe/PISMA-Literature-Review-Pipeline-Automation-Tool"},
+    {title: "PRISMA Literature Review Pipeline", tag: "AI research automation", stack: "Python | AI | research tooling | data pipelines", copy: "A research workflow project for academic search, paper ranking, abstract analysis and structured systematic literature-review datasets.", link: "https://github.com/CarinaSchoppe/PRISMA-Literature-Review-Pipeline-Automation-Tool"},
     {title: "AI at Work Research", tag: "AI adoption and HCI", stack: "Systematic literature review | AI adoption | human-machine interaction", copy: "Research around opportunities and risks of generative AI tools in organisations, especially human-machine interaction in everyday work.", link: PROFILE.linkedin},
 ];
 
@@ -697,12 +697,12 @@ export const softwareProjects = [
         href: "https://github.com/CarinaSchoppe/Automatic-Mail-Sender-System",
     },
     {
-        name: "PISMA Literature Review Pipeline",
+        name: "PRISMA Literature Review Pipeline",
         type: "AI research automation",
         status: "Updated Apr 2026",
         description: "AI-powered literature-review workflow for academic search, citation expansion and title/abstract relevance analysis.",
         stack: ["Python", "AI", "Research", "Data pipelines"],
-        href: "https://github.com/CarinaSchoppe/PISMA-Literature-Review-Pipeline-Automation-Tool",
+        href: "https://github.com/CarinaSchoppe/PRISMA-Literature-Review-Pipeline-Automation-Tool",
     },
     {
         name: "OneDrive Duplicate Cleaner",

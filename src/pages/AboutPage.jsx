@@ -1,112 +1,162 @@
-import {IMAGES, PROFILE} from "../data/profile.js";
-import {useSiteContent} from "../data/localizedContent.js";
-import {useLanguage} from "../i18n.jsx";
-import Badge from "../components/Badge.jsx";
-import Button from "../components/Button.jsx";
-import Card from "../components/Card.jsx";
+import {ArrowDown, ArrowRight, ArrowUpRight} from "lucide-react";
+import {Link} from "react-router-dom";
 import Photo from "../components/Photo.jsx";
+import {IMAGES, PROFILE} from "../data/profile.js";
+import {useLanguage} from "../i18n.jsx";
+import "./about.css";
 
 const copy = {
-    en: {
-        badge: "About",
-        title: "A professional profile spanning software, research and digital education.",
-        intro: "I work at the intersection of business information systems, AI, cybersecurity, software development and learning design. My focus is on making complex technology understandable and useful in practice.",
-        follow: "This website documents my background, interests, projects, publications and professional development. Company training and consulting have a separate home at Luminovia.",
-        linkedin: "View LinkedIn",
-        github: "View GitHub",
-        timeline: "My timeline",
-        cards: [
-            ["Learning design", "I translate complex topics into structured, learner-friendly formats with purposeful exercises and clear opportunities to apply what was learned."],
-            ["Technical practice", "I connect concepts in AI, software, cybersecurity, data and business IT with systems, workflows and implementation examples."],
-            ["International work", "Based in Brisbane, I work remotely in German and English with adult learners, professional teams and education providers."],
-        ],
-        links: [
-            ["Story", "A compact life timeline from school and early programming to Brisbane, AI training and international teaching.", "/my-way"],
-            ["Skills", "A skill map for AI, software development, cybersecurity, business IT, teaching design and communication.", "/skills"],
-            ["Blog", "Long-form articles on AI governance, digital education, automation risk, project work and responsible technology adoption.", "/blog"],
-        ],
-        timelineTitle: "Professional timeline",
-    },
     de: {
-        badge: "Über mich",
-        title: "Ein berufliches Profil zwischen Software, Forschung und digitaler Bildung.",
-        intro: "Ich arbeite an der Schnittstelle von Wirtschaftsinformatik, AI, Cybersecurity, Softwareentwicklung und Didaktik. Mein Schwerpunkt liegt darauf, komplexe Technologien verständlich zu machen und in die Praxis zu übertragen.",
-        follow: "Diese Website dokumentiert meinen Hintergrund, fachliche Interessen, Projekte, Publikationen und meine berufliche Entwicklung. Firmentrainings und Consulting haben mit Luminovia einen eigenen Auftritt.",
-        linkedin: "LinkedIn ansehen",
-        github: "GitHub ansehen",
-        timeline: "Werdegang",
-        cards: [
-            ["Didaktik", "Ich übersetze komplexe Themen in strukturierte, lernfreundliche Formate mit gezielten Übungen und klarem Praxisbezug."],
-            ["Technische Praxis", "Ich verbinde Konzepte aus AI, Software, Cybersecurity, Daten und Wirtschaftsinformatik mit Systemen, Arbeitsabläufen und konkreten Umsetzungsbeispielen."],
-            ["Internationale Arbeit", "Von Brisbane aus arbeite ich remote auf Deutsch und Englisch mit Erwachsenen, professionellen Teams und Bildungsanbietern."],
+        kicker: "Über mich",
+        title: ["Technik erklären.", "Selbst ausprobieren."],
+        intro: "Ich bin Carina Sophie Schoppe. Ich gebe IT-Kurse für Erwachsene, entwickle Open-Source-Software und erforsche, wie generative KI die Arbeit verändert.",
+        location: "Brisbane, Australien",
+        language: "Deutsch & Englisch",
+        portrait: "Carina Sophie Schoppe vor einer Glasfassade",
+        tablet: "Carina hält ein Tablet und einen Stift",
+        storyLink: "Mein Weg nach Brisbane",
+        approachLabel: "So arbeite ich",
+        teachingTitle: "Vom Beispiel zur eigenen Lösung",
+        teaching: "Im Kurs arbeiten wir mit konkreten Aufgaben. Bei IT-Sicherheit kann das eine verdächtige E-Mail sein. Wir suchen nach Hinweisen, prüfen unsere Vermutungen und besprechen, wie sich dieselbe Prüfung im Arbeitsalltag anwenden lässt. Tempo und Tiefe passe ich an die Gruppe an.",
+        researchTitle: "Wer entscheidet, wenn KI mitarbeitet?",
+        research: "In meiner Masterarbeit habe ich untersucht, welche Chancen und Risiken generative KI für Beschäftigte in deutschen Unternehmen birgt. In meiner MBA-Arbeit ging es darum, wie Führungskräfte den Einsatz in wissensintensiven Organisationen steuern können. Auch beim Entwickeln achte ich auf Nachvollziehbarkeit. Meine Literatursoftware PRISMA hält zum Beispiel fest, welche Studien ausgesondert wurden und warum.",
+        publications: "Meine wissenschaftlichen Arbeiten",
+        pathLabel: "Mein Werdegang",
+        pathTitle: "Von Paderborn nach Brisbane",
+        path: [
+            ["2019", "Studium und erste Kurse", "Ich begann mein Wirtschaftsinformatikstudium an der Universität Paderborn und machte mich als Dozentin und Beraterin selbstständig."],
+            ["2021", "IT-Sicherheit erklären", "Im Projekt KMUeinfachSicher bereitete ich Themen wie Passwörter und den Umgang mit Daten für kleine und mittlere Unternehmen auf."],
+            ["2022", "Bildung zu Vielfalt", "Bei SCHLAU NRW habe ich ehrenamtlich Bildungsworkshops zu Vielfalt und Antidiskriminierung begleitet und moderiert."],
+            ["2026", "Internationale Lehre", "Ich schloss meinen MBA und das australische Certificate IV in Training and Assessment ab. Heute unterrichte ich von Brisbane aus auf Deutsch und Englisch."],
         ],
-        links: [
-            ["Werdegang", "Ein kompakter Zeitstrahl von Schule und frühem Programmieren bis Brisbane, AI-Training und internationaler Lehre.", "/my-way"],
-            ["Kompetenzen", "Eine Kompetenzübersicht für AI, Softwareentwicklung, Cybersecurity, Wirtschaftsinformatik, Didaktik und Kommunikation.", "/skills"],
-            ["Texte", "Ausführliche Beiträge zu AI Governance, digitaler Bildung, Automationsrisiken, Projektarbeit und verantwortungsvoller Technologieeinführung.", "/blog"],
+        fullPath: "Zum vollständigen Werdegang",
+        nextLabel: "Mehr über meine Arbeit",
+        next: [
+            ["Kompetenzen", "Meine fachlichen Schwerpunkte", "/skills"],
+            ["Texte", "Was ich über KI und Bildung schreibe", "/blog"],
+            ["Kontakt", "Kooperationen, Forschung und Gastvorträge", "/contact"],
         ],
-        timelineTitle: "Professioneller Werdegang",
+        business: "Trainings für Unternehmen und Beratung biete ich über Luminovia Training & Consulting an.",
+        businessLink: "Zu Luminovia",
+    },
+    en: {
+        kicker: "About me",
+        title: ["Explain technology.", "Try it yourself."],
+        intro: "I’m Carina Sophie Schoppe. I teach IT to adults, develop open-source software and research how generative AI changes the way we work.",
+        location: "Brisbane, Australia",
+        language: "English & German",
+        portrait: "Carina Sophie Schoppe in front of a glass building",
+        tablet: "Carina holding a tablet and stylus",
+        storyLink: "My path to Brisbane",
+        approachLabel: "How I work",
+        teachingTitle: "From a worked example to your own solution",
+        teaching: "In class, we start with a practical task. In IT security, that might be a suspicious email. We look for clues, check our assumptions and discuss how to make the same checks at work. I adjust the pace and depth to the group.",
+        researchTitle: "Who decides when AI is involved?",
+        research: "My master’s thesis looked at the opportunities and risks of generative AI for employees in German companies. In my MBA research, I examined how leaders can govern its use in knowledge-intensive organisations. I bring that interest in transparency to software too. My literature review tool PRISMA records which studies were screened out and why.",
+        publications: "Read my academic work",
+        pathLabel: "My background",
+        pathTitle: "From Paderborn to Brisbane",
+        path: [
+            ["2019", "Study and early teaching", "I started studying Business Computer Science at the University of Paderborn and began working as a freelance lecturer and consultant."],
+            ["2021", "Explaining IT security", "At KMUeinfachSicher I helped turn topics such as password security and data handling into learning materials for small and medium-sized businesses."],
+            ["2022", "Education on diversity", "I volunteered with SCHLAU NRW, supporting and facilitating workshops on diversity and anti-discrimination."],
+            ["2026", "Teaching internationally", "I completed my MBA and the Australian Certificate IV in Training and Assessment. I now teach in English and German from Brisbane."],
+        ],
+        fullPath: "Explore my full professional timeline",
+        nextLabel: "More about my work",
+        next: [
+            ["Skills", "What I specialise in", "/skills"],
+            ["Writing", "What I write about AI and education", "/blog"],
+            ["Contact", "Collaboration, research and guest lectures", "/contact"],
+        ],
+        business: "I offer company training and consulting through Luminovia Training & Consulting.",
+        businessLink: "Visit Luminovia",
     },
 };
 
 export default function AboutPage() {
-    const {language, t} = useLanguage();
-    const {timeline} = useSiteContent();
+    const {language} = useLanguage();
     const c = copy[language];
 
     return (
-        <main className="px-4 pb-24 pt-32 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-7xl">
-                <Badge tone="rose">{c.badge}</Badge>
-                <div className="mt-6 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-                    <div>
-                        <h1 className="text-4xl font-black tracking-tight text-white sm:text-6xl">{c.title}</h1>
-                        <p className="mt-6 text-lg leading-8 text-slate-300">{c.intro}</p>
-                        <p className="mt-5 text-lg leading-8 text-slate-300">{c.follow}</p>
-                        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                            <Button href={PROFILE.linkedin}>{c.linkedin}</Button>
-                            <Button href={PROFILE.github} variant="secondary">{c.github}</Button>
-                            <Button to="/my-way" variant="secondary">{c.timeline}</Button>
-                        </div>
-                    </div>
-                    <div className="grid gap-4 sm:grid-cols-2">
-                        <Photo src={IMAGES.headshot} alt="Headshot of Carina Sophie Schoppe for her lecturer and consultant profile" className="aspect-[3/4] rounded-2xl" imgClass="object-[50%_20%]"/>
-                        <div className="grid gap-4">
-                            {c.cards.map(([title, text]) => (
-                                <Card key={title}>
-                                    <h2 className="text-xl font-black text-white">{title}</h2>
-                                    <p className="mt-3 text-sm leading-7 text-slate-300">{text}</p>
-                                </Card>
-                            ))}
-                        </div>
-                    </div>
+        <main className="about-page">
+            <section className="about-hero" aria-labelledby="about-title">
+                <div className="about-hero-copy">
+                    <p className="about-kicker">{c.kicker}</p>
+                    <h1 id="about-title">{c.title[0]} <em>{c.title[1]}</em></h1>
+                    <p className="about-lede">{c.intro}</p>
+                    <a className="about-text-link" href="#about-path">{c.storyLink}<ArrowDown size={18} aria-hidden="true"/></a>
                 </div>
 
-                <div className="mt-16 grid gap-5 lg:grid-cols-3">
-                    {c.links.map(([title, text, to]) => (
-                        <Card key={title}>
-                            <h2 className="text-2xl font-black text-white">{title}</h2>
-                            <p className="mt-4 text-sm leading-7 text-slate-300">{text}</p>
-                            <div className="mt-6">
-                                <Button to={to} variant="secondary">{t.open}</Button>
-                            </div>
-                        </Card>
+                <figure className="about-hero-figure">
+                    <Photo
+                        src={IMAGES.outdoor}
+                        alt={c.portrait}
+                        className="about-photo about-portrait"
+                        width={1120}
+                        height={1680}
+                        fetchPriority="high"
+                        sizes="(min-width: 1230px) 420px, (min-width: 801px) 36vw, 90vw"
+                    />
+                    <figcaption>
+                        <span>{c.location}</span>
+                        <span>{c.language}</span>
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section className="about-method" aria-labelledby="about-method-title">
+                <div className="about-method-art">
+                    <Photo
+                        src={IMAGES.fullBody}
+                        alt={c.tablet}
+                        className="about-photo about-fullbody"
+                        width={1365}
+                        height={2048}
+                        sizes="(min-width: 1230px) 340px, (min-width: 801px) 32vw, 80vw"
+                    />
+                </div>
+                <div className="about-method-copy">
+                    <p className="about-kicker">{c.approachLabel}</p>
+                    <h2 id="about-method-title">{c.teachingTitle}</h2>
+                    <p>{c.teaching}</p>
+                    <h3>{c.researchTitle}</h3>
+                    <p>{c.research}</p>
+                    <Link className="about-text-link about-publications" to="/skills#publications">{c.publications}<ArrowRight size={17} aria-hidden="true"/></Link>
+                </div>
+            </section>
+
+            <section className="about-path" id="about-path" aria-labelledby="about-path-title">
+                <div className="about-path-heading">
+                    <p className="about-kicker">{c.pathLabel}</p>
+                    <h2 id="about-path-title">{c.pathTitle}</h2>
+                    <Link className="about-text-link" to="/my-way">{c.fullPath}<ArrowRight size={18} aria-hidden="true"/></Link>
+                </div>
+                <ol className="about-path-list">
+                    {c.path.map(([year, title, description]) => (
+                        <li key={year}>
+                            <time dateTime={year}>{year}</time>
+                            <div><h3>{title}</h3><p>{description}</p></div>
+                        </li>
+                    ))}
+                </ol>
+            </section>
+
+            <section className="about-next" aria-labelledby="about-next-title">
+                <h2 id="about-next-title">{c.nextLabel}</h2>
+                <div className="about-next-links">
+                    {c.next.map(([title, description, to]) => (
+                        <Link key={to} to={to}>
+                            <span><strong>{title}</strong><small>{description}</small></span>
+                            <ArrowRight size={20} aria-hidden="true"/>
+                        </Link>
                     ))}
                 </div>
-
-                <div className="mt-16">
-                    <h2 className="text-3xl font-black text-white">{c.timelineTitle}</h2>
-                    <div className="mt-6 grid gap-4 lg:grid-cols-5">
-                        {timeline.map((item) => (
-                            <Card key={item.year}>
-                                <div className="text-sm font-black text-sky-100">{item.year}</div>
-                                <h3 className="mt-3 text-xl font-black text-white">{item.title}</h3>
-                                <p className="mt-3 text-sm leading-7 text-slate-300">{item.copy}</p>
-                            </Card>
-                        ))}
-                    </div>
+                <div className="about-business">
+                    <p>{c.business}</p>
+                    <a className="about-text-link" href={PROFILE.luminovia}>{c.businessLink}<ArrowUpRight size={17} aria-hidden="true"/></a>
                 </div>
-            </div>
+            </section>
         </main>
     );
 }

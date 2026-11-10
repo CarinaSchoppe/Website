@@ -157,7 +157,7 @@ export default function BlogPage() {
         <main className="blog-page px-4 pb-24 pt-32 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-7xl">
                 <Badge tone="rose">Blog</Badge>
-                <div className="mt-6 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+                <div className="mt-6 grid grid-cols-[minmax(0,1fr)] gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-end">
                     <h1 className="text-5xl font-black tracking-[-0.05em] text-white sm:text-6xl">
                         {copy.title}
                     </h1>

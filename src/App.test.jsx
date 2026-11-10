@@ -15,16 +15,31 @@ describe("App routing and language", () => {
         const user = userEvent.setup();
         render(<App/>);
 
-        expect(await screen.findByRole("heading", {name: /^Carina Sophie Schoppe\.$/i})).toBeInTheDocument();
-        expect(screen.getByText(/Was ich verbinde/i)).toBeInTheDocument();
+        expect(await screen.findByRole("heading", {name: /Ich mache IT greifbar/i})).toBeInTheDocument();
+        expect(screen.getByRole("heading", {name: /So arbeite ich/i})).toBeInTheDocument();
         expect(document.documentElement.lang).toBe("de");
         expect(window.localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("de");
 
         await user.click(screen.getByRole("button", {name: /Sprache auf Englisch wechseln/i}));
 
-        expect(screen.getByText(/What I connect/i)).toBeInTheDocument();
+        expect(screen.getByRole("heading", {name: /I make IT tangible/i})).toBeInTheDocument();
+        expect(screen.getByRole("heading", {name: /How I work/i})).toBeInTheDocument();
         expect(document.documentElement.lang).toBe("en");
         expect(window.localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("en");
+    });
+
+    it("starts with the light theme and remembers an explicit theme selection", async () => {
+        const user = userEvent.setup();
+        window.history.pushState({}, "Home", "/");
+        const {unmount} = render(<App/>);
+
+        expect(document.documentElement).toHaveAttribute("data-theme", "day");
+        await user.click(screen.getByRole("button", {name: /Dunkles Farbschema aktivieren/i}));
+        expect(document.documentElement).toHaveAttribute("data-theme", "night");
+        unmount();
+
+        render(<App/>);
+        expect(document.documentElement).toHaveAttribute("data-theme", "night");
     });
 
     it("keeps English after the visitor explicitly selected it", async () => {
@@ -33,7 +48,7 @@ describe("App routing and language", () => {
 
         render(<App/>);
 
-        expect(await screen.findByRole("heading", {level: 1, name: /Software projects, automation/i})).toBeInTheDocument();
+        expect(await screen.findByRole("heading", {level: 1, name: /Software I build/i})).toBeInTheDocument();
         expect(document.documentElement.lang).toBe("en");
     });
 
@@ -41,11 +56,11 @@ describe("App routing and language", () => {
         ["/blog", /Writing on AI, digital education/i],
         ["/contact", /Contact Carina Sophie Schoppe/i],
         ["/skills", /Professional strengths across AI/i],
-        ["/about", /professional profile spanning software/i],
+        ["/about", /Explain technology/i],
         ["/credentials", /Degrees, certificates/i],
         ["/my-way", /professional path through technology/i],
-        ["/portfolio", /Software projects, automation/i],
-        ["/projects", /Software projects, automation/i],
+        ["/portfolio", /Software I build/i],
+        ["/projects", /Software I build/i],
         ["/pricing", /Oops, there is nothing here/i],
         ["/unknown-page", /Oops, there is nothing here/i],
     ])("renders %s with English page copy", async (route, heading) => {

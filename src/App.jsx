@@ -10,14 +10,14 @@ import HomePage from "./pages/HomePage.jsx";
 import {isChunkLoadError, safeGetSessionItem, safeGetStorageItem, safeRemoveSessionItem, safeSetSessionItem, safeSetStorageItem} from "./utils/browser.js";
 
 const CHUNK_RECOVERY_KEY = "carina_chunk_recovery_v1";
-const THEME_KEY = "carina_color_scheme_v1";
+const THEME_KEY = "carina_color_scheme_v2";
 const ROUTER_BASENAME = import.meta.env.BASE_URL === "/" ? undefined : import.meta.env.BASE_URL.replace(/\/$/, "");
 
 function getInitialTheme() {
     const storedTheme = safeGetStorageItem(THEME_KEY);
     if (storedTheme === "day" || storedTheme === "night") return storedTheme;
 
-    return "night";
+    return "day";
 }
 
 function lazyWithRecovery(loader) {
@@ -115,7 +115,7 @@ function DeferredAnalyticsConsent() {
 function routeElement(Component) {
     return (
         <AppErrorBoundary>
-            <Suspense fallback={<div className="min-h-[55vh] bg-[#08090b]" aria-hidden="true"/>}>
+            <Suspense fallback={<div className="min-h-[55vh]" aria-hidden="true"/>}>
                 <Component/>
             </Suspense>
         </AppErrorBoundary>
@@ -147,9 +147,9 @@ export default function App() {
             <BrowserRouter basename={ROUTER_BASENAME} future={{v7_relativeSplatPath: true, v7_startTransition: true}}>
                 <Seo/>
                 <ScrollToHash/>
-                <div data-theme={theme} className="theme-root relative isolate min-h-screen overflow-x-clip bg-[#08090b] text-white">
+                <div data-theme={theme} className="theme-root">
                     <Header theme={theme} onToggleTheme={toggleTheme}/>
-                    <div className="relative z-10">
+                    <div id="main-content" className="site-content" tabIndex={-1}>
                         <Routes>
                             <Route path="/" element={<AppErrorBoundary><HomePage/></AppErrorBoundary>}/>
                             {pageRoutes("/credentials", CredentialsPage)}

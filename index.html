@@ -16,7 +16,7 @@
     <link href="https://carinaschoppe.com/" hreflang="de" rel="alternate"/>
     <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
     <link href="/apple-touch-icon.svg" rel="apple-touch-icon" type="image/svg+xml"/>
-    <link href="/images/carina-outdoor-640.webp" rel="preload" as="image" type="image/webp" imagesrcset="/images/carina-outdoor-320.webp 320w, /images/carina-outdoor-400.webp 400w, /images/carina-outdoor-480.webp 480w, /images/carina-outdoor-640.webp 640w, /images/carina-outdoor-960.webp 960w" imagesizes="(min-width: 821px) 50vw, calc(100vw - 1.5rem)" fetchpriority="high"/>
+    <link data-hero-preload href="/images/carina-tablet-640.webp" rel="preload" as="image" type="image/webp" imagesrcset="/images/carina-tablet-480.webp 480w, /images/carina-tablet-640.webp 640w, /images/carina-tablet-960.webp 960w" imagesizes="(min-width: 1160px) 430px, (min-width: 821px) 38vw, 84vw" fetchpriority="high"/>
     <title>Carina Sophie Schoppe | Portfolio</title>
     <script type="application/ld+json">
         {
@@ -44,9 +44,15 @@
             ]
         }
     </script>
-    <style>html{scrollbar-gutter:stable}body{margin:0;background:#050b12}</style>
+    <style>html{scrollbar-gutter:stable;background:#faf6ee}html[data-theme="night"]{background:#211a28}body{margin:0}</style>
     <script>
         (() => {
+            try {
+                if (window.localStorage.getItem("carina_color_scheme_v2") === "night") {
+                    document.documentElement.dataset.theme = "night";
+                }
+            } catch { /* Continue with the default appearance if storage is unavailable. */ }
+
             const params = new URLSearchParams(window.location.search);
             const soft404Path = params.get("__soft404");
             if (!soft404Path) return;

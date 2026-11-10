@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#decdf7"/>
+  <path d="M0 102h800M0 403h800M42 0v500M758 0v500" fill="none" stroke="#42275f" opacity=".22"/>
+  <text x="66" y="69" fill="#42275f" font-family="monospace" font-size="20" letter-spacing="2">SYSTEMATIC REVIEW</text>
+  <g transform="translate(590 52)" fill="none" stroke="#42275f" stroke-width="2">
+    <circle cx="0" cy="0" r="5"/>
+    <path d="M12 0h130"/>
+  </g>
+  <path d="M213 220h72m-12-9 12 9-12 9M487 220h69m-12-9 12 9-12 9" fill="none" stroke="#42275f" stroke-width="3"/>
+  <g stroke="#42275f" stroke-width="2">
+    <path d="M66 170h147v100H66z" fill="#faf6ee"/>
+    <path d="M294 170h193v100H294z" fill="#ffe180"/>
+    <path d="M566 170h168v100H566z" fill="#b9dfca"/>
+    <path d="M390 270v69h183" fill="none" stroke-dasharray="6 6"/>
+    <path d="M574 320h160v38H574z" fill="#faf6ee"/>
+  </g>
+  <g fill="#241e2e" font-family="sans-serif" font-weight="700" text-anchor="middle">
+    <text x="139" y="207" font-size="15" font-family="monospace" font-weight="400">01</text>
+    <text x="139" y="237" font-size="24">Discover</text>
+    <text x="390" y="207" font-size="15" font-family="monospace" font-weight="400">02</text>
+    <text x="390" y="237" font-size="24">Screen</text>
+    <text x="650" y="207" font-size="15" font-family="monospace" font-weight="400">03</text>
+    <text x="650" y="237" font-size="24">Report</text>
+    <text x="654" y="345" font-size="15" font-family="monospace" font-weight="400">screening reasons</text>
+  </g>
+  <text x="66" y="450" fill="#42275f" font-family="monospace" font-size="20">↳ results/prisma_flow.md</text>
+</svg>

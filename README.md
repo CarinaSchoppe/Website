@@ -8,7 +8,7 @@ Business training, consulting, offers and pricing are intentionally routed to **
 
 - `carinaschoppe.com`: personal portfolio, CV, projects, writing and public profile.
 - `luminovia.org`: company website for training, consulting, project support, pricing and business enquiries.
-- Legacy business URLs such as `/training`, `/offers`, `/consulting` and `/pricing` render a Luminovia handoff page instead of direct offers.
+- Retired business URLs such as `/training`, `/offers`, `/consulting` and `/pricing` show the portfolio’s 404 page. Business enquiries from the portfolio route to Luminovia.
 
 ## Routes
 
@@ -28,11 +28,12 @@ Business training, consulting, offers and pricing are intentionally routed to **
 ## Development
 
 ```bash
-npm install
+npm ci
 npm run dev
 npm run lint
-npm test -- --run
+npm test
 npm run build
+npm run preview
 ```
 
 ## Quality Gates
@@ -40,7 +41,7 @@ npm run build
 - Vitest coverage threshold: `99%` line coverage.
 - Main route tests verify that sitemap routes render in German and English.
 - Static identity tests verify `CNAME`, favicon files, sitemap and Luminovia logo assets.
-- Legacy business-route tests verify handoff to Luminovia.
+- Route tests verify that the retired business pages return the portfolio’s 404 view and that contact still links to Luminovia.
 
 ## Static Hosting
 
@@ -51,6 +52,9 @@ The project is GitHub Pages compatible:
 - `public/sitemap.xml` lists only portfolio routes, not business offer routes.
 - `public/_headers` and `public/.htaccess` provide cache hints for hosts that support them.
 
-## Brand Notes
+## Design and media
 
-The Carina site may share some visual DNA with Luminovia, but the role is different. Carina should feel like a personal portfolio with a clear company reference. Luminovia should remain the stronger business and conversion site. If one site gets a full design overhaul, prioritize **carinaschoppe.com** so the two brands separate more clearly.
+- The personal portfolio uses a warm paper palette, a six-colour accent strip, and Fraunces and Manrope. Both fonts are served locally, with OFL notices in `public/fonts/`.
+- The home page and biography use the original portraits in `public/images/`, with responsive WebP variants. Project illustrations are based on the documented PRISMA and Automatic Mail Sender workflows. The OpenXLR screenshot is credited on the project page.
+- The default is the light palette. Visitors can save a different appearance and switch between German and English.
+- GitHub Pages deploys automatically when changes reach `main`. Review branches and draft pull requests leave the live site unchanged.

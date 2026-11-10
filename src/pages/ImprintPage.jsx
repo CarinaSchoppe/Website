@@ -16,8 +16,9 @@ export default function ImprintPage() {
             email: "E-Mail",
             editorial: "Redaktionell verantwortlich",
             odr: "EU-Streitschlichtung",
-            odrCopy: "Die Europaeische Kommission stellt eine Plattform zur Online-Streitbeilegung bereit:",
-            odrTail: "Die E-Mail-Adresse finden Sie oben im Impressum.",
+            odrCopy: "Die EU-Plattform zur Online-Streitbeilegung wurde am 20. Juli 2025 eingestellt.",
+            odrLink: "Mitteilung der Europäischen Kommission",
+            odrUrl: "https://consumer-redress.ec.europa.eu/site-relocation_de",
             consumer: "Verbraucherstreitbeilegung",
             consumerCopy: "Ich bin nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.",
             australia: "Australien",
@@ -33,8 +34,9 @@ export default function ImprintPage() {
             email: "Email",
             editorial: "Editorial responsibility",
             odr: "EU dispute resolution",
-            odrCopy: "The European Commission provides a platform for online dispute resolution:",
-            odrTail: "You can find the email address in the legal notice above.",
+            odrCopy: "The EU online dispute resolution platform was discontinued on 20 July 2025.",
+            odrLink: "European Commission notice",
+            odrUrl: "https://consumer-redress.ec.europa.eu/site-relocation_en",
             consumer: "Consumer dispute resolution",
             consumerCopy: "I am not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.",
             australia: "Australia",
@@ -74,7 +76,7 @@ export default function ImprintPage() {
                     <Card>
                         <h2 className="text-2xl font-black text-white">{copy.odr}</h2>
                         <p className="mt-5 leading-7 text-slate-300">
-                            {copy.odrCopy} <a className="font-bold text-sky-100 hover:text-white" href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noreferrer">https://ec.europa.eu/consumers/odr/</a>. {copy.odrTail}
+                            {copy.odrCopy} <a className="font-bold text-sky-100 hover:text-white" href={copy.odrUrl} target="_blank" rel="noreferrer">{copy.odrLink}</a>.
                         </p>
                     </Card>
 
