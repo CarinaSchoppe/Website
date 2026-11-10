@@ -1,9 +1,11 @@
 import {useState} from "react";
 import {credentialCategories as categoryKeys} from "../data/content.js";
 import {useSiteContent} from "../data/localizedContent.js";
+import {credentialDocuments} from "../data/portfolioDocuments.js";
 import {useLanguage} from "../i18n.jsx";
 import Badge from "../components/Badge.jsx";
 import Card from "../components/Card.jsx";
+import DocumentDownloads from "../components/DocumentDownloads.jsx";
 import {cn} from "../components/utils.js";
 
 export default function CredentialsPage() {
@@ -16,13 +18,13 @@ export default function CredentialsPage() {
         ? {
             badge: "Nachweise & Lehrprofil",
             title: "Abschlüsse, Zertifikate und fachliche Nachweise.",
-            intro: "Hier finden Sie meine akademischen Abschlüsse, die australische Trainingsqualifikation TAE40122, AI-Zertifikate, Cybersecurity-Lernpfade sowie Nachweise zu Lehr- und Sprachkompetenz.",
+            intro: "Hier finden Sie meine Abschlüsse, Zertifikate und fachlichen Nachweise. Bei ausgewählten Einträgen können Sie öffentliche Kopien herunterladen, in denen persönliche Angaben geschwärzt sind.",
             allLabel: "Alle Nachweise",
         }
         : {
             badge: "Credentials & teaching proof",
             title: "Degrees, certificates and professional credentials.",
-            intro: "This page brings together my academic degrees, the Australian TAE40122 training qualification, AI certifications, cybersecurity learning paths and evidence of teaching and language proficiency.",
+            intro: "Here you’ll find my degrees, certificates and professional credentials. Selected entries include downloadable public copies with personal details redacted.",
             allLabel: "All credentials",
         };
 
@@ -51,6 +53,7 @@ export default function CredentialsPage() {
                             <h2 className="text-xl font-black text-white">{credential.title}</h2>
                             <p className="mt-3 text-sm font-bold leading-6 text-sky-100">{credential.meta}</p>
                             <p className="mt-3 text-sm leading-7 text-slate-300">{credential.detail}</p>
+                            <DocumentDownloads documents={credentialDocuments[credential.documentKey]} title={credential.title}/>
                         </Card>
                     ))}
                 </div>

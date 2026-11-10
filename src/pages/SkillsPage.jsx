@@ -6,26 +6,29 @@ import {useLanguage} from "../i18n.jsx";
 import Badge from "../components/Badge.jsx";
 import Button from "../components/Button.jsx";
 import Card from "../components/Card.jsx";
+import DocumentDownloads from "../components/DocumentDownloads.jsx";
 import SectionJumpNav from "../components/SectionJumpNav.jsx";
 
 function TopicLink({item, className}) {
     return <span className={className}>{item}</span>;
 }
 
-function PublicationCard({downloadLabel, language, publication}) {
+function PublicationCard({language, publication}) {
     return (
-        <a href={publication.href} download className="soft-link-card group flex min-h-[300px] flex-col p-5 focus:outline-none focus:ring-2 focus:ring-sky-200/80">
+        <article className="soft-section flex min-h-[300px] flex-col p-5">
             <div className="mb-5 flex items-start justify-between gap-3">
                 <div>
                     <div className="text-xs font-black uppercase tracking-[0.14em] text-sky-100">{publication.type[language]}</div>
                     <div className="mt-2 text-xs font-bold text-zinc-500">{publication.year}</div>
                 </div>
-                <span className="shrink-0 rounded-full border border-white/10 px-3 py-1 text-xs font-black text-sky-100 transition group-hover:border-sky-100/40">PDF</span>
+                <span className="shrink-0 rounded-full border border-white/10 px-3 py-1 text-xs font-black text-sky-100">PDF</span>
             </div>
             <h3 className="text-2xl font-black text-white">{publication.title[language]}</h3>
             <p className="mt-4 text-sm leading-7 text-zinc-300">{publication.description[language]}</p>
-            <div className="mt-auto pt-6 text-sm font-black text-sky-200 transition group-hover:text-white">{downloadLabel}</div>
-        </a>
+            <div className="mt-auto pt-4">
+                <DocumentDownloads documents={publication.documents} title={publication.title[language]}/>
+            </div>
+        </article>
     );
 }
 
@@ -50,7 +53,6 @@ export default function SkillsPage() {
             publications: "Publikationen",
             publicationsTitle: "Publikationen und wissenschaftliche Arbeiten.",
             publicationsCopy: "In diesen Arbeiten beschäftige ich mich mit generativer KI, KI-Governance, Mensch-Maschine-Interaktion und IT-Sicherheit.",
-            downloadPublication: "PDF herunterladen",
             jumpLabel: "Auf dieser Seite",
             jumpItems: [["#unterricht", "Unterricht"], ["#softwarepraxis", "Software"], ["#publications", "Publikationen"], ["#skill-map", "Kompetenzen"]],
         }
@@ -71,7 +73,6 @@ export default function SkillsPage() {
             publications: "Publications",
             publicationsTitle: "Publications and academic work.",
             publicationsCopy: "These papers cover my work on generative AI, AI governance, human–computer interaction and cybersecurity.",
-            downloadPublication: "Download PDF",
             jumpLabel: "On this page",
             jumpItems: [["#unterricht", "Teaching"], ["#softwarepraxis", "Software"], ["#publications", "Publications"], ["#skill-map", "Skills"]],
         };
@@ -132,7 +133,7 @@ export default function SkillsPage() {
                     </div>
                     <div className="mt-8 grid gap-5 lg:grid-cols-3">
                         {publications.map((publication) => (
-                            <PublicationCard key={publication.key} downloadLabel={copy.downloadPublication} language={language} publication={publication}/>
+                            <PublicationCard key={publication.key} language={language} publication={publication}/>
                         ))}
                     </div>
                 </section>

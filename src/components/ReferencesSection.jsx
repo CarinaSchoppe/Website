@@ -1,14 +1,29 @@
+import {ArrowRight} from "lucide-react";
+import {Link} from "react-router-dom";
+import {referenceDocuments} from "../data/portfolioDocuments.js";
+import {publications} from "../data/publications.js";
 import {referenceGroups} from "../data/references.js";
 import {useLanguage} from "../i18n.jsx";
+import DocumentDownloads from "./DocumentDownloads.jsx";
+
+const bachelorThesis = publications.find(({key}) => key === "chatgpt-phishing");
+const thesisDownload = bachelorThesis.documents.map((document) => ({
+    ...document,
+    title: {de: "Bachelorarbeit zu KI und Phishing", en: "Bachelor thesis on AI and phishing"},
+}));
 
 const copy = {
     de: {
         title: "Referenzen",
-        intro: "Eine Auswahl meiner Lehraufträge, Fachbeiträge und Arbeit an Hochschulen.",
+        intro: "Eine Auswahl meiner Lehraufträge, Fachbeiträge und Arbeit an Hochschulen. Das Arbeitszeugnis der Universität Paderborn steht als öffentliche Kopie zum Download bereit.",
+        credentials: "Abschlüsse und Nachweise",
+        publications: "Wissenschaftliche Arbeiten",
     },
     en: {
         title: "References",
-        intro: "Selected teaching assignments, speaking engagements and university work.",
+        intro: "Selected teaching assignments, speaking engagements and university work. A public copy of my University of Paderborn employment reference is available below.",
+        credentials: "Degrees and credentials",
+        publications: "Academic publications",
     },
 };
 
@@ -32,11 +47,17 @@ export default function ReferencesSection() {
                             <li key={name}>
                                 <strong>{name}</strong>
                                 <p>{language === "de" ? de : en}</p>
+                                <DocumentDownloads documents={referenceDocuments[name]} title={name}/>
                             </li>
                         ))}
                     </ul>
                 </section>
             ))}
+            <div className="mt-2 flex flex-wrap gap-x-6">
+                <Link to="/credentials" className="site-text-link">{c.credentials}<ArrowRight size={16} aria-hidden="true"/></Link>
+                <Link to="/skills#publications" className="site-text-link">{c.publications}<ArrowRight size={16} aria-hidden="true"/></Link>
+                <DocumentDownloads documents={thesisDownload}/>
+            </div>
         </section>
     );
 }

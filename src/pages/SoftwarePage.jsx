@@ -1,5 +1,6 @@
-import {ArrowDown, ArrowDownToLine, ArrowRight, ArrowUpRight} from "lucide-react";
+import {ArrowDown, ArrowRight, ArrowUpRight} from "lucide-react";
 import {Link} from "react-router-dom";
+import DocumentDownloads from "../components/DocumentDownloads.jsx";
 import SoftwareProjectsSection from "../components/SoftwareProjectsSection.jsx";
 import {PROFILE} from "../data/profile.js";
 import {publications} from "../data/publications.js";
@@ -24,7 +25,6 @@ const labels = {
         contribution: "Mein Beitrag zum Mixer-Layout",
         publications: "Meine Forschungsarbeiten",
         publicationsIntro: "Drei Arbeiten über generative KI in Unternehmen, ihre Steuerung und ihren Einsatz für personalisierte Phishing-Mails.",
-        download: "PDF herunterladen",
         skills: "Mehr über meine Kompetenzen",
         work: {
             prisma: {
@@ -56,7 +56,6 @@ const labels = {
         contribution: "My contribution to the mixer layout",
         publications: "My research",
         publicationsIntro: "Three papers on generative AI at work, its governance and its use in personalised phishing emails.",
-        download: "Download PDF",
         skills: "More about my skills",
         work: {
             prisma: {
@@ -156,7 +155,7 @@ export default function SoftwarePage() {
                             <p className="projects-eyebrow">{publication.type[language]} · {publication.year}</p>
                             <h3>{publication.title[language]}</h3>
                             <p>{publication.description[language]}</p>
-                            <a href={publication.href} download className="projects-text-link" aria-label={`${copy.download}: ${publication.title[language]}`}>{copy.download}<ArrowDownToLine aria-hidden="true" size={16}/></a>
+                            <DocumentDownloads documents={publication.documents} title={publication.title[language]}/>
                         </article>
                     ))}
                 </div>

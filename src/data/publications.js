@@ -3,7 +3,7 @@ const base = import.meta.env.BASE_URL;
 export const publications = [
     {
         key: "executive-governance-genai",
-        href: `${base}publications/executive-governance-generative-ai-knowledge-intensive-organizations.pdf`,
+        documents: [{href: `${base}publications/executive-governance-generative-ai-knowledge-intensive-organizations.pdf`, language: "en"}],
         year: "2026",
         type: {en: "MBA publication", de: "MBA-Publikation"},
         title: {
@@ -17,7 +17,10 @@ export const publications = [
     },
     {
         key: "genai-workplace-risks",
-        href: `${base}publications/opportunities-risks-generative-ai-german-companies-human-machine-interaction.pdf`,
+        documents: [
+            {href: `${base}publications/chancen-risiken-generativer-ki-deutsche-unternehmen-de.pdf`, language: "de"},
+            {href: `${base}publications/opportunities-risks-generative-ai-german-companies-human-machine-interaction.pdf`, language: "en"},
+        ],
         year: "2025",
         type: {en: "Master thesis", de: "Masterarbeit"},
         title: {
@@ -31,8 +34,8 @@ export const publications = [
     },
     {
         key: "chatgpt-phishing",
-        href: `${base}publications/chatgpt-authentic-context-specific-personalized-phishing-emails.pdf`,
-        year: "2025",
+        documents: [{href: `${base}publications/chatgpt-authentic-context-specific-personalized-phishing-emails.pdf`, language: "en"}],
+        year: "2024",
         type: {en: "Bachelor thesis", de: "Bachelorarbeit"},
         title: {
             en: "ChatGPT for Authentic, Context-Specific and Personalised Phishing Emails",
