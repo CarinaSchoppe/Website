@@ -15,15 +15,15 @@ export default function CredentialsPage() {
     const visible = activeCategory === "All" ? credentials : credentials.filter(({category}) => category === activeLabel);
     const copy = language === "de"
         ? {
-            badge: "Nachweise & Lehrprofil",
-            title: "Abschlüsse, Zertifikate und fachliche Nachweise.",
-            intro: "Hier finden Sie meine Abschlüsse, Zertifikate und fachlichen Nachweise. Zu jedem Eintrag können Sie die zugehörigen PDFs herunterladen. Persönliche Angaben wie Geburtsdaten und private Kennnummern sind geschwärzt.",
+            badge: "Qualifikationen",
+            title: "Abschlüsse und Nachweise",
+            intro: "Zu jedem Eintrag gibt es PDFs zum Download. Geburtsdaten und private Kennnummern sind in den öffentlichen Kopien geschwärzt.",
             allLabel: "Alle Nachweise",
         }
         : {
-            badge: "Credentials & teaching proof",
-            title: "Degrees, certificates and professional credentials.",
-            intro: "Here you’ll find my degrees, certificates and professional credentials. Each entry includes downloadable PDFs with details such as birth dates and private identifiers redacted.",
+            badge: "Qualifications",
+            title: "Degrees, certificates and credentials",
+            intro: "Each entry has downloadable PDFs. Birth dates and private identifiers are redacted in the public copies.",
             allLabel: "All credentials",
         };
 

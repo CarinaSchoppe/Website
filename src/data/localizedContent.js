@@ -251,8 +251,11 @@ const de = {
         {year: "2013-2018", title: "Sprachaufenthalte in Australien, England und Spanien", category: "International", copy: "Mehrere Sprach- und Kulturaufenthalte haben Kommunikation, Perspektivwechsel und internationales Arbeiten geprägt."},
         {year: "2021", title: "Hotelverwaltung und Unternehmensstruktur", category: "Management", copy: "Mitwirkung an administrativen und strukturellen Aufgaben im Umfeld der Baron von Münchhausen Hotelverwaltungs-GmbH."},
         {year: "2023", title: "bytes Coding GmbH", category: "Software und Bildung", copy: "Softwareentwicklung und Bildungsarbeit über bytes Coding erweitert und technische Umsetzung stärker mit Trainingsbedarf verbunden."},
-        {year: "2025", title: "Bachelor und Master in Wirtschaftsinformatik", category: "Akademisch", copy: "Akademische Grundlage in Wirtschaftsinformatik, AI, Daten, HCI, IT-Management und digitaler Transformation abgeschlossen."},
+        {year: "2025", title: "Bachelor und Master in Wirtschaftsinformatik", category: "Akademisch", copy: "Bachelor an der Universität Paderborn und Master an der IU abgeschlossen. Meine Schwerpunkte waren Wirtschaftsinformatik, Daten und Mensch-Maschine-Interaktion."},
         {year: "2026", title: "MBA, TAE40122 und internationales Trainingsprofil", category: "Aktuell", copy: "MBA ohne Major im April abgeschlossen, Certificate IV in Training and Assessment TAE40122 im Juni bei RAM Training Services abgeschlossen, nach Brisbane gezogen und die Arbeit auf internationale IT- und Business-Technology-Bildung ausgerichtet."},
+        {year: "2021", title: "KMUeinfachSicher", category: "Hochschule und Lehre", copy: "Im Software Innovation Lab der Universität Paderborn entwickelte ich Lernmaterial zu Passwörtern und zum sicheren Umgang mit Daten für kleine Unternehmen."},
+        {year: "2022–2023", title: "Workshops bei SCHLAU NRW", category: "Ehrenamt", copy: "Ich begleitete und moderierte Schulworkshops zu Vielfalt und Antidiskriminierung."},
+        {year: "2026", title: "Forschungsassistenz an der University of Queensland", category: "Forschung", copy: "Ich arbeitete zu Agentic AI, unter anderem an einer Literaturrecherche."},
     ],
     skillGroups: [
         {group: "Didaktik und Lerndesign", items: ["Erwachsenenbildung", "Curriculum Design", "Blended Learning", "Prüfungsvorbereitung", "Lernaktivierung", "Workshop-Facilitation", "Materialdesign", "Remote-Unterricht"]},

@@ -323,13 +323,31 @@ export const lifeMilestones = [
         year: "2025",
         title: "Bachelor and Master in Business Computer Science",
         category: "Academic",
-        copy: "Completed the B.Sc. and M.Sc. foundation for business IT, data, HCI, IT management and digital transformation topics.",
+        copy: "Completed my B.Sc. at the University of Paderborn and my M.Sc. at IU, with a focus on business IT, data and human–computer interaction.",
     },
     {
         year: "2026",
         title: "MBA, Australia and international training profile",
         category: "Current",
         copy: "Completed the MBA without major in April, completed Certificate IV in Training and Assessment TAE40122 with RAM Training Services in June, moved to Brisbane and aligned the work around international IT and business-technology education.",
+    },
+    {
+        year: "2021",
+        title: "KMUeinfachSicher",
+        category: "University and teaching",
+        copy: "At the University of Paderborn’s Software Innovation Lab, I developed learning materials on passwords and safe data handling for small businesses.",
+    },
+    {
+        year: "2022–2023",
+        title: "Workshops with SCHLAU NRW",
+        category: "Volunteering",
+        copy: "I helped run and facilitate school workshops on diversity and anti-discrimination.",
+    },
+    {
+        year: "2026",
+        title: "Research assistant at The University of Queensland",
+        category: "Research",
+        copy: "I worked on agentic AI, including a literature review.",
     },
 ];
 

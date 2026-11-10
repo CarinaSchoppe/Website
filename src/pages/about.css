@@ -126,44 +126,12 @@
     margin-top: .75rem;
 }
 
-.about-facts {
-    display: grid;
-    grid-template-columns: 1fr 1.25fr .9fr;
-    margin-block: clamp(2rem, 4.5vw, 3.75rem) 0;
-    border-block: 1px solid var(--line);
-}
-
-.about-facts > div {
-    min-width: 0;
-    padding: 1.1rem clamp(.85rem, 2.8vw, 2rem);
-}
-
-.about-facts > div:first-child {
-    padding-inline-start: 0;
-}
-
-.about-facts > div + div {
-    border-inline-start: 1px solid var(--line);
-}
-
-.about-facts dt {
-    margin-bottom: .2rem;
-    color: var(--muted);
-    font-size: .84rem;
-}
-
-.about-facts dd {
-    font-size: .98rem;
-    font-weight: 760;
-    line-height: 1.45;
-}
-
 .about-method {
     display: grid;
     grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr);
     align-items: center;
     gap: clamp(1.5rem, 5vw, 4.75rem);
-    margin-block: clamp(2.75rem, 6vw, 5.25rem);
+    margin-top: clamp(2.75rem, 6vw, 5.25rem);
     padding: clamp(1.25rem, 4vw, 3rem);
     border: 1px solid var(--line);
     border-radius: var(--corner, .85rem);
@@ -194,8 +162,7 @@
 
 .about-feature-intro,
 .about-method-copy > p,
-.about-path-intro,
-.about-path-list p {
+.about-path-intro {
     max-width: 63ch;
     margin-top: .45rem;
     color: var(--muted);
@@ -205,37 +172,9 @@
 .about-path {
     display: grid;
     grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
-    align-items: start;
-    gap: clamp(1.4rem, 7vw, 5.5rem);
-}
-
-.about-path-list {
-    margin: 0;
-    padding: 0;
-    border-bottom: 1px solid var(--line);
-    list-style: none;
-}
-
-.about-path-list li {
-    display: grid;
-    grid-template-columns: 3.7rem minmax(0, 1fr);
-    align-items: start;
-    gap: .85rem;
-    padding-block: 1.05rem;
-    border-top: 1px solid var(--line);
-}
-
-.about-path-list time {
-    color: var(--accent);
-    font-size: .91rem;
-    font-weight: 800;
-    font-variant-numeric: tabular-nums;
-    line-height: 1.65;
-}
-
-.about-path-list p {
-    overflow-wrap: break-word;
-    hyphens: auto;
+    align-items: center;
+    gap: clamp(.8rem, 5vw, 4.75rem);
+    margin-top: clamp(2.75rem, 6vw, 5.25rem);
 }
 
 .about-next {
@@ -346,16 +285,10 @@
 }
 
 @media (max-width: 660px) {
-    .about-facts,
     .about-next-links {
         grid-template-columns: 1fr;
     }
 
-    .about-facts > div {
-        padding-inline: 0;
-    }
-
-    .about-facts > div + div,
     .about-next-links a:nth-child(n+2) {
         border-inline-start: 0;
         border-top: 1px solid var(--line);

@@ -88,11 +88,7 @@ export default function SkillsPage() {
                     <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">{copy.intro}</p>
                 </div>
 
-                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                    <Button to="#unterricht">{copy.teaching}</Button>
-                    <Button to="/#referenzen" variant="secondary">{copy.references}</Button>
-                </div>
-                <SectionJumpNav label={copy.jumpLabel} items={copy.jumpItems} className="mt-8"/>
+                <SectionJumpNav label={copy.jumpLabel} items={copy.jumpItems} className="mt-7"/>
 
                 <section id="unterricht" className="mt-14" aria-labelledby="consulting-skills" tabIndex={-1}>
                     <div className="grid gap-5 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
@@ -112,7 +108,10 @@ export default function SkillsPage() {
                     </div>
                     <div className="mt-7 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-5">
                         <p className="max-w-xl text-sm leading-6 text-slate-300">{copy.companyCopy}</p>
-                        <Button href={PROFILE.luminoviaContact} variant="secondary">{copy.company}</Button>
+                        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                            <Button to="/#referenzen" variant="secondary">{copy.references}</Button>
+                            <Button href={PROFILE.luminoviaContact} variant="secondary">{copy.company}</Button>
+                        </div>
                     </div>
                 </section>
 

@@ -3,7 +3,6 @@ import {Link, useLocation} from "react-router-dom";
 import {blogIndexForLanguage} from "../data/blogIndex.js";
 import {useLanguage} from "../i18n.jsx";
 import Badge from "../components/Badge.jsx";
-import Button from "../components/Button.jsx";
 
 const blogViews = new Map();
 
@@ -177,11 +176,10 @@ function BlogIndex({historyKey}) {
     const copy = language === "de"
         ? {
             title: "Texte zu KI, digitaler Bildung und Verantwortung.",
-            intro: "Ich schreibe darüber, was sich im Unterricht und am Arbeitsplatz verändert, wenn KI mitarbeitet. Besonders interessieren mich die Entscheidungen, die Menschen dabei treffen müssen.",
+            intro: "Was verändert KI im Unterricht und am Arbeitsplatz? Hier schreibe ich über die Entscheidungen, die Menschen dabei treffen.",
             featured: "Neuester Beitrag",
             latest: "Weitere Beiträge",
             read: "Artikel lesen",
-            suggest: "Kontakt aufnehmen",
             filters: "Kategorien",
             filterRail: "Scrollbare Blog-Kategorien",
             empty: "Zu dieser Kategorie gibt es noch keinen Beitrag.",
@@ -190,11 +188,10 @@ function BlogIndex({historyKey}) {
         }
         : {
             title: "Writing on AI, digital education and responsible technology.",
-            intro: "I write about what changes in the classroom and at work when AI becomes part of the job. I’m especially interested in the decisions people have to make along the way.",
+            intro: "What does AI change in the classroom and at work? I write about the decisions people face along the way.",
             featured: "Featured latest post",
             latest: "More articles",
             read: "Read article",
-            suggest: "Get in touch",
             filters: "Categories",
             filterRail: "Scrollable blog categories",
             empty: "There is no article in this category yet.",
@@ -257,11 +254,8 @@ function BlogIndex({historyKey}) {
 
                 {featuredPost && (
                     <section className="mt-12">
-                        <div className="mb-5 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-                            <Badge tone="orange">{copy.featured}</Badge>
-                            <Button to="/contact#contact-options" variant="secondary">{copy.suggest}</Button>
-                        </div>
-                        <Link to={`/blog/${featuredPost.slug}`} className="soft-link-card group flex min-h-[360px] flex-col p-6 sm:p-8">
+                        <div className="mb-4"><Badge tone="orange">{copy.featured}</Badge></div>
+                        <Link to={`/blog/${featuredPost.slug}`} className="soft-link-card group flex flex-col p-6 sm:p-8">
                             <div className="flex flex-wrap gap-2 text-xs font-black uppercase tracking-[0.14em] text-slate-500">
                                 <span>{featuredPost.category}</span>
                                 <span>{featuredPost.date}</span>

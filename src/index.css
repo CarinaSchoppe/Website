@@ -76,7 +76,7 @@ html { scroll-padding-top: calc(var(--portfolio-header-height) + 1rem); }
     border-bottom: 1px solid var(--line);
 }
 .site-header-inner { display: flex; min-height: 4.55rem; align-items: center; justify-content: space-between; gap: 1rem; }
-.site-brand { display: inline-flex; align-items: center; gap: .7rem; min-width: 0; }
+.site-brand { display: inline-flex; align-items: center; gap: .7rem; min-width: 0; min-height: 44px; }
 .site-brand-mark {
     display: grid;
     width: 2.45rem;
@@ -104,6 +104,11 @@ html { scroll-padding-top: calc(var(--portfolio-header-height) + 1rem); }
     text-underline-offset: .35em;
 }
 .site-desktop-nav a:hover, .site-desktop-nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--accent); }
+.site-desktop-nav .site-nav-contact, .site-menu nav .site-nav-contact { color: var(--accent); font-weight: 800; }
+@media (min-width: 1100px) {
+    .site-desktop-nav .site-nav-contact { padding-inline: .8rem; border: 1px solid var(--line); border-radius: .55rem; }
+    .site-desktop-nav .site-nav-contact:is(:hover, [aria-current="page"]) { border-color: var(--accent); }
+}
 .site-header-controls { gap: .14rem; flex: none; }
 .site-control {
     display: inline-flex;
