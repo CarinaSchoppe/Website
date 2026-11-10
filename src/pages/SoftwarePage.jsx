@@ -9,32 +9,68 @@ import "./projects.css";
 
 const labels = {
     de: {
-        eyebrow: "Meine Projekte",
-        title: "Software, die ich baue.",
-        intro: "Ich schreibe Werkzeuge für wiederkehrende Aufgaben, etwa für Literaturrecherchen und E-Mails. Bei OpenXLR arbeite ich mit anderen an Software für Audiogeräte unter Linux.",
-        jump: "Auswahl ansehen",
+        eyebrow: "Projektportfolio",
+        title: "Softwareprojekte und Open Source",
+        intro: "Ich entwickle Werkzeuge für wiederkehrende Aufgaben und arbeite an Open-Source-Software mit. Die Beispiele reichen von systematischer Literaturrecherche bis zur Mikrofoneinrichtung unter Linux.",
+        jump: "Projektbeispiele ansehen",
+        contact: "Ein Projekt besprechen",
         github: "Mein GitHub-Profil",
-        featured: "Drei Projekte im Fokus",
+        overview: "Projekte im Überblick",
+        featured: "Ausgewählte Projekte",
+        own: "Eigenes Projekt",
+        community: "Open-Source-Beitrag",
+        technologies: "Technologien",
         source: "Quellcode auf GitHub",
         contribution: "Mein Beitrag zum Mixer-Layout",
         publications: "Meine Forschungsarbeiten",
         publicationsIntro: "Drei Arbeiten über generative KI in Unternehmen, ihre Steuerung und ihren Einsatz für personalisierte Phishing-Mails.",
         download: "PDF herunterladen",
         skills: "Mehr über meine Kompetenzen",
+        work: {
+            prisma: {
+                purpose: "Systematische Literaturrecherche",
+                evidence: "Was die Pipeline liefert",
+                features: ["Zusammengeführte Treffer aus mehreren Fachdatenbanken", "CSV-Exporte und ein Bericht zu Ein- und Ausschlüssen"],
+            },
+            mail: {
+                purpose: "Personalisierte E-Mails vorbereiten",
+                evidence: "Was der Workflow übernimmt",
+                features: ["Vorlagen mit Angaben aus Empfängerlisten befüllen", "Bereits protokollierte Empfänger beim Versand überspringen"],
+            },
+            openxlr: {purpose: "Audiogeräte unter Linux steuern"},
+        },
     },
     en: {
-        eyebrow: "My projects",
-        title: "Software I build.",
-        intro: "I write tools for recurring tasks, including literature reviews and email. With OpenXLR, I work alongside other developers on software for audio interfaces on Linux.",
-        jump: "Explore featured work",
+        eyebrow: "Project portfolio",
+        title: "Software projects and open source",
+        intro: "I build tools for recurring tasks and contribute to open source software. The examples range from systematic literature reviews to microphone setup on Linux.",
+        jump: "Explore selected projects",
+        contact: "Discuss a project",
         github: "My GitHub profile",
-        featured: "Three featured projects",
+        overview: "Projects at a glance",
+        featured: "Selected projects",
+        own: "Independent project",
+        community: "Open source contribution",
+        technologies: "Technologies",
         source: "Source code on GitHub",
         contribution: "My contribution to the mixer layout",
         publications: "My research",
         publicationsIntro: "Three papers on generative AI at work, its governance and its use in personalised phishing emails.",
         download: "Download PDF",
         skills: "More about my skills",
+        work: {
+            prisma: {
+                purpose: "Systematic literature reviews",
+                evidence: "What the pipeline produces",
+                features: ["Merged results from multiple scholarly databases", "CSV exports and a report on included and excluded papers"],
+            },
+            mail: {
+                purpose: "Preparing personalised emails",
+                evidence: "What the workflow handles",
+                features: ["Fills templates with information from recipient lists", "Skips addresses that have already been logged as sent"],
+            },
+            openxlr: {purpose: "Controlling audio interfaces on Linux"},
+        },
     },
 };
 
@@ -51,41 +87,61 @@ export default function SoftwarePage() {
                     <p className="projects-lead">{copy.intro}</p>
                     <div className="projects-intro-actions">
                         <Link className="projects-solid-link" to="#featured-projects">{copy.jump}<ArrowDown aria-hidden="true" size={17}/></Link>
-                        <a className="projects-text-link" href={PROFILE.github}>{copy.github}<ArrowUpRight aria-hidden="true" size={17}/></a>
+                        <Link className="projects-text-link" to="/contact">{copy.contact}<ArrowRight aria-hidden="true" size={17}/></Link>
                     </div>
                 </div>
-                <div className="projects-margin-art" aria-hidden="true">
-                    <span></span><span></span><span></span><span></span><span></span>
-                </div>
+                <nav className="projects-overview" aria-label={copy.overview}>
+                    <p className="projects-eyebrow">{copy.overview}</p>
+                    <ul>
+                        {selectedWork.map((project) => (
+                            <li key={project.id}>
+                                <Link to={`#${project.id}`} data-project-tone={project.tone}>
+                                    <span><strong>{project.title}</strong><small>{copy.work[project.id].purpose}</small></span>
+                                    <ArrowDown aria-hidden="true" size={16}/>
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
             </div>
 
             <section className="projects-wrap projects-block" aria-labelledby="featured-projects">
-                <h2 id="featured-projects">{copy.featured}</h2>
-                <div className="projects-feature-grid">
-                    {selectedWork.map((project) => (
-                        <article key={project.id} id={project.id} className="projects-feature" data-project-tone={project.tone}>
-                            <figure>
-                                <img src={project.image} alt={project.imageAlt[language]} width="800" height="500" loading="lazy" decoding="async"/>
-                                <figcaption>
-                                    {project.imageSource
-                                        ? <a href={project.imageSource}>{project.imageCaption[language]} <ArrowUpRight aria-hidden="true" size={13}/></a>
-                                        : project.imageCaption[language]}
-                                </figcaption>
-                            </figure>
-                            <div className="projects-feature-copy">
-                                <p className="projects-eyebrow">{project.type[language]}</p>
-                                <h3>{project.title}</h3>
-                                <p>{project.description[language]}</p>
-                                <ul className="projects-stack" aria-label={language === "de" ? "Technologien" : "Technologies"}>
-                                    {project.stack.map((tech) => <li key={tech}>{tech}</li>)}
-                                </ul>
-                                <div className="projects-feature-links">
-                                    <a className="projects-text-link" href={project.href} aria-label={`${project.title} · ${copy.source}`}>{copy.source}<ArrowUpRight aria-hidden="true" size={15}/></a>
-                                    {project.contribution && <a className="projects-text-link" href={project.contribution}>{copy.contribution}<ArrowUpRight aria-hidden="true" size={15}/></a>}
+                <div className="projects-section-heading">
+                    <h2 id="featured-projects">{copy.featured}</h2>
+                    <a className="projects-text-link" href={PROFILE.github}>{copy.github}<ArrowUpRight aria-hidden="true" size={16}/></a>
+                </div>
+                <div className="projects-feature-list">
+                    {selectedWork.map((project) => {
+                        const work = copy.work[project.id];
+
+                        return (
+                            <article key={project.id} id={project.id} className="projects-feature" data-project-tone={project.tone}>
+                                <div className="projects-feature-copy">
+                                    <p className="projects-role">{project.contribution ? copy.community : copy.own}</p>
+                                    <h3>{project.title}</h3>
+                                    <p>{project.description[language]}</p>
+                                    <ul className="projects-stack" aria-label={copy.technologies}>
+                                        {project.stack.map((tech) => <li key={tech}>{tech}</li>)}
+                                    </ul>
+                                    <div className="projects-feature-links">
+                                        <a className="projects-text-link" href={project.href} aria-label={`${project.title} · ${copy.source}`}>{copy.source}<ArrowUpRight aria-hidden="true" size={15}/></a>
+                                        {project.contribution && <a className="projects-text-link" href={project.contribution}>{copy.contribution}<ArrowUpRight aria-hidden="true" size={15}/></a>}
+                                    </div>
                                 </div>
-                            </div>
-                        </article>
-                    ))}
+                                {project.imageSource ? (
+                                    <figure className="projects-evidence">
+                                        <img src={project.image} alt={project.imageAlt[language]} width="800" height="500" loading="lazy" decoding="async"/>
+                                        <figcaption><a href={project.imageSource}>{project.imageCaption[language]}<ArrowUpRight aria-hidden="true" size={13}/></a></figcaption>
+                                    </figure>
+                                ) : (
+                                    <div className="projects-evidence projects-deliverables">
+                                        <h4>{work.evidence}</h4>
+                                        <ul>{work.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
+                                    </div>
+                                )}
+                            </article>
+                        );
+                    })}
                 </div>
             </section>
 

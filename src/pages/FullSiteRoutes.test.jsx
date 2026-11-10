@@ -73,14 +73,14 @@ describe("full static site route coverage", () => {
         const footer = within(screen.getByRole("contentinfo"));
 
         expect(within(headerNav).getAllByRole("link").map((link) => link.getAttribute("href")).sort()).toEqual([
-            "/about", "/blog", "/contact", "/projects",
+            "/about", "/blog", "/contact", "/credentials", "/projects",
         ]);
         expect(footer.getByRole("link", {name: /^Skills$/i})).toHaveAttribute("href", "/skills");
         expect(footer.getByRole("link", {name: /^Credentials$/i})).toHaveAttribute("href", "/credentials");
     });
 
     it.each([
-        ["/projects/", /Software I build/i],
+        ["/projects/", /Software projects and open source/i],
         ["/credentials/", /Degrees, certificates|Abschlüsse, Zertifikate/i],
         ["/my-way/", /professional path through technology|beruflicher Weg durch IT/i],
         ["/blog/", /Writing on AI, digital education|Texte zu KI/i],

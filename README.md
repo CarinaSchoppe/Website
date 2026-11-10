@@ -54,7 +54,7 @@ The project is GitHub Pages compatible:
 
 ## Design and media
 
-- The personal portfolio uses a warm paper palette, a six-colour accent strip, and Fraunces and Manrope. Both fonts are served locally, with OFL notices in `public/fonts/`.
-- The home page and biography use the original portraits in `public/images/`, with responsive WebP variants. Project illustrations are based on the documented PRISMA and Automatic Mail Sender workflows. The OpenXLR screenshot is credited on the project page.
+- The personal portfolio uses a neutral palette with colour accents and the locally served Manrope typeface. Its OFL notice is in `public/fonts/`.
+- The home page and biography use the original portraits in `public/images/`, with responsive WebP variants. The homepage illustrations follow the documented PRISMA and Automatic Mail Sender workflows. The OpenXLR screenshot is credited on the project page.
 - The default is the light palette. Visitors can save a different appearance and switch between German and English.
 - GitHub Pages deploys automatically when changes reach `main`. Review branches and draft pull requests leave the live site unchanged.

@@ -11,7 +11,7 @@ const routeMeta = {
     en: {
         "/": {
             title: "Carina Sophie Schoppe | Portfolio",
-            description: "Personal portfolio of Carina Sophie Schoppe with software projects, research interests, credentials, writing and a clear reference to Luminovia Training & Consulting.",
+            description: "Carina Sophie Schoppe is an IT lecturer and business information systems specialist. Explore her training, software projects, AI research and qualifications.",
         },
         "/projects": {
             title: "Projects | Carina Sophie Schoppe",
@@ -61,7 +61,7 @@ const routeMeta = {
     de: {
         "/": {
             title: "Carina Sophie Schoppe | Portfolio",
-            description: "Persönliches Portfolio von Carina Sophie Schoppe mit Softwareprojekten, Forschungsinteressen, Nachweisen, Texten und klarem Verweis auf Luminovia Training & Consulting.",
+            description: "Carina Sophie Schoppe ist IT-Dozentin und Wirtschaftsinformatikerin. Schwerpunkte, Softwareprojekte und Qualifikationen in IT-Training, Automatisierung und KI-Forschung.",
         },
         "/projects": {
             title: "Projekte | Carina Sophie Schoppe",

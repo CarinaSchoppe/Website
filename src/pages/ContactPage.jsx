@@ -25,8 +25,8 @@ export default function ContactPage() {
                     <p className="site-kicker">{t.contact.badge}</p>
                     <h1>{t.contact.title}</h1>
                     <p>{de
-                        ? "Planst du einen Gastvortrag, arbeitest du an einem Forschungsprojekt oder möchtest du über eine Zusammenarbeit sprechen? Schreib mir, worum es geht. Deutsch und Englisch sind beide willkommen."
-                        : "Planning a guest lecture, working on a research project, or looking to collaborate? Tell me what you have in mind. German and English are both welcome."}</p>
+                        ? "Für Lehrprojekte, Gastvorträge, Forschungsfragen und technische Zusammenarbeit erreichen Sie mich per E-Mail oder telefonisch. Gespräche sind auf Deutsch und Englisch möglich."
+                        : "Contact me by email or phone about teaching projects, guest lectures, research or technical collaboration. I work in English and German."}</p>
                     <div className="contact-actions">
                         <a href={email} className="site-button site-button-primary"><Mail size={17} aria-hidden="true"/>{t.contact.emailButton}</a>
                         <Link to="#appointment" className="site-text-link">{t.contact.calendarFallback}<ArrowDown size={16} aria-hidden="true"/></Link>
@@ -53,12 +53,12 @@ export default function ContactPage() {
                 </section>
             </div>
 
-            <aside className="contact-business tone-butter" aria-labelledby="contact-business-title">
+            <aside className="contact-business" aria-labelledby="contact-business-title">
                 <img src={IMAGES.luminoviaLogoMark} alt="" width="58" height="58" loading="lazy"/>
                 <div>
                     <p className="site-kicker">{de ? "Für Unternehmen" : "For organisations"}</p>
                     <h2 id="contact-business-title">Luminovia Training & Consulting</h2>
-                    <p>{de ? "Hier findest du meine Firmentrainings, Workshops und Beratung." : "This is where I offer company training, workshops and consulting."}</p>
+                    <p>{de ? "Firmentrainings, Workshops und Beratung laufen über mein Unternehmen Luminovia." : "This is where I offer company training, workshops and consulting."}</p>
                 </div>
                 <a href={PROFILE.luminovia} className="site-text-link">{de ? "Zu Luminovia" : "Open Luminovia"}<ArrowUpRight size={17} aria-hidden="true"/></a>
             </aside>
@@ -68,7 +68,7 @@ export default function ContactPage() {
                     <div>
                         <p className="site-kicker">{de ? "Kalender" : "Calendar"}</p>
                         <h2 id="appointment-title">{t.contact.appointmentTitle}</h2>
-                        <p>{de ? "Such dir im Kalender einen passenden Termin aus. Wenn du magst, schick mir vorab ein paar Zeilen per E-Mail." : t.contact.appointmentCopy}</p>
+                        <p>{de ? "Wählen Sie im Kalender einen passenden Termin aus. Wenn Sie vorab kurz schreiben, worum es geht, kann ich mich auf das Gespräch vorbereiten." : t.contact.appointmentCopy}</p>
                     </div>
                     <a href={PROFILE.appointmentSchedule} target="_blank" rel="noreferrer" className="site-text-link">
                         {de ? "Kalender separat öffnen" : "Open calendar separately"}<ArrowUpRight size={17} aria-hidden="true"/>

@@ -15,15 +15,16 @@ describe("App routing and language", () => {
         const user = userEvent.setup();
         render(<App/>);
 
-        expect(await screen.findByRole("heading", {name: /Ich mache IT greifbar/i})).toBeInTheDocument();
-        expect(screen.getByRole("heading", {name: /So arbeite ich/i})).toBeInTheDocument();
+        expect(await screen.findByRole("heading", {name: /^Carina Sophie Schoppe$/i})).toBeInTheDocument();
+        expect(screen.getByRole("heading", {name: /Meine Schwerpunkte/i})).toBeInTheDocument();
+        expect(screen.getByRole("link", {name: "Firmentraining & Beratung"})).toHaveAttribute("href", "https://luminovia.org");
         expect(document.documentElement.lang).toBe("de");
         expect(window.localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("de");
 
         await user.click(screen.getByRole("button", {name: /Sprache auf Englisch wechseln/i}));
 
-        expect(screen.getByRole("heading", {name: /I make IT tangible/i})).toBeInTheDocument();
-        expect(screen.getByRole("heading", {name: /How I work/i})).toBeInTheDocument();
+        expect(screen.getByRole("heading", {name: /^Carina Sophie Schoppe$/i})).toBeInTheDocument();
+        expect(screen.getByRole("heading", {name: /What I do/i})).toBeInTheDocument();
         expect(document.documentElement.lang).toBe("en");
         expect(window.localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("en");
     });
@@ -48,7 +49,7 @@ describe("App routing and language", () => {
 
         render(<App/>);
 
-        expect(await screen.findByRole("heading", {level: 1, name: /Software I build/i})).toBeInTheDocument();
+        expect(await screen.findByRole("heading", {level: 1, name: /Software projects and open source/i})).toBeInTheDocument();
         expect(document.documentElement.lang).toBe("en");
     });
 
@@ -56,11 +57,11 @@ describe("App routing and language", () => {
         ["/blog", /Writing on AI, digital education/i],
         ["/contact", /Contact Carina Sophie Schoppe/i],
         ["/skills", /Professional strengths across AI/i],
-        ["/about", /From Paderborn to Brisbane/i],
+        ["/about", /^Carina Sophie Schoppe$/i],
         ["/credentials", /Degrees, certificates/i],
         ["/my-way", /professional path through technology/i],
-        ["/portfolio", /Software I build/i],
-        ["/projects", /Software I build/i],
+        ["/portfolio", /Software projects and open source/i],
+        ["/projects", /Software projects and open source/i],
         ["/pricing", /Oops, there is nothing here/i],
         ["/unknown-page", /Oops, there is nothing here/i],
     ])("renders %s with English page copy", async (route, heading) => {

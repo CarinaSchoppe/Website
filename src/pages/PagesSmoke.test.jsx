@@ -5,14 +5,14 @@ import App from "../App.jsx";
 import {LANGUAGE_STORAGE_KEY} from "../i18n.jsx";
 
 const routes = [
-    ["/", /I make IT tangible/i],
-    ["/projects", /Software I build/i],
-    ["/software", /Software I build/i],
-    ["/portfolio", /Software I build/i],
+    ["/", /^Carina Sophie Schoppe$/i],
+    ["/projects", /Software projects and open source/i],
+    ["/software", /Software projects and open source/i],
+    ["/portfolio", /Software projects and open source/i],
     ["/skills", /Professional strengths across AI/i],
     ["/credentials", /Degrees, certificates/i],
     ["/my-way", /professional path through technology/i],
-    ["/about", /From Paderborn to Brisbane/i],
+    ["/about", /^Carina Sophie Schoppe$/i],
     ["/blog", /Writing on AI, digital education/i],
     ["/contact", /Contact Carina Sophie Schoppe/i],
     ["/training", /Oops, there is nothing here/i],
@@ -62,6 +62,6 @@ describe("static page routes", () => {
         await user.click(menu);
         await user.click(within(dialog).getByRole("link", {name: "Projects"}));
         expect(dialog).not.toHaveAttribute("open");
-        expect(await screen.findByRole("heading", {level: 1, name: /Software I build/i})).toBeInTheDocument();
+        expect(await screen.findByRole("heading", {level: 1, name: /Software projects and open source/i})).toBeInTheDocument();
     });
 });

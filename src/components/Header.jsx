@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import {navItems, PROFILE} from "../data/profile.js";
 import {useLanguage} from "../i18n.jsx";
 
-const primaryItems = ["/about", "/projects", "/blog", "/contact"]
+const primaryItems = ["/about", "/projects", "/credentials", "/blog", "/contact"]
     .map((path) => navItems.find((item) => item.to === path));
 
 function LanguageToggle({language, toggleLanguage}) {
@@ -44,7 +44,7 @@ export default function Header({theme, onToggleTheme}) {
                         <span className="site-brand-name">Carina Sophie Schoppe</span>
                     </NavLink>
                     <nav className="site-desktop-nav" aria-label={t.navigation}>
-                        {primaryItems.map((item) => <NavLink key={item.to} to={item.to}>{t.nav[item.key]}</NavLink>)}
+                        {primaryItems.map((item) => <NavLink key={item.to} to={item.to} className={item.key === "book" ? "site-nav-contact" : undefined}>{t.nav[item.key]}</NavLink>)}
                     </nav>
                     <div className="site-header-controls">
                         <ThemeToggle theme={theme} onToggleTheme={onToggleTheme} language={language}/>

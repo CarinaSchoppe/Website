@@ -1,4 +1,4 @@
-import {ArrowDownRight, ArrowRight, ArrowUpRight, MapPin} from "lucide-react";
+import {ArrowRight, ArrowUpRight, BookOpen, Code2, FlaskConical, Globe2, MapPin} from "lucide-react";
 import {Link} from "react-router-dom";
 import Photo from "../components/Photo.jsx";
 import {blogIndexForLanguage} from "../data/blogIndex.js";
@@ -7,93 +7,74 @@ import {selectedWork} from "../data/selectedWork.js";
 import {useLanguage} from "../i18n.jsx";
 import "./home.css";
 
+const capabilityIcons = [BookOpen, Code2, FlaskConical];
+const capabilityTones = ["butter", "mint", "sky"];
+
 const copy = {
     de: {
-        label: "IT-Dozentin · Wirtschaftsinformatikerin",
-        title: "Ich mache IT",
-        emphasis: "greifbar.",
-        intro: "Ich bin Carina Sophie Schoppe. Ich unterrichte Erwachsene in IT, schreibe Software für konkrete Aufgaben und erforsche, wie KI unseren Arbeitsalltag verändert.",
+        role: "IT-Dozentin · Wirtschaftsinformatikerin",
+        intro: "Ich unterrichte Erwachsene und Teams in IT, entwickle Software für wiederkehrende Aufgaben und forsche zum Einsatz von KI im Arbeitsalltag.",
         location: "Brisbane, Australien",
-        portraitAlt: "Carina Sophie Schoppe sitzt lächelnd mit Tablet und Stift auf einem Hocker",
-        about: "Mehr über mich",
-        projects: "Projekte entdecken",
-        approaches: [
-            {label: "Lehren", subtitle: "IT in der Erwachsenenbildung", tone: "butter"},
-            {label: "Entwickeln", subtitle: "Software & Open Source", tone: "mint"},
-            {label: "Forschen", subtitle: "KI, Sicherheit & Verantwortung", tone: "sky"},
-        ],
-        workLabel: "Was mich auszeichnet",
-        workTitle: "So arbeite ich.",
-        approachNotes: [
-            ["Warum antwortet der Server nicht?", "So kann eine Aufgabe in meinem Unterricht anfangen. Die Gruppe prüft das Netzwerk Schritt für Schritt und erklärt anschließend, woran sie den Fehler erkannt hat. Ich unterrichte auf Deutsch und Englisch."],
-            ["Erst testen, dann senden.", "Mein Mail-Werkzeug hat einen Testlauf. Damit kann ich Empfängerliste und Vorlagen prüfen, bevor echte Nachrichten rausgehen. Solche kleinen Funktionen sparen mir Arbeit."],
-            ["Woran erkenne ich eine gute Fälschung?", "In einer wissenschaftlichen Arbeit habe ich untersucht, wie überzeugend ChatGPT personalisierte Phishing-Mails schreiben kann. Solche Fragen interessieren mich auch bei KI im Arbeitsalltag."],
-        ],
-        milestonesLabel: "Aus meinem Werdegang",
+        languages: "Deutsch & Englisch",
+        portraitAlt: "Porträt von Carina Sophie Schoppe",
+        contact: "Kontakt aufnehmen",
+        business: "Firmentraining & Beratung",
+        proof: "Erfahrung und Qualifikationen",
         milestones: [
-            ["10.000+", "Unterrichtsstunden"],
-            ["M. Sc.", "Wirtschaftsinformatik"],
-            ["TAE40122", "Training and Assessment · Australien"],
+            ["10.000+", "Dokumentierte Unterrichtsstunden"],
+            ["4,7 von 5", "Durchschnittliche Teilnehmerbewertung"],
+            ["M.Sc. und MBA", "Wirtschaftsinformatik und Management"],
         ],
-        credentials: "Qualifikationen ansehen",
-        selectedLabel: "Aus dem Projektarchiv",
-        selectedTitle: "Software, an der ich arbeite",
-        selectedIntro: "Literatur für eine Studie sichten, E-Mails vorbereiten oder ein Audiointerface unter Linux steuern. An diesen drei Aufgaben habe ich gearbeitet.",
+        credentials: "Alle Qualifikationen",
+        focus: "Meine Schwerpunkte",
+        focusIntro: "Ich arbeite mit Bildungsanbietern und Unternehmen. Das sind die Themen, die ich in Unterricht, Projekte und Forschung einbringe.",
+        capabilities: [
+            ["IT-Training", "Ich konzipiere und gebe Kurse für Erwachsene. Teilnehmende arbeiten mit Übungen zu Python, SQL, Linux, Netzwerken und IT-Sicherheit.", "Trainings bei Luminovia", PROFILE.luminovia],
+            ["Software & Automatisierung", "Ich entwickle Werkzeuge für wiederkehrende Abläufe, zum Beispiel für Literaturrecherche und E-Mail-Versand. Für OpenXLR arbeite ich mit anderen Entwicklern an Linux-Software.", "Softwareprojekte ansehen", "/projects"],
+            ["KI & Forschung", "Ich untersuche, wie Beschäftigte mit generativer KI arbeiten und wie Unternehmen den Einsatz steuern können. Dazu gehört auch die Frage, wie KI Sicherheitsrisiken verändert.", "Forschungsarbeiten ansehen", "/skills#publications"],
+        ],
+        selected: "Ausgewählte Softwareprojekte",
         allProjects: "Alle Projekte",
-        writingLabel: "Zum Weiterlesen",
-        writingTitle: "Worüber ich schreibe.",
+        writing: "Fachtexte",
         allWriting: "Alle Texte",
-        contactLabel: "Kontakt",
-        contactTitle: "Was beschäftigt dich gerade?",
-        contactCopy: "Ob Gastvortrag, Forschungsfrage oder gemeinsames Projekt: Schreib mir gern, woran du arbeitest.",
-        message: "Kontakt aufnehmen",
-        businessLabel: "Für Unternehmen",
-        businessTitle: "Luminovia Training & Consulting",
-        businessCopy: "Bei Luminovia findest du meine Firmentrainings, Workshops und Beratung.",
+        profile: "Mehr zu meinem Werdegang",
+        contactTitle: "Zusammenarbeit anfragen",
+        contactCopy: "Für Lehrprojekte, Gastvorträge, Forschungsfragen und technische Zusammenarbeit erreichen Sie mich direkt.",
+        businessTitle: "Training und Beratung für Unternehmen",
+        businessCopy: "Workshops, Firmentrainings und Beratung biete ich über mein Unternehmen Luminovia Training & Consulting an.",
         businessLink: "Zu Luminovia",
     },
     en: {
-        label: "IT lecturer · Business information systems",
-        title: "I make IT",
-        emphasis: "tangible.",
-        intro: "I’m Carina Sophie Schoppe. I teach IT to adults, write software for everyday tasks and research how AI changes the way we work.",
+        role: "IT lecturer · Business information systems",
+        intro: "I teach IT to adults and teams, build software for recurring tasks and research how AI is used at work.",
         location: "Brisbane, Australia",
-        portraitAlt: "Carina Sophie Schoppe smiling on a stool with a tablet and stylus",
-        about: "More about me",
-        projects: "Explore my projects",
-        approaches: [
-            {label: "Teaching", subtitle: "IT for adult learners", tone: "butter"},
-            {label: "Building", subtitle: "Software & open source", tone: "mint"},
-            {label: "Researching", subtitle: "AI, security & responsibility", tone: "sky"},
-        ],
-        workLabel: "What defines my work",
-        workTitle: "How I work.",
-        approachNotes: [
-            ["Why isn’t the server responding?", "A class exercise might start with this question. We check the network step by step, then explain what gave the problem away. I teach in German and English."],
-            ["Test before you send.", "My mail tool has a dry-run mode. I can check the recipient list and templates before any real messages go out. Small features like that save me time."],
-            ["What gives a convincing fake away?", "In one research paper I examined how convincingly ChatGPT could write personalised phishing emails. It’s the kind of question I keep coming back to when AI shows up at work."],
-        ],
-        milestonesLabel: "A few milestones",
+        languages: "English & German",
+        portraitAlt: "Portrait of Carina Sophie Schoppe",
+        contact: "Get in touch",
+        business: "Company training & consulting",
+        proof: "Experience and qualifications",
         milestones: [
-            ["10,000+", "Teaching hours"],
-            ["MSc", "Business Information Systems"],
-            ["TAE40122", "Training and Assessment · Australia"],
+            ["10,000+", "Documented teaching hours"],
+            ["4.7 out of 5", "Average learner rating"],
+            ["MSc and MBA", "Business information systems and management"],
         ],
-        credentials: "View my credentials",
-        selectedLabel: "From the project archive",
-        selectedTitle: "Software I work on",
-        selectedIntro: "Screening studies, preparing emails and controlling an audio interface on Linux. Here’s what I built or contributed along the way.",
+        credentials: "All qualifications",
+        focus: "What I do",
+        focusIntro: "I work with education providers and organisations. These are the areas I bring to training, projects and research.",
+        capabilities: [
+            ["IT training", "I design and teach courses for adults, with practical exercises in Python, SQL, Linux, networking and IT security.", "Training at Luminovia", PROFILE.luminovia],
+            ["Software & automation", "I build tools for recurring tasks such as literature reviews and email. For OpenXLR, I work alongside other developers on Linux software.", "View software projects", "/projects"],
+            ["AI & research", "I study how people work with generative AI, how organisations govern its use and how it changes security risks.", "View research", "/skills#publications"],
+        ],
+        selected: "Selected software projects",
         allProjects: "All projects",
-        writingLabel: "Further reading",
-        writingTitle: "What I write about.",
-        allWriting: "All writing",
-        contactLabel: "Contact",
-        contactTitle: "What are you working on?",
-        contactCopy: "If you’re planning a guest lecture, exploring a research question, or looking to collaborate, I’d like to hear from you.",
-        message: "Get in touch",
-        businessLabel: "For organisations",
-        businessTitle: "Luminovia Training & Consulting",
-        businessCopy: "Luminovia is where I offer company training, workshops and consulting.",
+        writing: "Articles",
+        allWriting: "All articles",
+        profile: "More about my background",
+        contactTitle: "Work with me",
+        contactCopy: "Contact me directly about teaching projects, guest lectures, research or technical collaboration.",
+        businessTitle: "Training and consulting for organisations",
+        businessCopy: "I offer workshops, company training and consulting through my business, Luminovia Training & Consulting.",
         businessLink: "Visit Luminovia",
     },
 };
@@ -107,82 +88,79 @@ export default function HomePage() {
         <main className="home site-width">
             <section className="home-hero" aria-labelledby="home-title">
                 <div className="home-hero-copy">
-                    <p className="site-kicker home-hero-kicker">{c.label}</p>
-                    <h1 id="home-title">{c.title} <em>{c.emphasis}</em></h1>
+                    <p className="home-role">{c.role}</p>
+                    <h1 id="home-title"><span>Carina Sophie</span> Schoppe</h1>
                     <p className="home-intro">{c.intro}</p>
                     <div className="home-hero-actions">
-                        <Link className="site-button site-button-primary" to="/about">{c.about}<ArrowUpRight size={18} aria-hidden="true"/></Link>
-                        <Link className="site-text-link" to="/projects">{c.projects}<ArrowRight size={17} aria-hidden="true"/></Link>
+                        <Link className="site-button site-button-primary" to="/contact">{c.contact}<ArrowRight size={17} aria-hidden="true"/></Link>
+                        <a className="site-button home-business-button" href={PROFILE.luminovia}>{c.business}<ArrowUpRight size={17} aria-hidden="true"/></a>
                     </div>
                 </div>
                 <figure className="home-portrait">
-                    <div className="home-portrait-mat">
-                        <Photo
-                            src={IMAGES.tablet}
-                            alt={c.portraitAlt}
-                            className="home-portrait-photo"
-                            width={960}
-                            height={1440}
-                            fetchPriority="high"
-                            sizes="(min-width: 1400px) 440px, (min-width: 721px) 32vw, (min-width: 610px) 485px, calc(91vw - 3.5rem)"
-                        />
-                        <span className="home-portrait-tab" aria-hidden="true"/>
-                    </div>
-                    <figcaption><MapPin size={15} aria-hidden="true"/>{c.location}</figcaption>
+                    <Photo
+                        src={IMAGES.hero}
+                        alt={c.portraitAlt}
+                        className="home-portrait-photo"
+                        width={960}
+                        height={1440}
+                        fetchPriority="high"
+                        sizes="(min-width: 1400px) 500px, (min-width: 761px) 40vw, (min-width: 600px) 520px, 91vw"
+                    />
+                    <figcaption>
+                        <span><MapPin size={15} aria-hidden="true"/>{c.location}</span>
+                        <span><Globe2 size={15} aria-hidden="true"/>{c.languages}</span>
+                    </figcaption>
                 </figure>
             </section>
 
-            <nav className="home-index" aria-label={c.workLabel}>
-                {c.approaches.map(({label, subtitle, tone}, index) => (
-                    <a key={tone} className={`home-index-entry tone-${tone}`} href={`#work-${tone}`}>
-                        <span className="home-index-number">0{index + 1}</span>
-                        <span><strong>{label}</strong><small>{subtitle}</small></span>
-                        <ArrowDownRight size={22} aria-hidden="true"/>
-                    </a>
-                ))}
-            </nav>
-
-            <section className="home-method home-section" aria-labelledby="work-title">
-                <div className="home-method-heading">
-                    <p className="site-kicker">{c.workLabel}</p>
-                    <h2 id="work-title">{c.workTitle}</h2>
-                </div>
-                <div className="home-method-notes">
-                    {c.approaches.map(({label, tone}, index) => (
-                        <article key={tone} className={`home-method-note tone-${tone}`} id={`work-${tone}`}>
-                            <p className="site-kicker home-note-label">{label}</p>
-                            <div><h3>{c.approachNotes[index][0]}</h3><p>{c.approachNotes[index][1]}</p></div>
-                        </article>
-                    ))}
-                </div>
-            </section>
-
-            <section className="home-milestones tone-lavender" aria-label={c.milestonesLabel}>
+            <section className="home-proof" aria-label={c.proof}>
                 <dl>
                     {c.milestones.map(([value, label]) => <div key={value}><dt>{value}</dt><dd>{label}</dd></div>)}
                 </dl>
-                <Link className="site-text-link" to="/credentials">{c.credentials}<ArrowRight size={17} aria-hidden="true"/></Link>
+                <Link className="site-text-link" to="/credentials">{c.credentials}<ArrowRight size={16} aria-hidden="true"/></Link>
+            </section>
+
+            <section className="home-section" aria-labelledby="focus-title">
+                <div className="home-section-heading">
+                    <div>
+                        <h2 id="focus-title">{c.focus}</h2>
+                        <p>{c.focusIntro}</p>
+                    </div>
+                    <Link className="site-text-link" to="/about">{c.profile}<ArrowRight size={16} aria-hidden="true"/></Link>
+                </div>
+                <div className="home-capabilities">
+                    {c.capabilities.map(([title, description, action, href], index) => {
+                        const Icon = capabilityIcons[index];
+                        const content = <>{action}<ArrowUpRight size={15} aria-hidden="true"/></>;
+                        return (
+                            <article key={title} className={`home-capability tone-${capabilityTones[index]}`}>
+                                <span className="home-capability-icon"><Icon size={20} aria-hidden="true"/></span>
+                                <h3>{title}</h3>
+                                <p>{description}</p>
+                                {href === PROFILE.luminovia
+                                    ? <a className="site-text-link" href={href}>{content}</a>
+                                    : <Link className="site-text-link" to={href}>{content}</Link>}
+                            </article>
+                        );
+                    })}
+                </div>
             </section>
 
             <section className="home-section" aria-labelledby="selected-title">
                 <div className="home-section-heading">
-                    <div>
-                        <p className="site-kicker">{c.selectedLabel}</p>
-                        <h2 id="selected-title">{c.selectedTitle}</h2>
-                        <p>{c.selectedIntro}</p>
-                    </div>
-                    <Link className="site-text-link" to="/projects">{c.allProjects}<ArrowRight size={17} aria-hidden="true"/></Link>
+                    <h2 id="selected-title">{c.selected}</h2>
+                    <Link className="site-text-link" to="/projects">{c.allProjects}<ArrowRight size={16} aria-hidden="true"/></Link>
                 </div>
                 <div className="home-projects">
                     {selectedWork.map((project) => (
-                        <article key={project.id} className={`home-project tone-${project.tone}`}>
+                        <article key={project.id} className="home-project">
                             <Link to={`/projects#${project.id}`} className="home-project-link">
                                 <div className="home-project-media">
                                     <img src={project.image} alt={project.imageAlt[language]} width="800" height="500" loading="lazy" decoding="async"/>
                                 </div>
                                 <div className="home-project-copy">
                                     <p className="site-kicker">{project.type[language]}</p>
-                                    <h3>{project.title}<ArrowUpRight size={22} aria-hidden="true"/></h3>
+                                    <h3>{project.title}<ArrowRight size={18} aria-hidden="true"/></h3>
                                     <p>{project.description[language]}</p>
                                 </div>
                             </Link>
@@ -191,10 +169,10 @@ export default function HomePage() {
                 </div>
             </section>
 
-            <section className="home-writing home-section" aria-labelledby="writing-title">
+            <section className="home-section" aria-labelledby="writing-title">
                 <div className="home-section-heading">
-                    <div><p className="site-kicker">{c.writingLabel}</p><h2 id="writing-title">{c.writingTitle}</h2></div>
-                    <Link className="site-text-link" to="/blog">{c.allWriting}<ArrowRight size={17} aria-hidden="true"/></Link>
+                    <h2 id="writing-title">{c.writing}</h2>
+                    <Link className="site-text-link" to="/blog">{c.allWriting}<ArrowRight size={16} aria-hidden="true"/></Link>
                 </div>
                 <div className="home-writing-list">
                     {posts.map((post) => (
@@ -202,7 +180,7 @@ export default function HomePage() {
                             <Link to={`/blog/${post.slug}`}>
                                 <span className="site-kicker">{post.category}</span>
                                 <h3>{post.title}</h3>
-                                <ArrowUpRight size={23} aria-hidden="true"/>
+                                <ArrowRight size={19} aria-hidden="true"/>
                             </Link>
                         </article>
                     ))}
@@ -211,17 +189,14 @@ export default function HomePage() {
 
             <section className="home-contact" aria-labelledby="contact-title">
                 <div className="home-contact-personal">
-                    <p className="site-kicker">{c.contactLabel}</p>
                     <h2 id="contact-title">{c.contactTitle}</h2>
                     <p>{c.contactCopy}</p>
-                    <Link className="site-button" to="/contact">{c.message}<ArrowRight size={18} aria-hidden="true"/></Link>
+                    <Link className="site-button site-button-primary" to="/contact">{c.contact}<ArrowRight size={17} aria-hidden="true"/></Link>
                 </div>
-                <div className="home-contact-business tone-butter">
-                    <img src={IMAGES.luminoviaLogoMark} width="58" height="58" alt="" loading="lazy"/>
-                    <p className="site-kicker">{c.businessLabel}</p>
+                <div className="home-contact-business">
                     <h3>{c.businessTitle}</h3>
                     <p>{c.businessCopy}</p>
-                    <a className="site-text-link" href={PROFILE.luminovia}>{c.businessLink}<ArrowUpRight size={18} aria-hidden="true"/></a>
+                    <a className="site-text-link" href={PROFILE.luminovia}>{c.businessLink}<ArrowUpRight size={17} aria-hidden="true"/></a>
                 </div>
             </section>
         </main>
