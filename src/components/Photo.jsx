@@ -17,7 +17,7 @@ export default function Photo({
                                   height = 960,
                               }) {
     const {t} = useLanguage();
-    const [failed, setFailed] = useState(false);
+    const [failure, setFailure] = useState(null);
     const fallbackText = fallbackCopy || t.home.photoFallback;
     const responsiveWidths = src.includes("carina-headshot")
         ? headshotWidths
@@ -27,16 +27,19 @@ export default function Photo({
     const webpSrcSet = src.endsWith(".jpg")
         ? responsiveWidths.map((sourceWidth) => `${src.replace(/\.jpg$/, `-${sourceWidth}.webp`)} ${sourceWidth}w`).join(", ")
         : null;
+    const currentFailure = failure?.src === src ? failure : null;
+    const useWebp = Boolean(webpSrcSet && !currentFailure);
     const priority = fetchPriority || "auto";
     const imageLoading = loading || (priority === "high" ? "eager" : "lazy");
     const decoding = "async";
 
     return (
         <div className={cn("ui-photo", className)}>
-            {!failed ? (
+            {!currentFailure?.showPlaceholder ? (
                 <picture>
-                    {webpSrcSet && <source srcSet={webpSrcSet} sizes={sizes} type="image/webp"/>}
+                    {useWebp && <source srcSet={webpSrcSet} sizes={sizes} type="image/webp"/>}
                     <img
+                        key={useWebp ? "webp" : "original"}
                         src={src}
                         alt={alt}
                         width={width}
@@ -46,7 +49,10 @@ export default function Photo({
                         fetchPriority={priority}
                         decoding={decoding}
                         className={cn("h-full w-full object-cover", imgClass)}
-                        onError={() => setFailed(true)}
+                        onError={({currentTarget}) => setFailure({
+                            src,
+                            showPlaceholder: !useWebp || currentTarget.currentSrc === currentTarget.src,
+                        })}
                     />
                 </picture>
             ) : (

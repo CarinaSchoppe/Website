@@ -9,7 +9,7 @@ export default function SectionJumpNav({items, label, fixed = false, className =
     return (
         <nav className={cn("section-jump-nav", variantClass, className)} aria-label={label}>
             <div className="mx-auto flex max-w-7xl flex-col gap-2 sm:gap-3 lg:flex-row lg:items-center lg:gap-9">
-                <span className="section-jump-label shrink-0 whitespace-nowrap border-white/10 text-xs font-black uppercase tracking-[0.12em] text-sky-100 sm:tracking-[0.16em] lg:border-r lg:pr-9">
+                <span className="section-jump-label shrink-0 border-white/10 text-xs font-black uppercase tracking-[0.12em] text-sky-100 sm:tracking-[0.16em] lg:border-r lg:pr-9">
                     {label}
                 </span>
                 <div className="flex min-w-0 flex-1 flex-wrap items-center gap-2 sm:gap-3 lg:gap-4">

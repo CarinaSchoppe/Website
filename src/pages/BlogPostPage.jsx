@@ -75,7 +75,7 @@ export default function BlogPostPage() {
                         ))}
                     </div>
 
-                    <aside className="lg:sticky lg:top-28" aria-labelledby="article-sources">
+                    <aside className="blog-sources" aria-labelledby="article-sources">
                         <Card>
                             <h2 id="article-sources" className="text-lg font-black text-white">{copy.sources}</h2>
                             <div className="mt-4 space-y-3">

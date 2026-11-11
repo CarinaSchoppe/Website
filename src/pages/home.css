@@ -244,5 +244,5 @@
     .home-proof dl div { display: grid; grid-template-columns: 7rem minmax(0, 1fr); align-items: baseline; gap: .55rem; }
     .home-proof dl div + div { border-inline-start: 0; padding-inline-start: 0; }
     .home-proof dt { font-size: 1.05rem; }
-    .home-proof dd { margin-top: 0; overflow-wrap: normal; hyphens: auto; }
+    .home-proof dd { margin-top: 0; hyphens: auto; }
 }

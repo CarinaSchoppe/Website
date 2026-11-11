@@ -188,7 +188,7 @@ function buildBreadcrumbSchema(pathname, title) {
 export default function Seo() {
     const {pathname} = useLocation();
     const {language} = useLanguage();
-    const blogMatch = useMatch("/blog/:slug");
+    const blogMatch = useMatch({path: "/blog/:slug", caseSensitive: true});
     const post = blogMatch && blogIndexForLanguage(language).find((item) => item.slug === blogMatch.params.slug);
     const normalizedPathname = post ? `/blog/${post.slug}` : normalizePathname(pathname);
     const routeMetaEntry = routeMeta[language][normalizedPathname];

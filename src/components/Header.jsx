@@ -1,6 +1,6 @@
 import {useEffect, useRef} from "react";
 import {Globe2, Menu, Moon, Sun, X} from "lucide-react";
-import {Link, NavLink} from "react-router-dom";
+import {Link, NavLink, useLocation} from "react-router-dom";
 import {navItems, PROFILE} from "../data/profile.js";
 import {useLanguage} from "../i18n.jsx";
 
@@ -41,8 +41,13 @@ function ThemeToggle({theme, onToggleTheme, language}) {
 
 export default function Header({theme, onToggleTheme}) {
     const menu = useRef(null);
+    const location = useLocation();
     const {t, toggleLanguage, language} = useLanguage();
     const close = () => menu.current.close();
+
+    useEffect(() => {
+        if (menu.current.open) menu.current.close();
+    }, [location]);
 
     useEffect(() => {
         const desktop = window.matchMedia?.("(width > 990px)");

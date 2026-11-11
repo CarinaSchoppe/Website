@@ -1,4 +1,4 @@
-import {lazy, Suspense, useEffect, useLayoutEffect, useRef, useState} from "react";
+import {lazy, Suspense, useEffect, useLayoutEffect, useState} from "react";
 import {BrowserRouter, Route, Routes, useLocation, useNavigationType} from "react-router-dom";
 import AnalyticsConsent from "./components/AnalyticsConsent.jsx";
 import AppErrorBoundary from "./components/AppErrorBoundary.jsx";
@@ -10,6 +10,8 @@ import HomePage from "./pages/HomePage.jsx";
 import {isChunkLoadError, safeGetSessionItem, safeGetStorageItem, safeRemoveSessionItem, safeSetSessionItem, safeSetStorageItem} from "./utils/browser.js";
 
 const CHUNK_RECOVERY_KEY = "carina_chunk_recovery_v1";
+const SCROLL_POSITIONS_KEY = "carina_scroll_positions_v1";
+const SAVED_SCROLL_LIMIT = 50;
 const THEME_KEY = "carina_color_scheme_v2";
 const ROUTER_BASENAME = import.meta.env.BASE_URL === "/" ? undefined : import.meta.env.BASE_URL.replace(/\/$/, "");
 
@@ -20,15 +22,43 @@ function getInitialTheme() {
     return "day";
 }
 
+function scrollPath({pathname, search, hash}) {
+    return `${pathname.replace(/\/+$/, "") || "/"}${search}${hash}`;
+}
+
+function loadScrollPositions() {
+    const navigation = window.performance.getEntriesByType?.("navigation")[0];
+    if (navigation?.type !== "reload" && navigation?.type !== "back_forward") return new Map();
+
+    try {
+        const entries = JSON.parse(safeGetSessionItem(SCROLL_POSITIONS_KEY) ?? "[]");
+        const positions = new Map(entries);
+
+        // A canonical trailing-slash redirect can clear the router's history key on reload.
+        const [lastKey, lastPosition] = entries.at(-1) ?? [];
+        const currentPath = scrollPath(window.location);
+        if (navigation.type === "reload" && navigation.redirectCount > 0
+            && typeof lastKey === "string" && lastKey.slice(lastKey.indexOf(":") + 1) === currentPath) {
+            positions.set(`default:${currentPath}`, lastPosition);
+        }
+        return positions;
+    /* v8 ignore next 3 -- invalid session data is external to the application */
+    } catch {
+        return new Map();
+    }
+}
+
 function lazyWithRecovery(loader) {
     return lazy(async () => {
+        const requestedPath = globalThis.location.pathname;
         try {
             const module = await loader();
             safeRemoveSessionItem(CHUNK_RECOVERY_KEY);
             return module;
         /* v8 ignore start -- stale chunk recovery depends on browser cache state after deployment */
         } catch (error) {
-            if (isChunkLoadError(error)
+            if (globalThis.location.pathname === requestedPath
+                && isChunkLoadError(error)
                 && safeGetSessionItem(CHUNK_RECOVERY_KEY) !== "used"
                 && safeSetSessionItem(CHUNK_RECOVERY_KEY, "used")) {
                 globalThis.location.reload();
@@ -66,16 +96,22 @@ function getHashTarget(hash) {
 }
 
 function RouteScroll({positions}) {
-    const {key, hash} = useLocation();
+    const location = useLocation();
+    const {hash} = location;
     const isHistoryNavigation = useNavigationType() === "POP";
+    const scrollKey = `${location.key}:${scrollPath(location)}`;
 
     useLayoutEffect(() => {
-        const savedPositions = positions.current;
-        const restoredPosition = isHistoryNavigation ? savedPositions.get(key) : undefined;
-        const rememberPosition = () => savedPositions.set(key, window.scrollY);
+        const restoredPosition = isHistoryNavigation ? positions.get(scrollKey) : undefined;
+        const rememberPosition = () => positions.set(scrollKey, window.scrollY);
+        const saveScrollOnExit = () => {
+            positions.delete(scrollKey);
+            rememberPosition();
+            safeSetSessionItem(SCROLL_POSITIONS_KEY, JSON.stringify([...positions].slice(-SAVED_SCROLL_LIMIT)));
+        };
         const frame = globalThis.requestAnimationFrame(() => {
             const target = getHashTarget(hash);
-            if (restoredPosition !== undefined) {
+            if (Number.isFinite(restoredPosition)) {
                 window.scrollTo({top: restoredPosition, behavior: "auto"});
             } else if (target) {
                 if (!isHistoryNavigation) target.focus({preventScroll: true});
@@ -88,18 +124,21 @@ function RouteScroll({positions}) {
         });
 
         window.addEventListener("scroll", rememberPosition, {passive: true});
+        window.addEventListener("pagehide", saveScrollOnExit);
         return () => {
             globalThis.cancelAnimationFrame(frame);
             window.removeEventListener("scroll", rememberPosition);
+            window.removeEventListener("pagehide", saveScrollOnExit);
         };
-    }, [key, hash, isHistoryNavigation, positions]);
+    }, [hash, isHistoryNavigation, positions, scrollKey]);
 
     return null;
 }
 
-function routeElement(Component) {
+function RouteContent({component: Component}) {
+    const {pathname} = useLocation();
     return (
-        <AppErrorBoundary>
+        <AppErrorBoundary key={pathname}>
             <Component/>
         </AppErrorBoundary>
     );
@@ -111,13 +150,13 @@ function routePaths(path) {
 
 function pageRoutes(path, Component) {
     return routePaths(path).map((routePath) => (
-        <Route key={routePath} path={routePath} element={routeElement(Component)}/>
+        <Route key={routePath} path={routePath} caseSensitive element={<RouteContent component={Component}/>}/>
     ));
 }
 
 export default function App() {
     const [theme, setTheme] = useState(getInitialTheme);
-    const scrollPositions = useRef(new Map());
+    const [scrollPositions] = useState(loadScrollPositions);
 
     useLayoutEffect(() => {
         const previous = window.history.scrollRestoration;
@@ -144,7 +183,7 @@ export default function App() {
                     <Suspense fallback={<div id="main-content" className="site-content" tabIndex={-1}/>}>
                         <div id="main-content" className="site-content" tabIndex={-1}>
                             <Routes>
-                                <Route path="/" element={routeElement(HomePage)}/>
+                                <Route path="/" element={<RouteContent component={HomePage}/>}/>
                                 {pageRoutes("/credentials", CredentialsPage)}
                                 {pageRoutes("/portfolio", SoftwarePage)}
                                 {pageRoutes("/about", AboutPage)}
@@ -157,7 +196,7 @@ export default function App() {
                                 {pageRoutes("/software", SoftwarePage)}
                                 {pageRoutes("/imprint", ImprintPage)}
                                 {pageRoutes("/privacy", PrivacyPage)}
-                                <Route path="*" element={routeElement(NotFoundPage)}/>
+                                <Route path="*" element={<RouteContent component={NotFoundPage}/>}/>
                             </Routes>
                         </div>
                         <RouteScroll positions={scrollPositions}/>

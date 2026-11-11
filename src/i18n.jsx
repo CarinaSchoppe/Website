@@ -45,6 +45,10 @@ const dictionaries = {
             copy: "I use Google Analytics only after consent to understand which pages are useful. IP anonymisation is enabled.",
             decline: "Decline",
             accept: "Accept",
+            settingsTitle: "Analytics settings",
+            statusAccepted: "Analytics is enabled on this browser.",
+            statusDeclined: "Analytics is disabled on this browser.",
+            statusPending: "Analytics is disabled until you choose to accept it.",
         },
         notFound: {
             badge: "Page not found",
@@ -98,6 +102,10 @@ const dictionaries = {
             copy: "Ich nutze Google Analytics nur nach Zustimmung, um zu verstehen, welche Seiten hilfreich sind. IP-Anonymisierung ist aktiviert.",
             decline: "Ablehnen",
             accept: "Akzeptieren",
+            settingsTitle: "Analytics-Einstellungen",
+            statusAccepted: "Die Website-Analyse ist in diesem Browser aktiviert.",
+            statusDeclined: "Die Website-Analyse ist in diesem Browser deaktiviert.",
+            statusPending: "Die Website-Analyse bleibt bis zur Zustimmung deaktiviert.",
         },
         notFound: {
             badge: "Seite nicht gefunden",

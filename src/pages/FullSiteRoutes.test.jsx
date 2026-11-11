@@ -23,7 +23,8 @@ describe("full static site route coverage", () => {
         expect(html).toContain('<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>');
         expect(html).toContain("Carina Sophie Schoppe | Portfolio");
         expect(existsSync("public/favicon.svg")).toBe(true);
-        expect(existsSync("public/apple-touch-icon.svg")).toBe(true);
+        expect(html).toContain('<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>');
+        expect(existsSync("public/apple-touch-icon.png")).toBe(true);
         expect(existsSync("public/images/luminovia-logo-full.svg")).toBe(true);
         expect(html).toContain("params.get(\"__soft404\")");
         expect(html).not.toContain("hreflang=");

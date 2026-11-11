@@ -1,6 +1,5 @@
-import {Link} from "react-router-dom";
-import {ANALYTICS_PREFERENCES_ID} from "../components/AnalyticsConsent.jsx";
 import Badge from "../components/Badge.jsx";
+import {AnalyticsSettings} from "../components/AnalyticsConsent.jsx";
 import Card from "../components/Card.jsx";
 import {PROFILE} from "../data/profile.js";
 import {useLanguage} from "../i18n.jsx";
@@ -40,17 +39,11 @@ export default function PrivacyPage() {
                 </p>
 
                 <div className="mt-10 grid gap-5">
-                    {sections.map(([title, copy, preferences]) => (
+                    {sections.map(([title, copy, showSettings]) => (
                         <Card key={title}>
                             <h2 className="text-2xl font-black text-white">{title}</h2>
                             <p className="mt-5 text-sm leading-7 text-slate-300 sm:text-base">{copy}</p>
-                            {preferences && (
-                                <div id={ANALYTICS_PREFERENCES_ID}>
-                                    <Link to={`#${ANALYTICS_PREFERENCES_ID}`} className="site-text-link mt-3">
-                                        {isDe ? "Analyse-Einstellungen ändern" : "Change analytics settings"}
-                                    </Link>
-                                </div>
-                            )}
+                            {showSettings && <AnalyticsSettings/>}
                         </Card>
                     ))}
 

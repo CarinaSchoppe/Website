@@ -1,23 +1,23 @@
-import {render, screen} from "@testing-library/react";
+import {act, render, screen, within} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {afterEach, describe, expect, it, vi} from "vitest";
 import {Link, MemoryRouter} from "react-router-dom";
-import {PROFILE} from "../data/profile.js";
-import PrivacyPage from "../pages/PrivacyPage.jsx";
 import {LanguageProvider, LANGUAGE_STORAGE_KEY} from "../i18n.jsx";
-import AnalyticsConsent, {ANALYTICS_PREFERENCES_ID} from "./AnalyticsConsent.jsx";
+import AnalyticsConsent, {AnalyticsSettings} from "./AnalyticsConsent.jsx";
+import {PROFILE} from "../data/profile.js";
 
-function renderConsent({route = "/?source=example#projects", children} = {}) {
+function renderConsent({settings = false, route = "/#projects"} = {}) {
     window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
+    vi.stubGlobal(`ga-disable-${PROFILE.analyticsId}`, undefined);
 
     return render(
         <LanguageProvider>
             <MemoryRouter initialEntries={[route]}>
                 <AnalyticsConsent/>
-                <Link to="/about?source=example#intro">About</Link>
-                <Link to="/about?source=other#intro" replace>Change query</Link>
-                <Link to="/about?source=other#section">Jump to section</Link>
-                {children}
+                {settings && <AnalyticsSettings/>}
+                <Link to="/about">About</Link>
+                <Link to="/about?token=another-test-value" replace>Change query</Link>
+                <Link to="/about#section">Jump to section</Link>
             </MemoryRouter>
         </LanguageProvider>,
     );
@@ -28,7 +28,6 @@ describe("AnalyticsConsent", () => {
         document.querySelector('script[src*="googletagmanager.com"]')?.remove();
         vi.unstubAllGlobals();
         vi.restoreAllMocks();
-        delete globalThis[`ga-disable-${PROFILE.analyticsId}`];
     });
 
     it("stores declined consent and hides the banner", async () => {
@@ -46,7 +45,7 @@ describe("AnalyticsConsent", () => {
         const user = userEvent.setup();
         vi.stubGlobal("gtag", undefined);
         vi.stubGlobal("dataLayer", undefined);
-        vi.spyOn(document, "referrer", "get").mockReturnValue("https://example.org/refer?source=other#intro");
+        vi.spyOn(document, "referrer", "get").mockReturnValue("https://example.org/refer?source=test-only#intro");
         renderConsent();
 
         expect(document.querySelector('script[src*="googletagmanager.com"]')).toBeNull();
@@ -54,8 +53,10 @@ describe("AnalyticsConsent", () => {
 
         expect(window.localStorage.getItem("carina_analytics_consent")).toBe("accepted");
         expect(document.querySelector('script[src*="googletagmanager.com"]')).toBeTruthy();
-        await user.click(screen.getByRole("link", {name: "About"}));
+        expect(globalThis.dataLayer.filter(([command]) => command === "event")).toHaveLength(1);
         await user.click(screen.getByRole("link", {name: "Change query"}));
+        expect(globalThis[`ga-disable-${PROFILE.analyticsId}`]).toBe(true);
+        expect(globalThis.dataLayer.filter(([command]) => command === "event")).toHaveLength(1);
         await user.click(screen.getByRole("link", {name: "Jump to section"}));
         expect(globalThis.dataLayer.map(([command]) => command)).toEqual(["js", "config", "event", "event"]);
         expect(globalThis.dataLayer[1][2]).toMatchObject({send_page_view: false});
@@ -67,51 +68,48 @@ describe("AnalyticsConsent", () => {
             page_location: `${window.location.origin}/about`,
             page_referrer: `${window.location.origin}/`,
         })]);
+        expect(JSON.stringify(globalThis.dataLayer)).not.toContain("test-only");
+        expect(JSON.stringify(globalThis.dataLayer)).not.toContain("another-test-value");
     });
-    it("lets visitors revoke and later re-enable saved consent from the privacy page", async () => {
+
+    it("turns off the loaded tag and expires its cookies when consent is withdrawn", async () => {
         const user = userEvent.setup();
-        const flag = `ga-disable-${PROFILE.analyticsId}`;
-        const settings = () => screen.getByRole("link", {name: "Change analytics settings"});
-        const banner = () => screen.queryByRole("region", {name: "Privacy-friendly analytics"});
+        vi.stubGlobal("gtag", undefined);
+        vi.stubGlobal("dataLayer", undefined);
         window.localStorage.setItem("carina_analytics_consent", "accepted");
-        const firstVisit = renderConsent({
-            route: "/privacy",
-            children: <><PrivacyPage/><Link to="/contact">Open contact</Link></>,
+        document.cookie = "_ga=test; Path=/";
+        document.cookie = `_ga_${PROFILE.analyticsId.slice(2)}=test; Path=/`;
+        renderConsent({settings: true, route: "/privacy/#analytics-preferences"});
+
+        const settings = within(screen.getByRole("region", {name: "Analytics settings"}));
+        expect(settings.getByRole("button", {name: "Accept", pressed: true})).toBeInTheDocument();
+        await user.click(settings.getByRole("button", {name: "Decline"}));
+        expect(settings.getByRole("button", {name: "Decline", pressed: true})).toHaveFocus();
+        expect(settings.getByRole("status")).toHaveTextContent("Analytics is disabled");
+        expect(globalThis[`ga-disable-${PROFILE.analyticsId}`]).toBe(true);
+        expect(document.cookie).not.toContain("_ga");
+        await user.click(screen.getByRole("link", {name: "About"}));
+        expect(globalThis.dataLayer.filter(([command]) => command === "event")).toHaveLength(1);
+
+        await user.click(settings.getByRole("button", {name: "Accept"}));
+        expect(globalThis[`ga-disable-${PROFILE.analyticsId}`]).toBe(false);
+        expect(globalThis.dataLayer.filter(([command]) => command === "event")).toHaveLength(2);
+        expect(document.querySelectorAll('script[src*="googletagmanager.com"]')).toHaveLength(1);
+    });
+
+    it("offers a choice for an invalid stored value and follows changes from another tab", () => {
+        window.localStorage.setItem("carina_analytics_consent", "invalid");
+        renderConsent({settings: true});
+        expect(screen.getByRole("status")).toHaveTextContent("until you choose to accept it");
+
+        act(() => {
+            window.localStorage.setItem("carina_analytics_consent", "declined");
+            window.dispatchEvent(new StorageEvent("storage", {key: "another-setting"}));
         });
-        expect(globalThis[flag]).toBe(false);
-        expect(banner()).not.toBeInTheDocument();
-        const previousCalls = globalThis.dataLayer.length;
+        expect(screen.getByText("Privacy-friendly analytics")).toBeInTheDocument();
 
-        await user.click(settings());
-        document.getElementById(ANALYTICS_PREFERENCES_ID).focus();
-        expect(banner()).toHaveFocus();
-        expect(screen.getByRole("button", {name: "Accept", pressed: true})).toBeInTheDocument();
-        await user.click(screen.getByRole("button", {name: "Decline"}));
-        expect(window.localStorage.getItem("carina_analytics_consent")).toBe("declined");
-        expect(globalThis[flag]).toBe(true);
-        expect(banner()).not.toBeInTheDocument();
-        expect(settings()).toHaveFocus();
-
-        await user.click(settings());
-        expect(screen.getByRole("button", {name: "Decline", pressed: true})).toBeInTheDocument();
-        await user.click(screen.getByRole("button", {name: "Decline"}));
-        await user.click(screen.getByRole("link", {name: "Open contact"}));
-        expect(globalThis.dataLayer).toHaveLength(previousCalls);
-
-        firstVisit.unmount();
-        document.querySelector('script[src*="googletagmanager.com"]')?.remove();
-        delete globalThis.gtag;
-        delete globalThis.dataLayer;
-        delete globalThis[flag];
-        renderConsent({route: "/privacy", children: <PrivacyPage/>});
-        expect(document.querySelector('script[src*="googletagmanager.com"]')).toBeNull();
-        expect(globalThis[flag]).toBe(true);
-        expect(banner()).not.toBeInTheDocument();
-
-        await user.click(settings());
-        await user.click(screen.getByRole("button", {name: "Accept"}));
-        expect(window.localStorage.getItem("carina_analytics_consent")).toBe("accepted");
-        expect(globalThis[flag]).toBe(false);
-        expect(document.querySelector('script[src*="googletagmanager.com"]')).toBeTruthy();
+        act(() => window.dispatchEvent(new StorageEvent("storage", {key: "carina_analytics_consent"})));
+        expect(screen.getByRole("status")).toHaveTextContent("Analytics is disabled on this browser");
+        expect(screen.queryByText("Privacy-friendly analytics")).not.toBeInTheDocument();
     });
 });

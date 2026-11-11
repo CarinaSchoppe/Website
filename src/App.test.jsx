@@ -74,6 +74,8 @@ describe("App routing and language", () => {
         ["/projects", /Software projects and open source/i],
         ["/pricing", /Oops, there is nothing here/i],
         ["/unknown-page", /Oops, there is nothing here/i],
+        ["/ABOUT/", /Oops, there is nothing here/i],
+        ["/BLOG/teaching-with-ai-without-losing-learning/", /Oops, there is nothing here/i],
     ])("renders %s with English page copy", async (route, heading) => {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
         window.history.pushState({}, "Route", route);
@@ -136,6 +138,27 @@ describe("App routing and language", () => {
         expect(screen.getByRole("button", {name: "Teaching", pressed: true})).toBeInTheDocument();
         expect(screen.getByRole("heading", {name: /DiBak Certified IT Lecturer/i})).toBeInTheDocument();
         expect(screen.queryByRole("heading", {name: /PTE Academic English/i})).not.toBeInTheDocument();
+    });
+
+    it("restores the reading position after a reload redirects to the canonical URL", async () => {
+        window.history.pushState({key: "about-entry"}, "About", "/about");
+        vi.stubGlobal("scrollY", 460);
+        const performance = window.performance;
+        vi.stubGlobal("performance", {
+            getEntriesByType: () => [{type: "reload", redirectCount: 1}],
+            now: () => performance.now(),
+        });
+        const {unmount} = render(<App/>);
+
+        await screen.findByRole("heading", {level: 1, name: /^Carina Sophie Schoppe$/i});
+        window.dispatchEvent(new Event("pagehide"));
+        expect(JSON.parse(window.sessionStorage.getItem("carina_scroll_positions_v1"))).toEqual([["about-entry:/about", 460]]);
+        unmount();
+
+        window.history.replaceState({}, "About", "/about/");
+        render(<App/>);
+        await waitFor(() => expect(window.scrollTo).toHaveBeenCalledWith({top: 460, behavior: "auto"}));
+        window.sessionStorage.removeItem("carina_scroll_positions_v1");
     });
 
     it("scrolls to the business contact on direct load and focuses personal contact after navigation", async () => {

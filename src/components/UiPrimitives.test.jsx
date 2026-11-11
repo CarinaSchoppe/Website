@@ -1,4 +1,4 @@
-import {render, screen} from "@testing-library/react";
+import {fireEvent, render, screen} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {MemoryRouter} from "react-router-dom";
 import {describe, expect, it, vi} from "vitest";
@@ -41,10 +41,15 @@ describe("UI primitive branches", () => {
         expect(screen.getByRole("link", {name: /Email/i})).not.toHaveAttribute("rel");
     });
 
-    it("renders a photo fallback when the image cannot load", async () => {
-        renderWithShell(<Photo src="/missing.jpg" alt="Missing portrait" fallback="LV" fallbackCopy="Image fallback"/>);
+    it("retries the original portrait before showing the placeholder", async () => {
+        renderWithShell(<Photo src="/portrait.jpg" alt="Portrait" fallback="LV" fallbackCopy="Image fallback"/>);
 
-        screen.getByAltText("Missing portrait").dispatchEvent(new Event("error"));
+        const picture = screen.getByAltText("Portrait").closest("picture");
+        expect(picture.querySelector("source")).toBeInTheDocument();
+        fireEvent.error(screen.getByAltText("Portrait"));
+        expect(picture.querySelector("source")).not.toBeInTheDocument();
+        expect(screen.getByAltText("Portrait")).toHaveAttribute("src", "/portrait.jpg");
+        fireEvent.error(screen.getByAltText("Portrait"));
 
         expect(await screen.findByText("LV")).toBeInTheDocument();
         expect(screen.getByText("Image fallback")).toBeInTheDocument();
