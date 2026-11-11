@@ -1,10 +1,12 @@
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useLocation} from "react-router-dom";
 import {PROFILE} from "../data/profile.js";
 import {useLanguage} from "../i18n.jsx";
 import {safeGetStorageItem, safeSetStorageItem} from "../utils/browser.js";
 
 const CONSENT_KEY = "carina_analytics_consent";
+export const ANALYTICS_PREFERENCES_ID = "analytics-preferences";
+const disabledFlag = `ga-disable-${PROFILE.analyticsId}`;
 let lastPageLocation;
 
 function loadAnalytics(measurementId) {
@@ -25,13 +27,18 @@ function loadAnalytics(measurementId) {
 }
 
 export default function AnalyticsConsent() {
-    const {pathname} = useLocation();
+    const {pathname, hash, key} = useLocation();
     const {t} = useLanguage();
     const [consent, setConsent] = useState(() => safeGetStorageItem(CONSENT_KEY));
+    const [dismissedKey, setDismissedKey] = useState(null);
+    const banner = useRef(null);
     const enabled = Boolean(PROFILE.analyticsId);
+    const editingPreferences = hash === `#${ANALYTICS_PREFERENCES_ID}` && dismissedKey !== key;
 
     useEffect(() => {
-        if (!enabled || consent !== "accepted") return;
+        if (!enabled) return;
+        globalThis[disabledFlag] = consent !== "accepted";
+        if (consent !== "accepted") return;
 
         loadAnalytics(PROFILE.analyticsId);
         const pageLocation = `${window.location.origin}${pathname}`;
@@ -45,15 +52,25 @@ export default function AnalyticsConsent() {
         lastPageLocation = pageLocation;
     }, [consent, enabled, pathname]);
 
-    if (!enabled || consent) return null;
+    useEffect(() => {
+        if (editingPreferences) banner.current?.focus({preventScroll: true});
+    }, [editingPreferences, key]);
+
+    if (!enabled || (consent && !editingPreferences)) return null;
 
     function choose(value) {
+        globalThis[disabledFlag] = value !== "accepted";
+        if (value !== "accepted") lastPageLocation = undefined;
         safeSetStorageItem(CONSENT_KEY, value);
         setConsent(value);
+        if (editingPreferences) {
+            setDismissedKey(key);
+            document.getElementById(ANALYTICS_PREFERENCES_ID)?.focus({preventScroll: true});
+        }
     }
 
     return (
-        <section className="analytics-consent" aria-label={t.analytics.title}>
+        <section ref={banner} tabIndex={editingPreferences ? -1 : undefined} className="analytics-consent" aria-label={t.analytics.title}>
             <div className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
                 <div>
                     <div className="text-sm font-extrabold">{t.analytics.title}</div>
@@ -62,10 +79,10 @@ export default function AnalyticsConsent() {
                     </p>
                 </div>
                 <div className="grid grid-cols-2 gap-2 sm:flex">
-                    <button onClick={() => choose("declined")} className="site-button">
+                    <button onClick={() => choose("declined")} aria-pressed={editingPreferences ? consent === "declined" : undefined} className="site-button">
                         {t.analytics.decline}
                     </button>
-                    <button onClick={() => choose("accepted")} className="site-button site-button-primary">
+                    <button onClick={() => choose("accepted")} aria-pressed={editingPreferences ? consent === "accepted" : undefined} className="site-button site-button-primary">
                         {t.analytics.accept}
                     </button>
                 </div>

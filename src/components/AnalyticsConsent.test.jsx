@@ -2,19 +2,22 @@ import {render, screen} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {afterEach, describe, expect, it, vi} from "vitest";
 import {Link, MemoryRouter} from "react-router-dom";
+import {PROFILE} from "../data/profile.js";
+import PrivacyPage from "../pages/PrivacyPage.jsx";
 import {LanguageProvider, LANGUAGE_STORAGE_KEY} from "../i18n.jsx";
 import AnalyticsConsent from "./AnalyticsConsent.jsx";
 
-function renderConsent() {
+function renderConsent({route = "/?source=example#projects", children} = {}) {
     window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
 
     return render(
         <LanguageProvider>
-            <MemoryRouter initialEntries={["/?source=example#projects"]}>
+            <MemoryRouter initialEntries={[route]}>
                 <AnalyticsConsent/>
                 <Link to="/about?source=example#intro">About</Link>
                 <Link to="/about?source=other#intro" replace>Change query</Link>
                 <Link to="/about?source=other#section">Jump to section</Link>
+                {children}
             </MemoryRouter>
         </LanguageProvider>,
     );
@@ -25,6 +28,7 @@ describe("AnalyticsConsent", () => {
         document.querySelector('script[src*="googletagmanager.com"]')?.remove();
         vi.unstubAllGlobals();
         vi.restoreAllMocks();
+        delete globalThis[`ga-disable-${PROFILE.analyticsId}`];
     });
 
     it("stores declined consent and hides the banner", async () => {
@@ -63,5 +67,50 @@ describe("AnalyticsConsent", () => {
             page_location: `${window.location.origin}/about`,
             page_referrer: `${window.location.origin}/`,
         })]);
+    });
+    it("lets visitors revoke and later re-enable saved consent from the privacy page", async () => {
+        const user = userEvent.setup();
+        const flag = `ga-disable-${PROFILE.analyticsId}`;
+        const settings = () => screen.getByRole("link", {name: "Change analytics settings"});
+        const banner = () => screen.queryByRole("region", {name: "Privacy-friendly analytics"});
+        window.localStorage.setItem("carina_analytics_consent", "accepted");
+        const firstVisit = renderConsent({
+            route: "/privacy",
+            children: <><PrivacyPage/><Link to="/contact">Open contact</Link></>,
+        });
+        expect(globalThis[flag]).toBe(false);
+        expect(banner()).not.toBeInTheDocument();
+        const previousCalls = globalThis.dataLayer.length;
+
+        await user.click(settings());
+        expect(banner()).toHaveFocus();
+        expect(screen.getByRole("button", {name: "Accept", pressed: true})).toBeInTheDocument();
+        await user.click(screen.getByRole("button", {name: "Decline"}));
+        expect(window.localStorage.getItem("carina_analytics_consent")).toBe("declined");
+        expect(globalThis[flag]).toBe(true);
+        expect(banner()).not.toBeInTheDocument();
+        expect(settings()).toHaveFocus();
+
+        await user.click(settings());
+        expect(screen.getByRole("button", {name: "Decline", pressed: true})).toBeInTheDocument();
+        await user.click(screen.getByRole("button", {name: "Decline"}));
+        await user.click(screen.getByRole("link", {name: "Open contact"}));
+        expect(globalThis.dataLayer).toHaveLength(previousCalls);
+
+        firstVisit.unmount();
+        document.querySelector('script[src*="googletagmanager.com"]')?.remove();
+        delete globalThis.gtag;
+        delete globalThis.dataLayer;
+        delete globalThis[flag];
+        renderConsent({route: "/privacy", children: <PrivacyPage/>});
+        expect(document.querySelector('script[src*="googletagmanager.com"]')).toBeNull();
+        expect(globalThis[flag]).toBe(true);
+        expect(banner()).not.toBeInTheDocument();
+
+        await user.click(settings());
+        await user.click(screen.getByRole("button", {name: "Accept"}));
+        expect(window.localStorage.getItem("carina_analytics_consent")).toBe("accepted");
+        expect(globalThis[flag]).toBe(false);
+        expect(document.querySelector('script[src*="googletagmanager.com"]')).toBeTruthy();
     });
 });
