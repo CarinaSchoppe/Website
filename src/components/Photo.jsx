@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {headshotWidths, outdoorWidths} from "../data/portrait.js";
+import {headshotWidths, homeHeroWidths, outdoorWidths} from "../data/portrait.js";
 import {useLanguage} from "../i18n.jsx";
 import {cn} from "./utils.js";
 
@@ -19,11 +19,13 @@ export default function Photo({
     const {t} = useLanguage();
     const [failure, setFailure] = useState(null);
     const fallbackText = fallbackCopy || t.home.photoFallback;
-    const responsiveWidths = src.includes("carina-headshot")
-        ? headshotWidths
-        : src.includes("carina-outdoor")
-            ? outdoorWidths
-            : [480, 640, 960];
+    const responsiveWidths = src.includes("carina-business-hero")
+        ? homeHeroWidths
+        : src.includes("carina-headshot")
+            ? headshotWidths
+            : src.includes("carina-outdoor")
+                ? outdoorWidths
+                : [480, 640, 960];
     const webpSrcSet = src.endsWith(".jpg")
         ? responsiveWidths.map((sourceWidth) => `${src.replace(/\.jpg$/, `-${sourceWidth}.webp`)} ${sourceWidth}w`).join(", ")
         : null;

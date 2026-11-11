@@ -26,6 +26,7 @@ export const PROFILE = {
 };
 
 export const IMAGES = {
+    homeHero: `${base}images/carina-business-hero.jpg`,
     hero: `${base}images/carina-hero.jpg`,
     tablet: `${base}images/carina-tablet.jpg`,
     headshot: `${base}images/carina-headshot.jpg`,

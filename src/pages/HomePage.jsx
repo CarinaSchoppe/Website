@@ -112,11 +112,11 @@ export default function HomePage() {
                 </div>
                 <figure className="home-portrait">
                     <Photo
-                        src={IMAGES.outdoor}
+                        src={IMAGES.homeHero}
                         alt={c.portraitAlt}
                         className="home-portrait-photo"
-                        width={1120}
-                        height={1680}
+                        width={860}
+                        height={688}
                         fetchPriority="high"
                         sizes="(min-width: 1400px) 500px, (min-width: 761px) 40vw, (min-width: 600px) 520px, 91vw"
                     />

@@ -66,8 +66,8 @@
     overflow: hidden;
     background: var(--paper-raised);
 }
-.home-portrait-photo { aspect-ratio: 1.14; background: #eeece9; }
-.home-portrait-photo img { object-position: 50% 42%; }
+.home-portrait-photo { aspect-ratio: 5 / 4; background: #eeece9; }
+.home-portrait-photo img { object-position: center; }
 .home-portrait figcaption {
     position: relative;
     display: flex;
@@ -227,7 +227,6 @@
     .home-hero h1 { font-size: clamp(2.6rem, 10vw, 4.4rem); }
     .home-hero-actions { margin-top: 1.2rem; }
     .home-portrait { width: min(100%, 32.5rem); }
-    .home-portrait-photo { aspect-ratio: 1.32; }
     .home-section-heading { align-items: start; flex-wrap: wrap; gap: .2rem .75rem; }
     .home-projects { grid-template-columns: minmax(0, 1fr); }
     .home-project[data-featured] { grid-row: auto; }
