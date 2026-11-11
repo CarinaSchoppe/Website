@@ -270,7 +270,7 @@ const german = {
                 ]
             }
         ],
-        takeaway: "Das eigentliche Versprechen von Agentic AI ist nicht, Urteilskraft zu ersetzen. Es geht darum, kompetenten Menschen bessere Delegation zu ermöglichen, während Kontext, Verantwortung und Qualität sichtbar bleiben."
+        takeaway: "Wer einem KI-Agenten Arbeit überträgt, legt vorher fest, welche Schritte er selbst ausführen darf, wo Menschen freigeben und woran sie ein gutes Ergebnis erkennen."
     },
     "project-management-in-the-age-of-ai": {
         body: [
@@ -303,7 +303,7 @@ const german = {
                 ]
             }
         ],
-        takeaway: "AI wird Projektmanagement nicht verschwinden lassen. Sie bestraft rein administrative Projektarbeit und belohnt Menschen, die Struktur, Kommunikation, Governance und Urteilskraft verbinden."
+        takeaway: "KI kann Projektinformationen zusammenfassen und Risiken markieren. Projektleitungen müssen einschätzen, welche Hinweise belastbar sind und was sie gemeinsam mit dem Team entscheiden."
     },
     "teaching-with-ai-without-losing-learning": {
         body: [
@@ -336,7 +336,7 @@ const german = {
                 ]
             }
         ],
-        takeaway: "KI gehört in moderne Bildung, aber nicht als Ersatz für Lernen. Ziel sind Aufgaben, in denen KI Übung, Feedback und Transfer unterstützt, während Lernende weiterhin denken müssen."
+        takeaway: "Eine gute Aufgabe mit KI zeigt, wie Lernende zu ihrer Lösung kommen, wie sie diese prüfen und ob sie das Gelernte auf einen anderen Fall übertragen können."
     },
     "from-industry-4-0-to-5-0-human-above-the-loop": {
         body: [
@@ -369,7 +369,7 @@ const german = {
                 ]
             }
         ],
-        takeaway: "Industry 5.0 ist keine Absage an Industry 4.0. Es ist die nächste Reifestufe: Vernetzte Systeme bleiben wichtig, aber Menschen müssen von passiven Technologie-Nutzern zu Supervisoren AI-gestützter Arbeitssysteme werden."
+        takeaway: "Wenn KI Arbeit koordiniert, brauchen Teams klare Zuständigkeiten. Sie müssen wissen, wer Entscheidungen überprüft, wann jemand eingreifen kann und wer die Folgen verantwortet."
     },
     "ai-automation-risks-hallucinations-token-burn-rate-limits": {
         body: [
@@ -402,7 +402,7 @@ const german = {
                 ]
             }
         ],
-        takeaway: "AI-Automatisierung wird erst verlässlich, wenn Halluzinationskontrolle, Kostenkontrolle und Verfügbarkeitskontrolle von Anfang an in den Workflow eingebaut werden. Das Modell ist nur ein Teil des Prozesses."
+        takeaway: "Wer einen KI-gestützten Ablauf entwickelt, plant von Anfang an Prüfungen für kritische Ergebnisse, ein Kostenlimit und einen Ersatzweg für Ausfälle ein."
     }
 };
 

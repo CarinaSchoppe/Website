@@ -6,7 +6,7 @@ const english = [
         category: "Agentic AI",
         hubCategory: "AI & Governance",
         readTime: "8 min read",
-        excerpt: "Agentic AI is not just a smarter chatbot. It is a shift from asking for answers to designing systems that can plan, use tools, ask for approval and move work forward."
+        excerpt: "When an AI agent prepares a briefing or triages support tickets, who decides which tools it can use and when it needs approval? Those choices shape what teams can safely delegate."
     },
     {
         slug: "project-management-in-the-age-of-ai",
@@ -15,7 +15,7 @@ const english = [
         category: "Project management",
         hubCategory: "Business Computer Science",
         readTime: "7 min read",
-        excerpt: "AI is not removing project management. It is changing the centre of gravity from manual coordination to sensemaking, governance and stakeholder trust."
+        excerpt: "AI can draft a status report or flag a delay. A project lead still has to check what caused the problem, weigh the options and agree on a response with the team."
     },
     {
         slug: "teaching-with-ai-without-losing-learning",
@@ -24,11 +24,11 @@ const english = [
         category: "AI education",
         hubCategory: "Digital Education",
         readTime: "8 min read",
-        excerpt: "AI can make education more adaptive and practical, but only if teachers design learning around thinking, feedback and transfer rather than shortcuts."
+        excerpt: "How do I know someone has learnt a skill when AI can solve the exercise? I ask learners to explain their choices and apply the same idea to a new case."
     },
     {
         slug: "from-industry-4-0-to-5-0-human-above-the-loop",
-        title: "From Industry 4.0 to 5.0: when humans move above the loop",
+        title: "From Industry 4.0 to 5.0: who decides when AI coordinates work?",
         date: "2026-04-26",
         category: "Industry 5.0",
         hubCategory: "Business Computer Science",
@@ -48,34 +48,34 @@ const english = [
 
 const german = {
     "agentic-ai-from-demo-to-delegation": {
-        title: "Agentic AI: vom beeindruckenden Demo zur delegierten Arbeit",
-        category: "Agentic AI",
+        title: "KI-Agenten im Arbeitsalltag: Was lässt sich delegieren?",
+        category: "KI-Agenten",
         readTime: "8 Min. Lesezeit",
-        excerpt: "Agentic AI ist nicht nur ein besserer Chatbot. Es ist der Wechsel von Antworten hin zu Systemen, die planen, Tools nutzen, Freigaben einholen und Arbeit in klaren Grenzen voranbringen."
+        excerpt: "Ein KI-Agent kann ein Briefing vorbereiten oder Supportanfragen sortieren. Welche Werkzeuge darf er dafür einsetzen, und wann braucht er eine Freigabe?"
     },
     "project-management-in-the-age-of-ai": {
-        title: "Projektmanagement im Zeitalter von AI: weniger Verwaltung, mehr Urteilskraft",
+        title: "Projektmanagement mit KI: weniger Verwaltung, mehr Urteilskraft",
         category: "Projektmanagement",
         readTime: "7 Min. Lesezeit",
-        excerpt: "AI schafft Projektmanagement nicht ab. Sie verschiebt den Schwerpunkt von manueller Koordination hin zu Sinnstiftung, Governance und Vertrauen zwischen Stakeholdern."
+        excerpt: "KI kann einen Statusbericht schreiben oder auf eine Verzögerung hinweisen. Die Projektleitung prüft die Ursache und entscheidet mit dem Team, was sich ändern muss."
     },
     "teaching-with-ai-without-losing-learning": {
         title: "Lehren mit KI, ohne das Lernen zu verlieren",
         category: "KI in Bildung",
         readTime: "8 Min. Lesezeit",
-        excerpt: "KI kann Bildung adaptiver und praktischer machen, aber nur, wenn Lehrende Lernen rund um Denken, Feedback und Transfer gestalten statt rund um Abkürzungen."
+        excerpt: "Woran erkenne ich, dass jemand etwas gelernt hat, wenn KI die Aufgabe lösen kann? Ich lasse Teilnehmende ihre Entscheidungen begründen und das Gelernte auf einen neuen Fall anwenden."
     },
     "from-industry-4-0-to-5-0-human-above-the-loop": {
-        title: "Von Industry 4.0 zu 5.0: wenn Menschen über den Loop steigen",
-        category: "Industry 5.0",
+        title: "Industrie 5.0: Wer entscheidet, wenn KI die Arbeit koordiniert?",
+        category: "Industrie 5.0",
         readTime: "8 Min. Lesezeit",
-        excerpt: "Industry 4.0 hat Organisationen beigebracht, Maschinen, Daten und Prozesse zu verbinden. Industry 5.0 stellt die schwierigere Frage: Was sollen Menschen überwachen, gestalten und verantworten, wenn AI Arbeit koordiniert?"
+        excerpt: "Industrie 4.0 hat Maschinen, Daten und Abläufe vernetzt. Wenn KI Aufgaben priorisiert und Entscheidungen vorbereitet, müssen Menschen festlegen, wer eingreifen kann und wer Verantwortung trägt."
     },
     "ai-automation-risks-hallucinations-token-burn-rate-limits": {
-        title: "AI in automatisierten Prozessen: Halluzinationen, Tokenburn und Ratelimits",
-        category: "AI Risiko",
+        title: "KI-Automatisierung: falsche Antworten, hohe Kosten und API-Limits",
+        category: "KI-Risiken",
         readTime: "8 Min. Lesezeit",
-        excerpt: "AI-Automatisierung kann leise scheitern, bevor sie laut scheitert. Halluzinationen verzerren Entscheidungen, Tokenburn macht Workflows teuer und Ratelimits brechen Prozesse genau dann, wenn sie skalieren."
+        excerpt: "Eine falsche Zusammenfassung kann eine Entscheidung verzerren, Wiederholungen treiben die Kosten hoch, und zu viele API-Anfragen können einen Ablauf stoppen. Was lässt sich schon vor dem Start absichern?"
     }
 };
 
