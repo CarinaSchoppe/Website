@@ -41,11 +41,10 @@ describe("AnalyticsConsent", () => {
         expect(screen.queryByText(/Privacy-friendly analytics/i)).not.toBeInTheDocument();
     });
 
-    it("configures the tag once and tracks page changes only after consent", async () => {
+    it("configures the tag once after consent and pauses it for query URLs", async () => {
         const user = userEvent.setup();
         vi.stubGlobal("gtag", undefined);
         vi.stubGlobal("dataLayer", undefined);
-        vi.spyOn(document, "referrer", "get").mockReturnValue("https://example.org/refer?source=test-only#intro");
         renderConsent();
 
         expect(document.querySelector('script[src*="googletagmanager.com"]')).toBeNull();
@@ -53,22 +52,11 @@ describe("AnalyticsConsent", () => {
 
         expect(window.localStorage.getItem("carina_analytics_consent")).toBe("accepted");
         expect(document.querySelector('script[src*="googletagmanager.com"]')).toBeTruthy();
-        expect(globalThis.dataLayer.filter(([command]) => command === "event")).toHaveLength(1);
         await user.click(screen.getByRole("link", {name: "Change query"}));
         expect(globalThis[`ga-disable-${PROFILE.analyticsId}`]).toBe(true);
-        expect(globalThis.dataLayer.filter(([command]) => command === "event")).toHaveLength(1);
         await user.click(screen.getByRole("link", {name: "Jump to section"}));
-        expect(globalThis.dataLayer.map(([command]) => command)).toEqual(["js", "config", "event", "event"]);
-        expect(globalThis.dataLayer[1][2]).toMatchObject({send_page_view: false});
-        expect(Array.from(globalThis.dataLayer[2])).toEqual(["event", "page_view", expect.objectContaining({
-            page_location: `${window.location.origin}/`,
-            page_referrer: "https://example.org/refer",
-        })]);
-        expect(Array.from(globalThis.dataLayer[3])).toEqual(["event", "page_view", expect.objectContaining({
-            page_location: `${window.location.origin}/about`,
-            page_referrer: `${window.location.origin}/`,
-        })]);
-        expect(JSON.stringify(globalThis.dataLayer)).not.toContain("test-only");
+        expect(globalThis[`ga-disable-${PROFILE.analyticsId}`]).toBe(false);
+        expect(globalThis.dataLayer.map(([command]) => command)).toEqual(["js", "config"]);
         expect(JSON.stringify(globalThis.dataLayer)).not.toContain("another-test-value");
     });
 
@@ -89,11 +77,11 @@ describe("AnalyticsConsent", () => {
         expect(globalThis[`ga-disable-${PROFILE.analyticsId}`]).toBe(true);
         expect(document.cookie).not.toContain("_ga");
         await user.click(screen.getByRole("link", {name: "About"}));
-        expect(globalThis.dataLayer.filter(([command]) => command === "event")).toHaveLength(1);
+        expect(globalThis.dataLayer.map(([command]) => command)).toEqual(["js", "config"]);
 
         await user.click(settings.getByRole("button", {name: "Accept"}));
         expect(globalThis[`ga-disable-${PROFILE.analyticsId}`]).toBe(false);
-        expect(globalThis.dataLayer.filter(([command]) => command === "event")).toHaveLength(2);
+        expect(globalThis.dataLayer.map(([command]) => command)).toEqual(["js", "config"]);
         expect(document.querySelectorAll('script[src*="googletagmanager.com"]')).toHaveLength(1);
     });
 

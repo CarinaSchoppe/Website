@@ -12,7 +12,6 @@ const enabled = Boolean(PROFILE.analyticsId);
 // The Google tag can collect document URLs independently of our page-view events.
 let canMeasureDocument = !window.location.search && !document.referrer.includes("?");
 let unsavedPreference = null;
-let lastPageLocation;
 
 function getPreference() {
     const value = unsavedPreference ?? safeGetStorageItem(CONSENT_KEY);
@@ -71,8 +70,7 @@ function loadAnalytics(measurementId) {
         globalThis.dataLayer.push(arguments);
     };
     globalThis.gtag("js", new Date());
-    globalThis.gtag("config", measurementId, {anonymize_ip: true, send_page_view: false});
-    lastPageLocation = undefined;
+    globalThis.gtag("config", measurementId, {anonymize_ip: true});
 }
 
 export default function AnalyticsConsent() {
@@ -84,23 +82,9 @@ export default function AnalyticsConsent() {
         if (!enabled) return;
         const disabled = isDisabled(consent, search);
         globalThis[DISABLE_KEY] = disabled;
-        if (disabled) {
-            if (consent !== "accepted") lastPageLocation = undefined;
-            return;
-        }
-
-        const pageLocation = `${window.location.origin}${pathname}`;
-        if (lastPageLocation === pageLocation) return;
-
-        const page = {
-            page_title: document.title,
-            page_location: pageLocation,
-            page_referrer: lastPageLocation ?? document.referrer.split(/[?#]/, 1)[0],
-        };
-        loadAnalytics(PROFILE.analyticsId);
-        globalThis.gtag("event", "page_view", page);
-        lastPageLocation = pageLocation;
-    }, [consent, pathname, search]);
+        // The web stream already measures page loads and browser history changes.
+        if (!disabled) loadAnalytics(PROFILE.analyticsId);
+    }, [consent, search]);
 
     if (!enabled || consent || pathname.replace(/\/+$/, "") === "/privacy") return null;
 
