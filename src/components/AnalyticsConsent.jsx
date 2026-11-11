@@ -25,7 +25,7 @@ function loadAnalytics(measurementId) {
 }
 
 export default function AnalyticsConsent() {
-    const {pathname, search} = useLocation();
+    const {pathname} = useLocation();
     const {t} = useLanguage();
     const [consent, setConsent] = useState(() => safeGetStorageItem(CONSENT_KEY));
     const enabled = Boolean(PROFILE.analyticsId);
@@ -34,16 +34,16 @@ export default function AnalyticsConsent() {
         if (!enabled || consent !== "accepted") return;
 
         loadAnalytics(PROFILE.analyticsId);
-        const pageLocation = `${window.location.origin}${pathname}${search}`;
+        const pageLocation = `${window.location.origin}${pathname}`;
         if (lastPageLocation === pageLocation) return;
 
         globalThis.gtag("event", "page_view", {
             page_title: document.title,
             page_location: pageLocation,
-            page_referrer: lastPageLocation ?? document.referrer,
+            page_referrer: lastPageLocation ?? document.referrer.split(/[?#]/, 1)[0],
         });
         lastPageLocation = pageLocation;
-    }, [consent, enabled, pathname, search]);
+    }, [consent, enabled, pathname]);
 
     if (!enabled || consent) return null;
 
