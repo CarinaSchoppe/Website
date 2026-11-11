@@ -65,7 +65,7 @@ export default function AnalyticsConsent() {
         setConsent(value);
         if (editingPreferences) {
             setDismissedKey(key);
-            document.getElementById(ANALYTICS_PREFERENCES_ID)?.focus({preventScroll: true});
+            document.getElementById(ANALYTICS_PREFERENCES_ID)?.querySelector("a")?.focus({preventScroll: true});
         }
     }
 

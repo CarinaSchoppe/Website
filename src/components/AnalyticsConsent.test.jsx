@@ -5,7 +5,7 @@ import {Link, MemoryRouter} from "react-router-dom";
 import {PROFILE} from "../data/profile.js";
 import PrivacyPage from "../pages/PrivacyPage.jsx";
 import {LanguageProvider, LANGUAGE_STORAGE_KEY} from "../i18n.jsx";
-import AnalyticsConsent from "./AnalyticsConsent.jsx";
+import AnalyticsConsent, {ANALYTICS_PREFERENCES_ID} from "./AnalyticsConsent.jsx";
 
 function renderConsent({route = "/?source=example#projects", children} = {}) {
     window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "en");
@@ -83,6 +83,7 @@ describe("AnalyticsConsent", () => {
         const previousCalls = globalThis.dataLayer.length;
 
         await user.click(settings());
+        document.getElementById(ANALYTICS_PREFERENCES_ID).focus();
         expect(banner()).toHaveFocus();
         expect(screen.getByRole("button", {name: "Accept", pressed: true})).toBeInTheDocument();
         await user.click(screen.getByRole("button", {name: "Decline"}));

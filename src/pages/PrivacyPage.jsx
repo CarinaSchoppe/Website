@@ -45,9 +45,11 @@ export default function PrivacyPage() {
                             <h2 className="text-2xl font-black text-white">{title}</h2>
                             <p className="mt-5 text-sm leading-7 text-slate-300 sm:text-base">{copy}</p>
                             {preferences && (
-                                <Link id={ANALYTICS_PREFERENCES_ID} to={`#${ANALYTICS_PREFERENCES_ID}`} className="site-text-link mt-3">
-                                    {isDe ? "Analyse-Einstellungen ändern" : "Change analytics settings"}
-                                </Link>
+                                <div id={ANALYTICS_PREFERENCES_ID}>
+                                    <Link to={`#${ANALYTICS_PREFERENCES_ID}`} className="site-text-link mt-3">
+                                        {isDe ? "Analyse-Einstellungen ändern" : "Change analytics settings"}
+                                    </Link>
+                                </div>
                             )}
                         </Card>
                     ))}
