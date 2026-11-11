@@ -79,17 +79,12 @@ html { scroll-padding-top: calc(var(--portfolio-header-height) + 1rem); }
 .site-header-inner { display: flex; min-height: 4.55rem; align-items: center; justify-content: space-between; gap: 1rem; }
 .site-brand { display: inline-flex; align-items: center; gap: .7rem; min-width: 0; min-height: 44px; }
 .site-brand-mark {
-    display: grid;
-    width: 2.45rem;
-    height: 2.45rem;
+    display: block;
+    width: 3rem;
+    height: 3rem;
     flex: none;
-    place-items: center;
-    border: 1px solid var(--line);
-    background: var(--brand-soft);
-    color: var(--brand-ink);
-    border-radius: .55rem;
-    font: 800 .93rem/1 var(--display);
-    letter-spacing: -.04em;
+    object-fit: contain;
+    border-radius: .45rem;
 }
 .site-brand-name { font-weight: 800; font-size: .93rem; line-height: 1.2; }
 .site-desktop-nav, .site-header-controls { display: flex; align-items: center; }
@@ -338,7 +333,7 @@ html[data-theme="night"] :is(.site-button-primary, .ui-button[data-button-varian
     .site-header-inner { width: calc(100% - 1.35rem); }
     .site-brand { gap: .45rem; }
     .site-brand-name { max-width: 8rem; font-size: .875rem; }
-    .site-brand-mark { width: 2rem; height: 2rem; }
+    .site-brand-mark { width: 2.5rem; height: 2.5rem; }
     .site-footer-inner { grid-template-columns: minmax(0, 1fr); }
     .site-footer-legal span { width: 100%; }
     .site-content main[class*="pt-32"] h1 { font-size: clamp(2.2rem, 9.5vw, 2.65rem); }

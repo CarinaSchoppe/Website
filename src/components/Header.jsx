@@ -3,6 +3,7 @@ import {Globe2, Menu, Moon, Sun, X} from "lucide-react";
 import {Link, NavLink, useLocation} from "react-router-dom";
 import {navItems, PROFILE} from "../data/profile.js";
 import {useLanguage} from "../i18n.jsx";
+import logo from "../assets/carina-logo.webp";
 
 const primaryItems = ["/about", "/skills", "/projects", "/credentials", "/#referenzen", "/blog", "/contact"]
     .map((path) => navItems.find((item) => item.to === path));
@@ -64,7 +65,7 @@ export default function Header({theme, onToggleTheme}) {
             <header className="site-header">
                 <div className="site-width site-header-inner">
                     <NavLink to="/" className="site-brand">
-                        <span className="site-brand-mark" aria-hidden="true">CS</span>
+                        <img src={logo} className="site-brand-mark" alt="" width="48" height="48"/>
                         <span className="site-brand-name">Carina Sophie Schoppe</span>
                     </NavLink>
                     <nav className="site-desktop-nav" aria-label={t.navigation}>
