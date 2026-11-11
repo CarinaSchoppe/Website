@@ -1,10 +1,11 @@
 import {ArrowLeft} from "lucide-react";
-import {Link, Navigate, useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {blogArticlesForLanguage} from "../data/blogArticles.js";
 import {useLanguage} from "../i18n.jsx";
 import Badge from "../components/Badge.jsx";
 import Button from "../components/Button.jsx";
 import Card from "../components/Card.jsx";
+import NotFoundPage from "./NotFoundPage.jsx";
 
 export default function BlogPostPage() {
     const {slug} = useParams();
@@ -12,7 +13,7 @@ export default function BlogPostPage() {
     const blogPosts = blogArticlesForLanguage(language);
     const post = blogPosts.find((item) => item.slug === slug);
 
-    if (!post) return <Navigate to="/blog" replace/>;
+    if (!post) return <NotFoundPage/>;
 
     const copy = language === "de"
         ? {

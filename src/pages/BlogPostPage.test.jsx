@@ -35,9 +35,10 @@ describe("BlogPostPage", () => {
         expect(screen.getByText(/Kernidee/i)).toBeInTheDocument();
     });
 
-    it("redirects unknown slugs back to the blog overview", () => {
+    it("shows a missing article with a link to the blog overview", () => {
         renderRoutes("/blog/not-a-real-post");
 
-        expect(screen.getByRole("heading", {name: /Writing on AI/i})).toBeInTheDocument();
+        expect(screen.getByRole("heading", {name: /there is nothing here/i})).toBeInTheDocument();
+        expect(screen.getByRole("link", {name: "Writing"})).toHaveAttribute("href", "/blog");
     });
 });

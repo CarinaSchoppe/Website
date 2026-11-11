@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {useLocation} from "react-router-dom";
+import {useLocation, useMatch} from "react-router-dom";
 import {blogIndexForLanguage} from "../data/blogIndex.js";
 import {PROFILE} from "../data/profile.js";
 import {canonicalUrl, SITE_URL} from "../data/siteUrls.js";
@@ -188,17 +188,18 @@ function buildBreadcrumbSchema(pathname, title) {
 export default function Seo() {
     const {pathname} = useLocation();
     const {language} = useLanguage();
-    const normalizedPathname = normalizePathname(pathname);
-    const isBlogPostRoute = /^\/blog\/[^/]+$/.test(normalizedPathname);
+    const blogMatch = useMatch("/blog/:slug");
+    const post = blogMatch && blogIndexForLanguage(language).find((item) => item.slug === blogMatch.params.slug);
+    const normalizedPathname = post ? `/blog/${post.slug}` : normalizePathname(pathname);
     const routeMetaEntry = routeMeta[language][normalizedPathname];
-    const isKnownRoute = Boolean(routeMetaEntry || isBlogPostRoute);
+    const isKnownRoute = Boolean(routeMetaEntry || post);
     const shortNotFoundPath = normalizedPathname.length > 64
         ? `${normalizedPathname.slice(0, 61)}...`
         : normalizedPathname;
-    const currentMeta = isBlogPostRoute
+    const currentMeta = post
         ? {
-            title: language === "de" ? "Blogbeitrag | Carina Sophie Schoppe" : "Blog Article | Carina Sophie Schoppe",
-            description: language === "de" ? "Fachbeitrag von Carina Sophie Schoppe zu AI, Governance, digitaler Bildung oder moderner Arbeit." : "Long-form article by Carina Sophie Schoppe on AI, governance, digital education or modern work.",
+            title: `${post.title} | Carina Sophie Schoppe Blog`,
+            description: post.excerpt,
         }
         : routeMetaEntry || {
                 title: language === "de"
@@ -221,37 +222,27 @@ export default function Seo() {
         });
         upsertMeta('meta[property="og:title"]', {property: "og:title", content: title});
         upsertMeta('meta[property="og:description"]', {property: "og:description", content: description});
-        upsertMeta('meta[property="og:url"]', {property: "og:url", content: canonical});
         upsertMeta('meta[property="og:image"]', {property: "og:image", content: DEFAULT_IMAGE});
-        upsertMeta('meta[property="og:type"]', {property: "og:type", content: isBlogPostRoute ? "article" : "website"});
+        upsertMeta('meta[property="og:type"]', {property: "og:type", content: post ? "article" : "website"});
         upsertMeta('meta[name="twitter:card"]', {name: "twitter:card", content: "summary_large_image"});
         upsertMeta('meta[name="twitter:title"]', {name: "twitter:title", content: title});
         upsertMeta('meta[name="twitter:description"]', {name: "twitter:description", content: description});
-        upsertLink('link[rel="canonical"]', {rel: "canonical", href: canonical});
-
         upsertJsonLd("dynamic-person-service-schema", buildPersonSchema());
-        upsertJsonLd("dynamic-breadcrumb-schema", buildBreadcrumbSchema(normalizedPathname, title));
-        removeJsonLd("dynamic-faq-schema");
 
-        if (!isBlogPostRoute) {
-            removeJsonLd("dynamic-blogpost-schema");
+        if (isKnownRoute) {
+            upsertMeta('meta[property="og:url"]', {property: "og:url", content: canonical});
+            upsertLink('link[rel="canonical"]', {rel: "canonical", href: canonical});
+            upsertJsonLd("dynamic-breadcrumb-schema", buildBreadcrumbSchema(normalizedPathname, title));
+        } else {
+            document.head.querySelector('meta[property="og:url"]')?.remove();
+            document.head.querySelector('link[rel="canonical"]')?.remove();
+            removeJsonLd("dynamic-breadcrumb-schema");
         }
-    }, [description, isBlogPostRoute, isKnownRoute, normalizedPathname, title]);
 
-    useEffect(() => {
-        const blogMatch = normalizedPathname.match(/^\/blog\/([^/]+)$/);
-        if (!blogMatch) return undefined;
-
-        const post = blogIndexForLanguage(language).find((item) => item.slug === blogMatch[1]);
-        if (!post) return undefined;
-
-        const canonical = canonicalUrl(normalizedPathname);
-        const blogTitle = `${post.title} | Carina Sophie Schoppe Blog`;
-        document.title = blogTitle;
-        upsertMeta('meta[name="description"]', {name: "description", content: post.excerpt});
-        upsertMeta('meta[property="og:title"]', {property: "og:title", content: blogTitle});
-        upsertMeta('meta[property="og:description"]', {property: "og:description", content: post.excerpt});
-        upsertMeta('meta[property="og:type"]', {property: "og:type", content: "article"});
+        if (!post) {
+            removeJsonLd("dynamic-blogpost-schema");
+            return;
+        }
         upsertJsonLd("dynamic-blogpost-schema", {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
@@ -265,10 +256,7 @@ export default function Seo() {
             mainEntityOfPage: canonical,
         });
 
-        return () => {
-            removeJsonLd("dynamic-blogpost-schema");
-        };
-    }, [language, normalizedPathname]);
+    }, [description, isKnownRoute, normalizedPathname, post, title]);
 
     return null;
 }

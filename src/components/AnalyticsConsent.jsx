@@ -5,6 +5,7 @@ import {useLanguage} from "../i18n.jsx";
 import {safeGetStorageItem, safeSetStorageItem} from "../utils/browser.js";
 
 const CONSENT_KEY = "carina_analytics_consent";
+let lastPageLocation;
 
 function loadAnalytics(measurementId) {
     if (!measurementId || globalThis.gtag) return;
@@ -19,29 +20,30 @@ function loadAnalytics(measurementId) {
         globalThis.dataLayer.push(arguments);
     };
     globalThis.gtag("js", new Date());
-    globalThis.gtag("config", measurementId, {anonymize_ip: true});
+    globalThis.gtag("config", measurementId, {anonymize_ip: true, send_page_view: false});
+    lastPageLocation = undefined;
 }
 
 export default function AnalyticsConsent() {
-    const location = useLocation();
+    const {pathname, search} = useLocation();
     const {t} = useLanguage();
     const [consent, setConsent] = useState(() => safeGetStorageItem(CONSENT_KEY));
     const enabled = Boolean(PROFILE.analyticsId);
 
     useEffect(() => {
-        if (enabled && consent === "accepted") {
-            loadAnalytics(PROFILE.analyticsId);
-        }
-    }, [consent, enabled]);
+        if (!enabled || consent !== "accepted") return;
 
-    useEffect(() => {
-        if (globalThis.gtag && enabled && consent === "accepted") {
-            globalThis.gtag("config", PROFILE.analyticsId, {
-                page_path: `${location.pathname}${location.search}`,
-                anonymize_ip: true,
-            });
-        }
-    }, [location, consent, enabled]);
+        loadAnalytics(PROFILE.analyticsId);
+        const pageLocation = `${window.location.origin}${pathname}${search}`;
+        if (lastPageLocation === pageLocation) return;
+
+        globalThis.gtag("event", "page_view", {
+            page_title: document.title,
+            page_location: pageLocation,
+            page_referrer: lastPageLocation ?? document.referrer,
+        });
+        lastPageLocation = pageLocation;
+    }, [consent, enabled, pathname, search]);
 
     if (!enabled || consent) return null;
 

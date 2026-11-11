@@ -72,16 +72,18 @@ function preloadRoute(html, path, chunks) {
 }
 
 function withRouteHead(html, [path, title, description]) {
-    const canonical = canonicalUrl(path);
+    const canonical = path && canonicalUrl(path);
     return html
         .replace(/\s*<link\b(?=[^>]*\bdata-hero-preload\b)[^>]*>/, "")
         .replace(/<title>.*?<\/title>/, `<title>${escapeHtmlAttribute(title)}</title>`)
         .replace(/<meta content="[^"]*" name="description"\/>/, `<meta content="${escapeHtmlAttribute(description)}" name="description"/>`)
-        .replace(/<meta content="website" property="og:type"\/>/, `<meta content="${path.startsWith("/blog/") ? "article" : "website"}" property="og:type"/>`)
+        .replace(/<meta content="website" property="og:type"\/>/, `<meta content="${path?.startsWith("/blog/") ? "article" : "website"}" property="og:type"/>`)
         .replace(/<meta content="[^"]*" property="og:title"\/>/, `<meta content="${escapeHtmlAttribute(title)}" property="og:title"/>`)
         .replace(/<meta content="[^"]*" property="og:description"\/>/, `<meta content="${escapeHtmlAttribute(description)}" property="og:description"/>`)
-        .replace(/<meta content="[^"]*" property="og:url"\/>/, `<meta content="${canonical}" property="og:url"/>`)
-        .replace(/<link href="[^"]*" rel="canonical"\/>/, `<link href="${canonical}" rel="canonical"/>`);
+        .replace(/<meta content="[^"]*" name="twitter:title"\/>/, `<meta content="${escapeHtmlAttribute(title)}" name="twitter:title"/>`)
+        .replace(/<meta content="[^"]*" name="twitter:description"\/>/, `<meta content="${escapeHtmlAttribute(description)}" name="twitter:description"/>`)
+        .replace(/<meta content="[^"]*" property="og:url"\/>/, canonical ? `<meta content="${canonical}" property="og:url"/>` : "")
+        .replace(/<link href="[^"]*" rel="canonical"\/>/, canonical ? `<link href="${canonical}" rel="canonical"/>` : "");
 }
 
 function htmlPerformancePlugin() {
@@ -120,6 +122,12 @@ function htmlPerformancePlugin() {
                     source: preloadRoute(withRouteHead(html, route), route[0], chunks),
                 });
             });
+
+            const notFoundHtml = withRouteHead(html, [null, "Seite nicht gefunden | Carina Sophie Schoppe", "Diese Adresse führt zu keiner Seite."])
+                .replace('content="index, follow, max-image-preview:large" name="robots"', 'content="noindex, follow" name="robots"')
+                .replace('<div id="root"></div>', `<div id="root"></div>
+<noscript><main class="site-width"><h1>Seite nicht gefunden</h1><p>Diese Adresse führt zu keiner Seite.</p><p><a href="/">Zur Startseite</a></p></main></noscript>`);
+            this.emitFile({type: "asset", fileName: "404.html", source: notFoundHtml});
         },
     };
 }

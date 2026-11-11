@@ -160,5 +160,13 @@ describe("App routing and language", () => {
         await user.click(within(screen.getByRole("banner")).getByRole("link", {name: "Projects"}));
         await user.click(await screen.findByRole("link", {name: "Talk about open source"}));
         expect(await screen.findByRole("heading", {name: "Personal contact"})).toHaveFocus();
+
+        scrollIntoView.mockClear();
+        window.history.back();
+        await waitFor(() => expect(window.location.pathname).toBe("/projects"));
+        window.history.back();
+        await waitFor(() => expect(window.location.hash).toBe("#appointment"));
+        expect(await screen.findByRole("heading", {name: /Contact Carina Sophie Schoppe/i})).toBeInTheDocument();
+        expect(scrollIntoView).not.toHaveBeenCalled();
     });
 });

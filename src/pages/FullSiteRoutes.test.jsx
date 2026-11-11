@@ -24,9 +24,7 @@ describe("full static site route coverage", () => {
         expect(html).toContain("Carina Sophie Schoppe | Portfolio");
         expect(existsSync("public/favicon.svg")).toBe(true);
         expect(existsSync("public/apple-touch-icon.svg")).toBe(true);
-        expect(existsSync("public/404.html")).toBe(true);
         expect(existsSync("public/images/luminovia-logo-full.svg")).toBe(true);
-        expect(readFileSync("public/404.html", "utf8")).toContain("__soft404");
         expect(html).toContain("params.get(\"__soft404\")");
         expect(html).not.toContain("hreflang=");
         expect(sitemap).toContain(`${SITE_BASE_URL}/`);
@@ -118,5 +116,30 @@ describe("full static site route coverage", () => {
         expect(document.title).toMatch(/not found/i);
         expect(document.head.querySelector('meta[name="robots"]')).toHaveAttribute("content", "noindex, follow");
         unmount();
+    });
+
+    it("keeps a missing article at its URL and excludes it from search", async () => {
+        const missingPath = "/blog/not-a-real-post/?source=test#paragraph";
+        window.history.pushState({}, "Missing article", missingPath);
+        render(<App/>);
+
+        expect(await screen.findByTestId("not-found-reference")).toBeInTheDocument();
+        expect(`${window.location.pathname}${window.location.search}${window.location.hash}`).toBe(missingPath);
+        expect(document.head.querySelector('meta[name="robots"]')).toHaveAttribute("content", "noindex, follow");
+        expect(document.head.querySelector('link[rel="canonical"]')).toBeNull();
+    });
+
+    it.each(["en", "de"])("keeps article titles consistent across metadata in %s", async (language) => {
+        window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+        window.history.pushState({}, "Article", "/blog/teaching-with-ai-without-losing-learning/");
+        render(<App/>);
+
+        const heading = await screen.findByRole("heading", {level: 1});
+        const title = `${heading.textContent} | Carina Sophie Schoppe Blog`;
+        expect(document.title).toBe(title);
+        expect(document.head.querySelector('meta[property="og:title"]')).toHaveAttribute("content", title);
+        expect(document.head.querySelector('meta[name="twitter:title"]')).toHaveAttribute("content", title);
+        const breadcrumb = JSON.parse(document.getElementById("dynamic-breadcrumb-schema").textContent);
+        expect(breadcrumb.itemListElement.at(-1).name).toBe(heading.textContent);
     });
 });

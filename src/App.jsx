@@ -1,4 +1,4 @@
-import {lazy, Suspense, useEffect, useState} from "react";
+import {lazy, Suspense, useEffect, useLayoutEffect, useRef, useState} from "react";
 import {BrowserRouter, Route, Routes, useLocation, useNavigationType} from "react-router-dom";
 import AnalyticsConsent from "./components/AnalyticsConsent.jsx";
 import AppErrorBoundary from "./components/AppErrorBoundary.jsx";
@@ -28,8 +28,9 @@ function lazyWithRecovery(loader) {
             return module;
         /* v8 ignore start -- stale chunk recovery depends on browser cache state after deployment */
         } catch (error) {
-            if (isChunkLoadError(error) && safeGetSessionItem(CHUNK_RECOVERY_KEY) !== "used") {
-                safeSetSessionItem(CHUNK_RECOVERY_KEY, "used");
+            if (isChunkLoadError(error)
+                && safeGetSessionItem(CHUNK_RECOVERY_KEY) !== "used"
+                && safeSetSessionItem(CHUNK_RECOVERY_KEY, "used")) {
                 globalThis.location.reload();
                 return new Promise(() => {});
             }
@@ -64,27 +65,34 @@ function getHashTarget(hash) {
     /* v8 ignore stop */
 }
 
-function RouteScroll() {
+function RouteScroll({positions}) {
     const {key, hash} = useLocation();
     const isHistoryNavigation = useNavigationType() === "POP";
 
-    useEffect(() => {
-        if (!hash) {
-            if (isHistoryNavigation) return;
-            document.getElementById("main-content").focus({preventScroll: true});
-            window.scrollTo({top: 0, behavior: "auto"});
-            return;
-        }
-
-        const target = getHashTarget(hash);
-        if (!target) return;
-
+    useLayoutEffect(() => {
+        const savedPositions = positions.current;
+        const restoredPosition = isHistoryNavigation ? savedPositions.get(key) : undefined;
+        const rememberPosition = () => savedPositions.set(key, window.scrollY);
         const frame = globalThis.requestAnimationFrame(() => {
-            if (!isHistoryNavigation) target.focus({preventScroll: true});
-            target.scrollIntoView({behavior: "auto", block: "start"});
+            const target = getHashTarget(hash);
+            if (restoredPosition !== undefined) {
+                window.scrollTo({top: restoredPosition, behavior: "auto"});
+            } else if (target) {
+                if (!isHistoryNavigation) target.focus({preventScroll: true});
+                target.scrollIntoView({behavior: "auto", block: "start"});
+            } else if (!hash && !isHistoryNavigation) {
+                document.getElementById("main-content").focus({preventScroll: true});
+                window.scrollTo({top: 0, behavior: "auto"});
+            }
+            rememberPosition();
         });
-        return () => globalThis.cancelAnimationFrame(frame);
-    }, [key, hash, isHistoryNavigation]);
+
+        window.addEventListener("scroll", rememberPosition, {passive: true});
+        return () => {
+            globalThis.cancelAnimationFrame(frame);
+            window.removeEventListener("scroll", rememberPosition);
+        };
+    }, [key, hash, isHistoryNavigation, positions]);
 
     return null;
 }
@@ -93,7 +101,6 @@ function routeElement(Component) {
     return (
         <AppErrorBoundary>
             <Component/>
-            <RouteScroll/>
         </AppErrorBoundary>
     );
 }
@@ -110,6 +117,15 @@ function pageRoutes(path, Component) {
 
 export default function App() {
     const [theme, setTheme] = useState(getInitialTheme);
+    const scrollPositions = useRef(new Map());
+
+    useLayoutEffect(() => {
+        const previous = window.history.scrollRestoration;
+        window.history.scrollRestoration = "manual";
+        return () => {
+            window.history.scrollRestoration = previous;
+        };
+    }, []);
 
     useEffect(() => {
         document.documentElement.dataset.theme = theme;
@@ -144,6 +160,7 @@ export default function App() {
                                 <Route path="*" element={routeElement(NotFoundPage)}/>
                             </Routes>
                         </div>
+                        <RouteScroll positions={scrollPositions}/>
                         <AppErrorBoundary fallback={null}>
                             <AnalyticsConsent/>
                         </AppErrorBoundary>
