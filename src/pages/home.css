@@ -25,7 +25,8 @@
     align-items: center;
     gap: .6rem;
     color: var(--accent);
-    font-size: clamp(.76rem, 1.35vw, .9rem);
+    font-size: clamp(1rem, 1.45vw, 1.125rem);
+    line-height: 1.5;
     font-weight: 800;
     letter-spacing: .035em;
 }
@@ -76,7 +77,7 @@
     gap: .3rem .85rem;
     padding: .85rem .9rem .65rem;
     color: var(--muted);
-    font-size: .82rem;
+    font-size: .9375rem;
     font-weight: 750;
 }
 .home-portrait figcaption::before {
@@ -100,7 +101,7 @@
 .home-proof dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .85rem clamp(1rem, 2.6vw, 2.4rem); }
 .home-proof dl div + div { border-inline-start: 1px solid var(--line); padding-inline-start: clamp(.75rem, 2vw, 1.65rem); }
 .home-proof dt { font-size: clamp(1.25rem, 2.45vw, 1.95rem); font-weight: 800; letter-spacing: -.045em; line-height: 1.2; }
-.home-proof dd { margin-top: .25rem; color: var(--muted); font-size: .81rem; line-height: 1.4; overflow-wrap: anywhere; }
+.home-proof dd { margin-top: .25rem; color: var(--muted); font-size: .9375rem; line-height: 1.5; overflow-wrap: anywhere; }
 .home-proof .site-text-link { flex: none; }
 
 .home-section { margin-top: clamp(2.65rem, 5.5vw, 5rem); }
@@ -196,6 +197,7 @@
 .home-writing-list a:hover { background: var(--paper-raised); }
 .home-writing-list h3 { font-size: clamp(1.05rem, 2vw, 1.35rem); text-wrap: initial; }
 .home-writing-list .site-kicker, .home-writing-list svg { color: var(--accent); }
+.home-writing-list .site-kicker { font-size: 1rem; letter-spacing: .04em; }
 
 .home-contact {
     display: grid;
