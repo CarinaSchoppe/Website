@@ -12,7 +12,7 @@ const prismaProject = selectedWork.find(({id}) => id === "prisma");
 const copy = {
     de: {
         kicker: "Über mich",
-        intro: "Ich plane Kurse für Erwachsene mit Blick auf den Arbeitsalltag. Eine Übung ist für mich gelungen, wenn Teilnehmende das Gelernte auch auf einen anderen Fall übertragen können.",
+        intro: "Ich verbinde Lehre, Beratung und KI-Forschung. Dabei interessiert mich, wie Menschen Technologie verstehen und sinnvoll bei der Arbeit einsetzen. Aus Forschung werden so konkrete Lernaufgaben und Orientierung für die Praxis.",
         location: "Brisbane, Australien",
         portrait: "Porträt von Carina Sophie Schoppe",
         career: "Zum Werdegang",
@@ -45,7 +45,7 @@ const copy = {
     },
     en: {
         kicker: "About me",
-        intro: "I plan courses for adults around the kind of problems people face at work. An exercise has done its job when learners can apply what they’ve learnt to a different case.",
+        intro: "I bring together education, consulting and AI research. I’m interested in how people understand technology and put it to work. My research informs practical learning activities and helps people make informed decisions.",
         location: "Brisbane, Australia",
         portrait: "Portrait of Carina Sophie Schoppe",
         career: "See my career timeline",
@@ -155,7 +155,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            <section className="about-business" aria-labelledby="about-business-title">
+            <section className="about-business" id="about-business" tabIndex={-1} aria-labelledby="about-business-title">
                 <img className="about-business-logo" src={IMAGES.luminoviaLogoFull} alt="" width="208" height="208" loading="lazy"/>
                 <div>
                     <h2 id="about-business-title">Luminovia Training &amp; Consulting</h2>

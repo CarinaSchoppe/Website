@@ -16,7 +16,7 @@ describe("App routing and language", () => {
         render(<App/>);
 
         expect(await screen.findByRole("heading", {name: /^Carina Sophie Schoppe$/i})).toBeInTheDocument();
-        expect(screen.getByRole("heading", {name: "Lehre, Software und Forschung"})).toBeInTheDocument();
+        expect(screen.getByRole("heading", {name: "Lehre, Beratung und KI-Forschung"})).toBeInTheDocument();
         expect(screen.getByRole("region", {name: "Referenzen"})).toHaveAttribute("id", "referenzen");
         expect(screen.getByRole("link", {name: "Projekte ansehen"})).toHaveAttribute("href", "/#arbeit");
         expect(screen.getByRole("link", {name: "Training bei Luminovia"})).toHaveAttribute("href", "https://luminovia.org/training/#details");
@@ -30,7 +30,7 @@ describe("App routing and language", () => {
         await user.click(screen.getByRole("button", {name: /Sprache auf Englisch wechseln/i}));
 
         expect(screen.getByRole("heading", {name: /^Carina Sophie Schoppe$/i})).toBeInTheDocument();
-        expect(screen.getByRole("heading", {name: "Teaching, software and research"})).toBeInTheDocument();
+        expect(screen.getByRole("heading", {name: "Education, consulting and AI research"})).toBeInTheDocument();
         expect(screen.getByRole("region", {name: "References"})).toHaveAttribute("id", "referenzen");
         expect(screen.getByRole("link", {name: /^Teaching topics From networking/i})).toHaveAttribute("href", "/skills#unterricht");
         expect(screen.getByRole("region", {name: "Selected projects"})).toHaveAttribute("id", "arbeit");

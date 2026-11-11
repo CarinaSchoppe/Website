@@ -1,4 +1,4 @@
-import {ArrowRight, ArrowUpRight, BookOpen, Code2, FlaskConical, Globe2, Mail, MapPin, SlidersHorizontal} from "lucide-react";
+import {ArrowRight, ArrowUpRight, BookOpen, Compass, FlaskConical, Globe2, Mail, MapPin, SlidersHorizontal} from "lucide-react";
 import {Link} from "react-router-dom";
 import Photo from "../components/Photo.jsx";
 import ReferencesSection from "../components/ReferencesSection.jsx";
@@ -8,14 +8,14 @@ import {selectedWork} from "../data/selectedWork.js";
 import {useLanguage} from "../i18n.jsx";
 import "./home.css";
 
-const capabilityIcons = [BookOpen, Code2, FlaskConical];
+const capabilityIcons = [BookOpen, Compass, FlaskConical];
 const capabilityTones = ["butter", "mint", "sky"];
 const projectIcons = {mail: Mail, openxlr: SlidersHorizontal};
 
 const copy = {
     de: {
-        role: "IT-Dozentin und Softwareentwicklerin",
-        intro: "Ich unterrichte IT und Wirtschaft, entwickle Software für Literaturreviews und untersuche, wie Menschen generative KI bei der Arbeit einsetzen.",
+        role: "Dozentin · Beraterin · KI-Forscherin",
+        intro: "Ich vermittle IT- und Wirtschaftswissen, berate zum Einsatz digitaler Technologien und erforsche, wie Menschen generative KI bei der Arbeit nutzen.",
         location: "Brisbane, Australien",
         languages: "Deutsch & Englisch",
         portraitAlt: "Porträt von Carina Sophie Schoppe",
@@ -29,10 +29,10 @@ const copy = {
             ["M.Sc. & MBA", "Zwei Masterabschlüsse"],
         ],
         credentials: "Alle Qualifikationen",
-        focus: "Lehre, Software und Forschung",
+        focus: "Lehre, Beratung und KI-Forschung",
         capabilities: [
             ["Lehrthemen", "Von Netzwerken und KI bis zu Buchhaltung und Datenschutz.", "/skills#unterricht"],
-            ["Softwareentwicklung", "Eigene Werkzeuge und Beiträge zu Open Source.", "/projects"],
+            ["Beratung", "Technologie einordnen und KI verantwortungsvoll im Arbeitsalltag einsetzen.", "/about#about-business"],
             ["Publikationen", "Forschung zu generativer KI, Arbeitsalltag und IT-Sicherheit.", "/skills#publications"],
         ],
         selected: "Ausgewählte Projekte",
@@ -46,15 +46,15 @@ const copy = {
         writing: "Fachtexte",
         allWriting: "Alle Texte",
         contactTitle: "Lass uns austauschen",
-        contactCopy: "Schreib mir zu Forschung, Software oder Open Source.",
+        contactCopy: "Schreib mir zu Lehre, KI-Forschung oder fachlichem Austausch.",
         linkedin: "Mein LinkedIn-Profil",
         businessLabel: "Mein Unternehmen",
         businessCopy: "Trainings, Beratung und Buchungen laufen über Luminovia.",
         businessLink: "Luminovia kontaktieren",
     },
     en: {
-        role: "IT lecturer and software developer",
-        intro: "I teach IT and business, build software for literature reviews and study how people use generative AI at work.",
+        role: "Educator · Consultant · AI Researcher",
+        intro: "I teach IT and business, advise on the use of digital technologies and research how people use generative AI at work.",
         location: "Brisbane, Australia",
         languages: "English & German",
         portraitAlt: "Portrait of Carina Sophie Schoppe",
@@ -68,10 +68,10 @@ const copy = {
             ["MSc & MBA", "Two master’s degrees"],
         ],
         credentials: "All qualifications",
-        focus: "Teaching, software and research",
+        focus: "Education, consulting and AI research",
         capabilities: [
             ["Teaching topics", "From networking and AI to bookkeeping and data protection.", "/skills#unterricht"],
-            ["Software development", "Tools I build and contributions to open source.", "/projects"],
+            ["Consulting", "Making sense of technology and using AI responsibly at work.", "/about#about-business"],
             ["Publications", "Research on generative AI, work and cybersecurity.", "/skills#publications"],
         ],
         selected: "Selected projects",
@@ -85,7 +85,7 @@ const copy = {
         writing: "Articles",
         allWriting: "All articles",
         contactTitle: "Get in touch",
-        contactCopy: "I’m happy to talk about research, software and open source.",
+        contactCopy: "I’m happy to talk about education, AI research and ideas we can explore together.",
         linkedin: "My LinkedIn profile",
         businessLabel: "My business",
         businessCopy: "Luminovia handles training, consulting and bookings.",

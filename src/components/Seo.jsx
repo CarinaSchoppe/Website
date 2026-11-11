@@ -5,14 +5,14 @@ import {PROFILE} from "../data/profile.js";
 import {canonicalUrl, SITE_URL} from "../data/siteUrls.js";
 import {useLanguage} from "../i18n.jsx";
 
-const DEFAULT_IMAGE = `${SITE_URL}/images/carina-og.jpg?v=20261111`;
-const IMAGE_ALT = "Carina Schoppe – Educator, Developer, AI Researcher. IT, AI & Business – explained and applied.";
+const DEFAULT_IMAGE = `${SITE_URL}/images/carina-educator-consultant-ai-researcher.jpg`;
+const IMAGE_ALT = "Carina Schoppe – Educator, Consultant, AI Researcher. IT, AI & Business – explained and applied.";
 
 const routeMeta = {
     en: {
         "/": {
             title: "Carina Sophie Schoppe | Portfolio",
-            description: "The personal portfolio of Carina Sophie Schoppe, an IT lecturer, software developer and founder of Luminovia. Explore her story, interests and work.",
+            description: "The personal portfolio of Carina Sophie Schoppe, an educator, consultant, AI researcher and founder of Luminovia. Explore her story, interests and work.",
         },
         "/projects": {
             title: "Projects | Carina Sophie Schoppe",
@@ -40,7 +40,7 @@ const routeMeta = {
         },
         "/about": {
             title: "About | Carina Sophie Schoppe",
-            description: "Meet Carina Sophie Schoppe, IT lecturer, software developer and founder of Luminovia Training & Consulting. Explore her background and LinkedIn profile.",
+            description: "Meet Carina Sophie Schoppe, educator, consultant, AI researcher and founder of Luminovia Training & Consulting. Explore her background and LinkedIn profile.",
         },
         "/blog": {
             title: "Blog | Carina Sophie Schoppe",
@@ -62,7 +62,7 @@ const routeMeta = {
     de: {
         "/": {
             title: "Carina Sophie Schoppe | Portfolio",
-            description: "Das persönliche Portfolio von Carina Sophie Schoppe, IT-Dozentin, Softwareentwicklerin und Luminovia-Gründerin. Werdegang, Interessen und Projekte.",
+            description: "Das persönliche Portfolio von Carina Sophie Schoppe, Dozentin, Beraterin, KI-Forscherin und Luminovia-Gründerin. Werdegang, Interessen und Projekte.",
         },
         "/projects": {
             title: "Projekte | Carina Sophie Schoppe",
@@ -90,7 +90,7 @@ const routeMeta = {
         },
         "/about": {
             title: "Über Carina | Carina Sophie Schoppe",
-            description: "Carina Sophie Schoppe ist IT-Dozentin, Softwareentwicklerin und Gründerin von Luminovia Training & Consulting. Persönlicher Werdegang und LinkedIn-Profil.",
+            description: "Carina Sophie Schoppe ist Dozentin, Beraterin, KI-Forscherin und Gründerin von Luminovia Training & Consulting. Persönlicher Werdegang und LinkedIn-Profil.",
         },
         "/blog": {
             title: "Blog | Carina Sophie Schoppe",
@@ -161,7 +161,7 @@ function buildPersonSchema() {
         url: `${SITE_URL}/`,
         image: `${SITE_URL}/images/carina-outdoor.jpg`,
         email: PROFILE.email,
-        jobTitle: "IT lecturer and software developer",
+        jobTitle: "Educator, Consultant and AI Researcher",
         address: {
             "@type": "PostalAddress",
             addressLocality: "Brisbane",

@@ -7,7 +7,7 @@ const luminovia = "https://luminovia.org";
 export const PROFILE = {
     name: "Carina Sophie Schoppe",
     founder: "Carina Sophie Schoppe",
-    role: "Portfolio for software, research, teaching and digital education",
+    role: "Educator, Consultant and AI Researcher",
     location: "Brisbane, Australia",
     addressLines: ["43/9 Eduard Place", "4116 Calamvale", "Brisbane, Australia"],
     remote: "Personal portfolio based in Brisbane",

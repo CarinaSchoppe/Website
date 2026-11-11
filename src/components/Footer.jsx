@@ -7,13 +7,13 @@ export default function Footer() {
     const {language, t} = useLanguage();
     const labels = language === "de"
         ? {
-            summary: "IT-Dozentin, Wirtschaftsinformatikerin und Gründerin von Luminovia. In Brisbane zu Hause, auf Deutsch und Englisch tätig.",
+            summary: "Dozentin, Beraterin und KI-Forscherin. Gründerin von Luminovia, in Brisbane zu Hause und auf Deutsch und Englisch tätig.",
             portfolio: "Auf dieser Seite",
             business: "Mein Unternehmen",
             businessContact: "Geschäftliche Anfragen",
         }
         : {
-            summary: "IT lecturer, business information systems specialist, and founder of Luminovia. Based in Brisbane, working in German and English.",
+            summary: "Educator, consultant and AI researcher. Founder of Luminovia, based in Brisbane and working in English and German.",
             portfolio: "On this site",
             business: "My business",
             businessContact: "Business enquiries",

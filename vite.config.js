@@ -13,7 +13,7 @@ const prerenderRoutes = [
     ["/skills", "Lehrthemen und Kompetenzen | Carina Sophie Schoppe", "Unterricht zu KI, IT-Sicherheit, Software, Datenbanken, Netzwerken, Wirtschaft, Buchhaltung, Arbeitsrecht und Datenschutz mit Beispielen aus der Praxis."],
     ["/credentials", "Nachweise | Carina Sophie Schoppe", "Abschlüsse, Zertifikate und fachliche Nachweise von Carina Sophie Schoppe, darunter B.Sc., M.Sc., MBA, TAE40122 und AI-Zertifikate."],
     ["/my-way", "Werdegang | Carina Sophie Schoppe", "Carina Sophie Schoppes Lebenslauf und Werdegang von Wirtschaftsinformatik und Lehre in Deutschland bis zu Software, KI-Forschung und Luminovia in Brisbane."],
-    ["/about", "Über Carina | Carina Sophie Schoppe", "Carina Sophie Schoppe ist IT-Dozentin, Softwareentwicklerin und Gründerin von Luminovia Training & Consulting. Persönlicher Werdegang und LinkedIn-Profil."],
+    ["/about", "Über Carina | Carina Sophie Schoppe", "Carina Sophie Schoppe ist Dozentin, Beraterin, KI-Forscherin und Gründerin von Luminovia Training & Consulting. Persönlicher Werdegang und LinkedIn-Profil."],
     ["/blog", "Blog | Carina Sophie Schoppe", "Texte von Carina Sophie Schoppe zu AI, Governance, digitaler Bildung, Projektarbeit, Cybersecurity, Automationsrisiken und moderner Arbeit."],
     ...blogIndexForLanguage("de").map(({slug, title, excerpt}) => [
         `/blog/${slug}`,

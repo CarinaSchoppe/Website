@@ -18,7 +18,7 @@ export default function MyWayPage() {
         ? {
             badge: "Werdegang",
             title: "Mein beruflicher Weg durch IT, Wirtschaft und Bildung.",
-            intro: "Ich bin in Bodenwerder im Weserbergland aufgewachsen und ging in Holzminden zur Schule. Heute unterrichte ich von Brisbane aus auf Deutsch und Englisch.",
+            intro: "Ich bin in Bodenwerder im Weserbergland aufgewachsen und ging in Holzminden zur Schule. Heute verbinde ich von Brisbane aus Lehre, Beratung und KI-Forschung – auf Deutsch und Englisch.",
             back: "Zurück zu meinem Profil",
             linkedin: "Mein LinkedIn-Profil",
             credentials: "Abschlüsse und Nachweise ansehen",
@@ -33,7 +33,7 @@ export default function MyWayPage() {
         : {
             badge: "My background",
             title: "My professional path through technology, business and education.",
-            intro: "I grew up in Bodenwerder in Germany’s Weserbergland region and went to school in Holzminden. Today I teach in English and German from Brisbane.",
+            intro: "I grew up in Bodenwerder in Germany’s Weserbergland region and went to school in Holzminden. Today I bring together education, consulting and AI research from Brisbane, working in English and German.",
             back: "Back to my profile",
             linkedin: "My LinkedIn profile",
             credentials: "View degrees and credentials",
