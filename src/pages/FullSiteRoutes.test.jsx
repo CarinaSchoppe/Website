@@ -26,7 +26,7 @@ describe("full static site route coverage", () => {
         expect(existsSync("public/favicon.ico")).toBe(true);
         expect(html).toContain('<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>');
         expect(existsSync("public/apple-touch-icon.png")).toBe(true);
-        expect(existsSync("public/images/luminovia-logo-full.svg")).toBe(true);
+        expect(existsSync("src/assets/luminovia-full-logo.webp")).toBe(true);
         expect(html).toContain("params.get(\"__soft404\")");
         expect(html).not.toContain("hreflang=");
         expect(sitemap).toContain(`${SITE_BASE_URL}/`);

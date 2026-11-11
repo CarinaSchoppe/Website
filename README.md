@@ -58,4 +58,5 @@ The project is GitHub Pages compatible:
 - The home page and biography use the original portraits in `public/images/`, with responsive WebP variants. The homepage illustrations follow the documented PRISMA and Automatic Mail Sender workflows. The OpenXLR screenshot is credited on the project page.
 - The supplied `Colorful CS Monogram` is used for the header and browser/touch icons. `public/images/carina-og.jpg` is a compressed 1200 × 630 share preview from the supplied `Carina Schoppe_ Elegant Learning in Motion.png`; the crop removes only background at the top and bottom. Static and client-rendered Open Graph and Twitter metadata use this preview. The Person schema retains the original portrait.
 - The default is the light palette. Visitors can save a different appearance and switch between German and English.
+- Luminovia uses the supplied compact icon on Home and Contact. The About page uses the supplied full logo as a 416 px WebP, displayed at 208 px with reserved dimensions and lazy loading.
 - GitHub Pages deploys automatically when changes reach `main`. Review branches and draft pull requests leave the live site unchanged.

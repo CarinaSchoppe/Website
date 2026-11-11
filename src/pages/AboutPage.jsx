@@ -156,12 +156,12 @@ export default function AboutPage() {
             </section>
 
             <section className="about-business" aria-labelledby="about-business-title">
-                <img src={IMAGES.luminoviaLogoMark} alt="" width="58" height="58" loading="lazy"/>
+                <img className="about-business-logo" src={IMAGES.luminoviaLogoFull} alt="" width="208" height="208" loading="lazy"/>
                 <div>
                     <h2 id="about-business-title">Luminovia Training &amp; Consulting</h2>
                     <p>{c.business}</p>
+                    <a className="site-text-link" href={PROFILE.luminovia}>{c.businessLink}<ArrowUpRight size={17} aria-hidden="true"/></a>
                 </div>
-                <a className="site-text-link" href={PROFILE.luminovia}>{c.businessLink}<ArrowUpRight size={17} aria-hidden="true"/></a>
             </section>
 
             <section className="about-next" aria-labelledby="about-next-title">

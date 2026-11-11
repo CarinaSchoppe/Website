@@ -223,7 +223,7 @@
 
 .about-business {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: 208px minmax(0, 1fr);
     align-items: center;
     gap: .7rem 1.3rem;
     margin-top: clamp(2.75rem, 6vw, 5rem);
@@ -236,6 +236,18 @@
 
 .about-business h2 {
     font-size: clamp(1.38rem, 2.45vw, 2rem);
+}
+
+.about-business-logo {
+    display: block;
+    width: 208px;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--corner);
+}
+
+.about-business .site-text-link {
+    margin-top: 1rem;
 }
 
 .about-business p {

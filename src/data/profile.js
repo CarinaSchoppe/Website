@@ -1,4 +1,5 @@
 import luminoviaIcon from "../assets/luminovia-icon.webp";
+import luminoviaFullLogo from "../assets/luminovia-full-logo.webp";
 
 const base = import.meta.env.BASE_URL;
 const luminovia = "https://luminovia.org";
@@ -30,7 +31,7 @@ export const IMAGES = {
     headshot: `${base}images/carina-headshot.jpg`,
     outdoor: `${base}images/carina-outdoor.jpg`,
     fullBody: `${base}images/carina-fullbody.jpg`,
-    luminoviaLogoFull: `${base}images/luminovia-logo-full.svg`,
+    luminoviaLogoFull: luminoviaFullLogo,
     luminoviaLogoMark: luminoviaIcon,
 };
 
