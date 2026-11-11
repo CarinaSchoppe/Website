@@ -4,7 +4,6 @@ import {PROFILE} from "../data/profile.js";
 import {publications} from "../data/publications.js";
 import {teachingTopics} from "../data/teachingTopics.js";
 import {useLanguage} from "../i18n.jsx";
-import Badge from "../components/Badge.jsx";
 import Button from "../components/Button.jsx";
 import Card from "../components/Card.jsx";
 import DocumentDownloads from "../components/DocumentDownloads.jsx";
@@ -17,13 +16,7 @@ function TopicLink({item, className}) {
 function PublicationCard({language, publication}) {
     return (
         <article className="soft-section flex flex-col p-5 lg:min-h-[300px]">
-            <div className="mb-5 flex items-start justify-between gap-3">
-                <div>
-                    <div className="text-xs font-black uppercase tracking-[0.14em] text-sky-100">{publication.type[language]}</div>
-                    <div className="mt-2 text-xs font-bold text-zinc-500">{publication.year}</div>
-                </div>
-                <span className="shrink-0 rounded-full border border-white/10 px-3 py-1 text-xs font-black text-sky-100">PDF</span>
-            </div>
+            <p className="mb-4 text-xs font-bold text-sky-100">{publication.type[language]} · {publication.year}</p>
             <h3 className="text-2xl font-black text-white">{publication.title[language]}</h3>
             <p className="mt-4 text-sm leading-7 text-zinc-300">{publication.description[language]}</p>
             <div className="mt-auto pt-4">
@@ -38,55 +31,46 @@ export default function SkillsPage() {
     const {skillGroups} = useSiteContent();
     const copy = language === "de"
         ? {
-            badge: "Lehre, Software und Forschung",
             title: "Was ich unterrichte und entwickle.",
-            intro: "Ich unterrichte IT und Wirtschaft in der Erwachsenenbildung. Im Unterricht wechseln sich fachliche Grundlagen, praktische Übungen und Fallbeispiele ab.",
+            intro: "Ich unterrichte IT und Wirtschaft für Erwachsene. In meinen Kursen konfigurieren Teilnehmende Netzwerke, schreiben Code und lösen kaufmännische Fälle.",
             references: "Lehrreferenzen ansehen",
             company: "Luminovia Training & Consulting",
             companyCopy: "Für Buchungen und Anfragen zu Trainings oder Beratung ist mein Unternehmen Luminovia die Anlaufstelle.",
             credentials: "Nachweise ansehen",
             teaching: "Unterrichtsthemen",
-            teachingCopy: "Zu meiner Lehrpraxis gehören Netzwerklabore, Programmieraufgaben und kaufmännische Fallbeispiele. Ich habe auf Deutsch und Englisch mit Teams, Bildungsanbietern und Hochschulen gearbeitet und auf IHK-Prüfungen vorbereitet.",
+            teachingCopy: "Ich habe auf Deutsch und Englisch mit Teams, Bildungsanbietern und Hochschulen gearbeitet und Teilnehmende auf IHK-Prüfungen vorbereitet.",
             projectTitle: "Software aus meiner Praxis",
             projectCopy: "Wie ich eigene Werkzeuge entwickle und zu Open Source beitrage, zeige ich im Projektportfolio.",
             projects: "Softwareprojekte ansehen",
             skills: "Werkzeuge, Methoden und weitere Kompetenzen",
-            publications: "Publikationen",
-            publicationsTitle: "Publikationen und wissenschaftliche Arbeiten.",
-            publicationsCopy: "In diesen Arbeiten beschäftige ich mich mit generativer KI, KI-Governance, Mensch-Maschine-Interaktion und IT-Sicherheit.",
+            publicationsTitle: "Meine wissenschaftlichen Arbeiten",
             jumpLabel: "Themen auf dieser Seite",
             jumpItems: [["#unterricht", "Unterricht"], ["#softwarepraxis", "Software"], ["#publications", "Publikationen"], ["#skill-map", "Kompetenzen"]],
         }
         : {
-            badge: "Teaching, software and research",
             title: "What I teach and build.",
-            intro: "I teach IT and business to adults through a mix of fundamentals, hands-on exercises and case studies.",
+            intro: "I teach IT and business to adults. In my courses, learners configure networks, write code and work through business cases.",
             references: "View teaching references",
             company: "Luminovia Training & Consulting",
             companyCopy: "My company, Luminovia, handles training and consulting enquiries and bookings.",
             credentials: "View credentials",
             teaching: "Teaching topics",
-            teachingCopy: "My teaching has included networking labs, programming exercises and business case studies. I’ve worked with teams, education providers and universities in German and English, and helped learners prepare for German IHK exams.",
+            teachingCopy: "I’ve worked with teams, education providers and universities in German and English, and helped learners prepare for German IHK exams.",
             projectTitle: "Software I build and contribute to",
             projectCopy: "My project portfolio shows how I build my own tools and contribute to open source.",
             projects: "Explore software projects",
             skills: "Tools, methods and other skills",
-            publications: "Publications",
-            publicationsTitle: "Publications and academic work.",
-            publicationsCopy: "These papers cover my work on generative AI, AI governance, human–computer interaction and cybersecurity.",
+            publicationsTitle: "My academic work",
             jumpLabel: "On this page",
             jumpItems: [["#unterricht", "Teaching"], ["#softwarepraxis", "Software"], ["#publications", "Publications"], ["#skill-map", "Skills"]],
         };
     return (
-        <main className="px-4 pb-24 pt-32 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-7xl">
-                <Badge tone="orange">{copy.badge}</Badge>
-                <div className="mt-6">
-                    <h1 className="max-w-5xl text-5xl font-black tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl">
-                        {copy.title}
-                    </h1>
-                    <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">{copy.intro}</p>
-                </div>
+        <main className="pb-24 pt-32">
+            <div className="site-width">
+                <h1 className="max-w-5xl text-4xl font-black tracking-[-0.045em] text-white sm:text-5xl lg:text-6xl">
+                    {copy.title}
+                </h1>
+                <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">{copy.intro}</p>
 
                 <SectionJumpNav label={copy.jumpLabel} items={copy.jumpItems} className="mt-7"/>
 
@@ -124,13 +108,7 @@ export default function SkillsPage() {
                 </section>
 
                 <section id="publications" className="mt-16" aria-labelledby="publications-title" tabIndex={-1}>
-                    <div className="grid gap-5 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
-                        <div>
-                            <Badge tone="emerald">{copy.publications}</Badge>
-                            <h2 id="publications-title" className="mt-5 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">{copy.publicationsTitle}</h2>
-                        </div>
-                        <p className="text-lg leading-8 text-slate-300">{copy.publicationsCopy}</p>
-                    </div>
+                    <h2 id="publications-title" className="text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">{copy.publicationsTitle}</h2>
                     <div className="mt-8 grid gap-5 lg:grid-cols-3">
                         {publications.map((publication) => (
                             <PublicationCard key={publication.key} language={language} publication={publication}/>

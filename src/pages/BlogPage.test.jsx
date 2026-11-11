@@ -32,7 +32,7 @@ describe("BlogPage", () => {
         expect(screen.getByRole("heading", {name: /Writing on AI/i})).toBeInTheDocument();
         const articles = within(screen.getByRole("region", {name: "Articles"}));
         expect(articles.getAllByRole("link")).toHaveLength(5);
-        expect(articles.getByRole("link", {name: /Agentic AI/i})).toBeInTheDocument();
+        expect(articles.getByRole("link", {name: /^Read article Agentic AI/i})).toBeInTheDocument();
         expect(articles.getByRole("link", {name: /Project management/i})).toBeInTheDocument();
         expect(articles.getByRole("link", {name: /Teaching with AI/i})).toBeInTheDocument();
         expect(articles.getByRole("link", {name: /Industry 4\.0 to 5\.0/i})).toBeInTheDocument();
@@ -72,6 +72,7 @@ describe("BlogPage", () => {
 
         expect(screen.getByRole("heading", {name: /Texte zu KI/i})).toBeInTheDocument();
         expect(screen.getByRole("button", {name: "Digitale Bildung"})).toBeInTheDocument();
+        expect(screen.getAllByRole("link", {name: /^Artikel lesen /})).toHaveLength(5);
         expect(screen.getByRole("status")).toHaveTextContent("5 Beiträge");
     });
 

@@ -56,7 +56,7 @@ export default function CredentialsPage() {
                 {visible.map((credential) => (
                     <li key={credential.documentKey} className="soft-section flex min-w-0 flex-col p-4 sm:p-5">
                         <p className="site-kicker text-[var(--muted)]">{credential.category}</p>
-                        <h2 className="mt-2 text-xl">{credential.title}</h2>
+                        <h2 className="credential-title mt-2 text-xl">{credential.title}</h2>
                         <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{credential.meta}</p>
                         <div className="mt-auto pt-3">
                             <DocumentDownloads documents={credentialDocuments[credential.documentKey]} title={credential.title}/>

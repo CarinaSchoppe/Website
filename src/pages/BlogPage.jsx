@@ -46,9 +46,10 @@ function getCategory(post) {
 
 function ArticleCard({post, labels, featured, dateFormatter}) {
     const titleId = `blog-title-${post.slug}`;
+    const linkTextId = `blog-link-text-${post.slug}`;
     return (
         <li className={featured ? "sm:col-span-2" : undefined}>
-            <Link to={`/blog/${post.slug}`} aria-labelledby={titleId} className="soft-link-card flex h-full flex-col items-start p-5 sm:p-6">
+            <div className="soft-link-card relative flex h-full flex-col items-start p-5 sm:p-6">
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
                     <Badge tone={featured ? "orange" : "white"}>{featured ? labels.latest : post.category}</Badge>
                     <span className="text-xs font-bold text-slate-400">
@@ -58,10 +59,14 @@ function ArticleCard({post, labels, featured, dateFormatter}) {
                 </div>
                 <h3 id={titleId} className={`mt-4 max-w-3xl text-white ${featured ? "text-2xl sm:text-3xl" : "text-xl"}`}>{post.title}</h3>
                 <p className="mb-4 mt-2 max-w-[64ch] text-sm leading-6 text-slate-300">{post.excerpt}</p>
-                <span className="mt-auto inline-flex items-center gap-2 text-sm font-extrabold text-sky-100" aria-hidden="true">
-                    {labels.read}<ArrowRight size={16}/>
-                </span>
-            </Link>
+                <Link
+                    to={`/blog/${post.slug}`}
+                    aria-labelledby={`${linkTextId} ${titleId}`}
+                    className="mt-auto inline-flex items-center gap-2 text-sm font-extrabold text-sky-100 after:absolute after:inset-0 after:rounded-[var(--corner)] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-4"
+                >
+                    <span id={linkTextId}>{labels.read}</span><ArrowRight size={16} aria-hidden="true"/>
+                </Link>
+            </div>
         </li>
     );
 }
@@ -89,10 +94,9 @@ function BlogIndex({historyKey}) {
     }
 
     return (
-        <main className="blog-page px-4 pb-24 pt-32 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-7xl">
-                <Badge tone="rose">Blog</Badge>
-                <h1 className="mt-5 max-w-4xl text-5xl font-black text-white sm:text-6xl">{labels.title}</h1>
+        <main className="blog-page pb-24 pt-32">
+            <div className="site-width">
+                <h1 className="max-w-4xl text-5xl font-black text-white sm:text-6xl">{labels.title}</h1>
                 <p className="mt-4 max-w-[62ch] text-base leading-7 text-slate-300 sm:text-lg">{labels.intro}</p>
 
                 <div className="mt-7 flex flex-wrap gap-2" role="group" aria-label={labels.filters}>

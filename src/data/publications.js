@@ -5,14 +5,14 @@ export const publications = [
         key: "executive-governance-genai",
         documents: [{href: `${base}publications/executive-governance-generative-ai-knowledge-intensive-organizations.pdf`, language: "en"}],
         year: "2026",
-        type: {en: "MBA publication", de: "MBA-Publikation"},
+        type: {en: "MBA thesis", de: "MBA-Abschlussarbeit"},
         title: {
             en: "Executive Governance of Generative AI in Knowledge-Intensive Organizations",
-            de: "Executive Governance of Generative AI in wissensintensiven Organisationen",
+            de: "Wie Unternehmen generative KI steuern können",
         },
         description: {
-            en: "Systematic literature review and conceptual framework for value creation, risk mitigation and executive governance of generative AI.",
-            de: "Systematic Literature Review und konzeptioneller Rahmen zu Wertschöpfung, Risikominimierung und Executive Governance von generativer AI.",
+            en: "I reviewed the research to develop a framework for how leadership teams can assign responsibility, monitor risks and assess the value of generative AI.",
+            de: "Aus der Forschung leite ich ab, wie Führungsteams Verantwortlichkeiten festlegen, Risiken im Blick behalten und den Nutzen generativer KI beurteilen können.",
         },
     },
     {
@@ -25,11 +25,11 @@ export const publications = [
         type: {en: "Master thesis", de: "Masterarbeit"},
         title: {
             en: "Opportunities and Risks for Employees from Generative AI Tools in German Companies",
-            de: "Chancen und Risiken generativer AI-Tools für Mitarbeitende in deutschen Unternehmen",
+            de: "Chancen und Risiken generativer KI für Mitarbeitende in deutschen Unternehmen",
         },
         description: {
-            en: "Systematic literature analysis on human-machine interaction in everyday work and the organisational effects of generative AI adoption.",
-            de: "Systematische Literaturanalyse zu Mensch-Maschine-Interaktion im Arbeitsalltag und organisationalen Effekten generativer AI-Nutzung.",
+            en: "I examined how generative AI changes everyday work, including customer communication, software development and data analysis.",
+            de: "Ich habe untersucht, wie generative KI den Arbeitsalltag verändert, etwa im Kundenkontakt, in der Softwareentwicklung und bei der Datenanalyse.",
         },
     },
     {
@@ -42,8 +42,8 @@ export const publications = [
             de: "ChatGPT für authentisch wirkende, kontextspezifische und personalisierte Phishing-E-Mails",
         },
         description: {
-            en: "Systematic analysis of how generative AI can shape phishing realism, context fit, personalisation and cybersecurity awareness needs.",
-            de: "Systematische Analyse dazu, wie generative AI Phishing-Realismus, Kontextbezug, Personalisierung und Cybersecurity-Awareness beeinflusst.",
+            en: "I examined how ChatGPT can tailor phishing emails to someone’s work or interests and make the messages seem more convincing.",
+            de: "Ich habe untersucht, wie ChatGPT Phishing-Mails auf den Beruf oder die Interessen einer Person zuschneiden und dadurch glaubwürdiger machen kann.",
         },
     },
 ];

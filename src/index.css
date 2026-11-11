@@ -297,6 +297,7 @@ html[data-theme="night"] :is(.site-button-primary, .ui-button[data-button-varian
     background: var(--accent);
     color: var(--paper);
 }
+.credential-title { hyphens: none; }
 .privacy-title { overflow-wrap: anywhere; }
 
 .analytics-consent {
