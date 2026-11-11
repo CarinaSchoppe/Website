@@ -64,9 +64,9 @@ export default function ReferencesSection() {
                         <section key={id} className="reference-group" aria-labelledby={`reference-group-${id}`}>
                             <h3 id={`reference-group-${id}`}>{title[language]}</h3>
                             <ul className="reference-list">
-                                {entries.map(([name, de, en]) => (
+                                {entries.map(([name, de, en, href]) => (
                                     <li key={name}>
-                                        <strong>{name}</strong>
+                                        <strong><a href={href}>{name}</a></strong>
                                         <p>{language === "de" ? de : en}</p>
                                         <DocumentDownloads documents={referenceDocuments[name]} title={name}/>
                                     </li>
