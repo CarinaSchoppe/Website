@@ -5,7 +5,7 @@ import {PROFILE} from "../data/profile.js";
 import {canonicalUrl, SITE_URL} from "../data/siteUrls.js";
 import {useLanguage} from "../i18n.jsx";
 
-const DEFAULT_IMAGE = `${SITE_URL}/images/carina-hero.jpg`;
+const DEFAULT_IMAGE = `${SITE_URL}/images/carina-outdoor.jpg`;
 
 const routeMeta = {
     en: {

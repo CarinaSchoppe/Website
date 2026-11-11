@@ -3,7 +3,7 @@ import preact from "@preact/preset-vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import {blogIndexForLanguage} from "./src/data/blogIndex.js";
-import {headshotSizes, headshotWidths} from "./src/data/portrait.js";
+import {aboutPortraitSizes, outdoorWidths} from "./src/data/portrait.js";
 import {canonicalUrl} from "./src/data/siteUrls.js";
 
 const prerenderRoutes = [
@@ -64,8 +64,8 @@ function preloadRoute(html, path, chunks) {
         : [];
 
     if (path === "/about") {
-        const sources = headshotWidths.map((width) => `/images/carina-headshot-${width}.webp ${width}w`).join(", ");
-        links.push(`<link rel="preload" as="image" type="image/webp" imagesrcset="${sources}" imagesizes="${headshotSizes}" fetchpriority="high">`);
+        const sources = outdoorWidths.map((width) => `/images/carina-outdoor-${width}.webp ${width}w`).join(", ");
+        links.push(`<link rel="preload" as="image" type="image/webp" imagesrcset="${sources}" imagesizes="${aboutPortraitSizes}" fetchpriority="high">`);
     }
 
     return appendHeadLinks(html, links);

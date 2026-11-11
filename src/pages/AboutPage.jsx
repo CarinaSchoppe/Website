@@ -1,7 +1,7 @@
 import {ArrowRight, ArrowUpRight, MapPin} from "lucide-react";
 import {Link} from "react-router-dom";
 import Photo from "../components/Photo.jsx";
-import {headshotSizes} from "../data/portrait.js";
+import {aboutPortraitSizes} from "../data/portrait.js";
 import {IMAGES, PROFILE} from "../data/profile.js";
 import {selectedWork} from "../data/selectedWork.js";
 import {useLanguage} from "../i18n.jsx";
@@ -15,7 +15,6 @@ const copy = {
         intro: "Ich plane Kurse für Erwachsene mit Blick auf den Arbeitsalltag. Eine Übung ist für mich gelungen, wenn Teilnehmende das Gelernte auch auf einen anderen Fall übertragen können.",
         location: "Brisbane, Australien",
         portrait: "Porträt von Carina Sophie Schoppe",
-        tablet: "Carina hält im Stehen ein Tablet und einen Stift",
         career: "Zum Werdegang",
         linkedin: "Mein LinkedIn-Profil",
         featureLabel: "Forschungssoftware · Eigenentwicklung",
@@ -25,9 +24,9 @@ const copy = {
         featureSource: "Quellcode auf GitHub",
         approachTitle: "Wie Forschung in meine Lehre einfließt",
         researchTitle: "Generative KI im Arbeitsalltag",
-        research: "Für meine Masterarbeit habe ich Studien dazu ausgewertet, wie Beschäftigte in deutschen Unternehmen generative KI in der Kundenkommunikation, Softwareentwicklung und Datenanalyse einsetzen. In meiner MBA-Arbeit habe ich einen Rahmen dafür entwickelt, wie Führungskräfte Zuständigkeiten klären und Risiken beim Einsatz generativer KI beobachten können.",
+        research: "In meiner Masterarbeit habe ich untersucht, wie Beschäftigte generative KI in der Kundenkommunikation, Softwareentwicklung und Datenanalyse einsetzen. Meine MBA-Arbeit beschreibt, wie Unternehmen Zuständigkeiten klären und Risiken überwachen können.",
         teachingTitle: "Sicherheitsentscheidungen begründen",
-        teaching: "In meiner Bachelorarbeit habe ich untersucht, wie generative KI Phishing-Nachrichten glaubwürdiger machen kann. Im Unterricht prüfen Teilnehmende eine verdächtige E-Mail und begründen, ob sie sie melden würden. Im Netzwerklabor gehen sie ähnlich vor. Sie grenzen einen Verbindungsfehler ein und erklären, woran sie die Ursache erkannt haben.",
+        teaching: "Meine Bachelorarbeit untersucht, wie KI Phishing-Nachrichten glaubwürdiger machen kann. Im Unterricht prüfen Teilnehmende verdächtige E-Mails oder grenzen einen Netzwerkfehler ein und begründen, wie sie vorgegangen sind.",
         publications: "Meine wissenschaftlichen Arbeiten",
         projects: "Meine Softwareprojekte",
         pathLabel: "Mein Werdegang",
@@ -49,7 +48,6 @@ const copy = {
         intro: "I plan courses for adults around the kind of problems people face at work. An exercise has done its job when learners can apply what they’ve learnt to a different case.",
         location: "Brisbane, Australia",
         portrait: "Portrait of Carina Sophie Schoppe",
-        tablet: "Carina standing with a tablet and stylus",
         career: "See my career timeline",
         linkedin: "My LinkedIn profile",
         featureLabel: "Research software I built",
@@ -59,9 +57,9 @@ const copy = {
         featureSource: "Source code on GitHub",
         approachTitle: "How my research informs my teaching",
         researchTitle: "Generative AI at work",
-        research: "For my master’s thesis, I reviewed studies on how people in German companies use generative AI in customer communication, software development and data analysis. In my MBA thesis, I developed a framework for how leaders can assign responsibility and monitor risks when using generative AI.",
+        research: "My master’s thesis examined how people use generative AI in customer communication, software development and data analysis. My MBA thesis describes how companies can assign responsibility and monitor risks.",
         teachingTitle: "Explaining a security decision",
-        teaching: "My bachelor’s thesis examined how generative AI can make phishing emails more convincing. In class, learners check a suspicious email and explain whether they would report it. In networking labs, they take a similar approach by tracing a connection fault and explaining how they found the cause.",
+        teaching: "My bachelor’s thesis examined how AI can make phishing emails more convincing. In class, learners assess a suspicious email or trace a network fault and explain how they reached their conclusion.",
         publications: "Read my academic work",
         projects: "My software projects",
         pathLabel: "My background",
@@ -99,13 +97,13 @@ export default function AboutPage() {
 
                 <figure className="about-hero-figure">
                     <Photo
-                        src={IMAGES.headshot}
+                        src={IMAGES.outdoor}
                         alt={c.portrait}
                         className="about-photo about-portrait"
-                        width={1365}
-                        height={2048}
+                        width={1120}
+                        height={1680}
                         fetchPriority="high"
-                        sizes={headshotSizes}
+                        sizes={aboutPortraitSizes}
                     />
                     <figcaption>
                         <MapPin size={16} aria-hidden="true"/>{c.location}
@@ -114,26 +112,20 @@ export default function AboutPage() {
             </section>
 
             <section className="about-method" aria-labelledby="about-method-title">
-                <div className="about-method-art">
-                    <Photo
-                        src={IMAGES.fullBody}
-                        alt={c.tablet}
-                        className="about-photo about-fullbody"
-                        width={1365}
-                        height={2048}
-                        sizes="(min-width: 900px) 280px, 250px"
-                    />
-                </div>
-                <div className="about-method-copy">
-                    <h2 id="about-method-title">{c.approachTitle}</h2>
-                    <h3>{c.researchTitle}</h3>
-                    <p>{c.research}</p>
-                    <h3>{c.teachingTitle}</h3>
-                    <p>{c.teaching}</p>
-                    <div className="about-hero-actions about-method-links">
-                        <Link className="site-text-link" to="/skills#publications">{c.publications}<ArrowRight size={17} aria-hidden="true"/></Link>
-                        <Link className="site-text-link" to="/projects">{c.projects}<ArrowRight size={17} aria-hidden="true"/></Link>
+                <h2 id="about-method-title">{c.approachTitle}</h2>
+                <div className="about-method-grid">
+                    <div>
+                        <h3>{c.researchTitle}</h3>
+                        <p>{c.research}</p>
                     </div>
+                    <div>
+                        <h3>{c.teachingTitle}</h3>
+                        <p>{c.teaching}</p>
+                    </div>
+                </div>
+                <div className="about-hero-actions about-method-links">
+                    <Link className="site-text-link" to="/skills#publications">{c.publications}<ArrowRight size={17} aria-hidden="true"/></Link>
+                    <Link className="site-text-link" to="/projects">{c.projects}<ArrowRight size={17} aria-hidden="true"/></Link>
                 </div>
             </section>
 

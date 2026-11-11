@@ -14,13 +14,13 @@ const projectIcons = {mail: Mail, openxlr: SlidersHorizontal};
 
 const copy = {
     de: {
-        role: "IT-Dozentin · Softwareentwicklerin · Wirtschaftsinformatikerin",
-        intro: "Ich unterrichte IT und Wirtschaft, entwickle Forschungssoftware und untersuche, wie Menschen generative KI bei der Arbeit einsetzen.",
+        role: "IT-Dozentin und Softwareentwicklerin",
+        intro: "Ich unterrichte IT und Wirtschaft, entwickle Forschungssoftware und erforsche den Einsatz generativer KI im Arbeitsalltag.",
         location: "Brisbane, Australien",
         languages: "Deutsch & Englisch",
         portraitAlt: "Porträt von Carina Sophie Schoppe",
-        about: "Mehr über mich",
-        work: "Meine Arbeit ansehen",
+        training: "Training bei Luminovia",
+        work: "Projekte ansehen",
         contact: "Persönlicher Kontakt",
         proof: "Erfahrung und Qualifikationen",
         milestones: [
@@ -53,13 +53,13 @@ const copy = {
         businessLink: "Luminovia kontaktieren",
     },
     en: {
-        role: "IT lecturer · Software developer · Business information systems",
+        role: "IT lecturer and software developer",
         intro: "I teach IT and business, build research software and study how people use generative AI at work.",
         location: "Brisbane, Australia",
         languages: "English & German",
         portraitAlt: "Portrait of Carina Sophie Schoppe",
-        about: "More about me",
-        work: "Explore my work",
+        training: "Training with Luminovia",
+        work: "Explore projects",
         contact: "Personal contact",
         proof: "Experience and qualifications",
         milestones: [
@@ -107,16 +107,16 @@ export default function HomePage() {
                     <p className="home-intro">{c.intro}</p>
                     <div className="home-hero-actions">
                         <Link className="site-button site-button-primary" to="#arbeit">{c.work}<ArrowRight size={17} aria-hidden="true"/></Link>
-                        <Link className="site-text-link" to="/about">{c.about}<ArrowRight size={17} aria-hidden="true"/></Link>
+                        <a className="site-text-link" href={PROFILE.luminoviaTraining}>{c.training}<ArrowUpRight size={17} aria-hidden="true"/></a>
                     </div>
                 </div>
                 <figure className="home-portrait">
                     <Photo
-                        src={IMAGES.hero}
+                        src={IMAGES.outdoor}
                         alt={c.portraitAlt}
                         className="home-portrait-photo"
-                        width={960}
-                        height={1440}
+                        width={1120}
+                        height={1680}
                         fetchPriority="high"
                         sizes="(min-width: 1400px) 500px, (min-width: 761px) 40vw, (min-width: 600px) 520px, 91vw"
                     />

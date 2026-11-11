@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {headshotWidths} from "../data/portrait.js";
+import {headshotWidths, outdoorWidths} from "../data/portrait.js";
 import {useLanguage} from "../i18n.jsx";
 import {cn} from "./utils.js";
 
@@ -22,7 +22,7 @@ export default function Photo({
     const responsiveWidths = src.includes("carina-headshot")
         ? headshotWidths
         : src.includes("carina-outdoor")
-            ? [320, 400, 480, 640, 960]
+            ? outdoorWidths
             : [480, 640, 960];
     const webpSrcSet = src.endsWith(".jpg")
         ? responsiveWidths.map((sourceWidth) => `${src.replace(/\.jpg$/, `-${sourceWidth}.webp`)} ${sourceWidth}w`).join(", ")

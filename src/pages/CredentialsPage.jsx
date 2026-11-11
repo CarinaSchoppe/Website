@@ -3,8 +3,6 @@ import {credentialCategories as categoryKeys} from "../data/content.js";
 import {useSiteContent} from "../data/localizedContent.js";
 import {credentialDocuments} from "../data/portfolioDocuments.js";
 import {useLanguage} from "../i18n.jsx";
-import Badge from "../components/Badge.jsx";
-import Card from "../components/Card.jsx";
 import DocumentDownloads from "../components/DocumentDownloads.jsx";
 
 export default function CredentialsPage() {
@@ -15,56 +13,61 @@ export default function CredentialsPage() {
     const visible = activeCategory === "All" ? credentials : credentials.filter(({category}) => category === activeLabel);
     const copy = language === "de"
         ? {
-            badge: "Qualifikationen",
             title: "Abschlüsse und Nachweise",
             intro: "Zu jedem Eintrag gibt es PDFs zum Download. Geburtsdaten und private Kennnummern sind in den öffentlichen Kopien geschwärzt.",
             allLabel: "Alle Nachweise",
+            filterLabel: "Nachweise nach Kategorie filtern",
+            resultLabels: ["Nachweis", "Nachweise"],
+            details: "Details zum Nachweis",
         }
         : {
-            badge: "Qualifications",
             title: "Degrees, certificates and credentials",
             intro: "Each entry has downloadable PDFs. Birth dates and private identifiers are redacted in the public copies.",
             allLabel: "All credentials",
+            filterLabel: "Filter credentials by category",
+            resultLabels: ["credential", "credentials"],
+            details: "Credential details",
         };
 
     return (
-        <main className="px-4 pb-24 pt-32 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-7xl">
-                <Badge tone="amber">{copy.badge}</Badge>
-                <div className="mt-6 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-                    <h1 className="text-5xl font-black tracking-[-0.05em] text-white sm:text-6xl">{copy.title}</h1>
-                    <p className="text-lg leading-8 text-slate-300">{copy.intro}</p>
-                </div>
+        <main className="site-width pb-20 pt-10 sm:pt-16">
+            <h1 className="max-w-4xl text-4xl tracking-[-0.04em] sm:text-6xl">{copy.title}</h1>
+            <p className="mt-4 max-w-[62ch] leading-7 text-[var(--muted)] sm:text-lg">{copy.intro}</p>
 
-                <div className="mt-10 flex flex-wrap gap-2" role="group" aria-label={language === "de" ? "Nachweise nach Kategorie filtern" : "Filter credentials by category"}>
-                    {categoryKeys.map((category, index) => (
-                        <button
-                            key={category}
-                            type="button"
-                            aria-pressed={activeCategory === category}
-                            onClick={() => setActiveCategory(category)}
-                            className="site-filter-button min-h-11 rounded-full border px-4 py-2 text-sm font-extrabold"
-                        >
-                            {category === "All" ? copy.allLabel : credentialCategories[index]}
-                        </button>
-                    ))}
-                </div>
-
-                <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                    {visible.map((credential) => (
-                        <Card key={credential.title}>
-                            <div className="mb-5 flex items-center justify-between gap-3">
-                                <div className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-cyan-200 via-violet-200 to-amber-200 text-sm font-black text-slate-950">✓</div>
-                                <Badge tone="white">{credential.category}</Badge>
-                            </div>
-                            <h2 className="text-xl font-black text-white">{credential.title}</h2>
-                            <p className="mt-3 text-sm font-bold leading-6 text-sky-100">{credential.meta}</p>
-                            <p className="mt-3 text-sm leading-7 text-slate-300">{credential.detail}</p>
-                            <DocumentDownloads documents={credentialDocuments[credential.documentKey]} title={credential.title}/>
-                        </Card>
-                    ))}
-                </div>
+            <div className="mt-7 flex flex-wrap gap-2" role="group" aria-label={copy.filterLabel}>
+                {categoryKeys.map((category, index) => (
+                    <button
+                        key={category}
+                        type="button"
+                        aria-pressed={activeCategory === category}
+                        aria-controls="credentials-results"
+                        onClick={() => setActiveCategory(category)}
+                        className="site-filter-button min-h-11 rounded-full border px-4 py-2 text-sm font-extrabold"
+                    >
+                        {category === "All" ? copy.allLabel : credentialCategories[index]}
+                    </button>
+                ))}
             </div>
+
+            <p className="mb-3 mt-5 text-sm text-[var(--muted)]" role="status">
+                {visible.length} {copy.resultLabels[visible.length === 1 ? 0 : 1]}
+            </p>
+            <ul id="credentials-results" className="grid gap-4 md:grid-cols-2 lg:grid-cols-3" role="list">
+                {visible.map((credential) => (
+                    <li key={credential.documentKey} className="soft-section flex min-w-0 flex-col p-4 sm:p-5">
+                        <p className="site-kicker text-[var(--muted)]">{credential.category}</p>
+                        <h2 className="mt-2 text-xl">{credential.title}</h2>
+                        <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{credential.meta}</p>
+                        <div className="mt-auto pt-3">
+                            <DocumentDownloads documents={credentialDocuments[credential.documentKey]} title={credential.title}/>
+                        </div>
+                        <details className="border-t border-[var(--line)]">
+                            <summary className="min-h-11 cursor-pointer py-3 text-sm font-bold focus-visible:outline-2 focus-visible:outline-offset-4">{copy.details}</summary>
+                            <p className="pb-2 text-sm leading-6 text-[var(--muted)]">{credential.detail}</p>
+                        </details>
+                    </li>
+                ))}
+            </ul>
         </main>
     );
 }

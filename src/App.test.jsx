@@ -18,8 +18,8 @@ describe("App routing and language", () => {
         expect(await screen.findByRole("heading", {name: /^Carina Sophie Schoppe$/i})).toBeInTheDocument();
         expect(screen.getByRole("heading", {name: "Lehre, Software und Forschung"})).toBeInTheDocument();
         expect(screen.getByRole("region", {name: "Referenzen"})).toHaveAttribute("id", "referenzen");
-        expect(screen.getByRole("link", {name: "Mehr über mich"})).toHaveAttribute("href", "/about");
-        expect(screen.getByRole("link", {name: "Meine Arbeit ansehen"})).toHaveAttribute("href", "/#arbeit");
+        expect(screen.getByRole("link", {name: "Projekte ansehen"})).toHaveAttribute("href", "/#arbeit");
+        expect(screen.getByRole("link", {name: "Training bei Luminovia"})).toHaveAttribute("href", "https://luminovia.org/training/#details");
         expect(screen.getByRole("link", {name: "Luminovia kontaktieren"})).toHaveAttribute("href", "https://luminovia.org/contact/");
         expect(screen.getByRole("link", {name: /^Lehrthemen Von Netzwerken/i})).toHaveAttribute("href", "/skills#unterricht");
         expect(screen.getByRole("region", {name: "Ausgewählte Projekte"})).toHaveAttribute("id", "arbeit");

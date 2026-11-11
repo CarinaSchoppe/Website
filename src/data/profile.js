@@ -14,6 +14,7 @@ export const PROFILE = {
     github: "https://github.com/CarinaSchoppe",
     linkedin: "https://www.linkedin.com/in/carinaschoppe/",
     luminovia,
+    luminoviaTraining: `${luminovia}/training/#details`,
     luminoviaContact: `${luminovia}/contact/`,
     luminoviaEmail: "info@luminovia.org",
     luminoviaGithub: "https://github.com/Luminovia-Training-Consulting",
