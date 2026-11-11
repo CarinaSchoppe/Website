@@ -64,9 +64,8 @@ export default function Header({theme, onToggleTheme}) {
             <Link className="site-skip" to="#main-content">{language === "de" ? "Zum Inhalt springen" : "Skip to content"}</Link>
             <header className="site-header">
                 <div className="site-width site-header-inner">
-                    <NavLink to="/" className="site-brand">
+                    <NavLink to="/" className="site-brand" aria-label={PROFILE.name}>
                         <img src={logo} className="site-brand-mark" alt="" width="48" height="48"/>
-                        <span className="site-brand-name">Carina Sophie Schoppe</span>
                     </NavLink>
                     <nav className="site-desktop-nav" aria-label={t.navigation}>
                         {primaryItems.map((item) => <PortfolioNavLink key={item.to} item={item}>{t.nav[item.key]}</PortfolioNavLink>)}
