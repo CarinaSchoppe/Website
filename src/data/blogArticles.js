@@ -86,8 +86,8 @@ const english = {
                 href: "https://www.pmi.org/learning/ai-in-project-management"
             },
             {
-                label: "PMI: AI in Project Management resources",
-                href: "https://www.pmi.org/explore/ai-in-project-management"
+                label: "PMI: Transforming Project Management with Generative AI Innovation",
+                href: "https://www.pmi.org/learning/thought-leadership/transforming-project-management-with-generative-ai"
             },
             {
                 label: "PMI: Transformation of the project management profession",
@@ -181,7 +181,7 @@ const english = {
             },
             {
                 label: "European Commission: human-centric, sustainable and resilient industry",
-                href: "https://research-and-innovation.ec.europa.eu/news/all-research-and-innovation-news/industry-50-towards-more-sustainable-resilient-and-human-centric-industry-2021-01-07_et"
+                href: "https://research-and-innovation.ec.europa.eu/news/all-research-and-innovation-news/industry-50-towards-more-sustainable-resilient-and-human-centric-industry-2021-01-07_en"
             },
             {
                 label: "CORDIS: Human-centric manufacturing",
