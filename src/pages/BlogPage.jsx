@@ -44,7 +44,7 @@ function getCategory(post) {
     return post.hubCategory || post.category;
 }
 
-function ArticleCard({post, labels, featured, dateFormatter}) {
+function ArticleCard({post, labels, featured, dateFormatter, navigationState}) {
     const titleId = `blog-title-${post.slug}`;
     const linkTextId = `blog-link-text-${post.slug}`;
     return (
@@ -61,6 +61,7 @@ function ArticleCard({post, labels, featured, dateFormatter}) {
                 <p className="mb-4 mt-2 max-w-[64ch] text-sm leading-6 text-slate-300">{post.excerpt}</p>
                 <Link
                     to={`/blog/${post.slug}`}
+                    state={navigationState}
                     aria-labelledby={`${linkTextId} ${titleId}`}
                     className="mt-auto inline-flex items-center gap-2 text-sm font-extrabold text-sky-100 after:absolute after:inset-0 after:rounded-[var(--corner)] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-4"
                 >
@@ -72,16 +73,20 @@ function ArticleCard({post, labels, featured, dateFormatter}) {
 }
 
 export default function BlogPage() {
-    const {key} = useLocation();
-    return <BlogIndex key={key} historyKey={key}/>;
+    const {key, state} = useLocation();
+    return <BlogIndex key={key} historyKey={key} returnCategory={state?.blogCategory}/>;
 }
 
-function BlogIndex({historyKey}) {
+function BlogIndex({historyKey, returnCategory}) {
     const {language} = useLanguage();
     const labels = copy[language];
-    const [activeCategory, setActiveCategory] = useState(() => blogFilters.get(historyKey) ?? "All");
     const posts = blogIndexForLanguage(language);
     const categories = [...new Set(posts.map(getCategory))];
+    const [activeCategory, setActiveCategory] = useState(() => {
+        const category = blogFilters.get(historyKey) ?? returnCategory;
+        return categories.includes(category) ? category : "All";
+    });
+    const navigationState = activeCategory === "All" ? undefined : {blogCategory: activeCategory};
     const dateFormatter = new Intl.DateTimeFormat(language === "de" ? "de-DE" : "en-GB", {dateStyle: "medium", timeZone: "UTC"});
     const visible = (activeCategory === "All" ? [...posts] : posts.filter((post) => getCategory(post) === activeCategory))
         .sort((a, b) => b.date.localeCompare(a.date));
@@ -114,7 +119,14 @@ function BlogIndex({historyKey}) {
                     </div>
                     <ul className="grid gap-4 sm:grid-cols-2" role="list">
                         {visible.map((post, index) => (
-                            <ArticleCard key={post.slug} post={post} labels={labels} featured={index === 0 && activeCategory === "All"} dateFormatter={dateFormatter}/>
+                            <ArticleCard
+                                key={post.slug}
+                                post={post}
+                                labels={labels}
+                                featured={index === 0 && activeCategory === "All"}
+                                dateFormatter={dateFormatter}
+                                navigationState={navigationState}
+                            />
                         ))}
                     </ul>
                 </section>

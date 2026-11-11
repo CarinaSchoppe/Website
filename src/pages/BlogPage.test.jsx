@@ -88,4 +88,23 @@ describe("BlogPage", () => {
         expect(screen.getByRole("button", {name: "AI & Governance", pressed: true})).toBeInTheDocument();
         expect(screen.getByRole("status")).toHaveTextContent("2 articles");
     });
+
+    it("keeps the topic when returning through an article's overview link", async () => {
+        const user = userEvent.setup();
+        renderBlog();
+
+        await user.click(screen.getByRole("button", {name: "Digital Education"}));
+        await user.click(screen.getByRole("link", {name: /Teaching with AI/i}));
+        await user.click(screen.getByRole("link", {name: "Back to blog"}));
+
+        expect(screen.getByRole("button", {name: "Digital Education", pressed: true})).toBeInTheDocument();
+        expect(screen.getByRole("status")).toHaveTextContent("1 article");
+
+        await user.click(screen.getByRole("link", {name: /Teaching with AI/i}));
+        await user.click(screen.getByRole("link", {name: /Agentic AI: from impressive demos/i}));
+        await user.click(screen.getByRole("link", {name: "Back to blog"}));
+
+        expect(screen.getByRole("button", {name: "Digital Education", pressed: true})).toBeInTheDocument();
+        expect(screen.getByRole("status")).toHaveTextContent("1 article");
+    });
 });

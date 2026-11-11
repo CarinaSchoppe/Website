@@ -1,5 +1,5 @@
 import {ArrowLeft} from "lucide-react";
-import {Link, useParams} from "react-router-dom";
+import {Link, useLocation, useParams} from "react-router-dom";
 import {blogArticlesForLanguage} from "../data/blogArticles.js";
 import {useLanguage} from "../i18n.jsx";
 import Badge from "../components/Badge.jsx";
@@ -9,6 +9,7 @@ import NotFoundPage from "./NotFoundPage.jsx";
 
 export default function BlogPostPage() {
     const {slug} = useParams();
+    const {state} = useLocation();
     const {language} = useLanguage();
     const blogPosts = blogArticlesForLanguage(language);
     const post = blogPosts.find((item) => item.slug === slug);
@@ -39,7 +40,7 @@ export default function BlogPostPage() {
     return (
         <main className="px-4 pb-24 pt-32 sm:px-6 lg:px-8">
             <article className="mx-auto max-w-5xl">
-                <Link to="/blog" className="site-text-link text-sky-100">
+                <Link to="/blog" state={state} className="site-text-link text-sky-100">
                     <ArrowLeft size={16} aria-hidden="true"/>{copy.back}
                 </Link>
 
@@ -97,7 +98,7 @@ export default function BlogPostPage() {
                     <h2 className="text-2xl font-black text-white">{copy.more}</h2>
                     <div className="mt-5 grid gap-5 md:grid-cols-2">
                         {related.map((item) => (
-                            <Link key={item.slug} to={`/blog/${item.slug}`} className="soft-link-card p-5">
+                            <Link key={item.slug} to={`/blog/${item.slug}`} state={state} className="soft-link-card p-5">
                                 <Badge tone="white">{item.category}</Badge>
                                 <h3 className="mt-5 text-xl font-black text-white">{item.title}</h3>
                                 <p className="mt-3 text-sm leading-7 text-slate-300">{item.excerpt}</p>
