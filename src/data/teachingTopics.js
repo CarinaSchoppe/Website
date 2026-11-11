@@ -1,42 +1,42 @@
 export const teachingTopics = [
     {
         id: "ai",
-        de: ["KI und Automatisierung", "Generative KI, Prompt Engineering, KI-Agenten und KI-Governance. In Übungen vergleichen Teilnehmende Ergebnisse, prüfen Fehler und entscheiden, wo Menschen einen Arbeitsschritt freigeben sollten."],
-        en: ["AI and automation", "Generative AI, prompt engineering, AI agents and AI governance. In practice exercises, learners compare outputs, check for errors and decide where a person should approve a step."],
+        de: ["KI und Automatisierung", "Mit Prompts und KI-Agenten arbeiten, Ergebnisse an der Quelle prüfen und festlegen, wo ein Mensch freigeben muss."],
+        en: ["AI and automation", "Work with prompts and AI agents, check outputs against their sources and decide which steps need human approval."],
     },
     {
         id: "software",
-        de: ["Softwareentwicklung", "Programmieren mit Python, Java, C# oder Kotlin, dazu Git, Tests und APIs. Eine typische Übung führt vom ersten Skript zu einer Anwendung, die eine Schnittstelle nutzt."],
-        en: ["Software development", "Programming in Python, Java, C# or Kotlin, alongside Git, testing and APIs. A typical exercise takes learners from their first script to an application that uses an API."],
+        de: ["Softwareentwicklung", "Mit Python, Java, C# oder Kotlin programmieren. Ein kleines Projekt führt vom Skript zur Anwendung mit API, Git und Tests."],
+        en: ["Software development", "Code in Python, Java, C# or Kotlin. A small project takes you from a script to an application with an API, version control and tests."],
     },
     {
         id: "data",
-        de: ["Datenbanken und Datenanalyse", "Daten modellieren, mit SQL und Joins abfragen und Ergebnisse auf Plausibilität prüfen. Dazu kommen Datenqualität, Datenaufbereitung und Grundlagen von Datenpipelines."],
-        en: ["Databases and data analysis", "Model data, query it with SQL and joins, and check whether the results make sense. Topics also include data quality, preparation and the basics of data pipelines."],
+        de: ["Datenbanken und Datenanalyse", "Daten modellieren, mit SQL und Joins auswerten und die Ergebnisse prüfen. Dazu gehören Datenaufbereitung und der Aufbau einfacher Pipelines."],
+        en: ["Databases and data analysis", "Model data, query it with SQL joins and check the results. Learn to prepare data and build simple pipelines."],
     },
     {
         id: "systems",
-        de: ["IT-Systeme und Netzwerke", "IT-Grundlagen, Linux, IP-Adressierung, Subnetze, Switching und Routing. In Cisco-Netzwerklaboren konfigurieren Teilnehmende Verbindungen und grenzen Störungen ein."],
-        en: ["IT systems and networking", "IT fundamentals, Linux, IP addressing, subnets, switching and routing. In Cisco networking labs, learners configure connections and isolate faults."],
+        de: ["IT-Systeme und Netzwerke", "Linux-Grundlagen lernen, IP-Adressen und Subnetze planen und in Cisco-Labs Switches und Router konfigurieren. Bei Störungen den Fehler eingrenzen."],
+        en: ["IT systems and networking", "Learn Linux fundamentals, plan IP addresses and subnets, and configure switches and routers in Cisco labs. Practise isolating faults."],
     },
     {
         id: "security",
-        de: ["IT-Sicherheit", "Security Awareness, Websicherheit, sichere Zugänge und SOC-Grundlagen. Dazu gehören Übungen zu Ethical Hacking und die Vorbereitung auf CompTIA PenTest+."],
-        en: ["Cybersecurity", "Security awareness, web security, access controls and SOC fundamentals. This includes ethical hacking exercises and preparation for CompTIA PenTest+."],
+        de: ["IT-Sicherheit", "Phishing erkennen, Zugänge absichern und Webschwachstellen im Labor untersuchen. Dazu kommen SOC-Grundlagen und die Vorbereitung auf CompTIA PenTest+."],
+        en: ["Cybersecurity", "Spot phishing, secure access and investigate web vulnerabilities in a lab. Topics also include SOC fundamentals and CompTIA PenTest+ preparation."],
     },
     {
         id: "business",
-        de: ["Wirtschaft und Wirtschaftsinformatik", "Betriebswirtschaft, Geschäftsprozesse, IT-Service-Management, Projektmanagement und Scrum. An Fallbeispielen bewerten Teilnehmende, welche Technik zu einem betrieblichen Ablauf passt."],
-        en: ["Business, management and information systems", "Business administration, processes, IT service management, project management and Scrum. In case studies, learners assess which technology suits a business process."],
+        de: ["Wirtschaft und Wirtschaftsinformatik", "Geschäftsprozesse analysieren und passende Technik auswählen. Dazu kommen BWL, IT-Service-Management und Projektplanung mit Scrum."],
+        en: ["Business and information systems", "Analyse business processes and choose suitable technology. Topics include business administration, IT service management and project planning with Scrum."],
     },
     {
         id: "accounting",
-        de: ["Buchhaltung und kaufmännische Grundlagen", "Grundlagen des Rechnungswesens, vom Prüfen eines Belegs über einfache Buchungssätze bis zum Lesen einer Auswertung. Dazu kommen kaufmännisches Rechnen und typische Abläufe im Büromanagement."],
-        en: ["Bookkeeping and commercial fundamentals", "Accounting basics, from checking a receipt and making simple journal entries to reading a financial report. This also covers business calculations and common office administration workflows."],
+        de: ["Buchhaltung und kaufmännische Grundlagen", "Belege prüfen, Geschäftsvorfälle buchen und Auswertungen lesen. Dazu kommen Steuergrundlagen, kaufmännisches Rechnen und Büromanagement."],
+        en: ["Bookkeeping and business fundamentals", "Check receipts, record transactions and read financial reports. Topics include tax fundamentals, business calculations and office administration."],
     },
     {
         id: "privacy",
-        de: ["Arbeitsrecht und Datenschutz", "Grundlagen des deutschen Arbeitsrechts, etwa Arbeitsvertrag, Arbeitszeit und Urlaub. An Fällen aus dem Personalwesen üben Teilnehmende auch den Umgang mit personenbezogenen Daten nach der DSGVO."],
-        en: ["Employment law and data protection", "Fundamentals of German employment law, including contracts, working hours and leave. Learners also use HR case studies to practise handling personal data under the GDPR."],
+        de: ["Arbeitsrecht und Datenschutz", "Arbeitsvertrag, Arbeitszeit und Urlaub anhand deutscher Fälle einordnen. In Übungen aus dem Personalwesen personenbezogene Daten nach der DSGVO handhaben."],
+        en: ["Employment law and data protection", "Work through German employment law cases on contracts, working hours and leave. Practise handling personal data under the GDPR in HR scenarios."],
     },
 ];

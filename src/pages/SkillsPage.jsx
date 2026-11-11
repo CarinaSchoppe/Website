@@ -76,7 +76,7 @@ export default function SkillsPage() {
 
                 <section id="unterricht" className="mt-14" aria-labelledby="consulting-skills" tabIndex={-1}>
                     <div className="grid gap-5 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
-                        <h2 id="consulting-skills" className="text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">{copy.teaching}</h2>
+                        <h2 id="consulting-skills" className="text-3xl font-black tracking-[-0.04em] text-white sm:text-5xl">{copy.teaching}</h2>
                         <p className="text-lg leading-8 text-slate-300">{copy.teachingCopy}</p>
                     </div>
                     <div id="clusters" className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
