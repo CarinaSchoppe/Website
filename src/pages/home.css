@@ -240,8 +240,9 @@
     .home-project-media img { max-height: 9rem; }
     .reference-list { grid-template-columns: minmax(0, 1fr); }
     .home-proof { gap: .25rem; }
-    .home-proof dl { width: 100%; gap: .55rem; }
-    .home-proof dl div + div { padding-inline-start: .55rem; }
-    .home-proof dt { font-size: clamp(1.02rem, 4.4vw, 1.35rem); }
-    .home-proof dd { font-size: .75rem; }
+    .home-proof dl { width: 100%; grid-template-columns: minmax(0, 1fr); gap: .55rem; }
+    .home-proof dl div { display: grid; grid-template-columns: 7rem minmax(0, 1fr); align-items: baseline; gap: .55rem; }
+    .home-proof dl div + div { border-inline-start: 0; padding-inline-start: 0; }
+    .home-proof dt { font-size: 1.05rem; }
+    .home-proof dd { margin-top: 0; overflow-wrap: normal; hyphens: auto; }
 }
