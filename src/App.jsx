@@ -136,7 +136,7 @@ export default function App() {
 
     return (
         <LanguageProvider>
-            <BrowserRouter basename={ROUTER_BASENAME} future={{v7_relativeSplatPath: true, v7_startTransition: true}}>
+            <BrowserRouter basename={ROUTER_BASENAME}>
                 <Seo/>
                 <div data-theme={theme} className="theme-root">
                     <Header theme={theme} onToggleTheme={toggleTheme}/>

@@ -168,5 +168,11 @@ describe("App routing and language", () => {
         await waitFor(() => expect(window.location.hash).toBe("#appointment"));
         expect(await screen.findByRole("heading", {name: /Contact Carina Sophie Schoppe/i})).toBeInTheDocument();
         expect(scrollIntoView).not.toHaveBeenCalled();
+
+        await user.click(within(screen.getByRole("banner")).getByRole("link", {name: "Teaching"}));
+        await user.click(await screen.findByRole("link", {name: "Publications"}));
+        expect(await screen.findByRole("region", {name: "My academic work"})).toHaveFocus();
+        await user.click(screen.getByRole("link", {name: "Skip to content"}));
+        expect(document.getElementById("main-content")).toHaveFocus();
     });
 });

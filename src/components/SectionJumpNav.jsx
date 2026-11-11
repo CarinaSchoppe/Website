@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 import {cn} from "./utils.js";
 
 export default function SectionJumpNav({items, label, fixed = false, className = ""}) {
@@ -13,13 +14,13 @@ export default function SectionJumpNav({items, label, fixed = false, className =
                 </span>
                 <div className="flex min-w-0 flex-1 flex-wrap items-center gap-2 sm:gap-3 lg:gap-4">
                     {items.map(([href, text]) => (
-                        <a
+                        <Link
                             key={href}
-                            href={href}
+                            to={href}
                             className="inline-flex min-h-11 items-center rounded-full border border-white/10 bg-white/[0.065] px-3.5 py-2 text-xs font-black text-slate-200 transition hover:underline sm:px-5 sm:text-sm"
                         >
                             {text}
-                        </a>
+                        </Link>
                     ))}
                 </div>
             </div>

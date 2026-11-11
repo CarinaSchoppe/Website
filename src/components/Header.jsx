@@ -55,7 +55,7 @@ export default function Header({theme, onToggleTheme}) {
 
     return (
         <>
-            <a className="site-skip" href="#main-content">{language === "de" ? "Zum Inhalt springen" : "Skip to content"}</a>
+            <Link className="site-skip" to="#main-content">{language === "de" ? "Zum Inhalt springen" : "Skip to content"}</Link>
             <header className="site-header">
                 <div className="site-width site-header-inner">
                     <NavLink to="/" className="site-brand">

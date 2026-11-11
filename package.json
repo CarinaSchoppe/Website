@@ -22,7 +22,7 @@
     "preact": "^10.29.1",
     "react": "latest",
     "react-dom": "latest",
-    "react-router-dom": "^6.30.4",
+    "react-router-dom": "^7.18.5",
     "tailwindcss": "latest",
     "vite": "latest"
   },
