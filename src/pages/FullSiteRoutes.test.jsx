@@ -20,11 +20,11 @@ describe("full static site route coverage", () => {
         const cname = readFileSync("public/CNAME", "utf8").trim();
 
         expect(cname).toBe("carinaschoppe.com");
-        expect(html).toContain('<link href="/favicon.png" rel="icon" type="image/png" sizes="48x48"/>');
+        expect(html).toContain('<link href="/favicon.png?v=456fe2f4c5" rel="icon" type="image/png" sizes="48x48"/>');
         expect(html).toContain("Carina Sophie Schoppe | Portfolio");
         expect(existsSync("public/favicon.png")).toBe(true);
         expect(existsSync("public/favicon.ico")).toBe(true);
-        expect(html).toContain('<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>');
+        expect(html).toContain('<link href="/apple-touch-icon.png?v=456fe2f4c5" rel="apple-touch-icon" sizes="180x180"/>');
         expect(existsSync("public/apple-touch-icon.png")).toBe(true);
         expect(existsSync("src/assets/luminovia-full-logo.webp")).toBe(true);
         expect(html).toContain("params.get(\"__soft404\")");
