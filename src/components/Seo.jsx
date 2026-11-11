@@ -27,8 +27,8 @@ const routeMeta = {
             description: "Portfolio overview for public projects, technical work and professional profile information.",
         },
         "/skills": {
-            title: "Teaching topics and skills | Carina Sophie Schoppe",
-            description: "Teaching in AI, cybersecurity, software, databases, networking, business, accounting, employment law and data protection, with examples from Carina’s courses.",
+            title: "Education, consulting and research | Carina Sophie Schoppe",
+            description: "Carina Sophie Schoppe’s expertise in education, consulting and AI research, with practical examples, teaching topics and academic publications.",
         },
         "/credentials": {
             title: "Credentials | Carina Sophie Schoppe",
@@ -36,7 +36,7 @@ const routeMeta = {
         },
         "/my-way": {
             title: "Story | Carina Sophie Schoppe",
-            description: "Carina Sophie Schoppe’s CV and story from business information systems and teaching in Germany to software, AI research and Luminovia in Brisbane.",
+            description: "Carina Sophie Schoppe’s journey from studying business information systems in Germany to education, consulting, AI research and Luminovia in Brisbane.",
         },
         "/about": {
             title: "About | Carina Sophie Schoppe",
@@ -77,8 +77,8 @@ const routeMeta = {
             description: "Portfolio-Übersicht mit öffentlichen Projekten, technischen Arbeiten und Informationen zum beruflichen Profil von Carina Sophie Schoppe.",
         },
         "/skills": {
-            title: "Lehrthemen und Kompetenzen | Carina Sophie Schoppe",
-            description: "Unterricht zu KI, IT-Sicherheit, Software, Datenbanken, Netzwerken, Wirtschaft, Buchhaltung, Arbeitsrecht und Datenschutz mit Beispielen aus der Praxis.",
+            title: "Lehre, Beratung und Forschung | Carina Sophie Schoppe",
+            description: "Carina Sophie Schoppes Kompetenzen in Lehre, Beratung und KI-Forschung mit Praxisbeispielen, Unterrichtsthemen und wissenschaftlichen Arbeiten.",
         },
         "/credentials": {
             title: "Nachweise | Carina Sophie Schoppe",
@@ -86,7 +86,7 @@ const routeMeta = {
         },
         "/my-way": {
             title: "Werdegang | Carina Sophie Schoppe",
-            description: "Carina Sophie Schoppes Lebenslauf und Werdegang von Wirtschaftsinformatik und Lehre in Deutschland bis zu Software, KI-Forschung und Luminovia in Brisbane.",
+            description: "Carina Sophie Schoppes Weg vom Wirtschaftsinformatikstudium in Deutschland zu Lehre, Beratung, KI-Forschung und Luminovia in Brisbane.",
         },
         "/about": {
             title: "Über Carina | Carina Sophie Schoppe",

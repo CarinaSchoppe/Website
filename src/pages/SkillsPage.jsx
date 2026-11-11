@@ -31,8 +31,8 @@ export default function SkillsPage() {
     const {skillGroups} = useSiteContent();
     const copy = language === "de"
         ? {
-            title: "Was ich unterrichte und entwickle.",
-            intro: "Ich unterrichte IT und Wirtschaft für Erwachsene. In meinen Kursen konfigurieren Teilnehmende Netzwerke, schreiben Code und lösen kaufmännische Fälle.",
+            title: "Lehre, Beratung und KI-Forschung.",
+            intro: "Ich unterrichte IT und Wirtschaft, berate zu technischen und betrieblichen Fragen und forsche zu KI. Praxisbeispiele machen die Methoden greifbar.",
             references: "Lehrreferenzen ansehen",
             company: "Luminovia Training & Consulting",
             companyCopy: "Für Buchungen und Anfragen zu Trainings oder Beratung ist mein Unternehmen Luminovia die Anlaufstelle.",
@@ -48,8 +48,8 @@ export default function SkillsPage() {
             jumpItems: [["#unterricht", "Unterricht"], ["#softwarepraxis", "Software"], ["#publications", "Publikationen"], ["#skill-map", "Kompetenzen"]],
         }
         : {
-            title: "What I teach and build.",
-            intro: "I teach IT and business to adults. In my courses, learners configure networks, write code and work through business cases.",
+            title: "Education, consulting and AI research.",
+            intro: "I teach IT and business, advise on technical and business questions, and research AI. Practical examples show how the methods work.",
             references: "View teaching references",
             company: "Luminovia Training & Consulting",
             companyCopy: "My company, Luminovia, handles training and consulting enquiries and bookings.",

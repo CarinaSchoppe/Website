@@ -10,9 +10,9 @@ const prerenderRoutes = [
     ["/projects", "Projekte | Carina Sophie Schoppe", "Softwareprojekte, Automation und technische Experimente von Carina Sophie Schoppe, darunter Forschungswerkzeuge, Datenworkflows, Kotlin- und Mobile-Projekte."],
     ["/software", "Projekte | Carina Sophie Schoppe", "Softwareprojekte, Automation und technische Experimente von Carina Sophie Schoppe, darunter Forschungswerkzeuge, Datenworkflows, Kotlin- und Mobile-Projekte."],
     ["/portfolio", "Portfolio | Carina Sophie Schoppe", "Portfolio mit öffentlichen Projekten, technischen Arbeiten und Informationen zum beruflichen Profil von Carina Sophie Schoppe."],
-    ["/skills", "Lehrthemen und Kompetenzen | Carina Sophie Schoppe", "Unterricht zu KI, IT-Sicherheit, Software, Datenbanken, Netzwerken, Wirtschaft, Buchhaltung, Arbeitsrecht und Datenschutz mit Beispielen aus der Praxis."],
+    ["/skills", "Lehre, Beratung und Forschung | Carina Sophie Schoppe", "Carina Sophie Schoppes Kompetenzen in Lehre, Beratung und KI-Forschung mit Praxisbeispielen, Unterrichtsthemen und wissenschaftlichen Arbeiten."],
     ["/credentials", "Nachweise | Carina Sophie Schoppe", "Abschlüsse, Zertifikate und fachliche Nachweise von Carina Sophie Schoppe, darunter B.Sc., M.Sc., MBA, TAE40122 und AI-Zertifikate."],
-    ["/my-way", "Werdegang | Carina Sophie Schoppe", "Carina Sophie Schoppes Lebenslauf und Werdegang von Wirtschaftsinformatik und Lehre in Deutschland bis zu Software, KI-Forschung und Luminovia in Brisbane."],
+    ["/my-way", "Werdegang | Carina Sophie Schoppe", "Carina Sophie Schoppes Weg vom Wirtschaftsinformatikstudium in Deutschland zu Lehre, Beratung, KI-Forschung und Luminovia in Brisbane."],
     ["/about", "Über Carina | Carina Sophie Schoppe", "Carina Sophie Schoppe ist Dozentin, Beraterin, KI-Forscherin und Gründerin von Luminovia Training & Consulting. Persönlicher Werdegang und LinkedIn-Profil."],
     ["/blog", "Blog | Carina Sophie Schoppe", "Texte von Carina Sophie Schoppe zu AI, Governance, digitaler Bildung, Projektarbeit, Cybersecurity, Automationsrisiken und moderner Arbeit."],
     ...blogIndexForLanguage("de").map(({slug, title, excerpt}) => [

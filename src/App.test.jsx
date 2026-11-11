@@ -66,7 +66,7 @@ describe("App routing and language", () => {
     it.each([
         ["/blog", /Writing on AI, digital education/i],
         ["/contact", /Contact Carina Sophie Schoppe/i],
-        ["/skills", /^What I teach and build\.$/i],
+        ["/skills", /^Education, consulting and AI research\.$/i],
         ["/about", /^Carina Sophie Schoppe$/i],
         ["/credentials", /Degrees, certificates/i],
         ["/my-way", /professional path through technology/i],

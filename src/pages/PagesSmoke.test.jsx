@@ -9,7 +9,7 @@ const routes = [
     ["/projects", /Software projects and open source/i],
     ["/software", /Software projects and open source/i],
     ["/portfolio", /Software projects and open source/i],
-    ["/skills", /^What I teach and build\.$/i],
+    ["/skills", /^Education, consulting and AI research\.$/i],
     ["/credentials", /Degrees, certificates/i],
     ["/my-way", /professional path through technology/i],
     ["/about", /^Carina Sophie Schoppe$/i],

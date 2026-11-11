@@ -31,7 +31,7 @@ const copy = {
         projects: "Meine Softwareprojekte",
         pathLabel: "Mein Werdegang",
         pathTitle: "Von Paderborn nach Brisbane",
-        pathIntro: "Ich bin in Bodenwerder im Weserbergland aufgewachsen und habe während meines Studiums in Paderborn angefangen zu unterrichten. Heute lebe ich in Brisbane und unterrichte auf Deutsch und Englisch.",
+        pathIntro: "Ich bin in Bodenwerder im Weserbergland aufgewachsen und habe während meines Studiums in Paderborn angefangen zu unterrichten. Heute lebe ich in Brisbane und verbinde Lehre, Beratung und KI-Forschung. Ich arbeite auf Deutsch und Englisch.",
         fullPath: "Mein vollständiger Werdegang",
         nextLabel: "Mehr über meine Arbeit",
         next: [
@@ -64,7 +64,7 @@ const copy = {
         projects: "My software projects",
         pathLabel: "My background",
         pathTitle: "From Paderborn to Brisbane",
-        pathIntro: "I grew up in Bodenwerder in Germany’s Weserbergland region and started teaching while studying in Paderborn. I now live in Brisbane and teach in English and German.",
+        pathIntro: "I grew up in Bodenwerder in Germany’s Weserbergland region and started teaching while studying in Paderborn. I now live in Brisbane and combine education, consulting and AI research, working in English and German.",
         fullPath: "See my full timeline",
         nextLabel: "More about my work",
         next: [
