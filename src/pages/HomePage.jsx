@@ -15,7 +15,7 @@ const projectIcons = {mail: Mail, openxlr: SlidersHorizontal};
 const copy = {
     de: {
         role: "IT-Dozentin und Softwareentwicklerin",
-        intro: "Ich unterrichte IT und Wirtschaft, entwickle Forschungssoftware und erforsche den Einsatz generativer KI im Arbeitsalltag.",
+        intro: "Ich unterrichte IT und Wirtschaft, entwickle Software für Literaturreviews und untersuche, wie Menschen generative KI bei der Arbeit einsetzen.",
         location: "Brisbane, Australien",
         languages: "Deutsch & Englisch",
         portraitAlt: "Porträt von Carina Sophie Schoppe",
@@ -54,7 +54,7 @@ const copy = {
     },
     en: {
         role: "IT lecturer and software developer",
-        intro: "I teach IT and business, build research software and study how people use generative AI at work.",
+        intro: "I teach IT and business, build software for literature reviews and study how people use generative AI at work.",
         location: "Brisbane, Australia",
         languages: "English & German",
         portraitAlt: "Portrait of Carina Sophie Schoppe",
