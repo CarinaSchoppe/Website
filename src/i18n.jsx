@@ -39,6 +39,7 @@ const dictionaries = {
             businessLabel: "Business enquiries",
             businessCopy: "For company training, workshops, consulting or booking enquiries, please contact Luminovia.",
             businessLink: "Contact Luminovia",
+            consultingDemo: "Watch the AI consulting demo on YouTube",
         },
         analytics: {
             title: "Privacy-friendly analytics",
@@ -96,6 +97,7 @@ const dictionaries = {
             businessLabel: "Geschäftliche Anfragen",
             businessCopy: "Für Firmentrainings, Workshops, Beratung und Buchungsanfragen wenden Sie sich an Luminovia.",
             businessLink: "Kontakt zu Luminovia",
+            consultingDemo: "KI-Beratungsdemo auf YouTube ansehen",
         },
         analytics: {
             title: "Datenschutzfreundliche Analyse",

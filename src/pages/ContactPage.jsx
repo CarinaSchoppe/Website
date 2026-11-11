@@ -42,6 +42,7 @@ export default function ContactPage() {
                     <p>{t.contact.businessCopy}</p>
                     <div className="contact-route-actions">
                         <a href={PROFILE.luminoviaContact} className="site-button">{t.contact.businessLink}<ArrowUpRight size={17} aria-hidden="true"/></a>
+                        <a href={PROFILE.consultingDemo} className="site-text-link">{t.contact.consultingDemo}<ArrowUpRight size={15} aria-hidden="true"/></a>
                     </div>
                 </section>
             </div>

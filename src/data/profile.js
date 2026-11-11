@@ -16,6 +16,7 @@ export const PROFILE = {
     luminovia,
     luminoviaTraining: `${luminovia}/training/#details`,
     luminoviaContact: `${luminovia}/contact/`,
+    consultingDemo: "https://www.youtube.com/watch?v=sYMO5sb-YKg",
     luminoviaEmail: "info@luminovia.org",
     luminoviaGithub: "https://github.com/Luminovia-Training-Consulting",
     analyticsId: "G-YNGD292XE5",

@@ -109,9 +109,9 @@ describe("App routing and language", () => {
     });
 
     it.each([
-        ["en", "Personal contact", "Write an email", "Contact Luminovia"],
-        ["de", "Persönlicher Kontakt", "E-Mail schreiben", "Kontakt zu Luminovia"],
-    ])("shows separate personal and business contact routes in %s", async (language, personalLabel, emailLabel, businessLabel) => {
+        ["en", "Personal contact", "Write an email", "Contact Luminovia", "Watch the AI consulting demo on YouTube"],
+        ["de", "Persönlicher Kontakt", "E-Mail schreiben", "Kontakt zu Luminovia", "KI-Beratungsdemo auf YouTube ansehen"],
+    ])("shows separate personal and business contact routes in %s", async (language, personalLabel, emailLabel, businessLabel, demoLabel) => {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
         window.history.pushState({}, "Contact", "/contact");
 
@@ -123,7 +123,9 @@ describe("App routing and language", () => {
         const company = screen.getByRole("region", {name: "Luminovia Training & Consulting"});
         expect(company).toHaveAttribute("id", "appointment");
         expect(within(company).getByRole("link", {name: businessLabel})).toHaveAttribute("href", "https://luminovia.org/contact/");
-        expect(within(company).getAllByRole("link")).toHaveLength(1);
+        const demo = within(company).getByRole("link", {name: demoLabel});
+        expect(demo).toHaveAttribute("href", "https://www.youtube.com/watch?v=sYMO5sb-YKg");
+        expect(demo).not.toHaveAttribute("target");
     });
 
     it("keeps the teaching credentials filter selected when the language changes", async () => {
