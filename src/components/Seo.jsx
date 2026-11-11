@@ -5,7 +5,8 @@ import {PROFILE} from "../data/profile.js";
 import {canonicalUrl, SITE_URL} from "../data/siteUrls.js";
 import {useLanguage} from "../i18n.jsx";
 
-const DEFAULT_IMAGE = `${SITE_URL}/images/carina-outdoor.jpg`;
+const DEFAULT_IMAGE = `${SITE_URL}/images/carina-og.jpg?v=20261111`;
+const IMAGE_ALT = "Carina Schoppe – Educator, Developer, AI Researcher. IT, AI & Business – explained and applied.";
 
 const routeMeta = {
     en: {
@@ -158,7 +159,7 @@ function buildPersonSchema() {
         "@id": `${SITE_URL}/#carina-sophie-schoppe`,
         name: PROFILE.name,
         url: `${SITE_URL}/`,
-        image: DEFAULT_IMAGE,
+        image: `${SITE_URL}/images/carina-outdoor.jpg`,
         email: PROFILE.email,
         jobTitle: "IT lecturer and software developer",
         address: {
@@ -223,8 +224,14 @@ export default function Seo() {
         upsertMeta('meta[property="og:title"]', {property: "og:title", content: title});
         upsertMeta('meta[property="og:description"]', {property: "og:description", content: description});
         upsertMeta('meta[property="og:image"]', {property: "og:image", content: DEFAULT_IMAGE});
+        upsertMeta('meta[property="og:image:width"]', {property: "og:image:width", content: "1200"});
+        upsertMeta('meta[property="og:image:height"]', {property: "og:image:height", content: "630"});
+        upsertMeta('meta[property="og:image:type"]', {property: "og:image:type", content: "image/jpeg"});
+        upsertMeta('meta[property="og:image:alt"]', {property: "og:image:alt", content: IMAGE_ALT});
         upsertMeta('meta[property="og:type"]', {property: "og:type", content: post ? "article" : "website"});
         upsertMeta('meta[name="twitter:card"]', {name: "twitter:card", content: "summary_large_image"});
+        upsertMeta('meta[name="twitter:image"]', {name: "twitter:image", content: DEFAULT_IMAGE});
+        upsertMeta('meta[name="twitter:image:alt"]', {name: "twitter:image:alt", content: IMAGE_ALT});
         upsertMeta('meta[name="twitter:title"]', {name: "twitter:title", content: title});
         upsertMeta('meta[name="twitter:description"]', {name: "twitter:description", content: description});
         upsertJsonLd("dynamic-person-service-schema", buildPersonSchema());

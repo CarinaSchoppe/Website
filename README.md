@@ -56,5 +56,6 @@ The project is GitHub Pages compatible:
 
 - The personal portfolio uses a neutral palette with colour accents and the locally served Manrope typeface. Its OFL notice is in `public/fonts/`.
 - The home page and biography use the original portraits in `public/images/`, with responsive WebP variants. The homepage illustrations follow the documented PRISMA and Automatic Mail Sender workflows. The OpenXLR screenshot is credited on the project page.
+- The supplied `Colorful CS Monogram` is used for the header and browser/touch icons. `public/images/carina-og.jpg` is a compressed 1200 × 630 share preview from the supplied `Carina Schoppe_ Elegant Learning in Motion.png`; the crop removes only background at the top and bottom. Static and client-rendered Open Graph and Twitter metadata use this preview. The Person schema retains the original portrait.
 - The default is the light palette. Visitors can save a different appearance and switch between German and English.
 - GitHub Pages deploys automatically when changes reach `main`. Review branches and draft pull requests leave the live site unchanged.
